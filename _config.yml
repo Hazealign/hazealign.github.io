@@ -5,8 +5,7 @@ gems:
 
 # Site settings
 title: "Haze Park"
-description: > # this means to ignore newlines until "email:"
-   책, 음악, 코딩, 피카츄와 함께하는 곳.
+description: "책, 음악, 코딩, 피카츄와 함께하는 곳."
 email: 'realignist@gmail.com'
 #blog logo
 logo: "/assets/images/pikachu_logo.png"
