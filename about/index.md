@@ -99,10 +99,10 @@ date:   2016-03-03 12:00:00
 	- [DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)를 기반으로 작업했지만, 처음 사용자도 쉽게 진행할 수 있도록 의존성 설치 스크립트 등을 포함했습니다.
 
 ## Activities & Organizations
-- **Link Team**
+- **Link Team (2011년 ~ 2013년)**
 	- OneClick APN이라고 하는 Android용 APN 설정 애플리케이션을 개발했었습니다.
 	- “전화줘”라고 하는 Android용 전화 자동 거절 및 응답 애플리케이션을 개발했었습니다.
-- **Provision**
+- **Provision (2012년)**
 	- Provision Optimizer라고 하는 Android용 시스템 트윅 애플리케이션을 개발했었습니다.
 	- CyanogenMod를 기반으로 한 커스텀 펌웨어 Provision ROM을 개발했었습니다. 빌드를 관리하였으며 한국향 갤럭시S(SHW-M110S)에 Android 4.x를 포팅했었습니다.
 - **[KAIST IP-CEO](http://ipceo.kaist.ac.kr) 4th. (2013년 3월 ~ 2015년 2월**)
