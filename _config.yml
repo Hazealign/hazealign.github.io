@@ -2,6 +2,8 @@
 gems:
   - jemoji
   - jekyll-paginate
+  - jekyll-feed
+  - mm-jekyll-prism
 
 # Site settings
 title: "Haze Park"
