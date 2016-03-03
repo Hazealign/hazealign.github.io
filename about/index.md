@@ -9,7 +9,8 @@ date:   2016-03-03 12:00:00
   - **Nickname** : Realignist / Hazealign
   - **Mail** : [realignist@gmail.com](mailto:realignist@gmail.com)
   - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
-  - **Who?** : 책, 음악, 코딩, 그리고 피카츄을 좋아하는 사람입니다. 프로그래밍으로 재미있는 것들을 하고 싶습니다. 조용한 곳에서 멍하게 생각을 빠지는걸 좋아하며 애니메이션이나 만화같은 것들도 즐겨보고 있습니다. 커피, 차와 자몽을 좋아합니다.
+  - **Where** : [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [Telegram](https://telegram.me/realignist) / [IRC(OzingerIRC #hazealign)](irc://irc.ozinger.org:16667/hazealign) / [이상한모임](http://weirdmeetup.slack.com) 등에서 저를 찾을 수 있습니다.
+  - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 커피나 차, 자몽을 좋아합니다.
   - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다. 또한 복용 중인 약으로 인하여 자몽을 먹으면 안됩니다. 
 
 ## Technologies
