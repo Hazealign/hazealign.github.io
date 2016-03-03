@@ -97,6 +97,7 @@ date:   2016-03-03 12:00:00
 	- 맥용 유틸리티 애플리케이션 Alfred에서 Fuse Build를 연결하는 워크플로우를 만들었습니다.
 - **[DeepDarkFantasy](https://github.com/Hazealign/DeepDarkFantasy)** *(소스 코드 공개를 위해 정리 중)*
 	- ffmpeg와 caffe를 이용해서 DeepDream 비디오를 만들어내는 스크립트입니다.
+  - 스크립트는 Python 2로 작성되었습니다.
 	- [DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)를 기반으로 작업했지만, 처음 사용자도 쉽게 진행할 수 있도록 의존성 설치 스크립트 등을 포함했습니다.
 
 ## Activities & Organizations
