@@ -5,7 +5,6 @@ gems:
   - jekyll-feed
   - jekyll-mentions
   - jekyll-redirect-from
-  - jekyll-prism-plugin
 
 # Site settings
 title: "Haze Park"

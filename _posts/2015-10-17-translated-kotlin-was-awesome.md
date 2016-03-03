@@ -58,7 +58,7 @@ Kotlin은 이 부분이 재미있습니다. 우선 IDE에 연동하기 위한 In
 
 ##### Kotlin 도입 전
 
-{% prism groovyp %}
+{% highlight groovy %}
 apply plugin: 'com.android.application'
 
 android {
@@ -84,11 +84,11 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
 }
-{% endprism %}
+{% endhighlight %}
 
 ##### Kotlin 도입 후
 
-{% prism groovy %}
+{% highlight groovy %}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
@@ -132,7 +132,7 @@ buildscript {
 repositories {
     mavenCentral()
 }
-{% endprism %}
+{% endhighlight %}
 
 나머지는 빌드해주면, Gradle 스크립트가 Kotlin 컴파일러의 다운로드부터 환경 설정까지 자동으로 전부 알아서 해줍니다. 새로운 버전의 Kotlin이 나왔다면 `ext.kotlin_version` 부분을 고쳐주면 됩니다.
 
@@ -152,15 +152,15 @@ Kotlin은 타입 추론을 지원하는 정적 타이핑 언어입니다. Swift�
 
 ### 외형
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun main(args: Array<String>) {
     println("Hello, world!")
 }
-{% endprism %}
+{% endhighlight %}
 
 세미콜론 없는 스타일, 코드 블록은 중괄호로 여닫는 스타일, 형태 표기는 Pascal 스타일(변수, 콜론, 자료형의 순서)을 볼 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 var sum = 0
 
 listOf(1,2,3).filter { it > 0 }.forEach {
@@ -168,7 +168,7 @@ listOf(1,2,3).filter { it > 0 }.forEach {
 }
 
 print(sum)
-{% endprism %}
+{% endhighlight %}
 
 클로져의 경우 중괄호`{}`만 쓰기 때문에 마지막 인자의 클로져를 함수 호출 뒤에 쓰고, 그 때 인자가 없으면 소괄호`()`를 생략할 수 있습니다.
 
@@ -178,7 +178,7 @@ print(sum)
 
 자료형으로 null을 참조할 수 있는 자료형과 없는 자료형이 구분됩니다. 타입을 검사하고 내용이 null인지 아닌지를 확인하면 그 시점에서 내용의 자료형으로 형변환됩니다. 일반적으로 이런 기능들을 제공할 떄 Optional이라고 하는데 Kotlin에서는 이 기능을 Nullable이라고 합니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun getLengthOfString(str: String): Int {
     return str.length()
 }
@@ -197,7 +197,7 @@ fun main(args: Array<String>) {
     val c = getLengthOfStringOpt(null)
     println("$a, $b, $c")
 }
-{% endprism %}
+{% endhighlight %}
 
 Nullable 자료형은 자료형의 오른쪽에 물음표`?`를 붙여 표기합니다. Swift의 Optional과 같아서 기쁩니다. Java의 언어 기능에 Optional은 존재하지 않습니다. 아마 NullPointerException으로 죽겠죠.
 
@@ -206,7 +206,7 @@ Nullable 자료형은 자료형의 오른쪽에 물음표`?`를 붙여 표기합
 Nullable의 Nullable을 만들 수가 없습니다. 그냥 Nullable이 되어버립니다.
 Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하게 됩니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun wrap(a: Int?): Int?? {
     return a
 }
@@ -227,13 +227,13 @@ fun main(args: Array<String>) {
     val a: Int?? = wrap(null)
     desc(a) // Some(None)이 나와야하지만, None이 되어버린다.
 }
-{% endprism %}
+{% endhighlight %}
 
 ### 플로우 기반 형변환 (Smart Casts)
 
 if 문에서 null인지를 체크하거나, is 연산자를 통해 타입을 검사하면 Kotlin에서는 그것을 고려해서 자동으로 형변환됩니다.
 
-{% prism swift %}
+{% highlight swift %}
 open class Animal {}
 class Cat: Animal() {
     fun nyaa() { println("nyaa") }
@@ -259,13 +259,13 @@ fun main(args: Array<String>) {
     speak2(Dog()) // wan이라고 나옴
     speak2(null) // null이라고 나옴
 }
-{% endprism %}
+{% endhighlight %}
 
 speak2의 앞 부분에서 null 인지를 체크하고 return 하고 있으므로 if 이후 `Animal?`이 아니라 `Animal` 자료형으로 변했으며, speak가 호출될 수 있습니다. speak의 if문의 분기에서 is를 이용한 체크를 통해 서브클래스인 `Cat`이나 `Dog`로 변해있으며 전용 메소드를 호출할 수 있습니다.
 
 동일한 코드에 대한 Swift 버전은 아래와 같습니다.
 
-{% prism swift %}
+{% highlight swift %}
 class Animal {}
 class Cat: Animal {
     func nyaa() { print("nyaa") }
@@ -293,13 +293,13 @@ func main() {
 }
 
 main()
-{% endprism %}
+{% endhighlight %}
 
 speak2에서는 이를 위해 일부러 guard 문이라는 것을 사용하지 않으면 안됩니다. speak, speak2 둘 다 `let animal = `을 쓰는 것이 중복됩니다. if 괄호를 생략할 수 있는 것은 좋네요.
 
 Java에서는 아마 아래와 같이 되겠죠.
 
-{% prism java %}
+{% highlight java %}
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -339,7 +339,7 @@ class Ideone {
         speak2(null);
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 null 체크에 관련해서는 그저 코드가 올바르길 기도하고 실행하는 수밖에 없습니다. 그리고 speak의 내용은 `Cat`과 `Dog`가 각각 세 번씩 나옵니다. (형변환용 메소드를 만든다면 2번 + null 체크로 줄일 수는 있겠지만요.)
 
@@ -347,23 +347,23 @@ null 체크에 관련해서는 그저 코드가 올바르길 기도하고 실행
 
 Nullable이 null일 땐 충돌이 나는 내용의 추출과 타입이 다를 경우에는 충돌하는 형변환이 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hoge(a: Int?, b: Animal?) {
     val c: Int = a!! // null이라면 Exception
     val d: Cat? = b as? Cat // Cat이 아니라면 null
     val e: Cat = b as Cat // Cat이 아니라면 Exception
 }
-{% endprism %}
+{% endhighlight %}
 
 Swift에서는 아래와 같이 작성할 수 있겠죠.
 
-{% prism swift %}
+{% highlight swift %}
 func hoge(a: Int?, b: Animal?) {
     let c: Int = a! // nil이라면 Exception
     let d: Cat? = b as? Cat // Cat이 아니라면 nil
     let e: Cat = b as! Cat // Cat이 아니라면 Exception
 }
-{% endprism %}
+{% endhighlight %}
 
 Kotlin에서는 두개의 느낌표`!`로 처리합니다. Swift에서는 한개죠.
 위험한 as에서는 Swift에서는 느낌표가 붙어있습니다.
@@ -372,27 +372,27 @@ Kotlin에서는 두개의 느낌표`!`로 처리합니다. Swift에서는 한개
 
 Kotlin에서는 Optional로 둘러쌓인 값의 메소드를 호출할 때, 값이 있다면 메소드를 호출할 수 있고 null일 경우에는 null값이 필요할 때, if문에서의 타입 체크를 하지 않고도 다음과 같이 작성할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hoge(user: User?) {
     val name: String? = user?.name
     println("name=$name")
 }
-{% endprism %}
+{% endhighlight %}
 
 Elvis 연산자를 사용하면 null인 경우 기본값을 지정할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hoge(user: User?) {
     val name: String = user?.name ?: "no name"
     println("name=$name")
 }
-{% endprism %}
+{% endhighlight %}
 
 Swift에서도 물음표 + 점`?.`으로 쓰이는 메소드 호출이 있습니다. 또한 elvis 연산자에 대해서는 Swift에서는 물음표 두개`??`입니다.
 비슷해보이는 두 언어지만, 물음표 + 점`?.`을 연속해서 사용할 때에는 구문 트리가 달라집니다.
 사용자 이름의 문자 수를 가져오는 경우를 생각해보세요.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class User {
     var name: String = "tanaka"
 }
@@ -400,24 +400,24 @@ class User {
 fun hoge(user: User?) {
     println(user?.name?.length())
 }
-{% endprism %}
+{% endhighlight %}
 
 Kotlin에서는 `?.`가 두번 나옵니다. 이것은 다음과 같이 해석할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 ( user?.name )?.length()
-{% endprism %}
+{% endhighlight %}
 
 `?.`을 쓰지 않는 경우에는 아래와 같이 쓸 수 있겠습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 val name: String? = if (user != null) { user.name } else { null }
 val length: Int? = if (name != null) { name.length } else { null }
-{% endprism %}
+{% endhighlight %}
 
 마찬가지를 Swift에서는 아래와 같이 표현할 수 있습니다.
 
-{% prism swift %}
+{% highlight swift %}
 class User {
     var name: String = "tanaka"
 }
@@ -427,23 +427,23 @@ func hoge(user: User?) {
 }
 
 main()
-{% endprism %}
+{% endhighlight %}
 
 name 뒤에 `?.`가 Swift에서는 `.`로 나와있습니다. 이것은 아래와 같이 해석되기 때문입니다.
 
-{% prism swift %}
+{% highlight swift %}
 user?.( name.characters.count )
-{% endprism %}
+{% endhighlight %}
 
 하지만, 이 괄호는 개념을 설명하기 위해서 임의로 만든 것이며 Swift로는 올바른 문법이 아닙니다. 고쳐서 쓴다면 아래와 같습니다.
 
-{% prism swift %}
+{% highlight swift %}
 if let user = user {
     return user.name.characters.count
 } else {
     return nil
 }
-{% endprism %}
+{% endhighlight %}
 
 정리하면 다음과 같습니다. Kotlin의 경우 `?.`을 다음 번만의 키워드만 처리하고 그 결과를 다음에도 사용합니다. Swift의 경우에는 `?.`을 오른쪽 모두를 묶어버리며 None일 경우 오른쪽 모두를 스킵합니다. 이 차이는 똑같은 외형의 코드가 전혀 다른 의미를 가지게 된다는 뜻이므로 이식하는데는 주의할 필요가 있습니다.
 
@@ -455,7 +455,7 @@ Java의 경우에는 첫 번째 인자로 리시버를 두 번째 인자로 오�
 
 위에서 쓴 `?.`을 사용하면 Optional이어도 귀찮지 않게 코드를 짤 수 있습니다만 아래와 같이 `?.`로는 쓸 수 없지만 null이 아닌 경우 처리를 계속하고 싶은 케이스가 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 val result: Boolean
 
 if (user != null) {
@@ -463,19 +463,19 @@ if (user != null) {
 } else {
     result = false
 }
-{% endprism %}
+{% endhighlight %}
 
 이런 케이스에서는 Kotlin에서는 다음과 같이 쓰는 것이 가능합니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 val result: Boolean = user?.let { write(it) } ?: false
-{% endprism %}
+{% endhighlight %}
 
 let의 정의와 구현은 다음과 같이 되어있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 public inline fun <T, R> T.let(f: (T) -> R): R = f(this)
-{% endprism %}
+{% endhighlight %}
 
 이것은 모든 타입 T에서 정의된 확장 메소드로 인자로 클로져를 하나 가지고 있습니다. 그리고 그 클로져에 메소드의 리시버가 전달되어 불러질 것이고 그 자체가 let 자체의 값이 됩니다.
 
@@ -483,9 +483,9 @@ public inline fun <T, R> T.let(f: (T) -> R): R = f(this)
 
 Swift의 경우에는 Optional 자체에 정의된 `flatMap` 메소드를 쓸 수 있습니다.
 
-{% prism swift %}
+{% highlight swift %}
 let result: Bool = user.flatMap { write($0) } ?? false
-{% endprism %}
+{% endhighlight %}
 
 이 경우에는 Optional 자체의 메소드임에도 불구하고 `?.`가 아닌 `.`이 됩니다.
 
@@ -493,7 +493,7 @@ let result: Bool = user.flatMap { write($0) } ?? false
 
 기본적인 콜백 함수가 쓸 수 있습니다. 클로져가 `{}`로 표현되기 때문에 쉽게 쓸 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun main(args: Array<String>) {
     val a = (0..10)
         .filter { it % 2 == 0 }
@@ -504,11 +504,11 @@ fun main(args: Array<String>) {
 
     println(a) // 0_4_16_36_64_100가 나온다.
 }
-{% endprism %}
+{% endhighlight %}
 
 Swift도 비슷한 느낌으로 작성할 수 있습니다.
 
-{% prism swift %}
+{% highlight swift %}
 let a = (0...10)
     .filter { $0 % 2 == 0 }
     .map { $0 * $0 }
@@ -518,11 +518,11 @@ let a = (0...10)
     }
 
 print(a) // 0_4_16_36_64_100가 나온다.
-{% endprism %}
+{% endhighlight %}
 
 Java라면 이렇게 나오겠죠.
 
-{% prism java %}
+{% highlight java %}
 String a = IntStream.rangeClosed(0, 10)
     .mapToObj(i -> Integer.valueOf(i))
     .filter(i -> i % 2 == 0)
@@ -532,7 +532,7 @@ String a = IntStream.rangeClosed(0, 10)
     , (s1, s2) -> s1 + s2);
 
 print(a);
-{% endprism %}
+{% endhighlight %}
 
 Kotlin은 Swift의 클로져 리터럴과 함수를 호출할 때의 표기법이 비슷합니다. Swift 버전의 reduce의 내부는 한 줄로 쓰고 싶었습니다만 타입 추론에 타임아웃이 걸려서 컴파일하지 못했기 때문에 let으로 나눴습니다. Kotlin에서는 클로져의 암시적 인자는 인자가 1개일 때만 `it`을 쓸 수 있습니다. 복수일 때는 인자명이 필요합니다. Swift에서는 `$0`, `$1`, `$2`... 이런 식으로 쓰입니다. 또 Kotlin에서는 삼항연산자가 없지만 if문을 이용해서 쓸 수 있습니다.
 
@@ -540,23 +540,23 @@ Kotlin은 Swift의 클로져 리터럴과 함수를 호출할 때의 표기법�
 
 Kotlin에서는 문자열 안에서 `$`로 변수를, `${}`로 식을 호출할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hoge(i: Int, user: User) {
     println("i is $i, user name is ${user.name}")
 }
-{% endprism %}
+{% endhighlight %}
 
 `$i` 부분이 변수가, `${user.name}` 부분이 식을 표시합니다. Swift에서는 `\()`로 쓸 수 있죠.
 
-{% prism swift %}
+{% highlight swift %}
 func hoge(i: Int, user: User) {
     print("i is \(i), user name is \(user.name)")
 }
-{% endprism %}
+{% endhighlight %}
 
 Java에서는 이런 기능에 대한 문법이 없으니 아래와 같이 되겠죠.
 
-{% prism java %}
+{% highlight java %}
 void hoge(int i, User user) {
     print("i is " + i + ", user name is " + user.name);
 }
@@ -564,7 +564,7 @@ void hoge(int i, User user) {
 void hoge2(int i, User user) {
     printf("i is %d, user name is %s", i, user.name);
 }
-{% endprism %}
+{% endhighlight %}
 
 ### Java의 단일 추상 메소드(SAM) 변환
 
@@ -572,22 +572,22 @@ Java에서는 Java8이 나오면서 람다식과 단일 추상 메소드를 가�
 
 예를 들면, 아래가 Java7의 코드입니다. 안드로이드에서 자주 볼 수 있는 버튼의 클릭 핸들러를 설정하는 코드입니다.
 
-{% prism java %}
+{% highlight java %}
 button.setOnClickListener(new View.OnClickListener {
     @Override
     void onClick(View view) {
         println("clicked");
     }
 });
-{% endprism %}
+{% endhighlight %}
 
 이게 Java8이라면 다음과 같이 표현할 수 있게 됩니다.
 
-{% prism java %}
+{% highlight java %}
 button.setOnClickListener(view -> {
     println("clicked");
 });
-{% endprism %}
+{% endhighlight %}
 
 이는 Java8에서 람다식을 도입함에 있어 Java7 이전에 있었던 코드의 낭비하거나 수정하지 않고도 람다식을 이용해 보다 쾌적하게 쓸 수 있게 되었습니다.
 
@@ -602,11 +602,11 @@ Kotlin에서는 Java8과 마찬가지로 이 기능을 탑재하고 있습니다
 
 위에 예시는 Kotlin에서는 아래와 같이 쓸 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 button.setOnClickListener { view ->
     println("clicked")
 }
-{% endprism %}
+{% endhighlight %}
 
 쓰기 쉬워 좋네요. 위의 예에서는 인수가 클로져 한개일 뿐이라 함수 호출 괄호`()`를 생략했습니다.
 
@@ -614,7 +614,7 @@ button.setOnClickListener { view ->
 
 Kotlin에서는 기존 클래스에 대해 메소드를 추가해 확장하는 것이 가능합니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun Int.square(): Int = this * this
 fun <T> List<T>.evens(): List<T> = withIndex().filter { it.index % 2 == 0 }.map { it.value }
 fun List<Int>.squareEvens(): List<Int> = evens().map { it.square() }
@@ -629,13 +629,13 @@ fun main(args: Array<String>) {
     val c = listOf(10, 20, 30, 40, 50)
     println(c.squareEvens()) // [100, 900, 2500]라고 출력
 }
-{% endprism %}
+{% endhighlight %}
 
 제너릭 자료형의 확장 메소드에 관해서는 T 모두에 대한 것과 특정 T에 대한 정의가 가능합니다. 함수의 본문은 `=` 스타일로 써봤습니다.
 
 Swift에서는 다음과 같이 쓸 수 있겠습니다.
 
-{% prism swift %}
+{% highlight swift %}
 extension IntegerType {
     func square()-> Self {
         return self * self
@@ -664,7 +664,7 @@ func main() {
 }
 
 main()
-{% endprism %}
+{% endhighlight %}
 
 Element에 대한 제약은 프로토콜에 필요가 있으므로 `Int`로 쓸 수 없어서 그 대신 `IntegerType`으로 되어있습니다. 이유를 잘 모르겠습니다.
 
@@ -672,7 +672,7 @@ Kotlin도 Swift도 둘 다 프로퍼티를 추가하는 것이 가능합니다. 
 
 Java에는 확장 메소드라는 개념이 없기 때문에 첫 번째 인수에 this를 가지는 정적 메소드로 구현해야되겠죠.
 
-{% prism java %}
+{% highlight java %}
 public class Main {
     public static void print(String str) {
         System.out.println(str);
@@ -704,7 +704,7 @@ public class Main {
         print("" + c); // [100, 900, 2500]라고 출력
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 이 방식이 괴로운 것은 충돌을 피하고자 메소드 이름에 접두사가 필요하다는 점과 호출할 때 `f(g(h(x)))`라는 형식이 되므로 나중에 적용하는 함수일수록 앞에 오는 등의 문제가 있습니다. 특히 이식을 할 때에는 원래 메소드 체인의 형태로 되어있다면 기술 순서가 완전히 거꾸로 되어버리기 때문에 매우 번거로운 작업이 됩니다. 개인적으로는 이 부분이 가독성도 떨어트린다고 생각합니다.
 
@@ -714,7 +714,7 @@ public class Main {
 
 Kotlin에서는 오퍼레이터 오버로드라는 기능이 존재합니다. 하지만 직접 메소드 이름에 연산자를 표기하는 Swift와 C++과는 달리 Kotlin에서는 미리 정해진 연산자에 해당하는 이름의 메소드를 operator 키워드와 함께 구현합니다. 스스로 연산자를 추가할 수는 없지만 인수가 하나인 메소드를 삽입할 수 있는 기능이 있으므로 키워드로 연산자를 추가하는 것은 할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 data class Vector2(val x: Double, val y: Double) {
     operator fun plus(o: Vector2): Vector2 = Vector2(x + o.x, y + o.y)
     fun dot(o: Vector2): Double = x * o.x + y * o.y
@@ -733,14 +733,14 @@ fun main(args: Array<String>) {
     val c = Vector2(2.0, 0.0) dot Vector2(2.0, 3.0)
     println(c) // 4.0라고 출력
 }
-{% endprism %}
+{% endhighlight %}
 
 덧셈은 메소드로 곱셈은 Double 자료형의 확장 메소드로 썼습니다. `dot`은 보통의 방법입니다만 중간에 저렇게 사용할 수 있습니다.
 데이터 클래스와 기본 생성자의 기능도 쓰고 있습니다.
 
 Swift로도 써봤습니다.
 
-{% prism swift %}
+{% highlight swift %}
 class Vector2: CustomStringConvertible {
     let x: Double
     let y: Double
@@ -781,7 +781,7 @@ func main() {
 }
 
 main()
-{% endprism %}
+{% endhighlight %}
 
 ●은 유니코드 문자입니다. 이번 예시에서는 Swift의 기능을 이용해 이 마크를 연산자로 정의했습니다.
 
@@ -796,7 +796,7 @@ Kotlin의 필드같은 것들은 모두 프로퍼티입니다.
 상수는 val, 변수는 var로 정의하며, val에는 getter를, var에는 getter와 setter를 정의할 수 있습니다.
 getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되며 field라고 하는 키워드로 액세스할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class User {
     val id: Int
     var familyName: String = "야마다"
@@ -821,7 +821,7 @@ fun main(args: Array<String>) {
     u.familyName = "사이토"
     u.died = true // 사이토 타로는 죽어버렸다... 라고 표시됩니다.
 }
-{% endprism %}
+{% endhighlight %}
 
 위의 예에서 `id`는 상수이기 때문에 getter가 자동 생성되었고, `familyName`, `firstName`은 변수이기 때문에 getter와 setter가 자동으로 생성된 것을 볼 수 있습니다.
 `fullName`은 getter를 직접 만들어서 다른 프로퍼티로부터 동적으로 가져올 수 있도록 했습니다. `died`는 getter와 setter를 직접 만들어서 지원 필드를 사용했습니다.
@@ -830,7 +830,7 @@ Swift에서도 필드와 같은 것은 프로퍼티입니다. getter, setter 뿐
 
 Kotlin에서는 `didSet`과 같은 언어 기능은 존재하지 않기 때문에 이식은 setter에서 에뮬레이트하는 방식을 이용합니다.
 
-{% prism swift %}
+{% highlight swift %}
 class User {
     let id: Int
     var familyName: String = "yamada"
@@ -858,13 +858,13 @@ func main() {
 }
 
 main()
-{% endprism %}
+{% endhighlight %}
 
 Java에서는 필드와 프로퍼티는 명확하게 구분되어있으며 메소드로 직접 getter과 setter를 구현한 것을 프로퍼티라고 부릅니다.
 
 이 부분이 이식할 때 귀찮은 일이 되어버립니다. Swift로 쓰인 다음 클래스가 있다고 생각해봅시다.
 
-{% prism swift %}
+{% highlight swift %}
 class User {
     var died: Bool = false
 }
@@ -872,11 +872,11 @@ class User {
 func hoge(u: User) {
     u.died = true
 }
-{% endprism %}
+{% endhighlight %}
 
 이것을 Java의 필드로 이식해보겠습니다.
 
-{% prism java %}
+{% highlight java %}
 class User {
     boolean died = false;
 }
@@ -884,22 +884,22 @@ class User {
 void hoge(User u) {
     u.died = true
 }
-{% endprism %}
+{% endhighlight %}
 
 그 뒤에 Swift 코드가 이렇게 변했다고 칩시다.
 
-{% prism swift %}
+{% highlight swift %}
 class User {
     var died: Bool = false
     didSet {
         println("죽어버렸다!")
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 이런 경우 Java에서는 다음과 같이 수정해야합니다.
 
-{% prism java %}
+{% highlight java %}
 class User {
     boolean died = false;
     boolean getDied() { return died; }
@@ -912,7 +912,7 @@ class User {
 void hoge(User u) {
     u.setDied(true);
 }
-{% endprism %}
+{% endhighlight %}
 
 getter와 setter를 직접 구현해야 하는 것은 둘째치고, 필드에 대입하고 있는 부분을 setter를 호출할 때 구현해야 할 필요가 있습니다.
 
@@ -925,30 +925,30 @@ getter와 setter를 직접 구현해야 하는 것은 둘째치고, 필드에 �
 Java에서 필드 `name`에 대해 `name`이라는 프로퍼티를 만들 때는 getter로 `String getName ()`과 setter로 `void setName(String name)`을 정의합니다.
 그리고 호출 시, 아래와 같이 함수 호출의 형태를 취합니다.
 
-{% prism java %}
+{% highlight java %}
 // 읽기
 String name = user.getName();
 // 쓰기
 user.setName(newName);
-{% endprism %}
+{% endhighlight %}
 
 하지만 Kotlin의 경우에는 프로퍼티 `name`에 대해서 호출할 때 함수의 형태를 띄지 않습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 // 읽기
 val name = user.name
 // 쓰기
 user.name = newName
-{% endprism %}
+{% endhighlight %}
 
 함수 호출의 형태는 아닙니다만 name에 대한 getter와 setter가 동작하게 됩니다.
 
 Kotlin에서 Java 메소드를 호출할 때 이러한 `getXxxx()`와 `setXxxx(value)`를 Kotlin의 프로퍼티 `xxxx`를 취급할 때 엑세스할 수 있습니다.
 예를 들어, 아래코드는 안드로이드에서 버튼을 보이지 않게 만드는 코드입니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 button.visibility = View.INVISIBLE
-{% endprism %}
+{% endhighlight %}
 
 Android SDK는 Java로 작성되었으므로 원래는 `setVisibility()`를 호출하는게 맞지만, Kotlin에서는 마치 `visibility`라는 프로퍼티에 접근하는 것처럼 사용할 수 있습니다.
 
@@ -960,11 +960,11 @@ Delegated Property는 Kotlin의 재미있는 기능입니다. 프로퍼티의 ge
 
 예로 Lazy를 들어보겠습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 val fullName: String by lazy {
     familyName + " " + firstName
 }
-{% endprism %}
+{% endhighlight %}
 
 `fullName`은 상수이지만, 처음 getter가 호출되었을 때 lazy에 전달하는 클로져가 실행되고 그 결과가 반환됩니다. 두번째 이후부터 getter 호출에서는 첫번째 결과가 저장됩니다. 만약 이것을 Java로 구현하고자 할 때는, getter에서 if문을 작성해야만 합니다. 이러한 일반적으로 중복되는 코드를 쓸 필요가 없습니다.
 
@@ -976,16 +976,16 @@ Swift에서도 `lazy`라는 키워드가 있고 동일한 기능을 제공하는
 
 또 한 가지, 흥미로운 델리게이트를 소개해보곘습니다. 
 
-{% prism kotlin %}
+{% highlight kotlin %}
 var name: String by Delegates.notNull()
-{% endprism %}
+{% endhighlight %}
 
 이것은 한번 설정되지 않은 상태에서 getter가 호출될 경우 예외가 생겨 크래시가 납니다. 한번 설정된 이후에는 getter가 일반적으로 값을 읽어올 수 있습니다.
 Swift에서 이와 비슷한 형태를 갖는 것은 느낌표`!` 형태입니다. 정확하게 말하자면 `Implicitly Unwrapped Optional`이라고 말합니다.
 
-{% prism swift %}
+{% highlight swift %}
 var name: String!
-{% endprism %}
+{% endhighlight %}
 
 이것은 초기 상태가 nil로 nil의 상태로 읽었을 때는 크래시가 나지만 값이 들어있을 때는 보통과 똑같이 사용할 수 있습니다.
 Kotlin과의 미묘한 차이는 Kotlin은 notNull에 null을 넣을 수 없지만 Swift의 `!`에는 nil을 넣을 수 있다는 것이겠네요.
@@ -1005,7 +1005,7 @@ Android 앱을 만들 때 제일 많은 부분이 View의 바인딩인데, Butte
 
 ButterKnife를 만든 사람은 Square라는 결제 관련 POS 시스템을 만드는 회사에 있는 Jake Wharton이라는 분입니다. ButterKnife는 리소스나 뷰의 바인딩을 쉽게 도와주는 라이브러리로, 안드로이드 개발자들에게 Jake Wharton은 예전부터 다양한 라이브러리로 유명했었습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 public class PersonView(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
   val firstName: TextView by bindView(R.id.first_name)
   val lastName: TextView by bindView(R.id.last_name)
@@ -1019,7 +1019,7 @@ public class PersonView(context: Context, attrs: AttributeSet?) : LinearLayout(c
   // List binding with optional items being omitted.
   val nameViews: List<TextView> by bindOptionalViews(R.id.first_name, R.id.middle_name, R.id.last_name)
 }
-{% endprism %}
+{% endhighlight %}
 
 `@IBOutlet`이나 `!`를 사용한 iOS 개발과, 어노테이션과 리플렉션으로 구현된 Android의 ButterKnife보다 이 방식이 깔끔하고 바람직하다고 생각됩니다.
 또한 빌드에 개입하는 것으로 확장 메소드를 구현해주고, 프로퍼티 정의조차 불필요한 플러그인이 있습니다.
@@ -1030,11 +1030,11 @@ public class PersonView(context: Context, attrs: AttributeSet?) : LinearLayout(c
 
 프로퍼티에 대한 한정자로 `lateinit`을 사용하면, 초기값이 불필요한 Optional이 아닌 변수를 정의할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class User {
     lateinit var name: String
 }
-{% endprism %}
+{% endhighlight %}
 
 lateinit으로 지정되어있는 변수는 쓰기 전에 읽으면 크래시가 납니다. Swift의 `!`처럼 사용할 수 있습니다.
 
@@ -1055,7 +1055,7 @@ Delegate.notNull과의 차이는 잘 모르겠습니다. 문서에 따르면 lat
 
 Kotlin은 제네릭을 지원하고 있습니다. 제네릭형 매개변수의 variance에 대해서는 Declaration Site Variance라고 칭하고 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 open class Animal
 class Cat: Animal()
 
@@ -1069,7 +1069,7 @@ fun main(args: Array<String>) {
     a = b
     println(a) // Box(Cat@xxxxxxxx)로 표시
 }
-{% endprism %}
+{% endhighlight %}
 
 Variance가 작동하고 있으므로 Box의 값을 Box의 변수에 대입할 수 있습니다.
 
@@ -1078,7 +1078,7 @@ Declaration Site라고 하는 것은 선언 시에 지정하는 것으로 Box의
 
 Java로 위의 예를 쓰면 다음과 같습니다.
 
-{% prism java %}
+{% highlight java %}
 class Animal {}
 class Cat extends Animal {}
 
@@ -1102,7 +1102,7 @@ public class Main {
         print(a.toString()); // Box(Cat@xxxxxxxx)라고 출력된다.
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 Box 자체의 정의에 대한 Variance에 대해 적지 않고 `a`라는 로컬 변수를 정의할 때의 형태를 꺽쇠 기호`<>`로 설명하고 있습니다. 그 외 함수 인수의 정의에서 꺽쇠 기호가 나옵니다.
 
@@ -1117,14 +1117,14 @@ Variance를 버리고 컴파일 에러가 나는 곳만을 고치는 일이 생�
 Kotlin의 클로져는 생각지도 못한 기능을 가지고 있습니다. 다음 코드는 다른 언어에 익숙한 사람에게는 의미불명으로 보입니다.
 또한 `forEach`는 클로져를 하나의 인수로 취하여 리시버의 요소 하나하나에 대하여 클로져를 호출합니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hasZeros(ints: List<Int>): Boolean {
   ints.forEach {
     if (it == 0) { return true }
   }
   return false
 }
-{% endprism %}
+{% endhighlight %}
 
 사실 이 코드는 `forEach`에 쓰여진 `return true`가 그 클로져 자신이 아닌 `fun hasZeros()`를 탈출하는 것입니다. 원래 Kotlin의 클로져 안에는 return을 쓸 수 없습니다. 클로져의 실행 결과는 클로져 코드 마지막의 식의 값입니다.
 
@@ -1132,15 +1132,15 @@ fun hasZeros(ints: List<Int>): Boolean {
 
 forEach의 구현은 다음과 같습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 public inline fun <T> Iterable<T>.forEach(operation: (T) -> Unit): Unit {
     for (element in this) operation(element)
 }
-{% endprism %}
+{% endhighlight %}
 
 이 `fun` 앞에 있는 `inline`이 포인트입니다. 이것이 붙어있으면 함수가 인라인이라는 것을 뜻하는데, 이 함수를 호출하는 곳에 이 함수의 내용이 쓰여지는 것과 같습니다. 즉 위의 예시는 아래와 같이 해석된다고 보면 됩니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun hasZeros(ints: List<Int>): Boolean {
     for (i in ints) {
         if (i == 0) { return true }
@@ -1148,7 +1148,7 @@ fun hasZeros(ints: List<Int>): Boolean {
 
     return false
 }
-{% endprism %}
+{% endhighlight %}
 
 이걸로 왜 전역 탈출이 가능하게 되었는지 알 수 있었습니다. 또한 `inline`의 지정은 무턱대고 있는 것이 아닙니다. 인라인할 수 없는 함수에 붙어있을 경우에는 컴파일 에러가 납니다.
 
@@ -1158,13 +1158,13 @@ fun hasZeros(ints: List<Int>): Boolean {
 
 예를 들면 `run`이라고 하는 표준 함수가 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 public inline fun <R> run(f: () -> R): R = f()
-{% endprism %}
+{% endhighlight %}
 
 인수로 주어진 클로져만을 실행하기 위한 함수이지만, 이것은 로컬 스코프를 만드는데 사용할 수 있습니다.
 
-{% prism swift %}
+{% highlight swift %}
 fun setup() {
     run {
         val x = 3
@@ -1176,7 +1176,7 @@ fun setup() {
     }
     println("ok!")
 }
-{% endprism %}
+{% endhighlight %}
 
 위의 예에서는 2개의 x는 각각 다른 클로져의 지역 변수이므로 충돌하지 않습니다.
 그리고 `createPoint`가 실패했을 때 `setup` 자체를 중단하고 있습니다.
@@ -1186,7 +1186,7 @@ Swift에서 똑같이 콜백 함수를 사용하고자 하면 그 안에 return�
 반대로 말하면 이런 것들을 사용하면 구문과 같은 것들을 만들 수 있다는 뜻이 됩니다.
 run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를 만들 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class User {
     var name: String = ""
     var age: Int = 0
@@ -1198,16 +1198,16 @@ fun hoge(user: User) {
         age = 3
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 `run`의 안에서 액세스 되어있는 `name`이나 `age`는 `user`의 프로퍼티입니다.
 이 클로져의 안은 User의 메소드를 실행할 때와 같은 this 스코프입니다. 그리고 당연한 이야기지만 그 안에서도 전역 탈출을 쓸 수 있습니다.
 
 이것의 구현은 아래와 같습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 public inline fun <T, R> T.run(f: T.() -> R): R = f()
-{% endprism %}
+{% endhighlight %}
 
 모든 타입 T에 대한 확장 메소드 run으로 정의되어 있으며 인수의 클로져의 자료형은 T의 메소드, 즉 리시버로 T 자료형의 인스턴스를 받도록 되어있습니다.
 본체의 `f()`는 확장 메소드의 정의 중이기 때문에 `this.f()`의 축약형입니다.
@@ -1216,7 +1216,7 @@ public inline fun <T, R> T.run(f: T.() -> R): R = f()
 
 이 클로져의 메소드 형태에 대한 해결책이 정말 강력합니다. 더 복잡한 응용 예는 다음과 같습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun result(args: Array<String>) =
   html {
     head {
@@ -1246,7 +1246,7 @@ fun result(args: Array<String>) =
       }
     }
   }
-{% endprism %}
+{% endhighlight %}
 
 이걸 보면 HTML을 간단한 문법으로 쓰고 있는 것 같아도 이건 엄연히 Kotlin 코드입니다. 게다가 body 태그는 html 태그에 쓰기 같은 것들이 정적 타이핑 검사되고 있습니다.
 
@@ -1254,13 +1254,13 @@ fun result(args: Array<String>) =
 
 그런데 전역이 아닌 클로져를 중단하고 싶은 로컬한 return을 쓰고 싶을 때가 있습니다. 그런 경우에는 또 다른 클로져 표기법을 쓸 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 listOf(1,2,3,4).forEach(fun(i) {
     if (i % 2 == 0) return
     print(i)    
 })
 // 13이 출력됩니다.
-{% endprism %}
+{% endhighlight %}
 
 `fun` 표기가 있으면 인라인과는 전혀 관계 없이 클로져에서 항상 return을 사용할 수 있습니다. 그리고 로컬한 return이 됩니다. 아까 말했듯이 return을 호출한 곳에서부터 가장 가까운 함수를 탈출한다는 규칙에도 맞습니다.
 
@@ -1271,7 +1271,7 @@ Kotlin에서는 생성자를 다중 정의할 수 있습니다. 그리고 특별
 
 그리고 기본 생성자는 인수 정의와 동시에 속성 정의를 할 수 있는데, 이 기능이 꽤 유용합니다. 키워드를 한 번 쓰는 것만으로 되니까요.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class Person(val name: String, val age: Int, val height: Double) {
     init {
         // 기본 생성자의 본문입니다.
@@ -1297,7 +1297,7 @@ fun main(args: Array<String>) {
     Person() // 123이 출력됩니다.
     println()
 }
-{% endprism %}
+{% endhighlight %}
 
 기본 생성자의 인수로 있는 상수가 프로퍼티 정의를 지정합니다.
 
@@ -1309,7 +1309,7 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
 
 생성자에서 프로퍼티 정의 구문이 없기 때문에 프로퍼티, 생성자의 인수, 생성자의 본문에서 왼쪽 값, 오른쪽 값으로 총 4번 동일한 키워드를 쓸 수밖에 없습니다.
 
-{% prism swift %}
+{% highlight swift %}
 class Person {
     let name: String
     let age: Int
@@ -1336,7 +1336,7 @@ class Person {
         self.init("saito")
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 이식의 관점에서 보면 Swift에서 지정 이니셜라이저가 다수 있어도 프로퍼티를 모두 채울 기본 생성자를 만들고 나머지 지정 이니셜라이저와 편의 이니셜라이저를 보조로 쓰면 크게 문제되지 않는다고 생각됩니다.
 
@@ -1351,10 +1351,10 @@ Kotlin만이 가지고 있는 특별한 자료형에 대해 소개해보고자 �
 Any는 모든 자료형를 취할 수 있는 자료형입니다. 하지만 Optional 자료형은 취할 수 없습니다.
 제네릭형의 매개변수를 정의할 때 null을 제거할 때 쓰입니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class NonNullBox<T: Any>
 class NullableBox<T>
-{% endprism %}
+{% endhighlight %}
 
 `NonNullBox`에는 Optional 자료형이 들어갈 수 없지만 `NullableBox`는 들어갈 수 있습니다.
 
@@ -1364,7 +1364,7 @@ Unit은 값이 하나 밖에 없고, 다른 형식으로 독립한 자료형입�
 C의 void와 Swift의 Void 등에 대응하며, 함수 반환 값의 자료형을 생략했을 때는 Unit이 반환됩니다.
 Unit 자료형의 값은 Unit입니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun a(): Unit {
     return Unit
 }
@@ -1372,7 +1372,7 @@ fun b(): Unit {
     return
 }
 fun c() { }
-{% endprism %}
+{% endhighlight %}
 
 여기서 `a`, `b`, `c`는 모두 같은 의미입니다.
 
@@ -1385,7 +1385,7 @@ Nothing은 값이 존재하지 않고 다른 모든 타입에 할당할 수 있�
 
 다음과 같은 코드를 컴파일 할 수 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 fun crash(): Nothing {
     throw Exception()
 }
@@ -1395,22 +1395,22 @@ fun mainLoop(proc: ()-> Unit): Nothing {
         proc()
     }
 }
-{% endprism %}
+{% endhighlight %}
 
 이외에도 Nothing의 값이 존재하지 않는 것을 이용하여 `null`에만 매칭되는 변수의 형태를 만들 수 있습니다. 예를 들면 다음과 같습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class Json {
     constructor(aNull: Nothing?) {}
     constructor(aString: String) {}
 }
-{% endprism %}
+{% endhighlight %}
 
 이렇게 하면 `Json(null)`은 첫 번째 생성자, `Json("aaa")`는 두번째 생성자라는 식으로 오버로드를 구분할 수 있습니다. Kotlin에서는 null 자체에는 자료형이 없기 때문에 이렇게 Nothing을 사용하고 있습니다.
 
 그런데 값이 존재하지 않는데 할당 할 수 있다는 것은 무슨 뜻인가하면, 제네릭의 Variance에서 이것이 효과가 있습니다. 아래를 예로 들어보곘습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 class Result<out T: Any, out E: Any> 
     private constructor(
         val value: T?, 
@@ -1429,7 +1429,7 @@ fun proc1(): Result<Int, Nothing> {
 fun main(args: Array<String>) {
     val ret: Result<Int, Exception> = proc1()
 }
-{% endprism %}
+{% endhighlight %}
 
 Result는 값과 에러의 두 가지 자료형를 covariance로 가지는 제너릭형입니다. 여기서 `proc1`은 절대로 문제가 생길 일이 없는 메소드이므로 오류값에 대해 Nothing으로 지정하고 있습니다.
 그리고 그 결과를 `Result<Int, Exception>`에 대입하고 있습니다. 즉, 일반 오류가 있을 수 있는 경우의 처리에 대해 에러가 없었던 경우의 자료형을 형변환 없이 안전하게 할당 할 수 있습니다.
@@ -1440,7 +1440,7 @@ Result는 값과 에러의 두 가지 자료형를 covariance로 가지는 제�
 
 Kotlin에는 데이터 클래스라는 기능이 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 data class Vector3(val x: Double, val y: Double, val z: Double)
 
 fun main(args: Array<String>) {
@@ -1450,7 +1450,7 @@ fun main(args: Array<String>) {
     val b = a.copy(x=0.0, z=4.0)
     println(b) // Vector3(x=0.0, y=2.0, z=4.0) 라고 출력됩니다.
 }
-{% endprism %}
+{% endhighlight %}
 
 데이터 클래스를 이용하면 몇개의 메소드가 자동적으로 생성됩니다.
 
@@ -1470,7 +1470,7 @@ Kotlin에서는 튜플 기능은 존재하지 않습니다. 그러나 데이터 
 
 Kotlin에서는 별명 임포트라는 기능이 있습니다. 다른 두 개의 패키지에 동일한 클래스의 이름이 있을 때 각각 별명을 붙여 가져올 수 있는 기능으로 그 긴 풀 패키지 네임을 쓸 필요가 없습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 import com.omochimetaru.Bitmap as MyBitmap
 import android.graphics.Bitmap as ABitmap
 
@@ -1479,11 +1479,11 @@ fun hoge(a: MyBitmap) {
 
 fun fuga(a: ABitmap) {
 }
-{% endprism %}
+{% endhighlight %}
 
 Swift에서도 같은 기능을 쓸 수 있습니다. Java라면 이게 괴로웠겠죠?
 
-{% prism java %}
+{% highlight java %}
 import com.omochimetaru.Bitmap;
 import android.graphics.Bitmap;
 
@@ -1492,13 +1492,13 @@ void hoge(com.omochimetaru.Bitmap a) {
 
 void fuga(android.graphics.Bitmap a) {
 }
-{% endprism %}
+{% endhighlight %}
 
 ### Enum, 값을 포함한 Enum, Sealed Class(Tagged Enum)
 
 Kotlin에서도 당연히 Enum이 있습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 enum class Direction {
     NORTH, SOUTH, WEST, EAST
 }
@@ -1508,18 +1508,18 @@ enum class Color(val rgb: Int) {
     GREEN(0x00FF00),
     BLUE(0x0000FF)
 }
-{% endprism %}
+{% endhighlight %}
 
 두번째 예와 같이 값을 포함한 Enum도 만들 수 있습니다. 그러나 Swift에서 할 수 있는 같은 enum마다 다른 property를 갖게 하는 Tagged Enum이라는 기능은 enum으로는 만들 수 없습니다.
 
 Swift의 예를 한번 보시죠.
 
-{% prism swift %}
+{% highlight swift %}
 enum Either<T, U> {
     case Left(T)
     case Right(U)
 }
-{% endprism %}
+{% endhighlight %}
 
 Left와 Right에서 프로퍼티의 자료형이 다릅니다. 기타 Optional에서는 Some에는 프로퍼티가 있지만 None에는 없는 것과 같은 패턴도 있습니다.
 
@@ -1527,7 +1527,7 @@ Kotlin에는 `sealed class`라는걸 이용해서 같은 것을 만들 수가 �
 
 그렇다면 when문(C나 Java의 switch문)에서 자료형 판정을 체크할 수 있어서 분기에서 문제가 생기지 않는 것을 컴파일러에 의해 보장받습니다.
 
-{% prism kotlin %}
+{% highlight kotlin %}
 sealed class Expr {
     class Const(val number: Double) : Expr()
     class Sum(e1: Expr, e2: Expr) : Expr()
@@ -1540,7 +1540,7 @@ fun eval(expr: Expr): Double = when(expr) {
     NotANumber -> Double.NaN
     // the `else` clause is not required because we've covered all the cases
 }
-{% endprism %}
+{% endhighlight %}
 
 위의 예와 같이 Smart Cast가 있으므로 when문에서는 같은 변수 이름이 이미 형변환된 상태입니다.
 

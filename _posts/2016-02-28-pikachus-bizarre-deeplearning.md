@@ -18,9 +18,9 @@ tags: deeplearning opencv cuda caffe gpgpu featured
 
 우선 DeepDreamVideo는 영상을 프레임 단위로 분해하고 프레임들을 다시 영상으로 합치기 위해서 ffmpeg나 avconv, mplayer 등을 필요로 한다. 또한 jpg나 png에 맞는 이미지 라이브러리도 필요로 하는데, png의 경우 pngcrush를 요구했다. 나는 ffmpeg를 사용했는데 pngcrush 없이 아래와 같이 ffmpeg 커맨드만으로도 png로 추출할 수 있었다.(도와준 [종이](http://twitter.com/hibiyasleep)에게 고맙다는 인사를 전한다.)
 
-{% prism bash %}
+{% highlight bash %}
 ffmpeg -threads 8 -i master_file.mov -vf fps=30 %08d.png
-{% endprism %}
+{% endhighlight %}
 
 그러면 실제로 DeepDream을 만들어내는 Python 코드를 보면 numpy, protobuf, scikit-image, caffe 등을 필요로 한다. caffe를 제외한 셋은 pip를 통해서 설치 가능하다. 문제는 이 caffe였다.
 
@@ -55,9 +55,9 @@ Google의 DeepDream을 설치할 필요는 없지만, Caffe 내의 모델로 “
 
 동영상을 프레임으로 쪼개는 작업은 이미 끝났고, python을 이용해서 아래와 같이 실행을 했다.
 
-{% prism bash %}
+{% highlight bash %}
 python dreaming_time.py -it png -i results -o output_”$1" -gi /media/user/image-dreamer/models/”$1".jpg —-gpu 0 -b random -t ~/caffe/models/bvlc_googlenet/ -m bvlc_googlenet.caffemodel
-{% endprism %}
+{% endhighlight %}
 
 “어? 아… 안 되잖아? 이런 일이 일어날 것 같은 조짐을 느꼈지.” 나는 처음에 GTX960을 이용해서 작업을 진행하려고 했었다. 동영상 파일은 3GB가 넘었고, 프레임들이 저장된 폴더는 13GB가 넘었었다. 2GB의 그래픽 메모리를 가지고 있었던 GTX960은 CUDA에서 Out Of Memory를 외치며 죽어버렸고 나는 이것을 단순히 Caffe에서의 batch_size 문제라고 생각을 했지만… 하드웨어의 한계는 명확했다. 일단 작업하던 컴퓨터를 열고, GTX960을 뽑고 작업하던 스튜디오에서 제일 좋은 성능의 GTX980Ti를 박았다. 당연히 파워를 그대로 썼다간 바로 뻗을거라고 생각해서 스튜디오에 남아있던 1300W짜리 파워를 연결했다.
 
@@ -70,10 +70,10 @@ python dreaming_time.py -it png -i results -o output_”$1" -gi /media/user/imag
 
 전체 뮤직비디오 영상을 프레임으로 쪼개니까 약 8000~9000개의 png 파일로 나뉘었고 이걸 하나하나 DeepDream하게 뽑아내는 작업을 했다. 1 프레임당 3초 정도의 시간이 소요됬으며 이렇게 진행하면 약 7~8시간이 소요되었을 것이라고 나왔다. 이건 아니라고 생각해서 당장 그래픽카드를 오버클럭했는데, Asus의 ROG GTX980Ti Platinum은 애초에 오버클럭용으로 나왔기 때문에 뭔가 걱정은 들지 않았다. 아래 코드의 첫번째 줄과 같이 설정을 해주고 재부팅을 한 뒤 두번째 줄을 실행하자.
 
-{% prism bash %}
+{% highlight bash %}
 sudo nvidia-xconfig --cool-bits=28
 nvidia-settings
-{% endprism %}
+{% endhighlight %}
 
 여러가지 정책들을 통해 GPU Fan 소리는 60%로 고정하고, 그래픽 클럭은 100~150MHz의 클럭을 올렸고 그래픽 메모리 클럭은 1000MHz 정도 올렸다. 그럼에도 불구하고 실행 속도가 특별히 개선되거나 하는 일은 없었다. 뮤직비디오를 만드신 형님이 DeepDream을 적용할 구간만 따로 편집해서 다시 주셔서 프레임은 3000~4000개 전후로 작업할 수 있었다.
 
@@ -83,9 +83,9 @@ nvidia-settings
 
 처음으로 딥러닝을 만져본 후기는 정말 하드웨어빨이 중요하다는 것이었다. 또 관련된 논문을 읽어본 결과 아직 나는 이게 내부에서 어떻게 동작하는지 명확하게 알지도 못하는 정도라는걸 알았고 더 많이 공부하고자 하는 자극이 되었다. 나는 아래 링크들을 많이 참조했으며, 일부 개인적으로 좀 쓰기 편하게 DeepDreamVideo를 수정했다. 그 소스코드는 몇 일 정도 렌더링 작업이 끝나면 GitHub에 문서와 함께 공유하고자 한다.
 
-* [https://github.com/graphific/DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)
-* [https://github.com/Dhar/image-dreamer](https://github.com/Dhar/image-dreamer)
-* [https://github.com/NVIDIA/caffe](https://github.com/NVIDIA/caffe)
-* [https://www.reddit.com/r/deepdream/comments/3cawxb/what_are_deepdream_images_how_do_i_make_my_own/](https://www.reddit.com/r/deepdream/comments/3cawxb/what_are_deepdream_images_how_do_i_make_my_own/)
-* [https://www.reddit.com/r/deepdream/comments/3cd1yf/howto_install_on_ubuntulinux_mint_including_cuda/](https://www.reddit.com/r/deepdream/comments/3cd1yf/howto_install_on_ubuntulinux_mint_including_cuda/)
-* [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+* [DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)
+* [image-dreamer](https://github.com/Dhar/image-dreamer)
+* [NVIDIA/caffe](https://github.com/NVIDIA/caffe)
+* [DeepDream Dependency Guide](https://www.reddit.com/r/deepdream/comments/3cawxb/what_are_deepdream_images_how_do_i_make_my_own/)
+* [Ubuntu CUDA, Caffe Guide](https://www.reddit.com/r/deepdream/comments/3cd1yf/howto_install_on_ubuntulinux_mint_including_cuda/)
+* [CUDA Download](https://developer.nvidia.com/cuda-downloads)
