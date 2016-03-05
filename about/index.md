@@ -134,6 +134,8 @@ date:   2016-03-03 12:00:00
   - 2016년 이후로 개인 사정으로 진행이 중단됬는데 다시 최신 버전으로 번역을 준비하고 있습니다.
 - **[fuse-alfred-workflow](https://github.com/Hazealign/fuse-alfred-workflow)**
   - 맥용 유틸리티 애플리케이션 Alfred에서 Fuse Build를 연결하는 워크플로우를 만들었습니다.
+- **[tweetbot-alfred-workflow](https://github.com/Hazealign/tweetbot-alfred-workflow)**
+  - 맥용 유틸리티 애플리케이션 Alfred에서 트위터 앱인 Tweetbot과 연결하는 워크플로우를 만들었습니다.
 - **[DeepDarkFantasy](https://github.com/Hazealign/DeepDarkFantasy)** *(소스 코드 공개를 위해 정리 중)*
   - ffmpeg와 caffe를 이용해서 DeepDream 비디오를 만들어내는 스크립트입니다.
   - 스크립트는 Python 2로 작성되었습니다.
