@@ -5,7 +5,7 @@ date:   2016-03-03 12:00:00
 ---
 
 ## Profile
-  - **Name** : 박기한 (Haze Park)
+  - **Name** : 이하제 (Haze Lee)
   - **Nickname** : Realignist / Hazealign
   - **Mail** : [realignist@gmail.com](mailto:realignist@gmail.com)
   - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
