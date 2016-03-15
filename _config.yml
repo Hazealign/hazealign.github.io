@@ -7,7 +7,7 @@ gems:
   - jekyll-redirect-from
 
 # Site settings
-title: "Haze Park"
+title: "Haze Lee"
 description: "책, 음악, 코딩, 피카츄와 함께하는 곳."
 email: 'realignist@gmail.com'
 #blog logo
@@ -15,8 +15,8 @@ logo: "/assets/images/pikachu_logo.png"
 # blog cover
 cover: "/assets/images/background.jpg"
 
-name: 'Haze Park'
-author: 'Haze Park'
+name: 'Haze Lee'
+author: 'Haze Lee'
 author_image: "/assets/images/author.jpg"
 
 paginate: 5
@@ -39,7 +39,7 @@ social:
     share_link: "&amp;url="
 
   - icon: facebook
-    url: http://fb.me/azur3sky
+    url: http://fb.me/realignist
     desc: Connect with me facebook
     share_url: https://www.facebook.com/sharer.php
     share_title: ?t=
