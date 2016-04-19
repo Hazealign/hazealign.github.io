@@ -29,6 +29,8 @@ twitter_handle: '@realignist'
 #fill in disqus shortname to use disqus
 disqus: realignist
 
+timezone: Asia/Seoul
+
 # social icons and sharing options
 social:
   - icon: twitter
