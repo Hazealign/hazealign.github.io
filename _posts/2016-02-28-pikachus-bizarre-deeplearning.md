@@ -3,7 +3,7 @@ layout: post
 title: "피카츄의 기묘한 딥러닝 체험"
 date: 2016-02-28 00:00:00
 categories: Code
-tags: deeplearning opencv cuda caffe gpgpu featured
+tags: deeplearning opencv cuda caffe gpgpu
 ---
 
 최근에 나는 프로그래밍을 이용해서 재밌는 것들을 많이 하려고 노력하는 편인데, 프로그래밍을 이용한 영상 편집이 필요하다는 부탁을 듣고 작업을 하면서 딥러닝이 어떤 것인지 아주 조금 체험할 수 있었다. 다만 그 과정이 정말 기괴하고 힘든 삽질들로 가득했기 때문에 조금이나마 기록을 남기고자 한다. 이 글에서는 Ubuntu 14.04.4를 기준으로 설명해보고자 한다. 또한 이 글을 통해 딥러닝을 같이 체험해보고 싶다면 고사양의 Nvidia GPU가 있는 머신에서 작업하길 권장한다. 아니면 Amazon EC2의 GPU 인스턴스도 좋다. (이 글에서는 CUDA를 활용하고 있다. 나는 i7 6700K와 32GB RAM 환경에서 작업했었는데… 그래픽카드에 대해서는 후술하겠다.)
