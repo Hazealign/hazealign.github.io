@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tennmak, 가성비를 찾는 사람을 위한 중국의 명쾌한 해답"
-date: 2016-04-19 23:00:00
+date: 2016-04-19 22:55:00
 categories: Life
 tags: earphone tennmak 텐막 이어폰 featured
 ---
