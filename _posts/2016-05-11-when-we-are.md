@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "우리는 지금 어디에 있는가?"
-date: 2016-05-12 01:00:00
+date: 2016-05-11 01:00:00
 categories: Life
 tags: featured psychology ptsd trauma
 ---
