@@ -7,7 +7,7 @@ date:   2016-03-03 12:00:00
 ## Profile
   - **Name** : 이하제 (Haze Lee)
   - **Nickname** : Realignist / Hazealign
-  - **Mail** : [realignist@gmail.com](mailto:realignist@gmail.com)
+  - **Mail** : [hazelee@realignist.me](mailto:hazelee@realignist.me)
   - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
   - **Where** : [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [Telegram](https://telegram.me/realignist) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) / [이상한모임](http://weirdmeetup.slack.com) 등에서 저를 찾을 수 있습니다.
   - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다.
@@ -121,6 +121,7 @@ date:   2016-03-03 12:00:00
     - 탈옥 환경에서 iOS의 SpringBoard(System Context)에 동적으로 후킹해서 알림을 자동으로 확인해주는 트윅을 개발했습니다.
     - 탈옥 환경에서 iOS의 실시간 CPU, Memory 등의 리소스 사용량을 시스템 데몬 레벨에서 주고 받을 수 있도록 개발했습니다.
     - iOS의 CoreImage Framework를 이용해서 영수증 등의 문서를 인식하고, 필터 등을 이용해서 후처리하는 프로젝트를 개발했습니다.
+    - Android에서 OpenCV를 이용해서 영수증 등의 문서를 인식하고, GPU 가속 필터를 이용해 후처리하는 프로젝트를 개발했습니다.
 
 ## Personal Development
 - **[eulrlega.js](https://github.com/Hazealign/eulrlega.js)**
@@ -136,7 +137,7 @@ date:   2016-03-03 12:00:00
   - 맥용 유틸리티 애플리케이션 Alfred에서 Fuse Build를 연결하는 워크플로우를 만들었습니다.
 - **[tweetbot-alfred-workflow](https://github.com/Hazealign/tweetbot-alfred-workflow)**
   - 맥용 유틸리티 애플리케이션 Alfred에서 트위터 앱인 Tweetbot과 연결하는 워크플로우를 만들었습니다.
-- **[DeepDarkFantasy](https://github.com/Hazealign/DeepDarkFantasy)** *(소스 코드 공개를 위해 정리 중)*
+- **[DeepDarkFantasy](https://github.com/Hazealign/DeepDarkFantasy)**
   - ffmpeg와 caffe를 이용해서 DeepDream 비디오를 만들어내는 스크립트입니다.
   - 스크립트는 Python 2로 작성되었습니다.
   - [DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)를 기반으로 작업했지만, 처음 사용자도 쉽게 진행할 수 있도록 의존성 설치 스크립트 등을 포함했습니다.
@@ -159,9 +160,8 @@ date:   2016-03-03 12:00:00
   - Kauffman FastTrac Planning the Entrepreneurial Venture 교육 과정을 이수했습니다.
 - **서울특별시 주민참여예산위원 (2015년 5월 ~ 2016년 2월**)
   - 경제산업분과 주민참여예산 위원으로 활동했었습니다.
-- **Team Recover (2015년 1월 ~ 현재)**
+- **[Team Recover](http://recover.team) (2015년 1월 ~ 현재)**
   - iPhone에 Clickwheel이 들어간 iPod과 같은 음악 플레이어를 만들고자 하는 팀입니다.
-  - 팀원들의 사정으로 인하여 현재 프로젝트는 일시 정지 상태입니다.
 
 ## Disorders
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#H60-H95|H80-H83|H81|H81.0">**메니에르병 (Ménière's disease)**</a>
