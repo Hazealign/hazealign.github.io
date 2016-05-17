@@ -72,7 +72,7 @@ date:   2016-03-03 12:00:00
     - Fusetools
       - Cross-platform Application Development Tools
   - Database
-    - Redis, MariaDB(MySQL), MS-SQL, MongoDB, Amazon DynamoDB
+    - Redis, MariaDB(MySQL), PostgreSQL, MS-SQL, MongoDB, Amazon DynamoDB
 
 ## Business Experience
   - **말랑스튜디오 (2013년 01월 ~ 10월)**
@@ -166,25 +166,16 @@ date:   2016-03-03 12:00:00
 ## Disorders
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#H60-H95|H80-H83|H81|H81.0">**메니에르병 (Ménière's disease)**</a>
     - 2011년 8월 ~ 2013년
-    - 귀 안에 있는 림프의 압력이 올라가면서 내이가 망가지는 병입니다.
     - 2013년에 내림프낭감압술을 통해서 현재는 병이 특별히 진행되지는 않습니다.
-    - 후유증으로 편두통, 귀의 통증, 청각장애 5 ~ 6급 수준의 난청과 이명이 있습니다.
     - 잔존 청력과 입 모양을 통해 커뮤니케이션에는 지장이 없습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F43|F43.1">**외상 후 스트레스 장애 (Post Traumatic Stress Disorder)**</a>
     - 만성화된 외상 후 스트레스 장애로 어릴 때에 생긴 트라우마가 있습니다.
-    - 아래에 있는 다른 신경증 질환들과 연결된 문제입니다.
-    - 계속 심한 악몽을 꾸며, 과거의 트라우마와 비슷한 상황이 있을 때 공황 상태에 빠지는 플래시백 증상이 있습니다.
     - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-    - **일부러 자는 동안의 기억을 잃게 하는 약을 먹고 있으니, 새벽 중에 이야기한걸 기억하지 못할 수 있습니다.**
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F32|F32.1">**우울장애 (Major Depression Disorder)**</a>
     - 2014년 10월 ~ 현재
-    - 다양한 요인의 스트레스로 인하여 우울장애의 거의 모든 증상을 겪고 있습니다.
     - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-    - 함께 불면증도 있지만, **오후 2시 ~ 10시**까지는 항상 연락을 받습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F41|F41.0">**광장공포증을 동반한 공황장애 (Panic Disorder with Agoraphobia)**</a>
     - 2015년 2월 ~ 현재
     - 다양한 요인의 스트레스로 인하여 예측 불가능한 상황에서 공황 발작을 겪고 있습니다.
     - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-    - 공황 발작 시에는 두근거림, 흉통, 숨을 쉬지 못하거나 과호흡, 어지러움, 이인감을 경험합니다.
-    - 광장공포증이 있기 때문에 대중교통, 사람이 많은 거리나 장소, 집 밖을 나가는 것을 좋아하지 않습니다.
-    - 대부분의 작업은 집 혹은 조용한 카페에서 하고 있습니다.
+    - 광장공포증은 현재 거의 극복한 수준이며, 공황 발작 또한 항불안제로 컨트롤할 수 있는 수준입니다.
