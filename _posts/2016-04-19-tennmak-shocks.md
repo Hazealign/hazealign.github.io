@@ -3,7 +3,7 @@ layout: post
 title: "Tennmak, 가성비를 찾는 사람을 위한 명답"
 date: 2016-04-18 23:10:00
 categories: Life
-tags: earphone tennmak 이어폰 텐막 featured
+tags: earphone tennmak 이어폰 텐막
 ---
 
  최근 주변에서 중국의 이어폰 제조사인 텐막의 이어폰을 산 뒤 "충격적이다"라는 이야기를 들었다. 찾아보니 텐막의 모든 제품은 5만원을 넘지 않는 저가형 이어폰이었다. 저가형 이어폰을 듣고 정말 이게 충격적인 수준의 품질인지 궁금했던 나는 텐막의 프로 제품과 알리800을 구매해보았다.
