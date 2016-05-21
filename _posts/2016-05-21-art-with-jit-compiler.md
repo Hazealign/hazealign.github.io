@@ -52,6 +52,7 @@ Android 4.4에서 ART 방식으로 런타임을 사용할 때 볼 수 있는 로
 우리는 ART의 큼직큼직한 커밋들을 통해 처음엔 사용 빈도를 바탕으로 백그라운드에서 다시 컴파일을 하던 부분이 최적화를 거쳐 더 정교한 프로파일링을 바탕으로 JIT 컴파일 기능이 추가되었다라는걸 알 수 있었다. 사실 ART의 더 깊은 부분까지에 대해서는 아직 개인적으로도 이해가 부족하다는 생각이 들지만, 이 글을 통해 ART가 어떻게 발전할 수 있게 되었는지 이해하는데 조금이나마 도움이 되었으면 좋겠다.
 
 **참고했었던 자료들**
+
  - [platform/art 소스 코드](https://android.googlesource.com/platform/art/)
  - [ART's Quick Compiler: An unofficial overview](http://www.slideshare.net/linaroorg/hkg15300-arts-quick-compiler-an-unofficial-overview)
  - [안드로이드의 ART는 실행 중에 프로파일링을 통해 백그라운드에서 다시 컴파일을 하는 것 같다.](http://d.hatena.ne.jp/embedded/20140511/p1)
