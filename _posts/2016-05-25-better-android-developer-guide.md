@@ -127,6 +127,8 @@ Google이 Android API Differences Report를 내고 있기 때문에 이걸 보�
 	 - [Support Library의 Mirror Repository](https://github.com/android/platform_frameworks_support)
  - Android Studio SDK의 소스 코드를 참조해서 읽는 방법 [(조금 낡은 기사)](http://qiita.com/makoto_kw/items/032e210aecf57deeb5a5)
 
+
+
 ### 샘플 애플리케이션과 읽어봐야 할 부분
 
 konifar 씨의 DroidKaigi 2016의 애플리케이션은 간단하게 정보를 표시하고 즐겨찾기 등을 관리할 수 있는 샘플 응용 프로그램으로 매우 깨끗한 코드라고 정평이 나 있습니다. 우리들의 신, Jake Wharton 씨의 u2020도 일부를 차용했다는 이야기를 간혹 듣기 때문에 분명 뭔가 얻을 수 있을 것입니다. 확인하니 RxJava라던가 Retrofit 2 등의 현대적인 구성으로 되어있는 것 같습니다.
