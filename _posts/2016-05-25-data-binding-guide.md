@@ -460,8 +460,8 @@ ButterKnife.apply(nameViews, DISABLE);
  - `@BindingAdapter`와 `@BindingMethod`를 ~~악용~~이용하면 비교적 뭐든지 할 수 있다.
 
 ## References
- - [ButterKnife](http://jakewharton.github.io/butterknife/)
- - [Data Binding Guide | Android Developers](http://developer.android.com/tools/data-binding/guide.html)
- - [Android – Data Binding 연결해봤다. – NET BIZ DIV. TECH BLOG](http://tech.recruit-mp.co.jp/mobile/android-data-binding/)
- - [The Clean Architecture | 8th Light](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
- - [extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google](https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters)
+  - [ButterKnife](http://jakewharton.github.io/butterknife/)
+  - [Data Binding Guide | Android Developers](http://developer.android.com/tools/data-binding/guide.html)
+  - [Android – Data Binding 연결해봤다. – NET BIZ DIV. TECH BLOG](http://tech.recruit-mp.co.jp/mobile/android-data-binding/)
+  - [The Clean Architecture | 8th Light](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+  - [extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google](https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters)
