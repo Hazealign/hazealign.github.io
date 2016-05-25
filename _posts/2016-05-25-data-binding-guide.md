@@ -14,7 +14,6 @@ tags: android butterknife dependencyinjection di development featured
 
 ![]({{ site.url }}/assets/images/20160525/5.png)
 
-@izumin5210
 지금까지 ButterKnife가 하고 있던 일은 전부 [Data Binding](http://developer.android.com/tools/data-binding/guide.html)이 대신 하게 되었다. Data Binding은 공식에서는 아직 beta release 단계에 있는 상태로, [거의 1.0에 가까운 RC(Release Candidate) 수준](https://bintray.com/android/android-tools)까지 되었기 때문에 실전에 투입할 수 있게 되었다.
 
 실행할 때에 Reflection을 하는 ButterKnife와는 달리 Data Binding은 Annotation Processing으로 사전에 이것저것 해주는 방식이 좋았다. (c.f. ButterKnife도 Annotation Processing을 하는 방식으로 바뀌는 것 같다. -> [Split the compiler and runtime into separate artifacts. by serj-lotutovici · Pull Request #323 · JakeWharton/butterknife](https://github.com/JakeWharton/butterknife/pull/323))
