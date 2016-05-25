@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해."
+title: "[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해."
 date: 2016-05-25 15:00:00 +0900
 categories: Code
 tags: android butterknife dependencyinjection di development featured

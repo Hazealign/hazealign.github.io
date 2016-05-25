@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "중급 이상의 Android 개발자가 Android다운 개발을 하려면 봐야할 URL 목록들"
+title: "[번역] 중급 이상의 Android 개발자가 Android다운 개발을 하려면 봐야할 URL 목록들"
 date: 2016-05-25 02:30:00 +0900
 categories: Code
 tags: android lifecycle development featured
