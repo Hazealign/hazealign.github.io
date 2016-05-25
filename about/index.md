@@ -141,6 +141,12 @@ date:   2016-03-03 12:00:00
   - ffmpeg와 caffe를 이용해서 DeepDream 비디오를 만들어내는 스크립트입니다.
   - 스크립트는 Python 2로 작성되었습니다.
   - [DeepDreamVideo](https://github.com/graphific/DeepDreamVideo)를 기반으로 작업했지만, 처음 사용자도 쉽게 진행할 수 있도록 의존성 설치 스크립트 등을 포함했습니다.
+- **[springboot-single-router](https://github.com/Hazealign/springboot-single-router)** 
+  - Spring Boot에서 Play Framework처럼 컨트롤러를 라우팅시켜주는 라이브러리입니다.
+  - 아직 리팩토링과 완전히 Kotlin으로 옮기는 작업이 남아있습니다.
+- **[node-line-bot](https://github.com/Hazealign/node-line-bot)**
+  - node.js용 Line Bot API 구현체입니다.
+  - 쉽게 co나 async에서 Promise로 받아와서 사용할 수 있습니다.
 
 ## Activities & Organizations
 - **Link Team (2011년 ~ 2013년)**
@@ -162,6 +168,8 @@ date:   2016-03-03 12:00:00
   - 경제산업분과 주민참여예산 위원으로 활동했었습니다.
 - **[Team Recover](http://recover.team) (2015년 1월 ~ 현재)**
   - iPhone에 Clickwheel이 들어간 iPod과 같은 음악 플레이어를 만들고자 하는 팀입니다.
+
+![](https://raw.githubusercontent.com/RecoverTeam/recover-design/master/out/Whole%20Screens.png)
 
 ## Disorders
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#H60-H95|H80-H83|H81|H81.0">**메니에르병 (Ménière's disease)**</a>
