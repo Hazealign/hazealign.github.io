@@ -47,7 +47,7 @@ class ExampleActivity extends Activity {
 
 #### After
 
-레이아웃 저네를 `<layout></layout>`으로 감싸준다.
+레이아웃 전체를 `<layout></layout>`으로 감싸준다.
 
 ```xml
 <layout>
