@@ -13,7 +13,7 @@ tags: android lifecycle development featured
 
 ****
 
-Java에 대한 이야기는 여러 이야기가 있다고 생각합니다만, Android 개발을 잘 하기 위해서 어떤 것들을 해야 좋을지에 대한 이야기를 해보고자 합니다. 개발 입문을 위한 가이드로는 이미 [좋은 가이드](https://github.com/mixi-inc/AndroidTraining)`(일본어)가 있기 때문에 여기서는 더욱 실전적인 내용에 포커스를 맞추고자 합니다.
+Java에 대한 이야기는 여러 이야기가 있다고 생각합니다만, Android 개발을 잘 하기 위해서 어떤 것들을 해야 좋을지에 대한 이야기를 해보고자 합니다. 개발 입문을 위한 가이드로는 이미 [좋은 가이드](https://github.com/mixi-inc/AndroidTraining)(일본어)가 있기 때문에 여기서는 더욱 실전적인 내용에 포커스를 맞추고자 합니다.
 
 ## 안드로이드 다운 디자인과 개발
 
