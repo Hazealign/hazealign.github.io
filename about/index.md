@@ -116,12 +116,13 @@ date:   2016-03-03 12:00:00
     - GMO AppsCloud에서 돌아갈 수 있도록 운영을 진행했습니다.
     - 버그 수정과 일부 신규 기능을 추가했습니다.
     - Java와 Android에 경험이 없던 후임 직원에게 1개월간 Java 언어 기능과 Android 앱 개발에 대해서 교육했었습니다.
-  - **0101RGB (2015년 12월 ~ 현재)**
+  - **0101RGB (2015년 12월 ~ 2016년 5월)**
     - ARM 어셈블리를 이용한 iOS 탈옥 감지 우회 기술에 대해서 연구했었습니다.
     - 탈옥 환경에서 iOS의 SpringBoard(System Context)에 동적으로 후킹해서 알림을 자동으로 확인해주는 트윅을 개발했습니다.
     - 탈옥 환경에서 iOS의 실시간 CPU, Memory 등의 리소스 사용량을 시스템 데몬 레벨에서 주고 받을 수 있도록 개발했습니다.
     - iOS의 CoreImage Framework를 이용해서 영수증 등의 문서를 인식하고, 필터 등을 이용해서 후처리하는 프로젝트를 개발했습니다.
     - Android에서 OpenCV를 이용해서 영수증 등의 문서를 인식하고, GPU 가속 필터를 이용해 후처리하는 프로젝트를 개발했습니다.
+  - **Frientrip (2016년 6월)**
 
 ## Personal Development
 - **[eulrlega.js](https://github.com/Hazealign/eulrlega.js)**
