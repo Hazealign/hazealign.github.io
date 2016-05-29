@@ -7,10 +7,10 @@ date:   2016-03-03 12:00:00
 ## Profile
   - **Name** : 이하제 (Haze Lee)
   - **Nickname** : Realignist / Hazealign
-  - **Mail** : [hazelee@realignist.me](mailto:hazelee@realignist.me)
+  - **Mail** : [hazelee@re.aligni.st](mailto:hazelee@re.aligni.st)
   - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
   - **Where** : [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [Telegram](https://telegram.me/realignist) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) / [이상한모임](http://weirdmeetup.slack.com) 등에서 저를 찾을 수 있습니다.
-  - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다.
+  - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 기계보다 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
   - **Language** : 한국어 (Native), English (Not Good), 日本語 (Not Bad)
   - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다. 또한 복용 중인 약으로 인하여 자몽을 먹으면 안됩니다. 
   - **LOVE IT!!**
