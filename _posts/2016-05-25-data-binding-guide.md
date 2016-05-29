@@ -3,7 +3,7 @@ layout: post
 title: "[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해."
 date: 2016-05-25 15:00:00 +0900
 categories: Code
-tags: android butterknife dependencyinjection di development featured
+tags: android butterknife dependencyinjection di development
 ---
 
 이 글은 [@izumin5210](http://twitter.com/izumin5210)님이 Qiita에 올린 [글](http://qiita.com/izumin5210/items/2784576d86ce6b9b51e6)을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다.

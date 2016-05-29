@@ -3,7 +3,7 @@ layout: post
 title: "JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자"
 date: 2016-05-21 17:30:00 +0900
 categories: Code
-tags: android compiler llvm aot jit optimization android-runtime art featured
+tags: android compiler llvm aot jit optimization android-runtime art
 ---
 
 Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.
