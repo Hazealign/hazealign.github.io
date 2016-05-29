@@ -185,28 +185,11 @@ public class UserListFragment extends Fragment {
 
 표시할 때마다 Fragment에서 Model을 호출하는 장소에서 변경 알림 이벤트에 의한 View의 갱신을 가하면 호출의 흐름이 복잡하게 되어버립니다. 또 이것을 EventBus를 통해서 구현하면 그 이벤트가 어디서 날아오는지 명확히 알 수 없다는 문제도 존재합니다.
 
-    
-                                        ┌────────┐
-                                        | Model2 | ──( save )───┐
-                                        └────────┘              ↓
-    ┌──────┐            ┌───────────────────┐ ──( call )─→ ┌───────┐ ──( call )─→ ┌────────┐
-    | View |←─(render)──| Activity/Fragment |              | Model |              | DB/API |
-    └──────┘            └───────────────────┘ ←─(return)── └───────┘ ←─(return)── └────────┘
-                            ↑           ┌───────────┐           │
-                            └─(event)── | Event Bus | ←─(post)──┘
-                                        └───────────┘
-
+![]({{ site.url }}/assets/images/20160529/2.png)
 
 이것을 Observer 패턴을 이용하면 변경 내용이 통지될 때마다 render하는 것만으로도 괜찮아지며, 또 subscribe할 때에 Model를 참조하기 때문에 가독성이 높아집니다.
 
-                                       ┌────────┐
-                                       | Model2 | ──( save )───┐
-                                       └────────┘              ↓
-    ┌──────┐            ┌───────────────────┐              ┌───────┐ ──( call )─→ ┌────────┐
-    | View |←─(render)──| Activity/Fragment | ←─(update)── | Model |              | DB/API |
-    └──────┘            └───────────────────┘              └───────┘ ←─(return)── └────────┘
-                                │                              ↑
-                                └ ─ ─ ─ (subscribe once) ─ ─ ─ ┘
+![]({{ site.url }}/assets/images/20160529/3.png)
 
 #### 그거 RxJava로… (이하 생략)
 
