@@ -35,6 +35,7 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
 	 - 거의 비슷하지만 `unsubscribed`가 true냐 아니냐의 차이.
 
 **참고자료**
+
  - [https://github.com/ReactiveX/RxJava/blob/master/src/main/java/rx/subscriptions/CompositeSubscription.java](https://www.youtube.com/watch?v=QdmkXL7XikQ)
  - [https://github.com/ReactiveX/RxJava/issues/2959](https://www.youtube.com/watch?v=QdmkXL7XikQ)
  - [https://www.youtube.com/watch?v=QdmkXL7XikQ](https://www.youtube.com/watch?v=QdmkXL7XikQ)
@@ -54,6 +55,7 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
 	 - 이 ParallelStream은 Java 7에 추가된 동시성 처리를 위한 Fork/Join을 이용해서 만들어짐.
 
 **참고자료들**
+
  - [https://docs.oracle.com/javase/7/docs/api/java/lang/invoke/MethodHandle.html](http://stackoverflow.com/questions/24629247/where-does-official-documentation-say-that-javas-parallel-stream-operations-use)
  - [https://slipp.net/wiki/pages/viewpage.action?pageId=19530380](http://stackoverflow.com/questions/24629247/where-does-official-documentation-say-that-javas-parallel-stream-operations-use)
  - [https://groups.google.com/forum/#!topic/ksug/wrFMOwFugwY](http://stackoverflow.com/questions/24629247/where-does-official-documentation-say-that-javas-parallel-stream-operations-use)
