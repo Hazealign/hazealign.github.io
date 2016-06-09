@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GDG Android Korea RxJava 스터디: 1회차"
-date: 2016-05-29 16:55:00 +0900
+date: 2016-06-09 10:00:00 +0900
 categories: Code
 tags: android rxjava development observable featured
 ---
