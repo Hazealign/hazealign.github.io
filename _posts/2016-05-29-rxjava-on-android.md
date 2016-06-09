@@ -3,7 +3,7 @@ layout: post
 title: "[번역] RxJava를 3일만에 입문해서, 안드로이드 애플리케이션의 리스트 작업이나 비동기 처리와 알림을 해결한 이야기."
 date: 2016-05-29 16:55:00 +0900
 categories: Code
-tags: android rxjava development observable featured
+tags: android rxjava development observable
 ---
 
 이번 글도 [@yuya_presto](http://twitter.com/yuya_presto)님이 쓰신 [글](http://qiita.com/yuya_presto/items/152fa80d073d865cfc90)을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며 댓글로의 지적도 환영합니다, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다.

@@ -3,7 +3,7 @@ layout: post
 title: 'Samsung Portable SSD T3 짧은 리뷰'
 date: 2016-06-02 11:50:00 +0900
 categories: Gadget
-tags: Portable SSD T3 Samsung featured frientrip
+tags: Portable SSD T3 Samsung frientrip
 ---
 
 ## 사게 된 계기?
