@@ -12,7 +12,7 @@ tags: ios swift development async color string featured
 
 ## 클래스 이름의 표시
 
-```swift
+{% highlight swift %}
 extension NSObject {
     class var className: String {
         return String(self)
@@ -25,7 +25,7 @@ extension NSObject {
 
 MyClass.className   //=> "MyClass"
 MyClass().className //=> "MyClass"
-```
+{% endhighlight %}
 
 ## XIB를 등록하고 호출하기
 
@@ -33,7 +33,7 @@ XIB 파일과 클래스 이름을 똑같이 설정한 뒤 이용해주세요. �
 
 ### UITableView
 
-```swift
+{% highlight swift %}
 extension UITableView {
     func registerCell<T: UITableViewCell>(type: T.Type) {
         let className = type.className
@@ -49,18 +49,18 @@ extension UITableView {
         return self.dequeueReusableCellWithIdentifier(type.className, forIndexPath: indexPath) as! T
     }
 }
-```
+{% endhighlight %}
 
-```swift
+{% highlight swift %}
 tableView.registerCell(MyCell.self)
 tableView.registerCells([MyCell1.self, MyCell2.self])
 
 let cell = tableView.dequeueCell(MyCell.self)
-```
+{% endhighlight %}
 
 ## UICollectionView
 
-```swift
+{% highlight swift %}
 extension UICollectionView {
     func registerCell<T: UICollectionViewCell>(type: T.Type) {
         let className = type.className
@@ -90,9 +90,9 @@ extension UICollectionView {
         return dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: type.className, forIndexPath: indexPath) as! T
     }
 }
-```
+{% endhighlight %}
 
-```
+{% highlight swift %}
 collectionView.registerCell(MyCell.self)
 collectionView.registerCells([MyCell1.self, MyCell2.self])
 let cell = collectionView.dequeueCell(MyCell.self)
@@ -100,11 +100,11 @@ let cell = collectionView.dequeueCell(MyCell.self)
 collectionView.registerReusableView(MyReusableView.self)
 collectionView.registerReusableViews([MyReusableView1.self, MyReusableView2.self])
 let view = collectionView.dequeueReusableView(type: MyReusableView.self, indexPath: indexPath)
-```
+{% endhighlight %}
 
 ## 16진수를 이용해서 NSColor 만들기
 
-```swift
+{% highlight swift %}
 extension UIColor {
     convenience init(hex: Int, alpha: Double = 1.0) {
         let r = CGFloat((hex & 0xFF0000) >> 16) / 255.0
@@ -113,15 +113,15 @@ extension UIColor {
         self.init(red: r, green: g, blue: b, alpha: CGFloat(alpha))
     }
 }
-```
+{% endhighlight %}
 
-```swift
+{% highlight swift %}
 let color = UIColor.color(0xAABBCC)
-```
+{% endhighlight %}
 
 ## 제일 최상위 UIViewController 객체를 가져오기
 
-```swift
+{% highlight swift %}
 extension UIApplication {
     func topViewController() -> UIViewController? {
         guard var topViewController = UIApplication.sharedApplication().keyWindow?.rootViewController else { return nil }
@@ -132,15 +132,15 @@ extension UIApplication {
         return topViewController
     }
 }
-```
+{% endhighlight %}
 
-```swift
+{% highlight swift %}
 UIApplication.sharedApplication().topViewController()?
-```
+{% endhighlight %}
 
 ## Storyboard의 ViewController 생성하기
 
-```swift
+{% highlight swift %}
 protocol StoryBoardHelper {}
 
 extension StoryBoardHelper where Self: UIViewController {
@@ -156,20 +156,20 @@ extension StoryBoardHelper where Self: UIViewController {
 }
 
 extension UIViewController: StoryBoardHelper {}
-```
+{% endhighlight %}
 
-```
+{% highlight swift %}
 // Storyboard 파일과 클래스 이름이 같을 때
 MyViewController.instantiate()
 // Storyboard 파일과 클래스 이름이 다를 때
 MyViewController.instantiate("MyStoryboard")
-```
+{% endhighlight %}
 
  위에서 이야기한 "클래스 이름의 표시"를 활용하고 있습니다.
  
 ## XIB의 View를 생성
 
-```
+{% highlight swift %}
 protocol NibHelper {}
 
 extension NibHelper where Self: UIView {
@@ -180,17 +180,17 @@ extension NibHelper where Self: UIView {
 }
 
 extension UIView: NibHelper {}
-```
+{% endhighlight %}
 
-```
+{% highlight swift %}
 MyView.instantiate(owner: self)
-```
+{% endhighlight %}
 
 XIB 파일과 클래스 이름을 똑같이 설정한 뒤 이용해주세요. 위에서 이야기한 "클래스 이름의 표시"를 활용하고 있습니다.
 
 ## 모든 자식 View를 죽이기
 
-```swift
+{% highlight swift %}
 extension UIView {
     func removeAllSubviews() {
         for subview in self.subviews {
@@ -198,24 +198,24 @@ extension UIView {
         }
     }
 }
-```
+{% endhighlight %}
 
-```swift
+{% highlight swift %}
 view.removeAllSubViews()
-```
+{% endhighlight %}
 
 ## Selector를 모으기
 
-```swift
+{% highlight swift %}
 private extension Selector {
     static let buttonTapped = #selector(MyViewController.buttonTapped(_:))
 }
-```
+{% endhighlight %}
 
-```swift
+{% highlight swift %}
 let button = UIButton()
 button.addTarget(self, action: .buttonTapped, forControlEvents: .TouchUpInside)
-```
+{% endhighlight %}
 
 ## 라이브러리
 개발을 쉽게 해주는 다용도 extension 계의 라이브러리를 정리했습니다.
@@ -224,13 +224,13 @@ button.addTarget(self, action: .buttonTapped, forControlEvents: .TouchUpInside)
 
 NSDate를 쉽게 쓸 수  있게 만들어주는 라이브러리
 
-```swift
+{% highlight swift %}
 let date1 = NSDate(year: 2016, month: 12, day: 25, hour: 14)
 let date2 = "2016-01-05T22:10:55.200Z".toDate(DateFormat.ISO8601)
 let date3 = "22/01/2016".toDate(DateFormat.Custom("dd/MM/yyyy"))
 let date4 = (5.days + 2.hours - 15.minutes).fromNow
 let date5 = date4 + 1.years + 2.months + 1.days + 2.hours
-```
+{% endhighlight %}
 
 더 자세히 알고 싶으신 분들은 [여기](https://github.com/malcommac/SwiftDate/blob/master/Documentation/UserGuide.md)에서.
 
@@ -240,7 +240,7 @@ let date5 = date4 + 1.years + 2.months + 1.days + 2.hours
 
 좋은 느낌의 플랫 컬러를 제공해주는 라이브러리
 
-```swift
+{% highlight swift %}
 let color1 = UIColor.flatGreenColorDark()
 let color2 = FlatGreenDark() // 위의 축약형
 let color3 = RandomFlatColor()
@@ -249,51 +249,51 @@ let color4 = ComplementaryFlatColorOf(color1) // 보색
 UIColor.pinkColor().flatten()
 FlatGreen.hexValue //=> "2ecc71"
 UIColor(averageColorFromImage: image)
-```
+{% endhighlight %}
 
 컨트롤의 색을 일괄적으로 변경하는 것도 가능합니다.
 
-```swift
+{% highlight swift %}
 Chameleon.setGlobalThemeUsingPrimaryColor(FlatBlue(), withSecondaryColor: FlatMagenta(), andContentStyle: UIContentStyle.Contrast)
-```
+{% endhighlight %}
 
 ### [R.swift](https://github.com/mac-cain13/R.swift)
 
 안드로이드의 R.java와 같이 파일 이름 등을 프로퍼티화해주는 라이브러리입니다. Typo가 컴파일 시점에 알 수 있으니 행복해집니다.
 
 Before
-```swift
+{% highlight swift %}
 let icon = UIImage(named: "settings-icon")
 let font = UIFont(name: "San Francisco", size: 42)
 let viewController = CustomViewController(nibName: "CustomView", bundle: nil)
 let string = String(format: NSLocalizedString("welcome.withName", comment: ""), locale: NSLocale.currentLocale(), "Arthur Dent")
-```
+{% endhighlight %}
 
 After
-```swift
+{% highlight swift %}
 let icon = R.image.settingsIcon()
 let font = R.font.sanFrancisco(size: 42)
 let viewController = CustomViewController(nib: R.nib.customView)
 let string = R.string.localizable.welcomeWithName("Arthur Dent")
-```
+{% endhighlight %}
 
 ### [SwiftString](https://github.com/amayne/SwiftString)
 
 String에 편리한 메소드를 추가해주는 라이브러리입니다.
 
-```swift
+{% highlight swift %}
 "foobar".contains("foo")         //=> true
 ",".join([1,2,3])                //=> "1,2,3"
 "hello world".split(" ")[1]      //=> "world"
 "hello world"[0...1]             //=> "he"
 "hi hi ho hey hihey".count("hi") //=> 3
-```
+{% endhighlight %}
 
 ### [SwiftyUserDefaults](https://github.com/radex/SwiftyUserDefaults)
 
 NSUserDefaults를 Swift스럽게 쓰게 해주는 라이브러리입니다.
 
-```swift
+{% highlight swift %}
 extension DefaultsKeys {
     static let username = DefaultsKey<String?>("username")
     static let launchCount = DefaultsKey<Int>("launchCount")
@@ -315,7 +315,7 @@ Defaults[.libraries][0] += " 2.0"
 // 커스텀 타입도 OK
 Defaults[.color] = NSColor.whiteColor()
 Defaults[.color]?.whiteComponent // => 1.0
-```
+{% endhighlight %}
 
 ### [TextAttributes](https://github.com/delba/TextAttributes)
 
@@ -323,21 +323,21 @@ Defaults[.color]?.whiteComponent // => 1.0
 
 NSAttributedString를 쉽게 설정할 수 있는 라이브러리입니다.
 
-```swift
+{% highlight swift %}
 let attrs = TextAttributes()
     .font(name: "HelveticaNeue", size: 16)
     .foregroundColor(white: 0.2, alpha: 1)
     .lineHeightMultiple(1.5)
 
 NSAttributedString("ほげ", attributes: attrs)
-```
+{% endhighlight %}
 
 ### [Async](https://github.com/duemunk/Async)
 
 Grand Central Dispatch (GCD)를 쉽게 쓰게 해주는 라이브러리입니다.
 
 Before
-```swift
+{% highlight swift %}
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
     print("This is run on the background queue")
 
@@ -345,16 +345,16 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
         print("This is run on the main queue, after the previous block")
     })
 })
-```
+{% endhighlight %}
 
 After
-```swift
+{% highlight swift %}
 Async.background {
     print("This is run on the background queue")
 }.main {
     print("This is run on the main queue, after the previous block")
 }
-```
+{% endhighlight %}
 
 ### [AsyncKit](https://github.com/mishimay/AsyncKit)
 
@@ -362,7 +362,7 @@ Async.background {
 
 여러 비동기 처리를 끝낸 뒤 다음 작업을 할 수 있게 도와주는 라이브러리입니다.
 
-```swift
+{% highlight swift %}
 let async = AsyncKit<String, NSError>()
 
 async.parallel([
@@ -371,4 +371,4 @@ async.parallel([
 ]) { result in
     print(result) //=> Success(["one", "two"])
 }
-```
+{% endhighlight %}

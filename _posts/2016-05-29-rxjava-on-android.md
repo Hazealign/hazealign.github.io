@@ -64,7 +64,7 @@ Reactive Programming의 개념에 대해서는 참고용 글을 쓰는데 그쳤
 
 Java 8부터 Lambda 식이나 Stream API를 사용해서 `map()`이나 `filter()`와 같은 Ruby, Python, Underscore.js / ECMAScript5와 비슷한 for loop를 사용하지 않은 리스트 처리가 가능해졌습니다.
 
-```java
+{% highlight java %}
 // Java 7
 List<String> otherUserNames = new ArrayList<>(users.size);
 for (User user : users) {
@@ -72,27 +72,27 @@ for (User user : users) {
         otherUserNames.add(user.getName());
     }
 }
-```
+{% endhighlight %}
 
-```java
+{% highlight java %}
 // Java 8
 List<String> otherUserNames = users.stream()
     .filter(user -> user.id != selfUser.id)
     .map(User::getName) // user -> user.getName()의 단순 표현, method references라고 부릅니다.
     .collect(Collectors.toList());
-```
+{% endhighlight %}
 
 new나 add 같은 절차적인 코드가 사라지고 리스트에 대한 가공만 코드에 나타나서 읽기가 쉽다! 하지만 Android에서 Java 8을 쓸 수 있는건 꽤 먼 이야기가 될 것 같습니다. *(역주 : Android N Preview부터는 Jack Toolchain을 이용하여 Java 8의 기능들을 사용할 수 있습니다.)*
 
 #### 그거 RxJava로 되는데요…
 
-```java
+{% highlight java %}
 // RxJava
 List<String> otherUserNames = Observable.from(users)
     .filter(user -> user.id != selfUser.id)
     .map(User::getName)
     .toList().toBlocking().single(); // 전부 리스트로 묶어서, 동기 처리할 수 있도록 설정하고, 하나로 결과를 합칩니다.
-```
+{% endhighlight %}
 
 비동기 처리를 전제로 하고 있기 때문에, 동기 처리로 바꾸기 위해서는 `toBlocking()`을 계속 호출하는게 버릇처럼 되곘지만 그 부분만 해결한다면 충분히 실용적일 것이라고 생각합니다.
 
@@ -122,15 +122,15 @@ List<String> otherUserNames = Observable.from(users)
 
 해결책으로 Promise를 도입하는 방법이 있습니다. RxJava의 Observable는 Promise처럼 사용할 수 있습니다.
 
-```java
+{% highlight java %}
 observable
     .observeOn(AndroidSchedulers.mainThread())
     .subscribe(result -> render(result));
-```
+{% endhighlight %}
 
 예를 들면 REST Client 라이브러리인 Retrofit은 RxJava에 대응하고 있어서, Observable를 반환하는 것이 가능합니다.
 
-```java
+{% highlight java %}
 public interface Client {
     @GET("/users")
     List<User> getUsers();
@@ -138,11 +138,11 @@ public interface Client {
     @GET("/users")
     Observable<List<User>> users(); // Retrofit의 경우 처음부터 백그라운드 스레드에서 처리됩니다.
 }
-```
+{% endhighlight %}
 
 이것을 이용한 실제 구현 예는 다음과 같습니다.
 
-```java
+{% highlight java %}
 public class UserListFragment extends Fragment {
     private Subscription mSubscription;
     private Client mClient;
@@ -173,7 +173,7 @@ public class UserListFragment extends Fragment {
 
     ...
 }
-```
+{% endhighlight %}
 
 이처럼 AsyncTask나 AsyncTaskLoader, IntentService를 새로 만들지 않고도 메모리 누수 없이 심플하게 코드를 작성할 수 있습니다…! 이번에는 화면 회전을 할 때 특별히 캐시를 지정하지는 않도록 결론 지은 구현입니다만, 가능하면 그 근처에서도 try해보려고 합니다.
 
@@ -195,7 +195,7 @@ public class UserListFragment extends Fragment {
 
 **(+1) 원래의 구현은 타이밍에 따라 최신 상태를 받을 수 없게 되어버리는 문제와 `onBackpressureLatest()`가 제대로 동작하지 않았었기 때문에 `replay(1)`를 사용하여 다시 작성되었습니다.**
 
-```java
+{% highlight java %}
 public class UserModel {
     ...
 
@@ -216,9 +216,9 @@ public class UserModel {
         return mUserUpdateObservable;
     }
 }
-```
+{% endhighlight %}
 
-```java
+{% highlight java %}
 public class UserListFragment extends Fragment {
     private Subscription mSubscription;
     private UserModel mUserModel;
@@ -242,7 +242,7 @@ public class UserListFragment extends Fragment {
 
     ...
 }
-```
+{% endhighlight %}
 
 Fragment쪽에 특별히 복잡한 처리 코드를 적지 않고서도 Reactive한 느낌이 넘치는, 변경이 마음대로 반영되는 구현이 완성되었습니다…!
 
@@ -277,7 +277,7 @@ Fragment쪽에 특별히 복잡한 처리 코드를 적지 않고서도 Reactive
 
 학습 코스트를 줄이기 위해도 겸해 `onCreate()` 등의 메소드에 `subscribe()`와 `unsubscribe()`를 직접 추가하기로 했습니다. Subscription 관리를 간단하게 하기 위해서는 `CompositeSubscription`에 `add()`한 뒤, 나중에 모아서 한꺼번에 `unsubscribe()`합니다.
 
-```java
+{% highlight java %}
 public class UserListFragment extends Fragment {
     private CompositeSubscription mCompositeSubscription;
     private Client mClient;
@@ -298,18 +298,18 @@ public class UserListFragment extends Fragment {
 
     ...
 }
-```
+{% endhighlight %}
 
 업데이트 작업을 수행하는 경우 등 `subscribe()`를 여러 번 호출하는 경우가 있다고 생각 합니다만, 이 경우 작업이 완료될 때마다 매번 CompositeSubscription에서 `remove()`하지 않으면 점점 늘어나버립니다. 따라서 `subscribe()`와 `unsubscribe()` (혹은 종료)시에 마음대로 `CompositeObservable`의 `add()`와 `remove()`를 호출할 수 있는 구조를 만들었습니다. ([Gist](https://gist.github.com/ypresto/accec4409654a1830f54))
 
 **(+1) 이것은 반드시 `subscribe()`의 맨 마지막에 호출하지 않으면 잘 unsubscribe되지 않는 경우가 있으므로 주의가 필요합니다.**
 
-```java
+{% highlight java %}
 mClient.users()
     .observeOn(AndroidSchedulers.mainThread())
     .lift(CompositeObservables.attachTo(mCompositeObservable)) // lift는 커스텀 Operator를 사용하기 위해서 쓰는 것입니다.
     .subscribe(result -> render(result));
-```
+{% endhighlight %}
 
 ※ CompositeSubscription는 한 번 unsubscribe하면 다시 사용할 수 없기 때문에 주의하세요. `attachTo()`는 `mCompositeObservable`을 만들고 때마다 다시 호출해야합니다. [http://gfx.hatenablog.com/entry/2015/06/08/091656](http://gfx.hatenablog.com/entry/2015/06/08/091656)
 
@@ -334,7 +334,7 @@ mClient.users()
 
 가장 간단한 방법을 하면 다음과 같이 됩니다.
 
-```java
+{% highlight java %}
 Observable.create(new Observable.OnSubscribe<List<User>>() {
     @Override
     public void call(Subscriber<? super List<User>> subscriber) {
@@ -342,11 +342,11 @@ Observable.create(new Observable.OnSubscribe<List<User>>() {
         subscriber.onCompleted();
     }
 });
-```
+{% endhighlight %}
 
 입니다만, 사실은 처리가 끝날 떄까지 subscriber(Activity나 Fragment 속의 Inner Class나 Lambda식 혹은 그것을 랩핑한 객체)에 대한 참조가 유지되기 때문에 AsyncTask와 마찬가지로 메모리 누수가 발생합니다. AbstractOnSubscribe를 사용하면 처음부터 `unsubscribe()`에 의한 취소 등을 지원하는게 가능해집니다.
 
-```java
+{% highlight java %}
 // 주의: AbstractOnSubscribe는 아직 Experimental 단계입니다.
 Observable.create(AbstractOnSubscribe.create(new Action1<AbstractOnSubscribe.SubscriptionState<List<User>, Void>>() {
     @Override
@@ -355,7 +355,7 @@ Observable.create(AbstractOnSubscribe.create(new Action1<AbstractOnSubscribe.Sub
         subscriptionState.onCompleted();
     }
 })).subscribeOn(Schedulers.io()); 
-```
+{% endhighlight %}
 
 ※ [rxjava-async-util](https://github.com/ReactiveX/RxJava/wiki/를 사용하면 `AsyncObservable.start()`를 사용하는 것도 가능합니다만, 값이 캐싱되거나 하는 일이 있기 때문에 이번엔 사용하지 않았습니다.
 
@@ -363,7 +363,7 @@ Observable.create(AbstractOnSubscribe.create(new Action1<AbstractOnSubscribe.Sub
 
 또 한가지 어려웠던 것 중 하나가 Hot과 Cold라는 개념이 있었던 것입니다.
 
-```java
+{% highlight java %}
 private Observable mObservable = mClient.users().map(users -> heavyMethod(users));
 
 ...
@@ -371,7 +371,7 @@ private Observable mObservable = mClient.users().map(users -> heavyMethod(users)
 mObservable.subscribe(users -> render(users));
 mObservable.subscribe(users -> render(users));
 mObservable.subscribe(users -> render(users));
-```
+{% endhighlight %}
 
 처음에는 `heavyMethod()`의 호출은 한번으로 끝난다고 생각해버렸습니다. 그러나 Observable은 비동기적이며 mObsercable에는 어떠한 결과도 캐싱되지 않고 `heavyMethod()`는 3회 호출되게 됩니다. 변경 알림을 구현하는 예에서 `share()`(`publish().refCount()`와 같음)의 호출을 하고 있었던 것은 분기의 뿌리에 처리 결과를 공유하기 때문입니다. 이처럼 분기의 뿌리가 되는 특별한 것을 Hot Observable이라고 하고, 그 이외의 일반적인 것들을 Cold Observable이라고 부릅니다. 이 부분은 ["Rx의 Hot과 Cold에 대해"](http://qiita.com/toRisouP/items/f6088963037bfda658d3)라는 글에서 자세히 설명하고 있습니다.
 
