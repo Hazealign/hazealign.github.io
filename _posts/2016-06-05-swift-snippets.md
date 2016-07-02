@@ -3,7 +3,7 @@ layout: post
 title: "[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음"
 date: 2016-06-05 12:00:00 +0900
 categories: Code
-tags: ios swift development async color string featured
+tags: ios swift development async color string
 ---
 
 이 글은 tattn님이 Qiita에 올린 [글](http://qiita.com/tattn/items/647e094936287a6bd2d3)을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다.
