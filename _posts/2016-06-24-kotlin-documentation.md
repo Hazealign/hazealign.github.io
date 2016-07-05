@@ -3,7 +3,7 @@ layout: post
 title: "Kotlin 코드를 문서화하자. (for Android)"
 date: 2016-06-24 19:30:00 +0900
 categories: Code
-tags: android kotlin development documentation featured kdoc dokka
+tags: android kotlin development documentation kdoc dokka
 ---
 
 처음 내가 Kotlin을 접할 때만 하더라도 많은 사람들이 Kotlin의 존재를 모르고 있었다. 그리고 Kotlin을 이리저리 설파하려고 하는 나조차도 최근에서야 나도 실무에서 Kotlin을 제대로 쓸 수 있게 되었다. 다른 사람과 협업을 할 때, 문서화는 중요하다. 내가 문법이나 이런걸 프로젝트에 문서화해둘 수는 없어도 프로젝트 안 클래스나 메소드, 프로퍼티들이 어떤 역할을 하고 있는지는 남길 수 있다.
