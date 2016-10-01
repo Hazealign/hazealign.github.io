@@ -32,6 +32,8 @@ export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib/
 export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/(버전)/include/
 {% endhighlight %}
 
+아 그리고 나서, `cargo clean`을 해주고 다시 빌드하는걸 잊지 마세요. :)
+
 # Reference
  - [https://github.com/sfackler/rust-openssl](https://github.com/sfackler/rust-openssl)
  - [https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099](https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099)
