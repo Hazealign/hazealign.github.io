@@ -6,13 +6,12 @@ date:   2016-03-03 12:00:00
 
 ## Profile
   - **Name** : 이하제 (Haze Lee)
-  - **Nickname** : Realignist / Hazealign
   - **Mail** : [hazelee@re.aligni.st](mailto:hazelee@re.aligni.st)
   - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
-  - **Where** : [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [Telegram](https://telegram.me/realignist) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) / [이상한모임](http://weirdmeetup.slack.com) 등에서 저를 찾을 수 있습니다.
+  - **Where** : 온라인 속에 떠돌아다니고 있습니다. [트위터](http://twitter.com/Hazealign), [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) 등에서 저를 찾을 수 있습니다.
   - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 기계보다 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
   - **Language** : 한국어 (Native), English (Not Good), 日本語 (Not Bad)
-  - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다. 또한 복용 중인 약으로 인하여 자몽을 먹으면 안됩니다. 
+  - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다.
   - **LOVE IT!!**
     - **캐릭터**
       - **피카츄**
@@ -24,8 +23,8 @@ date:   2016-03-03 12:00:00
       - 윤하
       - 김재중
       - 윤건
-      - 에픽하이(Epik High)
-      - 넬(Nell)
+      - 에픽하이 (Epik High)
+      - 넬 (Nell)
       - 홀린 (Hlin)
       - 옥상달빛
       - M2U
@@ -33,6 +32,9 @@ date:   2016-03-03 12:00:00
       - ESTi
     - **음악 (해외 아티스트)**
       - EQUAL
+      - SEKAI NO OWARI
+      - ONE OK ROCK
+      - FLOWER FLOWER
       - 凛として時雨 (린토시테시구레)
       - amazarashi
       - まじ娘 (마지코)
@@ -45,12 +47,6 @@ date:   2016-03-03 12:00:00
       - 黒沢ともよ (쿠로사와 토모요)
       - 雨宮天 (아마미야 소라)
       - 茅野愛衣 (카야노 아이)
-    - **만화 & 애니메이션**
-      - 히다마리 스케치
-      - 논논비요리
-      - 주문은 토끼입니까?
-      - PSYCHO-PASS
-      - 4월은 너의 거짓말
 
 ## Technologies
   - Web Framework
@@ -122,7 +118,9 @@ date:   2016-03-03 12:00:00
     - 탈옥 환경에서 iOS의 실시간 CPU, Memory 등의 리소스 사용량을 시스템 데몬 레벨에서 주고 받을 수 있도록 개발했습니다.
     - iOS의 CoreImage Framework를 이용해서 영수증 등의 문서를 인식하고, 필터 등을 이용해서 후처리하는 프로젝트를 개발했습니다.
     - Android에서 OpenCV를 이용해서 영수증 등의 문서를 인식하고, GPU 가속 필터를 이용해 후처리하는 프로젝트를 개발했습니다.
-  - **Frientrip (2016년 6월)**
+  - **Frientrip (2016년 6월 ~ )**
+    - 프립의 안드로이드 애플리케이션을 유지보수하면서 새로운 기능들을 개발했습니다. 그런 과정에서 Kotlin을 적극적으로 사용하였습니다.
+    - 프립의 서버를 유지보수하고 있습니다. 일부 기능의 개발이나 테스트 케이스를 작성하고 있습니다.
 
 ## Personal Development
 - **[eulrlega.js](https://github.com/Hazealign/eulrlega.js)**
@@ -178,13 +176,10 @@ date:   2016-03-03 12:00:00
     - 2013년에 내림프낭감압술을 통해서 현재는 병이 특별히 진행되지는 않습니다.
     - 잔존 청력과 입 모양을 통해 커뮤니케이션에는 지장이 없습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F43|F43.1">**외상 후 스트레스 장애 (Post Traumatic Stress Disorder)**</a>
-    - 만성화된 외상 후 스트레스 장애로 어릴 때에 생긴 트라우마가 있습니다.
-    - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F32|F32.1">**우울장애 (Major Depression Disorder)**</a>
+    - 만성화된 외상 후 스트레스 장애로 어릴 때에 생긴 트라우마가 있습니다. 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
+  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F33|F33.2”>**우울장애 (Major Depression Disorder)**</a>
     - 2014년 10월 ~ 현재
     - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F41|F41.0">**광장공포증을 동반한 공황장애 (Panic Disorder with Agoraphobia)**</a>
     - 2015년 2월 ~ 현재
-    - 다양한 요인의 스트레스로 인하여 예측 불가능한 상황에서 공황 발작을 겪고 있습니다.
-    - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-    - 광장공포증은 현재 거의 극복한 수준이며, 공황 발작 또한 항불안제로 컨트롤할 수 있는 수준입니다.
+    - 다양한 요인의 스트레스로 인하여 예측 불가능한 상황과 지하철, 버스 안 등 사람이 많은 곳에서 공황 발작을 겪고 있습니다. 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
