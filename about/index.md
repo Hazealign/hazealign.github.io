@@ -177,7 +177,7 @@ date:   2016-03-03 12:00:00
     - 잔존 청력과 입 모양을 통해 커뮤니케이션에는 지장이 없습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F43|F43.1">**외상 후 스트레스 장애 (Post Traumatic Stress Disorder)**</a>
     - 만성화된 외상 후 스트레스 장애로 어릴 때에 생긴 트라우마가 있습니다. 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F33|F33.2”>**우울장애 (Major Depression Disorder)**</a>
+  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F33|F33.2">**우울장애 (Major Depression Disorder)**</a>
     - 2014년 10월 ~ 현재
     - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
   - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F41|F41.0">**광장공포증을 동반한 공황장애 (Panic Disorder with Agoraphobia)**</a>
