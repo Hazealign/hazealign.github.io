@@ -11,7 +11,7 @@ SHA=`git rev-parse --verify HEAD`
 
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
-git clone https://${GH_TOKEN}@github.com/Hazealign/hazealign.github.io.git out
+git clone https://Hazealign:${GH_TOKEN}@github.com/Hazealign/hazealign.github.io.git out
 cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
@@ -38,4 +38,4 @@ git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Now that we're all set up, we can push.
-git push -f origin $TARGET_BRANCH 
+git push -f $TARGET_BRANCH 
