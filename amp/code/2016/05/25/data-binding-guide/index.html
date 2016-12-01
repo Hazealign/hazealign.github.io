@@ -5,23 +5,67 @@
     <title>[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.</title>
     <link rel="canonical" href="http://realignist.me/code/2016/05/25/data-binding-guide.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>
-    </style>
+    <style amp-custom>.radius-half {
+  border-radius: 50%; }
+
+.site-header {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .site-header .page-links {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 30px; }
+    .site-header .page-links a {
+      text-decoration: none;
+      color: #999999; }
+      .site-header .page-links a:hover {
+        color: #333333; }
+
+code {
+  word-break: break-all;
+  white-space: pre-wrap; }
+
+body {
+  padding: 5%;
+  max-width: 700px; }
+
+h1 {
+  font-size: 1.7em; }
+
+h2 {
+  font-size: 1.35em; }
+
+h5 {
+  text-align: center;
+  padding-top: 10%; }
+</style>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
   </head>
   <body>
-
-<h1 class="post-title">
-<!-- header start -->
-
-<!-- header end -->
-
-</h1>
-<span>
-2016-05-25 15:00:00 +0900 - 
-</span>
-<p>이 글은 <a href="https://github.com/izumin5210" class="user-mention">@izumin5210</a>님이 Qiita에 올린 <a href="http://qiita.com/izumin5210/items/2784576d86ce6b9b51e6">글</a>을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다.</p>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+      <div class="page-links">
+        <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
+      </div>
+    </header>
+    <h1 class="post-title">
+      [번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.
+    </h1>
+    <span>
+  2016년 05월 25일 작성 - Haze Lee.
+  </span> 
+  <p>이 글은 <a href="https://github.com/izumin5210" class="user-mention">@izumin5210</a>님이 Qiita에 올린 <a href="http://qiita.com/izumin5210/items/2784576d86ce6b9b51e6">글</a>을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다.</p>
 
 <h2 id="butterknife--">ButterKnife, 지금까지 고마웠어.</h2>
 
@@ -478,8 +522,8 @@ ButterKnife.apply(nameViews, DISABLE);
   - [extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google](https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters)
 </view></view></edittext></button></linearlayout></layout></samplerecycleradapter.bindingholder></textview></textview></textview></linearlayout></layout>
 
-
-<!-- footer start -->
+    <h5>
+       <!-- footer start -->
 
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
@@ -491,5 +535,6 @@ ButterKnife.apply(nameViews, DISABLE);
 
 <!-- footer end -->
 
-</body>
+    </h5>
+  </body>
 </html>

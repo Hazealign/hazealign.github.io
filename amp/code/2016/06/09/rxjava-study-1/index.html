@@ -5,23 +5,67 @@
     <title>GDG Android Korea RxJava 스터디: 1회차</title>
     <link rel="canonical" href="http://realignist.me/code/2016/06/09/rxjava-study-1.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>
-    </style>
+    <style amp-custom>.radius-half {
+  border-radius: 50%; }
+
+.site-header {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .site-header .page-links {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 30px; }
+    .site-header .page-links a {
+      text-decoration: none;
+      color: #999999; }
+      .site-header .page-links a:hover {
+        color: #333333; }
+
+code {
+  word-break: break-all;
+  white-space: pre-wrap; }
+
+body {
+  padding: 5%;
+  max-width: 700px; }
+
+h1 {
+  font-size: 1.7em; }
+
+h2 {
+  font-size: 1.35em; }
+
+h5 {
+  text-align: center;
+  padding-top: 10%; }
+</style>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
   </head>
   <body>
-
-<h1 class="post-title">
-<!-- header start -->
-
-<!-- header end -->
-
-</h1>
-<span>
-2016-06-09 10:00:00 +0900 - 
-</span>
-<h2 id="section">주제</h2>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+      <div class="page-links">
+        <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
+      </div>
+    </header>
+    <h1 class="post-title">
+      GDG Android Korea RxJava 스터디: 1회차
+    </h1>
+    <span>
+  2016년 06월 09일 작성 - Haze Lee.
+  </span> 
+  <h2 id="section">주제</h2>
 
 <p>```
 1. Queue로써 Rx 활용
@@ -119,8 +163,8 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
 
 <p>이번과 같이 Java의 언어 기능의 동작 원리를 알기 위해서는 언어 표준과 바이트코드까지에 대한 지식이 필요한데 개인적으로는 이렇게 깊게까지 공부해본 적이 없었기 때문에 좀 더 공부가 필요하다는 것을 많이 느꼈습니다. 개인적으로 Java 7에서 추가된 기능들이 그렇게 크지 않다고 생각했는데, 람다식과 병렬 스트림을 위해서 필요한 개념들은 Java 7에 추가되었다는 것을 보고 반성하게 되었습니다. </p>
 
-
-<!-- footer start -->
+    <h5>
+       <!-- footer start -->
 
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
@@ -132,5 +176,6 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
 
 <!-- footer end -->
 
-</body>
+    </h5>
+  </body>
 </html>

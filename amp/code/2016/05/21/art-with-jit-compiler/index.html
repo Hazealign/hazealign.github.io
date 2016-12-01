@@ -5,23 +5,67 @@
     <title>JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자</title>
     <link rel="canonical" href="http://realignist.me/code/2016/05/21/art-with-jit-compiler.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>
-    </style>
+    <style amp-custom>.radius-half {
+  border-radius: 50%; }
+
+.site-header {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .site-header .page-links {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 30px; }
+    .site-header .page-links a {
+      text-decoration: none;
+      color: #999999; }
+      .site-header .page-links a:hover {
+        color: #333333; }
+
+code {
+  word-break: break-all;
+  white-space: pre-wrap; }
+
+body {
+  padding: 5%;
+  max-width: 700px; }
+
+h1 {
+  font-size: 1.7em; }
+
+h2 {
+  font-size: 1.35em; }
+
+h5 {
+  text-align: center;
+  padding-top: 10%; }
+</style>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
   </head>
   <body>
-
-<h1 class="post-title">
-<!-- header start -->
-
-<!-- header end -->
-
-</h1>
-<span>
-2016-05-21 17:30:00 +0900 - 
-</span>
-<p>Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.</p>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+      <div class="page-links">
+        <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
+      </div>
+    </header>
+    <h1 class="post-title">
+      JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자
+    </h1>
+    <span>
+  2016년 05월 21일 작성 - Haze Lee.
+  </span> 
+  <p>Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.</p>
 
 <p>프로필 가이드에 기반한 최적화는 프로파일링을 통해 런타임의 퍼포먼스를 높여주는 컴파일러의 최적화 기술이다. 그러면 ART는 언제부터 JIT 컴파일 기능이 추가가 되었는지, 어떻게 동작하는지 궁금한 나같은 사람들을 위해 같이 ART의 소스 코드와 커밋을 살펴보기로 하자.</p>
 
@@ -76,8 +120,8 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
   <li><a href="http://www.slideshare.net/kmt-t/art-47396171">진화하는 ART</a></li>
 </ul>
 
-
-<!-- footer start -->
+    <h5>
+       <!-- footer start -->
 
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
@@ -89,5 +133,6 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
 
 <!-- footer end -->
 
-</body>
+    </h5>
+  </body>
 </html>

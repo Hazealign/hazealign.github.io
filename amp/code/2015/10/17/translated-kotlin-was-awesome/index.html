@@ -5,23 +5,67 @@
     <title>[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</title>
     <link rel="canonical" href="http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>
-    </style>
+    <style amp-custom>.radius-half {
+  border-radius: 50%; }
+
+.site-header {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .site-header .page-links {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 30px; }
+    .site-header .page-links a {
+      text-decoration: none;
+      color: #999999; }
+      .site-header .page-links a:hover {
+        color: #333333; }
+
+code {
+  word-break: break-all;
+  white-space: pre-wrap; }
+
+body {
+  padding: 5%;
+  max-width: 700px; }
+
+h1 {
+  font-size: 1.7em; }
+
+h2 {
+  font-size: 1.35em; }
+
+h5 {
+  text-align: center;
+  padding-top: 10%; }
+</style>
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
   </head>
   <body>
-
-<h1 class="post-title">
-<!-- header start -->
-
-<!-- header end -->
-
-</h1>
-<span>
-2015-10-17 09:00:00 +0900 - 
-</span>
-<h2 id="section">글에 앞서</h2>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+      <div class="page-links">
+        <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
+      </div>
+    </header>
+    <h1 class="post-title">
+      [번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.
+    </h1>
+    <span>
+  2015년 10월 17일 작성 - Haze Lee.
+  </span> 
+  <h2 id="section">글에 앞서</h2>
 
 <p>이 글은 일본의 omochimetaru님이 Qiita에 올린 <a href="http://qiita.com/omochimetaru/items/98e015b0b694dd97f323">Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</a>라는 글을 번역해서 만들었습니다. 번역을 흔쾌히 허락해주신 omochimetaru님께 감사하다는 말씀 드립니다. 또한 글에서 한국에서는 쓰이지 않는 표현들 등에 대해서는 의역이 섞여있습니다. 이 점 양해 부탁드립니다. 늦은 시간까지 오역을 찾고 번역의 질을 높이는데 많은 도움을 주시고 오히려 저보다 많이 고생해주신 이상한모임의 pluulove님, chiyodad님, lemonade님께도 감사하다는 말씀 드립니다. 읽어주셔서 감사합니다.</p>
 
@@ -73,11 +117,77 @@
 
 <h5 id="kotlin---1">Kotlin 도입 전</h5>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
+
+<span class="n">android</span> <span class="o">{</span>
+    <span class="n">compileSdkVersion</span> <span class="mi">22</span>
+    <span class="n">buildToolsVersion</span> <span class="s2">"22.0.1"</span>
+
+    <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="n">applicationId</span> <span class="s2">"jp.co.qoncept.apptest"</span>
+        <span class="n">minSdkVersion</span> <span class="mi">18</span>
+        <span class="n">targetSdkVersion</span> <span class="mi">22</span>
+        <span class="n">versionCode</span> <span class="mi">1</span>
+        <span class="n">versionName</span> <span class="s2">"1.0"</span>
+    <span class="o">}</span>
+    <span class="n">buildTypes</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+            <span class="n">minifyEnabled</span> <span class="kc">false</span>
+            <span class="n">proguardFiles</span> <span class="nf">getDefaultProguardFile</span><span class="o">(</span><span class="s1">'proguard-android.txt'</span><span class="o">),</span> <span class="s1">'proguard-rules.pro'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">compile</span> <span class="nf">fileTree</span><span class="o">(</span><span class="nl">dir:</span> <span class="s1">'libs'</span><span class="o">,</span> <span class="nl">include:</span> <span class="o">[</span><span class="s1">'*.jar'</span><span class="o">])</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support:appcompat-v7:22.2.0'</span>
+<span class="o">}</span></code></pre></div>
 
 <h5 id="kotlin---2">Kotlin 도입 후</h5>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
+<span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'kotlin-android'</span>
+
+<span class="n">android</span> <span class="o">{</span>
+    <span class="n">compileSdkVersion</span> <span class="mi">22</span>
+    <span class="n">buildToolsVersion</span> <span class="s2">"22.0.1"</span>
+
+    <span class="n">defaultConfig</span> <span class="o">{</span>
+        <span class="n">applicationId</span> <span class="s2">"jp.co.qoncept.apptest"</span>
+        <span class="n">minSdkVersion</span> <span class="mi">18</span>
+        <span class="n">targetSdkVersion</span> <span class="mi">22</span>
+        <span class="n">versionCode</span> <span class="mi">1</span>
+        <span class="n">versionName</span> <span class="s2">"1.0"</span>
+    <span class="o">}</span>
+    <span class="n">buildTypes</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+            <span class="n">minifyEnabled</span> <span class="kc">false</span>
+            <span class="n">proguardFiles</span> <span class="nf">getDefaultProguardFile</span><span class="o">(</span><span class="s1">'proguard-android.txt'</span><span class="o">),</span> <span class="s1">'proguard-rules.pro'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">sourceSets</span> <span class="o">{</span>
+        <span class="n">main</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">srcDirs</span> <span class="o">+=</span> <span class="s1">'src/main/kotlin'</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">compile</span> <span class="nf">fileTree</span><span class="o">(</span><span class="nl">dir:</span> <span class="s1">'libs'</span><span class="o">,</span> <span class="nl">include:</span> <span class="o">[</span><span class="s1">'*.jar'</span><span class="o">])</span>
+    <span class="n">compile</span> <span class="s1">'com.android.support:appcompat-v7:22.2.0'</span>
+    <span class="n">compile</span> <span class="s2">"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"</span>
+<span class="o">}</span>
+
+<span class="n">buildscript</span> <span class="o">{</span>
+    <span class="n">ext</span><span class="o">.</span><span class="na">kotlin_version</span> <span class="o">=</span> <span class="s1">'0.13.1514'</span>
+    <span class="n">repositories</span> <span class="o">{</span>
+        <span class="n">mavenCentral</span><span class="o">()</span>
+    <span class="o">}</span>
+    <span class="n">dependencies</span> <span class="o">{</span>
+        <span class="n">classpath</span> <span class="s2">"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">repositories</span> <span class="o">{</span>
+    <span class="n">mavenCentral</span><span class="o">()</span>
+<span class="o">}</span></code></pre></div>
 
 <p>나머지는 빌드해주면, Gradle 스크립트가 Kotlin 컴파일러의 다운로드부터 환경 설정까지 자동으로 전부 알아서 해줍니다. 새로운 버전의 Kotlin이 나왔다면 <code>ext.kotlin_version</code> 부분을 고쳐주면 됩니다.</p>
 
@@ -97,11 +207,19 @@
 
 <h3 id="section-7">외형</h3>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>세미콜론 없는 스타일, 코드 블록은 중괄호로 여닫는 스타일, 형태 표기는 Pascal 스타일(변수, 콜론, 자료형의 순서)을 볼 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">sum</span> <span class="p">=</span> <span class="m">0</span>
+
+<span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">).</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">}.</span><span class="n">forEach</span> <span class="p">{</span>
+  <span class="n">sum</span> <span class="p">+=</span> <span class="n">it</span>
+<span class="p">}</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span></code></pre></div>
 
 <p>클로져의 경우 중괄호<code>{}</code>만 쓰기 때문에 마지막 인자의 클로져를 함수 호출 뒤에 쓰고, 그 때 인자가 없으면 소괄호<code>()</code>를 생략할 수 있습니다.</p>
 
@@ -111,7 +229,24 @@
 
 <p>자료형으로 null을 참조할 수 있는 자료형과 없는 자료형이 구분됩니다. 타입을 검사하고 내용이 null인지 아닌지를 확인하면 그 시점에서 내용의 자료형으로 형변환됩니다. 일반적으로 이런 기능들을 제공할 떄 Optional이라고 하는데 Kotlin에서는 이 기능을 Nullable이라고 합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">getLengthOfString</span><span class="p">(</span><span class="n">str</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">getLengthOfStringOpt</span><span class="p">(</span><span class="n">str</span><span class="p">:</span> <span class="n">String</span><span class="p">?):</span> <span class="n">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">str</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">getLengthOfString</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="m">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="n">getLengthOfString</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">getLengthOfStringOpt</span><span class="p">(</span><span class="s">"world"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">getLengthOfStringOpt</span><span class="p">(</span><span class="k">null</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"$a, $b, $c"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Nullable 자료형은 자료형의 오른쪽에 물음표<code>?</code>를 붙여 표기합니다. Swift의 Optional과 같아서 기쁩니다. Java의 언어 기능에 Optional은 존재하지 않습니다. 아마 NullPointerException으로 죽겠죠.</p>
 
@@ -120,25 +255,132 @@
 <p>Nullable의 Nullable을 만들 수가 없습니다. 그냥 Nullable이 되어버립니다.
 Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하게 됩니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">?):</span> <span class="n">Int</span><span class="p">??</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">desc</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">??)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"None"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="s">"Some(None)"</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="s">"Some(Some($a))"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">??</span> <span class="p">=</span> <span class="n">wrap</span><span class="p">(</span><span class="k">null</span><span class="p">)</span>
+    <span class="n">desc</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// Some(None)이 나와야하지만, None이 되어버린다.</span>
+<span class="p">}</span></code></pre></div>
 
 <h3 id="smart-casts">플로우 기반 형변환 (Smart Casts)</h3>
 
 <p>if 문에서 null인지를 체크하거나, is 연산자를 통해 타입을 검사하면 Kotlin에서는 그것을 고려해서 자동으로 형변환됩니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">open</span> <span class="k">class</span> <span class="n">Animal</span> <span class="p">{}</span>
+<span class="k">class</span> <span class="nl">Cat</span><span class="p">:</span> <span class="n">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fun</span> <span class="n">nyaa</span><span class="p">()</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"nyaa"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">class</span> <span class="nl">Dog</span><span class="p">:</span> <span class="n">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fun</span> <span class="n">wan</span><span class="p">()</span> <span class="p">{</span> <span class="n">println</span><span class="p">(</span><span class="s">"wan"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">fun</span> <span class="n">speak</span><span class="p">(</span><span class="nl">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">animal</span> <span class="kt">is</span> <span class="n">Cat</span><span class="p">)</span> <span class="p">{</span> <span class="n">animal</span><span class="p">.</span><span class="n">nyaa</span><span class="p">()</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">animal</span> <span class="kt">is</span> <span class="n">Dog</span><span class="p">)</span> <span class="p">{</span> <span class="n">animal</span><span class="p">.</span><span class="n">wan</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">fun</span> <span class="n">speak2</span><span class="p">(</span><span class="nl">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">animal</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"null"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">speak</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">fun</span> <span class="n">main</span><span class="p">(</span><span class="nl">args</span><span class="p">:</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="n">Cat</span><span class="p">())</span> <span class="c1">// nyaa라고 나옴</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="n">Dog</span><span class="p">())</span> <span class="c1">// wan이라고 나옴</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="n">null</span><span class="p">)</span> <span class="c1">// null이라고 나옴</span>
+<span class="p">}</span></code></pre></div>
 
 <p>speak2의 앞 부분에서 null 인지를 체크하고 return 하고 있으므로 if 이후 <code>Animal?</code>이 아니라 <code>Animal</code> 자료형으로 변했으며, speak가 호출될 수 있습니다. speak의 if문의 분기에서 is를 이용한 체크를 통해 서브클래스인 <code>Cat</code>이나 <code>Dog</code>로 변해있으며 전용 메소드를 호출할 수 있습니다.</p>
 
 <p>동일한 코드에 대한 Swift 버전은 아래와 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">Animal</span> <span class="p">{}</span>
+<span class="k">class</span> <span class="nl">Cat</span><span class="p">:</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">nyaa</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">"nyaa"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">class</span> <span class="nl">Dog</span><span class="p">:</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">wan</span><span class="p">()</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">"wan"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">speak</span><span class="p">(</span><span class="nl">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">animal</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Cat</span> <span class="p">{</span> <span class="n">animal</span><span class="p">.</span><span class="n">nyaa</span><span class="p">()</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">animal</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Dog</span> <span class="p">{</span> <span class="n">animal</span><span class="p">.</span><span class="n">wan</span><span class="p">()</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">func</span> <span class="n">speak2</span><span class="p">(</span><span class="nl">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">guard</span> <span class="k">let</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">animal</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"null"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">speak</span><span class="p">(</span><span class="n">animal</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="n">Cat</span><span class="p">())</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="n">Dog</span><span class="p">())</span>
+    <span class="n">speak2</span><span class="p">(</span><span class="nb">nil</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></div>
 
 <p>speak2에서는 이를 위해 일부러 guard 문이라는 것을 사용하지 않으면 안됩니다. speak, speak2 둘 다 <code>let animal = </code>을 쓰는 것이 중복됩니다. if 괄호를 생략할 수 있는 것은 좋네요.</p>
 
 <p>Java에서는 아마 아래와 같이 되겠죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">nyaa</span><span class="o">()</span> <span class="o">{</span> <span class="n">Ideone</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"nyaa"</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">wan</span><span class="o">()</span> <span class="o">{</span> <span class="n">Ideone</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"wan"</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Ideone</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span> <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">speak</span><span class="o">(</span><span class="n">Animal</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">animal</span> <span class="k">instanceof</span> <span class="n">Cat</span><span class="o">){</span>
+            <span class="n">Cat</span> <span class="n">cat</span> <span class="o">=</span> <span class="o">(</span><span class="n">Cat</span><span class="o">)</span><span class="n">animal</span><span class="o">;</span>
+            <span class="n">cat</span><span class="o">.</span><span class="na">nyaa</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">animal</span> <span class="k">instanceof</span> <span class="n">Dog</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Dog</span> <span class="n">dog</span> <span class="o">=</span> <span class="o">(</span><span class="n">Dog</span><span class="o">)</span><span class="n">animal</span><span class="o">;</span>
+            <span class="n">dog</span><span class="o">.</span><span class="na">wan</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">speak2</span><span class="o">(</span><span class="n">Animal</span> <span class="n">animal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">animal</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">print</span><span class="o">(</span><span class="s">"null"</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">speak</span><span class="o">(</span><span class="n">animal</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Exception</span> <span class="o">{</span>
+        <span class="n">speak2</span><span class="o">(</span><span class="k">new</span> <span class="nf">Cat</span><span class="o">());</span>
+        <span class="n">speak2</span><span class="o">(</span><span class="k">new</span> <span class="nf">Dog</span><span class="o">());</span>
+        <span class="n">speak2</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 
 <p>null 체크에 관련해서는 그저 코드가 올바르길 기도하고 실행하는 수밖에 없습니다. 그리고 speak의 내용은 <code>Cat</code>과 <code>Dog</code>가 각각 세 번씩 나옵니다. (형변환용 메소드를 만든다면 2번 + null 체크로 줄일 수는 있겠지만요.)</p>
 
@@ -146,11 +388,19 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Nullable이 null일 땐 충돌이 나는 내용의 추출과 타입이 다를 경우에는 충돌하는 형변환이 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">?,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Animal</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">c</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">a</span><span class="o">!!</span> <span class="c1">// null이라면 Exception</span>
+    <span class="k">val</span> <span class="py">d</span><span class="p">:</span> <span class="n">Cat</span><span class="p">?</span> <span class="p">=</span> <span class="n">b</span> <span class="k">as</span><span class="p">?</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 null</span>
+    <span class="k">val</span> <span class="py">e</span><span class="p">:</span> <span class="n">Cat</span> <span class="p">=</span> <span class="n">b</span> <span class="k">as</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 Exception</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Swift에서는 아래와 같이 작성할 수 있겠죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="o">?</span><span class="p">,</span> <span class="nl">b</span><span class="p">:</span> <span class="n">Animal</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">c</span><span class="p">:</span> <span class="n">Int</span> <span class="o">=</span> <span class="n">a</span><span class="o">!</span> <span class="c1">// nil이라면 Exception</span>
+    <span class="k">let</span> <span class="nl">d</span><span class="p">:</span> <span class="n">Cat</span><span class="o">?</span> <span class="o">=</span> <span class="n">b</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 nil</span>
+    <span class="k">let</span> <span class="nl">e</span><span class="p">:</span> <span class="n">Cat</span> <span class="o">=</span> <span class="n">b</span> <span class="kt">as</span><span class="o">!</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 Exception</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Kotlin에서는 두개의 느낌표<code>!</code>로 처리합니다. Swift에서는 한개죠.
 위험한 as에서는 Swift에서는 느낌표가 붙어있습니다.</p>
@@ -159,37 +409,62 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Kotlin에서는 Optional로 둘러쌓인 값의 메소드를 호출할 때, 값이 있다면 메소드를 호출할 수 있고 null일 경우에는 null값이 필요할 때, if문에서의 타입 체크를 하지 않고도 다음과 같이 작성할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"name=$name"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Elvis 연산자를 사용하면 null인 경우 기본값을 지정할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="o">?:</span> <span class="s">"no name"</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"name=$name"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Swift에서도 물음표 + 점<code>?.</code>으로 쓰이는 메소드 호출이 있습니다. 또한 elvis 연산자에 대해서는 Swift에서는 물음표 두개<code>??</code>입니다.
 비슷해보이는 두 언어지만, 물음표 + 점<code>?.</code>을 연속해서 사용할 때에는 구문 트리가 달라집니다.
 사용자 이름의 문자 수를 가져오는 경우를 생각해보세요.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">"tanaka"</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">user</span><span class="o">?.</span><span class="n">name</span><span class="o">?.</span><span class="n">length</span><span class="p">())</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Kotlin에서는 <code>?.</code>가 두번 나옵니다. 이것은 다음과 같이 해석할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="p">(</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="p">)</span><span class="o">?.</span><span class="n">length</span><span class="p">()</span></code></pre></div>
 
 <p><code>?.</code>을 쓰지 않는 경우에는 아래와 같이 쓸 수 있겠습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="k">null</span> <span class="p">}</span>
+<span class="k">val</span> <span class="py">length</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">name</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="k">null</span> <span class="p">}</span></code></pre></div>
 
 <p>마찬가지를 Swift에서는 아래와 같이 표현할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"tanaka"</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">hoge</span><span class="p">(</span><span class="nl">user</span><span class="p">:</span> <span class="n">User</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">user</span><span class="o">?</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></div>
 
 <p>name 뒤에 <code>?.</code>가 Swift에서는 <code>.</code>로 나와있습니다. 이것은 아래와 같이 해석되기 때문입니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">user</span><span class="o">?</span><span class="p">.(</span> <span class="n">name</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span> <span class="p">)</span></code></pre></div>
 
 <p>하지만, 이 괄호는 개념을 설명하기 위해서 임의로 만든 것이며 Swift로는 올바른 문법이 아닙니다. 고쳐서 쓴다면 아래와 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="n">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">characters</span><span class="p">.</span><span class="n">count</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">nil</span>
+<span class="p">}</span></code></pre></div>
 
 <p>정리하면 다음과 같습니다. Kotlin의 경우 <code>?.</code>을 다음 번만의 키워드만 처리하고 그 결과를 다음에도 사용합니다. Swift의 경우에는 <code>?.</code>을 오른쪽 모두를 묶어버리며 None일 경우 오른쪽 모두를 스킵합니다. 이 차이는 똑같은 외형의 코드가 전혀 다른 의미를 가지게 된다는 뜻이므로 이식하는데는 주의할 필요가 있습니다.</p>
 
@@ -201,15 +476,21 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>위에서 쓴 <code>?.</code>을 사용하면 Optional이어도 귀찮지 않게 코드를 짤 수 있습니다만 아래와 같이 <code>?.</code>로는 쓸 수 없지만 null이 아닌 경우 처리를 계속하고 싶은 케이스가 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">result</span><span class="p">:</span> <span class="n">Boolean</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">result</span> <span class="p">=</span> <span class="n">write</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">result</span> <span class="p">=</span> <span class="k">false</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이런 케이스에서는 Kotlin에서는 다음과 같이 쓰는 것이 가능합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">result</span><span class="p">:</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">write</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span> <span class="o">?:</span> <span class="k">false</span></code></pre></div>
 
 <p>let의 정의와 구현은 다음과 같이 되어있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="n">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">let</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="k">this</span><span class="p">)</span></code></pre></div>
 
 <p>이것은 모든 타입 T에서 정의된 확장 메소드로 인자로 클로져를 하나 가지고 있습니다. 그리고 그 클로져에 메소드의 리시버가 전달되어 불러질 것이고 그 자체가 let 자체의 값이 됩니다.</p>
 
@@ -217,7 +498,7 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Swift의 경우에는 Optional 자체에 정의된 <code>flatMap</code> 메소드를 쓸 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">result</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="n">write</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span> <span class="o">??</span> <span class="nb">false</span></code></pre></div>
 
 <p>이 경우에는 Optional 자체의 메소드임에도 불구하고 <code>?.</code>가 아닌 <code>.</code>이 됩니다.</p>
 
@@ -225,15 +506,40 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>기본적인 콜백 함수가 쓸 수 있습니다. 클로져가 <code>{}</code>로 표현되기 때문에 쉽게 쓸 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="p">(</span><span class="m">0.</span><span class="p">.</span><span class="m">10</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">}</span>
+        <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">it</span> <span class="p">*</span> <span class="n">it</span> <span class="p">}</span>
+        <span class="p">.</span><span class="n">fold</span><span class="p">(</span><span class="s">""</span><span class="p">)</span> <span class="p">{</span> <span class="n">s</span><span class="p">,</span> <span class="n">i</span> <span class="p">-&gt;</span> 
+            <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="p">!=</span> <span class="s">""</span><span class="p">)</span> <span class="n">s</span> <span class="p">+</span> <span class="s">"_"</span>  <span class="k">else</span> <span class="s">""</span><span class="p">)</span> <span class="p">+</span> <span class="n">i</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span>
+        <span class="p">}</span>
+
+    <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// 0_4_16_36_64_100가 나온다.</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Swift도 비슷한 느낌으로 작성할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">.</span><span class="mf">.10</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}</span>
+    <span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">*</span> <span class="err">$</span><span class="mi">0</span> <span class="p">}</span>
+    <span class="p">.</span><span class="n">reduce</span><span class="p">(</span><span class="s">""</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">s</span> <span class="o">=</span> <span class="err">$</span><span class="mi">0</span> <span class="o">!=</span> <span class="s">""</span> <span class="o">?</span> <span class="err">$</span><span class="mi">0</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">:</span> <span class="s">""</span>
+        <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// 0_4_16_36_64_100가 나온다.</span></code></pre></div>
 
 <p>Java라면 이렇게 나오겠죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">rangeClosed</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">))</span>
+    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">reduce</span><span class="o">(</span><span class="s">""</span><span class="o">,</span> <span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span> <span class="o">-&gt;</span> 
+        <span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">)</span> <span class="o">?</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">:</span> <span class="s">""</span><span class="o">)</span> <span class="o">+</span> <span class="n">i</span>
+    <span class="o">,</span> <span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="o">);</span>
+
+<span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">);</span></code></pre></div>
 
 <p>Kotlin은 Swift의 클로져 리터럴과 함수를 호출할 때의 표기법이 비슷합니다. Swift 버전의 reduce의 내부는 한 줄로 쓰고 싶었습니다만 타입 추론에 타임아웃이 걸려서 컴파일하지 못했기 때문에 let으로 나눴습니다. Kotlin에서는 클로져의 암시적 인자는 인자가 1개일 때만 <code>it</code>을 쓸 수 있습니다. 복수일 때는 인자명이 필요합니다. Swift에서는 <code>$0</code>, <code>$1</code>, <code>$2</code>… 이런 식으로 쓰입니다. 또 Kotlin에서는 삼항연산자가 없지만 if문을 이용해서 쓸 수 있습니다.</p>
 
@@ -241,15 +547,25 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Kotlin에서는 문자열 안에서 <code>$</code>로 변수를, <code>${}</code>로 식을 호출할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"i is $i, user name is ${user.name}"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p><code>$i</code> 부분이 변수가, <code>${user.name}</code> 부분이 식을 표시합니다. Swift에서는 <code>\()</code>로 쓸 수 있죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="nl">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">"i is \(i), user name is \(user.name)"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Java에서는 이런 기능에 대한 문법이 없으니 아래와 같이 되겠죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">print</span><span class="o">(</span><span class="s">"i is "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">", user name is "</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">hoge2</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">printf</span><span class="o">(</span><span class="s">"i is %d, user name is %s"</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+<span class="o">}</span></code></pre></div>
 
 <h3 id="java---sam-">Java의 단일 추상 메소드(SAM) 변환</h3>
 
@@ -257,11 +573,18 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>예를 들면, 아래가 Java7의 코드입니다. 안드로이드에서 자주 볼 수 있는 버튼의 클릭 핸들러를 설정하는 코드입니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="o">{</span>
+    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+    <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">"clicked"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span></code></pre></div>
 
 <p>이게 Java8이라면 다음과 같이 표현할 수 있게 됩니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">view</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">"clicked"</span><span class="o">);</span>
+<span class="o">});</span></code></pre></div>
 
 <p>이는 Java8에서 람다식을 도입함에 있어 Java7 이전에 있었던 코드의 낭비하거나 수정하지 않고도 람다식을 이용해 보다 쾌적하게 쓸 수 있게 되었습니다.</p>
 
@@ -276,7 +599,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>위에 예시는 Kotlin에서는 아래와 같이 쓸 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">button</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span> <span class="p">-&gt;</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"clicked"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>쓰기 쉬워 좋네요. 위의 예에서는 인수가 클로져 한개일 뿐이라 함수 호출 괄호<code>()</code>를 생략했습니다.</p>
 
@@ -284,13 +609,53 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Kotlin에서는 기존 클래스에 대해 메소드를 추가해 확장하는 것이 가능합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">Int</span><span class="p">.</span><span class="n">square</span><span class="p">():</span> <span class="n">Int</span> <span class="p">=</span> <span class="k">this</span> <span class="p">*</span> <span class="k">this</span>
+<span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">&gt;</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">evens</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">withIndex</span><span class="p">().</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">index</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">}.</span><span class="n">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">value</span> <span class="p">}</span>
+<span class="k">fun</span> <span class="nf">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;.</span><span class="n">squareEvens</span><span class="p">():</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">evens</span><span class="p">().</span><span class="n">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">square</span><span class="p">()</span> <span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="m">3</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">square</span><span class="p">())</span> <span class="c1">// 9라고 출력</span>
+
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">evens</span><span class="p">())</span> <span class="c1">// [a, c, e]라고 출력</span>
+
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">squareEvens</span><span class="p">())</span> <span class="c1">// [100, 900, 2500]라고 출력</span>
+<span class="p">}</span></code></pre></div>
 
 <p>제너릭 자료형의 확장 메소드에 관해서는 T 모두에 대한 것과 특정 T에 대한 정의가 가능합니다. 함수의 본문은 <code>=</code> 스타일로 써봤습니다.</p>
 
 <p>Swift에서는 다음과 같이 쓸 수 있겠습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="n">IntegerType</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">square</span><span class="p">()</span><span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span> <span class="o">*</span> <span class="nb">self</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">extension</span> <span class="n">Array</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">evens</span><span class="p">()</span><span class="o">-&gt;</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">enumerate</span><span class="p">().</span><span class="n">filter</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}.</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">element</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">extension</span> <span class="n">Array</span> <span class="k">where</span> <span class="nl">Element</span><span class="p">:</span> <span class="n">IntegerType</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">squareEvens</span><span class="p">()</span><span class="o">-&gt;</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Element</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">evens</span><span class="p">().</span><span class="n">map</span> <span class="p">{</span> <span class="err">$</span><span class="mf">0.</span><span class="n">square</span><span class="p">()</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">square</span><span class="p">())</span> <span class="c1">// 9라고 출력</span>
+
+    <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"e"</span><span class="p">]</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">evens</span><span class="p">())</span> <span class="c1">// ["a", "c", "e"]라고 출력</span>
+
+    <span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">squareEvens</span><span class="p">())</span> <span class="c1">// [100, 900, 2500]라고 출력</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></div>
 
 <p>Element에 대한 제약은 프로토콜에 필요가 있으므로 <code>Int</code>로 쓸 수 없어서 그 대신 <code>IntegerType</code>으로 되어있습니다. 이유를 잘 모르겠습니다.</p>
 
@@ -298,7 +663,37 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Java에는 확장 메소드라는 개념이 없기 때문에 첫 번째 인수에 this를 가지는 정적 메소드로 구현해야되겠죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">intSquare</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">listEvens</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">intListSquareEvens</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">listEvens</span><span class="o">(</span><span class="n">list</span><span class="o">).</span><span class="na">stream</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">intSquare</span><span class="o">(</span><span class="n">i</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Exception</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="n">print</span><span class="o">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">intSquare</span><span class="o">(</span><span class="n">a</span><span class="o">));</span> <span class="c1">// 9라고 출력</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">listEvens</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span> <span class="s">"b"</span><span class="o">,</span> <span class="s">"c"</span><span class="o">,</span> <span class="s">"d"</span><span class="o">,</span> <span class="s">"e"</span><span class="o">));</span>
+        <span class="n">print</span><span class="o">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">b</span><span class="o">);</span> <span class="c1">// [a, c, e]라고 출력</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">intListSquareEvens</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
+        <span class="n">print</span><span class="o">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">c</span><span class="o">);</span> <span class="c1">// [100, 900, 2500]라고 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 
 <p>이 방식이 괴로운 것은 충돌을 피하고자 메소드 이름에 접두사가 필요하다는 점과 호출할 때 <code>f(g(h(x)))</code>라는 형식이 되므로 나중에 적용하는 함수일수록 앞에 오는 등의 문제가 있습니다. 특히 이식을 할 때에는 원래 메소드 체인의 형태로 되어있다면 기술 순서가 완전히 거꾸로 되어버리기 때문에 매우 번거로운 작업이 됩니다. 개인적으로는 이 부분이 가독성도 떨어트린다고 생각합니다.</p>
 
@@ -308,14 +703,70 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <p>Kotlin에서는 오퍼레이터 오버로드라는 기능이 존재합니다. 하지만 직접 메소드 이름에 연산자를 표기하는 Swift와 C++과는 달리 Kotlin에서는 미리 정해진 연산자에 해당하는 이름의 메소드를 operator 키워드와 함께 구현합니다. 스스로 연산자를 추가할 수는 없지만 인수가 하나인 메소드를 삽입할 수 있는 기능이 있으므로 키워드로 연산자를 추가하는 것은 할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">data</span> <span class="k">class</span> <span class="nc">Vector2</span><span class="p">(</span><span class="k">val</span> <span class="py">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">val</span> <span class="py">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">operator</span> <span class="k">fun</span> <span class="nf">plus</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">):</span> <span class="n">Vector2</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="n">x</span> <span class="p">+</span> <span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">+</span> <span class="n">o</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">dot</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">):</span> <span class="n">Double</span> <span class="p">=</span> <span class="n">x</span> <span class="p">*</span> <span class="n">o</span><span class="p">.</span><span class="n">x</span> <span class="p">+</span> <span class="n">y</span> <span class="p">*</span> <span class="n">o</span><span class="p">.</span><span class="n">y</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">toString</span><span class="p">():</span> <span class="n">String</span> <span class="p">=</span> <span class="s">"($x, $y)"</span>
+<span class="p">}</span>
+
+<span class="n">operator</span> <span class="k">fun</span> <span class="nf">Double</span><span class="p">.</span><span class="n">times</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">):</span> <span class="n">Vector2</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="k">this</span> <span class="p">*</span> <span class="n">o</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span> <span class="p">*</span> <span class="n">o</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">)</span> <span class="p">+</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">3.0</span><span class="p">,</span> <span class="m">4.0</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// (4.0, 6.0)라고 출력</span>
+
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="m">3.0</span> <span class="p">*</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="m">1.0</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">// (0.0, 3.0)라고 출력</span>
+
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">2.0</span><span class="p">,</span> <span class="m">0.0</span><span class="p">)</span> <span class="n">dot</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">// 4.0라고 출력</span>
+<span class="p">}</span></code></pre></div>
 
 <p>덧셈은 메소드로 곱셈은 Double 자료형의 확장 메소드로 썼습니다. <code>dot</code>은 보통의 방법입니다만 중간에 저렇게 사용할 수 있습니다.
 데이터 클래스와 기본 생성자의 기능도 쓰고 있습니다.</p>
 
 <p>Swift로도 써봤습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">Vector2</span><span class="p">:</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">x</span><span class="p">:</span> <span class="n">Double</span>
+    <span class="k">let</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Double</span>
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">_</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"(\(x), \(y))"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="o">+</span><span class="p">(</span><span class="nl">l</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">,</span> <span class="nl">r</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Vector2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector2</span><span class="p">(</span><span class="n">l</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">r</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">r</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">func</span> <span class="o">*</span><span class="p">(</span><span class="nl">l</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">r</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Vector2</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Vector2</span><span class="p">(</span><span class="n">l</span> <span class="o">*</span> <span class="n">r</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span> <span class="o">*</span> <span class="n">r</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kr">infix</span> <span class="kr">operator</span> <span class="err">●</span> <span class="p">{</span> 
+    <span class="kr">associativity</span> <span class="kr">left</span>
+    <span class="kr">precedence</span> <span class="mi">140</span> 
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="err">●</span><span class="p">(</span><span class="nl">l</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">,</span> <span class="nl">r</span><span class="p">:</span> <span class="n">Vector2</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">r</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">l</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">r</span><span class="p">.</span><span class="n">y</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">Vector2</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// (4.0, 6.0)라고 출력</span>
+
+    <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">Vector2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">// (0.0, 3.0)라고 출력</span>
+
+    <span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="err">●</span> <span class="n">Vector2</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">// 4.0라고 출력</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></div>
 
 <p>●은 유니코드 문자입니다. 이번 예시에서는 Swift의 기능을 이용해 이 마크를 연산자로 정의했습니다.</p>
 
@@ -330,7 +781,30 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 상수는 val, 변수는 var로 정의하며, val에는 getter를, var에는 getter와 setter를 정의할 수 있습니다.
 getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되며 field라고 하는 키워드로 액세스할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">var</span> <span class="py">familyName</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">"야마다"</span>
+    <span class="k">var</span> <span class="py">firstName</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">"타로"</span>
+
+    <span class="k">val</span> <span class="py">fullName</span><span class="p">:</span> <span class="n">String</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="s">"$familyName $firstName"</span>
+    <span class="k">var</span> <span class="py">died</span><span class="p">:</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="k">false</span>
+        <span class="k">get</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">field</span> <span class="p">}</span>
+        <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">field</span> <span class="p">=</span> <span class="n">value</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">println</span><span class="p">(</span><span class="s">"${fullName}는 죽어버렸다..."</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="n">constructor</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="n">id</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">u</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">familyName</span> <span class="p">=</span> <span class="s">"사이토"</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">died</span> <span class="p">=</span> <span class="k">true</span> <span class="c1">// 사이토 타로는 죽어버렸다... 라고 표시됩니다.</span>
+<span class="p">}</span></code></pre></div>
 
 <p>위의 예에서 <code>id</code>는 상수이기 때문에 getter가 자동 생성되었고, <code>familyName</code>, <code>firstName</code>은 변수이기 때문에 getter와 setter가 자동으로 생성된 것을 볼 수 있습니다.
 <code>fullName</code>은 getter를 직접 만들어서 다른 프로퍼티로부터 동적으로 가져올 수 있도록 했습니다. <code>died</code>는 getter와 setter를 직접 만들어서 지원 필드를 사용했습니다.</p>
@@ -339,25 +813,79 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <p>Kotlin에서는 <code>didSet</code>과 같은 언어 기능은 존재하지 않기 때문에 이식은 setter에서 에뮬레이트하는 방식을 이용합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="kt">id</span><span class="o">:</span> <span class="n">Int</span>
+    <span class="k">var</span> <span class="nl">familyName</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"yamada"</span>
+    <span class="k">var</span> <span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">"taro"</span>
+
+    <span class="k">var</span> <span class="nl">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"\(familyName) \(firstName)"</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">died</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">{</span>
+        <span class="kr">didSet</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">died</span> <span class="p">{</span>
+                <span class="n">print</span><span class="p">(</span><span class="s">"\(fullName)는 죽어버렸다..."</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="kt">id</span><span class="o">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="kt">id</span> <span class="o">=</span> <span class="kt">id</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">u</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">familyName</span> <span class="o">=</span> <span class="s">"saito"</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">died</span> <span class="o">=</span> <span class="nb">true</span> <span class="c1">// saito taro는 죽어버렸다... 라고 표시됩니다.</span>
+<span class="p">}</span>
+
+<span class="n">main</span><span class="p">()</span></code></pre></div>
 
 <p>Java에서는 필드와 프로퍼티는 명확하게 구분되어있으며 메소드로 직접 getter과 setter를 구현한 것을 프로퍼티라고 부릅니다.</p>
 
 <p>이 부분이 이식할 때 귀찮은 일이 되어버립니다. Swift로 쓰인 다음 클래스가 있다고 생각해봅시다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">died</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">hoge</span><span class="p">(</span><span class="nl">u</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">died</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이것을 Java의 필드로 이식해보겠습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">died</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">u</span><span class="o">.</span><span class="na">died</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="o">}</span></code></pre></div>
 
 <p>그 뒤에 Swift 코드가 이렇게 변했다고 칩시다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">User</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">died</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="kr">didSet</span> <span class="p">{</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">"죽어버렸다!"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이런 경우 Java에서는 다음과 같이 수정해야합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">died</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="kt">boolean</span> <span class="nf">getDied</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">died</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kt">void</span> <span class="nf">setDied</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="n">died</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">"죽어버렸다!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">u</span><span class="o">.</span><span class="na">setDied</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="o">}</span></code></pre></div>
 
 <p>getter와 setter를 직접 구현해야 하는 것은 둘째치고, 필드에 대입하고 있는 부분을 setter를 호출할 때 구현해야 할 필요가 있습니다.</p>
 
@@ -370,18 +898,24 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 <p>Java에서 필드 <code>name</code>에 대해 <code>name</code>이라는 프로퍼티를 만들 때는 getter로 <code>String getName ()</code>과 setter로 <code>void setName(String name)</code>을 정의합니다.
 그리고 호출 시, 아래와 같이 함수 호출의 형태를 취합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// 읽기</span>
+<span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="c1">// 쓰기</span>
+<span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">newName</span><span class="o">);</span></code></pre></div>
 
 <p>하지만 Kotlin의 경우에는 프로퍼티 <code>name</code>에 대해서 호출할 때 함수의 형태를 띄지 않습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// 읽기</span>
+<span class="k">val</span> <span class="py">name</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span>
+<span class="c1">// 쓰기</span>
+<span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">newName</span></code></pre></div>
 
 <p>함수 호출의 형태는 아닙니다만 name에 대한 getter와 setter가 동작하게 됩니다.</p>
 
 <p>Kotlin에서 Java 메소드를 호출할 때 이러한 <code>getXxxx()</code>와 <code>setXxxx(value)</code>를 Kotlin의 프로퍼티 <code>xxxx</code>를 취급할 때 엑세스할 수 있습니다.
 예를 들어, 아래코드는 안드로이드에서 버튼을 보이지 않게 만드는 코드입니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">button</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span></code></pre></div>
 
 <p>Android SDK는 Java로 작성되었으므로 원래는 <code>setVisibility()</code>를 호출하는게 맞지만, Kotlin에서는 마치 <code>visibility</code>라는 프로퍼티에 접근하는 것처럼 사용할 수 있습니다.</p>
 
@@ -393,7 +927,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <p>예로 Lazy를 들어보겠습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">lazy</span> <span class="p">{</span>
+    <span class="n">familyName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">firstName</span>
+<span class="p">}</span></code></pre></div>
 
 <p><code>fullName</code>은 상수이지만, 처음 getter가 호출되었을 때 lazy에 전달하는 클로져가 실행되고 그 결과가 반환됩니다. 두번째 이후부터 getter 호출에서는 첫번째 결과가 저장됩니다. 만약 이것을 Java로 구현하고자 할 때는, getter에서 if문을 작성해야만 합니다. 이러한 일반적으로 중복되는 코드를 쓸 필요가 없습니다.</p>
 
@@ -405,12 +941,12 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <p>또 한 가지, 흥미로운 델리게이트를 소개해보곘습니다. </p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">Delegates</span><span class="p">.</span><span class="n">notNull</span><span class="p">()</span></code></pre></div>
 
 <p>이것은 한번 설정되지 않은 상태에서 getter가 호출될 경우 예외가 생겨 크래시가 납니다. 한번 설정된 이후에는 getter가 일반적으로 값을 읽어올 수 있습니다.
 Swift에서 이와 비슷한 형태를 갖는 것은 느낌표<code>!</code> 형태입니다. 정확하게 말하자면 <code>Implicitly Unwrapped Optional</code>이라고 말합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="o">!</span></code></pre></div>
 
 <p>이것은 초기 상태가 nil로 nil의 상태로 읽었을 때는 크래시가 나지만 값이 들어있을 때는 보통과 똑같이 사용할 수 있습니다.
 Kotlin과의 미묘한 차이는 Kotlin은 notNull에 null을 넣을 수 없지만 Swift의 <code>!</code>에는 nil을 넣을 수 있다는 것이겠네요.
@@ -430,7 +966,19 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>ButterKnife를 만든 사람은 Square라는 결제 관련 POS 시스템을 만드는 회사에 있는 Jake Wharton이라는 분입니다. ButterKnife는 리소스나 뷰의 바인딩을 쉽게 도와주는 라이브러리로, 안드로이드 개발자들에게 Jake Wharton은 예전부터 다양한 라이브러리로 유명했었습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">class</span> <span class="nc">PersonView</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">attrs</span><span class="p">:</span> <span class="n">AttributeSet</span><span class="p">?)</span> <span class="p">:</span> <span class="n">LinearLayout</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">val</span> <span class="py">firstName</span><span class="p">:</span> <span class="n">TextView</span> <span class="k">by</span> <span class="n">bindView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">first_name</span><span class="p">)</span>
+  <span class="k">val</span> <span class="py">lastName</span><span class="p">:</span> <span class="n">TextView</span> <span class="k">by</span> <span class="n">bindView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span>
+
+  <span class="c1">// Optional binding.</span>
+  <span class="k">val</span> <span class="py">details</span><span class="p">:</span> <span class="n">TextView</span><span class="p">?</span> <span class="k">by</span> <span class="n">bindOptionalView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">details</span><span class="p">)</span>
+
+  <span class="c1">// List binding.</span>
+  <span class="k">val</span> <span class="py">nameViews</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TextView</span><span class="p">&gt;</span> <span class="k">by</span> <span class="n">bindViews</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span>
+
+  <span class="c1">// List binding with optional items being omitted.</span>
+  <span class="k">val</span> <span class="py">nameViews</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TextView</span><span class="p">&gt;</span> <span class="k">by</span> <span class="n">bindOptionalViews</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">middle_name</span><span class="p">,</span> <span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p><code>&lt;a href='https://github.com/IBOutlet' class='user-mention'&gt;@IBOutlet&lt;/a&gt;</code>이나 <code>!</code>를 사용한 iOS 개발과, 어노테이션과 리플렉션으로 구현된 Android의 ButterKnife보다 이 방식이 깔끔하고 바람직하다고 생각됩니다.
 또한 빌드에 개입하는 것으로 확장 메소드를 구현해주고, 프로퍼티 정의조차 불필요한 플러그인이 있습니다.</p>
@@ -441,7 +989,9 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>프로퍼티에 대한 한정자로 <code>lateinit</code>을 사용하면, 초기값이 불필요한 Optional이 아닌 변수를 정의할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="n">lateinit</span> <span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span>
+<span class="p">}</span></code></pre></div>
 
 <p>lateinit으로 지정되어있는 변수는 쓰기 전에 읽으면 크래시가 납니다. Swift의 <code>!</code>처럼 사용할 수 있습니다.</p>
 
@@ -462,7 +1012,19 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>Kotlin은 제네릭을 지원하고 있습니다. 제네릭형 매개변수의 variance에 대해서는 Declaration Site Variance라고 칭하고 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">open</span> <span class="k">class</span> <span class="nc">Animal</span>
+<span class="k">class</span> <span class="nc">Cat</span><span class="p">:</span> <span class="n">Animal</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Box</span><span class="p">&lt;</span><span class="k">out</span> <span class="n">T</span><span class="p">&gt;(</span><span class="k">val</span> <span class="py">value</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">toString</span><span class="p">():</span> <span class="n">String</span> <span class="p">=</span> <span class="s">"Box($value)"</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Box</span><span class="p">&lt;</span><span class="n">Animal</span><span class="p">&gt;</span>
+    <span class="k">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Box</span><span class="p">&lt;</span><span class="n">Cat</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">Cat</span><span class="p">())</span>
+    <span class="n">a</span> <span class="p">=</span> <span class="n">b</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// Box(Cat@xxxxxxxx)로 표시</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Variance가 작동하고 있으므로 Box의 값을 Box의 변수에 대입할 수 있습니다.</p>
 
@@ -471,7 +1033,29 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>Java로 위의 예를 쓰면 다음과 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{}</span>
+<span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{}</span>
+
+<span class="kd">class</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="n">T</span> <span class="n">value</span><span class="o">;</span>
+    <span class="n">Box</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">"Box("</span> <span class="o">+</span> <span class="n">value</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">")"</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Exception</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Box</span><span class="o">&lt;</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">Animal</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="n">Box</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Box</span><span class="o">&lt;</span><span class="n">Cat</span><span class="o">&gt;(</span><span class="k">new</span> <span class="nf">Cat</span><span class="o">());</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
+        <span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">// Box(Cat@xxxxxxxx)라고 출력된다.</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
 
 <p>Box 자체의 정의에 대한 Variance에 대해 적지 않고 <code>a</code>라는 로컬 변수를 정의할 때의 형태를 꺽쇠 기호<code>&lt;&gt;</code>로 설명하고 있습니다. 그 외 함수 인수의 정의에서 꺽쇠 기호가 나옵니다.</p>
 
@@ -486,7 +1070,12 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 <p>Kotlin의 클로져는 생각지도 못한 기능을 가지고 있습니다. 다음 코드는 다른 언어에 익숙한 사람에게는 의미불명으로 보입니다.
 또한 <code>forEach</code>는 클로져를 하나의 인수로 취하여 리시버의 요소 하나하나에 대하여 클로져를 호출합니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hasZeros</span><span class="p">(</span><span class="n">ints</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
+  <span class="n">ints</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">true</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="k">false</span>
+<span class="p">}</span></code></pre></div>
 
 <p>사실 이 코드는 <code>forEach</code>에 쓰여진 <code>return true</code>가 그 클로져 자신이 아닌 <code>fun hasZeros()</code>를 탈출하는 것입니다. 원래 Kotlin의 클로져 안에는 return을 쓸 수 없습니다. 클로져의 실행 결과는 클로져 코드 마지막의 식의 값입니다.</p>
 
@@ -494,11 +1083,19 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>forEach의 구현은 다음과 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="n">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">&gt;</span> <span class="n">Iterable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">forEach</span><span class="p">(</span><span class="n">operation</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Unit</span><span class="p">):</span> <span class="n">Unit</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">element</span> <span class="k">in</span> <span class="k">this</span><span class="p">)</span> <span class="n">operation</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이 <code>fun</code> 앞에 있는 <code>inline</code>이 포인트입니다. 이것이 붙어있으면 함수가 인라인이라는 것을 뜻하는데, 이 함수를 호출하는 곳에 이 함수의 내용이 쓰여지는 것과 같습니다. 즉 위의 예시는 아래와 같이 해석된다고 보면 됩니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hasZeros</span><span class="p">(</span><span class="n">ints</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">ints</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">true</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">false</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이걸로 왜 전역 탈출이 가능하게 되었는지 알 수 있었습니다. 또한 <code>inline</code>의 지정은 무턱대고 있는 것이 아닙니다. 인라인할 수 없는 함수에 붙어있을 경우에는 컴파일 에러가 납니다.</p>
 
@@ -508,11 +1105,21 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
 <p>예를 들면 <code>run</code>이라고 하는 표준 함수가 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="n">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">R</span><span class="p">&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></div>
 
 <p>인수로 주어진 클로져만을 실행하기 위한 함수이지만, 이것은 로컬 스코프를 만드는데 사용할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">fun</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">run</span> <span class="p">{</span>
+        <span class="n">val</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">createPoint</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">run</span> <span class="p">{</span>
+        <span class="n">val</span> <span class="n">x</span> <span class="o">=</span> <span class="s">"taro"</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">createUser</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">"ok!"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>위의 예에서는 2개의 x는 각각 다른 클로져의 지역 변수이므로 충돌하지 않습니다.
 그리고 <code>createPoint</code>가 실패했을 때 <code>setup</code> 자체를 중단하고 있습니다.</p>
@@ -522,14 +1129,24 @@ Swift의 <code>!</code>는 어디까지나 Optional이라는 것이군요.</p>
 <p>반대로 말하면 이런 것들을 사용하면 구문과 같은 것들을 만들 수 있다는 뜻이 됩니다.
 run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를 만들 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="k">var</span> <span class="py">age</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">0</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">user</span><span class="p">.</span><span class="n">run</span> <span class="p">{</span>
+        <span class="n">name</span> <span class="p">=</span> <span class="n">makeUserName</span><span class="p">()</span> <span class="o">?:</span> <span class="k">return</span>
+        <span class="n">age</span> <span class="p">=</span> <span class="m">3</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <p><code>run</code>의 안에서 액세스 되어있는 <code>name</code>이나 <code>age</code>는 <code>user</code>의 프로퍼티입니다.
 이 클로져의 안은 User의 메소드를 실행할 때와 같은 this 스코프입니다. 그리고 당연한 이야기지만 그 안에서도 전역 탈출을 쓸 수 있습니다.</p>
 
 <p>이것의 구현은 아래와 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="n">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">T</span><span class="p">.()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></div>
 
 <p>모든 타입 T에 대한 확장 메소드 run으로 정의되어 있으며 인수의 클로져의 자료형은 T의 메소드, 즉 리시버로 T 자료형의 인스턴스를 받도록 되어있습니다.
 본체의 <code>f()</code>는 확장 메소드의 정의 중이기 때문에 <code>this.f()</code>의 축약형입니다.</p>
@@ -538,7 +1155,35 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
 
 <p>이 클로져의 메소드 형태에 대한 해결책이 정말 강력합니다. 더 복잡한 응용 예는 다음과 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">result</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">=</span>
+  <span class="n">html</span> <span class="p">{</span>
+    <span class="n">head</span> <span class="p">{</span>
+      <span class="n">title</span> <span class="p">{+</span><span class="s">"XML encoding with Kotlin"</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">body</span> <span class="p">{</span>
+      <span class="n">h1</span> <span class="p">{+</span><span class="s">"XML encoding with Kotlin"</span><span class="p">}</span>
+      <span class="n">p</span>  <span class="p">{+</span><span class="s">"this format can be used as an alternative markup to XML"</span><span class="p">}</span>
+
+      <span class="c1">// an element with attributes and text content</span>
+      <span class="n">a</span><span class="p">(</span><span class="n">href</span> <span class="p">=</span> <span class="s">"http://kotlinlang.org"</span><span class="p">)</span> <span class="p">{+</span><span class="s">"Kotlin"</span><span class="p">}</span>
+
+      <span class="c1">// mixed content</span>
+      <span class="n">p</span> <span class="p">{</span>
+        <span class="p">+</span><span class="s">"This is some"</span>
+        <span class="n">b</span> <span class="p">{+</span><span class="s">"mixed"</span><span class="p">}</span>
+        <span class="p">+</span><span class="s">"text. For more see the"</span>
+        <span class="n">a</span><span class="p">(</span><span class="n">href</span> <span class="p">=</span> <span class="s">"http://kotlinlang.org"</span><span class="p">)</span> <span class="p">{+</span><span class="s">"Kotlin"</span><span class="p">}</span>
+        <span class="p">+</span><span class="s">"project"</span>
+      <span class="p">}</span>
+      <span class="n">p</span> <span class="p">{+</span><span class="s">"some text"</span><span class="p">}</span>
+
+      <span class="c1">// content generated by</span>
+      <span class="n">p</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">arg</span> <span class="k">in</span> <span class="n">args</span><span class="p">)</span>
+          <span class="p">+</span><span class="n">arg</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span></code></pre></div>
 
 <p>이걸 보면 HTML을 간단한 문법으로 쓰고 있는 것 같아도 이건 엄연히 Kotlin 코드입니다. 게다가 body 태그는 html 태그에 쓰기 같은 것들이 정적 타이핑 검사되고 있습니다.</p>
 
@@ -546,7 +1191,11 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
 
 <p>그런데 전역이 아닌 클로져를 중단하고 싶은 로컬한 return을 쓰고 싶을 때가 있습니다. 그런 경우에는 또 다른 클로져 표기법을 쓸 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">).</span><span class="n">forEach</span><span class="p">(</span><span class="k">fun</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
+<span class="p">})</span>
+<span class="c1">// 13이 출력됩니다.</span></code></pre></div>
 
 <p><code>fun</code> 표기가 있으면 인라인과는 전혀 관계 없이 클로져에서 항상 return을 사용할 수 있습니다. 그리고 로컬한 return이 됩니다. 아까 말했듯이 return을 호출한 곳에서부터 가장 가까운 함수를 탈출한다는 규칙에도 맞습니다.</p>
 
@@ -557,7 +1206,31 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
 
 <p>그리고 기본 생성자는 인수 정의와 동시에 속성 정의를 할 수 있는데, 이 기능이 꽤 유용합니다. 키워드를 한 번 쓰는 것만으로 되니까요.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="py">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">val</span> <span class="py">height</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">init</span> <span class="p">{</span>
+        <span class="c1">// 기본 생성자의 본문입니다.</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">170.0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 2차 생성자의 본문입니다.</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">constructor</span><span class="p">():</span> <span class="k">this</span><span class="p">(</span><span class="s">"saito"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 2차 생성자의 또 다른 하나입니다. 다른 2차 생성자를 호출하고 있습니다.</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">"3"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="n">Person</span><span class="p">(</span><span class="s">"yamada"</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="m">160.0</span><span class="p">)</span> <span class="c1">// 1이 출력됩니다.</span>
+    <span class="n">println</span><span class="p">()</span>
+    <span class="n">Person</span><span class="p">(</span><span class="s">"tanaka"</span><span class="p">)</span> <span class="c1">// 12가 출력됩니다.</span>
+    <span class="n">println</span><span class="p">()</span>
+    <span class="n">Person</span><span class="p">()</span> <span class="c1">// 123이 출력됩니다.</span>
+    <span class="n">println</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
 
 <p>기본 생성자의 인수로 있는 상수가 프로퍼티 정의를 지정합니다.</p>
 
@@ -569,7 +1242,32 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
 
 <p>생성자에서 프로퍼티 정의 구문이 없기 때문에 프로퍼티, 생성자의 인수, 생성자의 본문에서 왼쪽 값, 오른쪽 값으로 총 4번 동일한 키워드를 쓸 수밖에 없습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">let</span> <span class="nl">height</span><span class="p">:</span> <span class="n">Double</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nl">height</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 기본 생성자 1</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="p">}</span>
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">_</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nl">height</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 기본 생성자 2</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">Double</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">convenience</span> <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 2차 생성자 1</span>
+        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">170.0</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">convenience</span> <span class="k">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 2차 생성자 2</span>
+        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="s">"saito"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이식의 관점에서 보면 Swift에서 지정 이니셜라이저가 다수 있어도 프로퍼티를 모두 채울 기본 생성자를 만들고 나머지 지정 이니셜라이저와 편의 이니셜라이저를 보조로 쓰면 크게 문제되지 않는다고 생각됩니다.</p>
 
@@ -584,7 +1282,8 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
 <p>Any는 모든 자료형를 취할 수 있는 자료형입니다. 하지만 Optional 자료형은 취할 수 없습니다.
 제네릭형의 매개변수를 정의할 때 null을 제거할 때 쓰입니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">NonNullBox</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span>
+<span class="k">class</span> <span class="nc">NullableBox</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span></code></pre></div>
 
 <p><code>NonNullBox</code>에는 Optional 자료형이 들어갈 수 없지만 <code>NullableBox</code>는 들어갈 수 있습니다.</p>
 
@@ -594,7 +1293,13 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
 C의 void와 Swift의 Void 등에 대응하며, 함수 반환 값의 자료형을 생략했을 때는 Unit이 반환됩니다.
 Unit 자료형의 값은 Unit입니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">a</span><span class="p">():</span> <span class="n">Unit</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Unit</span>
+<span class="p">}</span>
+<span class="k">fun</span> <span class="nf">b</span><span class="p">():</span> <span class="n">Unit</span> <span class="p">{</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+<span class="k">fun</span> <span class="nf">c</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span></code></pre></div>
 
 <p>여기서 <code>a</code>, <code>b</code>, <code>c</code>는 모두 같은 의미입니다.</p>
 
@@ -607,17 +1312,45 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>다음과 같은 코드를 컴파일 할 수 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">crash</span><span class="p">():</span> <span class="n">Nothing</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="n">Exception</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">mainLoop</span><span class="p">(</span><span class="n">proc</span><span class="p">:</span> <span class="p">()-&gt;</span> <span class="n">Unit</span><span class="p">):</span> <span class="n">Nothing</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">proc</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이외에도 Nothing의 값이 존재하지 않는 것을 이용하여 <code>null</code>에만 매칭되는 변수의 형태를 만들 수 있습니다. 예를 들면 다음과 같습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">Json</span> <span class="p">{</span>
+    <span class="n">constructor</span><span class="p">(</span><span class="n">aNull</span><span class="p">:</span> <span class="n">Nothing</span><span class="p">?)</span> <span class="p">{}</span>
+    <span class="n">constructor</span><span class="p">(</span><span class="n">aString</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span></code></pre></div>
 
 <p>이렇게 하면 <code>Json(null)</code>은 첫 번째 생성자, <code>Json("aaa")</code>는 두번째 생성자라는 식으로 오버로드를 구분할 수 있습니다. Kotlin에서는 null 자체에는 자료형이 없기 때문에 이렇게 Nothing을 사용하고 있습니다.</p>
 
 <p>그런데 값이 존재하지 않는데 할당 할 수 있다는 것은 무슨 뜻인가하면, 제네릭의 Variance에서 이것이 효과가 있습니다. 아래를 예로 들어보곘습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">class</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="k">out</span> <span class="n">T</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="k">out</span> <span class="n">E</span><span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span> 
+    <span class="k">private</span> <span class="n">constructor</span><span class="p">(</span>
+        <span class="k">val</span> <span class="py">value</span><span class="p">:</span> <span class="n">T</span><span class="p">?,</span> 
+        <span class="k">val</span> <span class="py">error</span><span class="p">:</span> <span class="n">E</span><span class="p">?)</span> 
+<span class="p">{</span>
+    <span class="n">companion</span> <span class="k">object</span> <span class="err">{</span>
+        <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">E</span><span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span> <span class="n">Ok</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">Result</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="k">null</span><span class="p">)</span>
+        <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">E</span><span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span> <span class="n">Error</span><span class="p">(</span><span class="n">error</span><span class="p">:</span> <span class="n">E</span><span class="p">):</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">E</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">Result</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">proc1</span><span class="p">():</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">,</span> <span class="n">Nothing</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">Result</span><span class="p">.</span><span class="n">Ok</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">ret</span><span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">,</span> <span class="n">Exception</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">proc1</span><span class="p">()</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Result는 값과 에러의 두 가지 자료형를 covariance로 가지는 제너릭형입니다. 여기서 <code>proc1</code>은 절대로 문제가 생길 일이 없는 메소드이므로 오류값에 대해 Nothing으로 지정하고 있습니다.
 그리고 그 결과를 <code>Result&lt;Int, Exception&gt;</code>에 대입하고 있습니다. 즉, 일반 오류가 있을 수 있는 경우의 처리에 대해 에러가 없었던 경우의 자료형을 형변환 없이 안전하게 할당 할 수 있습니다.</p>
@@ -628,7 +1361,15 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>Kotlin에는 데이터 클래스라는 기능이 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">data</span> <span class="k">class</span> <span class="nc">Vector3</span><span class="p">(</span><span class="k">val</span> <span class="py">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">val</span> <span class="py">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">val</span> <span class="py">z</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// Vector3(x=1.0, y=2.0, z=3.0) 라고 출력됩니다.</span>
+    <span class="k">val</span> <span class="err">(</span><span class="py">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="p">=</span> <span class="n">a</span>
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="m">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">=</span><span class="m">4.0</span><span class="p">)</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">// Vector3(x=0.0, y=2.0, z=4.0) 라고 출력됩니다.</span>
+<span class="p">}</span></code></pre></div>
 
 <p>데이터 클래스를 이용하면 몇개의 메소드가 자동적으로 생성됩니다.</p>
 
@@ -648,23 +1389,48 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>Kotlin에서는 별명 임포트라는 기능이 있습니다. 다른 두 개의 패키지에 동일한 클래스의 이름이 있을 때 각각 별명을 붙여 가져올 수 있는 기능으로 그 긴 풀 패키지 네임을 쓸 필요가 없습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">import</span> <span class="nn">com.omochimetaru.Bitmap</span> <span class="k">as</span> <span class="n">MyBitmap</span>
+<span class="k">import</span> <span class="nn">android.graphics.Bitmap</span> <span class="k">as</span> <span class="n">ABitmap</span>
+
+<span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">MyBitmap</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">fuga</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">ABitmap</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Swift에서도 같은 기능을 쓸 수 있습니다. Java라면 이게 괴로웠겠죠?</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.omochimetaru.Bitmap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
+
+<span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="n">com</span><span class="o">.</span><span class="na">omochimetaru</span><span class="o">.</span><span class="na">Bitmap</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">fuga</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">graphics</span><span class="o">.</span><span class="na">Bitmap</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span></code></pre></div>
 
 <h3 id="enum---enum-sealed-classtagged-enum">Enum, 값을 포함한 Enum, Sealed Class(Tagged Enum)</h3>
 
 <p>Kotlin에서도 당연히 Enum이 있습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Direction</span> <span class="p">{</span>
+    <span class="n">NORTH</span><span class="p">,</span> <span class="n">SOUTH</span><span class="p">,</span> <span class="n">WEST</span><span class="p">,</span> <span class="n">EAST</span>
+<span class="p">}</span>
+
+<span class="k">enum</span> <span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="k">val</span> <span class="py">rgb</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">RED</span><span class="p">(</span><span class="m">0</span><span class="n">xFF0000</span><span class="p">),</span>
+    <span class="n">GREEN</span><span class="p">(</span><span class="m">0</span><span class="n">x00FF00</span><span class="p">),</span>
+    <span class="n">BLUE</span><span class="p">(</span><span class="m">0</span><span class="n">x0000FF</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>두번째 예와 같이 값을 포함한 Enum도 만들 수 있습니다. 그러나 Swift에서 할 수 있는 같은 enum마다 다른 property를 갖게 하는 Tagged Enum이라는 기능은 enum으로는 만들 수 없습니다.</p>
 
 <p>Swift의 예를 한번 보시죠.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">enum</span> <span class="n">Either</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Left</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">Right</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
 <p>Left와 Right에서 프로퍼티의 자료형이 다릅니다. 기타 Optional에서는 Some에는 프로퍼티가 있지만 None에는 없는 것과 같은 패턴도 있습니다.</p>
 
@@ -672,7 +1438,18 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>그렇다면 when문(C나 Java의 switch문)에서 자료형 판정을 체크할 수 있어서 분기에서 문제가 생기지 않는 것을 컴파일러에 의해 보장받습니다.</p>
 
-<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
+<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">sealed</span> <span class="k">class</span> <span class="nc">Expr</span> <span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Const</span><span class="p">(</span><span class="k">val</span> <span class="py">number</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">:</span> <span class="n">Expr</span><span class="p">()</span>
+    <span class="k">class</span> <span class="nc">Sum</span><span class="p">(</span><span class="n">e1</span><span class="p">:</span> <span class="n">Expr</span><span class="p">,</span> <span class="n">e2</span><span class="p">:</span> <span class="n">Expr</span><span class="p">)</span> <span class="p">:</span> <span class="n">Expr</span><span class="p">()</span>
+    <span class="k">object</span> <span class="nc">NotANumber</span> <span class="p">:</span> <span class="n">Expr</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Expr</span><span class="p">):</span> <span class="n">Double</span> <span class="p">=</span> <span class="k">when</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">is</span> <span class="n">Const</span> <span class="p">-&gt;</span> <span class="n">expr</span><span class="p">.</span><span class="n">number</span>
+    <span class="k">is</span> <span class="n">Sum</span> <span class="p">-&gt;</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e1</span><span class="p">)</span> <span class="p">+</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e2</span><span class="p">)</span>
+    <span class="n">NotANumber</span> <span class="p">-&gt;</span> <span class="n">Double</span><span class="p">.</span><span class="n">NaN</span>
+    <span class="c1">// the `else` clause is not required because we've covered all the cases</span>
+<span class="p">}</span></code></pre></div>
 
 <p>위의 예와 같이 Smart Cast가 있으므로 when문에서는 같은 변수 이름이 이미 형변환된 상태입니다.</p>
 
@@ -684,8 +1461,8 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>이 내용 중 쓸 수 없는 경우도 있겠지만 여기까지 읽은 사람이라면 꽤나 Kotlin이 쓰고 싶은게 아닐까요!</p>
 
-
-<!-- footer start -->
+    <h5>
+       <!-- footer start -->
 
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
@@ -697,5 +1474,6 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <!-- footer end -->
 
-</body>
+    </h5>
+  </body>
 </html>
