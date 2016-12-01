@@ -1,19 +1,8 @@
 #!/bin/bash
-set -e # Exit with nonzero exit code if anything fails
 
-SOURCE_BRANCH="master"
-TARGET_BRANCH="gh-pages"
-
-function doCompile {
-  ./compile.sh
-}
-
-# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
-    echo "Skipping deploy; just doing a build."
-    doCompile
-    exit 0
-fi
+ENCRYPTION_LABEL="7fd66f08a613"
+SOURCE_BRANCH="src"
+TARGET_BRANCH="master"
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -30,11 +19,10 @@ cd ..
 # Clean out existing contents
 rm -rf out/**/* || exit 0
 
-# Run our compile script
-doCompile
-
 # Now let's go have some fun with the cloned repo
 cd out
+cp -R ./../_site/* .
+
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
@@ -60,4 +48,4 @@ eval `ssh-agent -s`
 ssh-add deploy_key
 
 # Now that we're all set up, we can push.
-git push $SSH_REPO $TARGET_BRANCH
+git push -f $SSH_REPO $TARGET_BRANCH 

@@ -29,22 +29,7 @@
 
 <p>KDoc은 Kotlin의 Javadoc같은 개념이라고 생각하면 된다. <code>/**</code>로 시작해서 <code>*/</code>로 끝이 난다. 여러 줄인데 매 줄마다 아스테리크 문자가 들어가는 형태이다. Kotlin 공식 문서가 제공하는 예시를 보자.</p>
 
-<p><div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="cm">/**</span>
-<span class="cm"> * A group of &lt;em&gt;members&lt;/em&gt;.</span>
-<span class="cm"> *</span>
-<span class="cm"> * This class has no useful logic; it’s just a documentation example.</span>
-<span class="cm"> *</span>
-<span class="cm"> * &lt;a href=&quot;https://github.com/param&quot; class=&quot;user-mention&quot;&gt;@param&lt;/a&gt; T the type of a member in this group.</span>
-<span class="cm"> * &lt;a href=&quot;https://github.com/property&quot; class=&quot;user-mention&quot;&gt;@property&lt;/a&gt; name the name of this group.</span>
-<span class="cm"> * &lt;a href=&quot;https://github.com/constructor&quot; class=&quot;user-mention&quot;&gt;@constructor&lt;/a&gt; Creates an empty group.</span>
-<span class="cm"> */</span>
-<span class="k">class</span> <span class="nc">Group</span><span class="p">&lt;</span><span class="n">t</span><span class="p">&gt;(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-    <span class="cm">/**</span>
-<span class="cm">     * Adds a [member] to this group.</span>
-<span class="cm">     * &lt;a href=&quot;https://github.com/return&quot; class=&quot;user-mention&quot;&gt;@return&lt;/a&gt; the new size of the group.</span>
-<span class="cm">     */</span>
-    <span class="k">fun</span> <span class="nf">add</span><span class="p">(</span><span class="n">member</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-<span class="p">}</span></code></pre></div></t></p>
+<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
 
 <p>그리고 KDoc은 인라인 마크업에 대해서는 C#의 xml같은 형태가 아니라 마크다운 문법을 따라하고 있다. 그리고 약간 특이한 점은 요런 식으로의 클래스, 프로퍼티, 메소드의 링킹이 가능하다.</p>
 
@@ -70,56 +55,13 @@
   <li>루트 프로젝트의 <code>build.gradle</code>을 열어 다음과 같이 추가한다.</li>
 </ul>
 
-<p><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">buildscript</span> <span class="o">{</span>
-    <span class="err">…</span><span class="o">&lt;</span><span class="s">/p&gt;</span>
-
-<span class="s">&lt;pre&gt;&lt;code&gt;repositories {</span>
-<span class="s">    mavenCentral()</span>
-<span class="s">    jcenter()</span>
-<span class="s">    maven {</span>
-<span class="s">        url &#39;https://dl.bintray.com/</span><span class="n">kotlin</span><span class="s">/kotlin-eap&#39;</span>
-<span class="s">    }</span>
-<span class="s">}</span>
-
-<span class="s">dependencies {</span>
-<span class="s">    ...</span>
-<span class="s">    classpath &quot;org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.8&quot;</span>
-<span class="s">    ...</span>
-<span class="s">} }</span>
-<span class="s">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">…</span></code></pre></div></p>
+<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
 
 <ul>
   <li>앱 혹은 라이브러리 프로젝트의 <code>build.gradle</code>을 다음과 같이 설정한다.</li>
 </ul>
 
-<p><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="err">…</span>
-<span class="n">apply</span> <span class="nl">plugin:</span> <span class="err">‘</span><span class="n">org</span><span class="o">.</span><span class="na">jetbrains</span><span class="o">.</span><span class="na">dokka</span><span class="o">-</span><span class="n">android</span><span class="err">’</span><span class="o">&lt;</span><span class="s">/p&gt;</span>
-
-<span class="s">&lt;p&gt;android {…}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">afterEvaluate</span> <span class="o">{</span>
-    <span class="n">generateDebugAndroidTestSources</span><span class="o">.</span><span class="na">dependsOn</span> <span class="n">dokka</span>
-    <span class="err">…</span>
-<span class="o">}&lt;</span><span class="s">/p&gt;</span>
-
-<span class="s">&lt;p&gt;…&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">dokka</span> <span class="o">{</span>
-    <span class="n">moduleName</span> <span class="o">=</span> <span class="err">‘…’</span>
-    <span class="n">outputFormat</span> <span class="o">=</span> <span class="err">‘</span><span class="n">html</span><span class="err">’</span>
-    <span class="n">outputDirectory</span> <span class="o">=</span> <span class="err">“</span><span class="n">$projectDir</span><span class="s">/docs”</span>
-<span class="s">    processConfigurations = [ ‘compile’ ]</span>
-<span class="s">    linkMapping {</span>
-<span class="s">        dir = “src/</span><span class="n">main</span><span class="s">/kotlin”</span>
-<span class="s">        url = “https://github.com/</span><span class="err">…</span><span class="s">/…/</span><span class="n">blob</span><span class="s">/master/</span><span class="n">app</span><span class="s">/src/</span><span class="n">main</span><span class="s">/kotlin”</span>
-<span class="s">        suffix = “#L”</span>
-<span class="s">    }</span>
-<span class="s">    sourceDirs = files(‘src/</span><span class="n">main</span><span class="s">/kotlin’)</span>
-<span class="s">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">…</span></code></pre></div></p>
+<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
 
 <p>Dokka의 상세한 정보는 <a href="https://github.com/Kotlin/dokka">GitHub</a>에서 볼 수 있다. <code>afterEvaluate</code>에, <code>generateDebugAndroidTestSources</code>는 <code>dokka</code>에 의존 관계를 갖는다고 명시했기 때문에 프로젝트를 빌드할 때 문서는 자동으로 생성될 것이다.</p>
 
@@ -129,27 +71,7 @@
   <li>빌드가 끝나면 css와 html 파일이 나오는데 화면의 스타일시트를 수정하고 싶을 때는  Dokka의 소스를 열…뻔 했지만 생각해보니 생성이 끝나고 css 파일만 바꿔치기해주면 된다는 방법을 깨닫고 짜치게 구현해봤다. 앱이나 라이브러리 프로젝트의 <code>build.gradle</code> 파일을 수정해보자.</li>
 </ul>
 
-<p><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="err">…</span>
-<span class="n">apply</span> <span class="nl">plugin:</span> <span class="err">‘</span><span class="n">org</span><span class="o">.</span><span class="na">jetbrains</span><span class="o">.</span><span class="na">dokka</span><span class="o">-</span><span class="n">android</span><span class="err">’</span><span class="o">&lt;</span><span class="s">/p&gt;</span>
-
-<span class="s">&lt;p&gt;android {…}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">task</span> <span class="n">switchStylesheet</span> <span class="o">(</span><span class="nl">type:</span> <span class="n">Copy</span><span class="o">,</span> <span class="nl">overwrite:</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">description</span> <span class="o">=</span> <span class="err">‘</span><span class="n">Switching</span> <span class="n">StyleSheet</span> <span class="k">for</span> <span class="n">Dokka</span><span class="err">’</span>
-    <span class="n">from</span> <span class="err">“</span><span class="n">$</span><span class="o">{</span><span class="n">projectDir</span><span class="o">}</span><span class="s">/dokka/</span><span class="err">”</span>
-    <span class="n">include</span> <span class="err">“</span><span class="n">style</span><span class="o">.</span><span class="na">css</span><span class="err">”</span>
-    <span class="n">into</span> <span class="err">“</span><span class="n">$</span><span class="o">{</span><span class="n">projectDir</span><span class="o">}</span><span class="s">/docs/</span><span class="err">”</span>
-<span class="o">}&lt;</span><span class="s">/p&gt;</span>
-
-<span class="s">&lt;p&gt;afterEvaluate {</span>
-<span class="s">    generateDebugAndroidTestSources.dependsOn switchStylesheet</span>
-<span class="s">    switchStylesheet.dependsOn dokka</span>
-<span class="s">    …</span>
-<span class="s">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">dokka</span> <span class="o">{</span><span class="err">…</span><span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="err">…</span></code></pre></div></p>
+<p>Liquid error: undefined method `safe’ for nil:NilClass</p>
 
 <ul>
   <li>
