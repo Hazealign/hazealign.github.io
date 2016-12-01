@@ -1,25 +1,20 @@
 language: ruby
 rvm:
 - 2.2.5
-
 script:
 - chmod +x ./scripts/deploy.sh
 - gem install html-proofer
 - bundle install
 - bundle exec jekyll build
-
 after_success:
-- 'bash ./scripts/deploy.sh'
-
+- bash ./scripts/deploy.sh
 notifications:
-  irc: "irc.ozinger.org#hazealign"
-
+  irc: irc.ozinger.org#hazealign
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-
+  - secure: Ggh6ZRWguYvdEZGcl0lhMJXEOZMghnZmig7hYcnmagCn6FbhEpscbQfN7Pzi0LK5Sa/bhKMrc1/z1OXbVhjfh/k0LMhLVyI/wRzWujmgyCGmUvBpm2YanF3fETnowsz3PYI8m2e0z6l7IQ+TP9/20aLe3AEzXuljEzujSiycMj0mldixs4TcX8OzYdujNhLKkwSI1jp3+0mGxgmR0eg4FrwuRWNn6xMzAknSgARA0B4ghCKcbOd8b/wdOcF4sIqRqxBX8vyW2vVGRYZd8jgzsalUWd08xg54ORugEWvjPlqdl8nyYbLy+5k9LD1PxyvWu7naXoqMHR2Bcc0OfIWhnwcx31zf1+kHj3p8j2wF96KZJ8Nd0pNypfytR0bTdfL8UaWqt24tm8FsrqVAZb7IKnhwzUVBfvJpciPrjQZ0FBDliR8N8LjJJUbj8OZzH7VheeTb32mdS/pcZQW+0w2FoUMxkPvekGwF0NmbTvs+1qGYTEyYfnfktc0B1WXXQ7rR6rjuFrY2sXkV/z1VfJfK/QtmMXkjpIsFwEATWABsDkIwVkBqvFHyCUfdbhF/uy69o6QpWr6HXcK/MiDkVHq8XhEB0y8yrtCcb6Pe40vJLvjN15VAmN6PRKzxTxSG5gA+jBETMk0Kf0lusRAtS7FNnZDPhbTNCPqCoMn6GivU9qU=
 sudo: false
-
 branches:
   only:
   - src
