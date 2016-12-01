@@ -67,16 +67,13 @@ h5 {
 
 <p>사실 글에서는 <em>중급 이상의</em>라는 말이 들어가지만, 안드로이드 애플리케이션을 개발하는 개발자라면 꼭 알아둬야할 개념들에 대해서 이야기하는 글이라고 생각합니다.  </p>
 
-<hr>
-
-<p>Java에 대한 이야기는 여러 이야기가 있다고 생각합니다만, Android 개발을 잘 하기 위해서 어떤 것들을 해야 좋을지에 대한 이야기를 해보고자 합니다. 개발 입문을 위한 가이드로는 이미 <a href="https://github.com/mixi-inc/AndroidTraining">좋은 가이드</a>(일본어)가 있기 때문에 여기서는 더욱 실전적인 내용에 포커스를 맞추고자 합니다.</p>
+<hr><p>Java에 대한 이야기는 여러 이야기가 있다고 생각합니다만, Android 개발을 잘 하기 위해서 어떤 것들을 해야 좋을지에 대한 이야기를 해보고자 합니다. 개발 입문을 위한 가이드로는 이미 <a href="https://github.com/mixi-inc/AndroidTraining">좋은 가이드</a>(일본어)가 있기 때문에 여기서는 더욱 실전적인 내용에 포커스를 맞추고자 합니다.</p>
 
 <h2 id="section">안드로이드 다운 디자인과 개발</h2>
 
 <h3 id="material-design-">Material Design의 가이드라인</h3>
 
-<p>Google이 생각한 최고(?)의 디자인 가이드라인, 그것이 머티리얼 디자인입니다.<br>
-<a href="https://www.google.com/design/spec/material-design/introduction.html">https://www.google.com/design/spec/material-design/introduction.html</a></p>
+<p>Google이 생각한 최고(?)의 디자인 가이드라인, 그것이 머티리얼 디자인입니다.<br><a href="https://www.google.com/design/spec/material-design/introduction.html">https://www.google.com/design/spec/material-design/introduction.html</a></p>
 
 <p>사용해야할 UI 컴포넌트, ListView 등의 레이아웃, 다이얼로그를 띄울 타이밍과 표시할 내용, 화면 전환 시의 애니메이션과 사용 방법 등에 대한 설명이 다양하게 적혀있습니다. 이 내용에 따라 개발하면 상당히 현대적인 Android 앱으로 보이게 됩니다. 사용하려고 마음 먹은 UI 컴포넌트에 대해 조사하는 것만으로도 꽤 큰 효과를 발휘합니다.</p>
 
@@ -106,13 +103,11 @@ h5 {
 <p>라는 말을 하는 것은 정작 <a href="http://developer.android.com/intl/ja/guide/components/tasks-and-back-stack.html">공식 문서</a>뿐이었고, 실제 동작의 차이를 몰라서 괴로워합니다. 저는 다음 사이트를 참고해서 마침내 어떻게 돌아가는지 이해할 수 있게 되었습니다.</p>
 
 <ul>
-  <li>
+<li>
 <a href="http://techblog.qoncept.jp/?p=102">그림으로 이해하는 액티비티 스택 (Qoncept TechBlog)</a> (일본어)</li>
   <li>
 <a href="http://y-anz-m.blogspot.jp/2011/02/androidlauchmode.html">Y.A.M의 잡동사니 메모장: Android launchMode의 차이</a> (일본어)</li>
-</ul>
-
-<p>아래 그림은 “그림으로 이해하는 액티비티 스택”에서 인용한 것입니다. 그림이 매우 알기 쉬웠습니다.</p>
+</ul><p>아래 그림은 “그림으로 이해하는 액티비티 스택”에서 인용한 것입니다. 그림이 매우 알기 쉬웠습니다.</p>
 
 <p><amp-img src="http://realignist.me/assets/images/20160525/3.png" alt="" width="691" height="277" layout="responsive"></amp-img></p>
 
@@ -163,12 +158,10 @@ h5 {
 
 <h3 id="section-6">편리한 라이브러리 목록</h3>
 <ul>
-  <li>
+<li>
 <a href="https://github.com/wasabeef/awesome-android-ui">wasabeef/awesome-android-ui</a> ← UI 라이브러리 목록은 정말 편리합니다.</li>
   <li><a href="http://qiita.com/KeithYokoma/items/b5b53c94f6ab27b604e7">http://qiita.com/KeithYokoma/items/b5b53c94f6ab27b604e7</a></li>
-</ul>
-
-<p>이거 외에도 Qiita에 글이 많이 올라와있습니다.</p>
+</ul><p>이거 외에도 Qiita에 글이 많이 올라와있습니다.</p>
 
 <h3 id="section-7">라이브러리를 도입할 때 유용한 사이트</h3>
 
@@ -183,24 +176,20 @@ h5 {
 <blockquote class="twitter-tweet" data-lang="ko">
 <p lang="en" dir="ltr">Android development is about 10% writing Java. The other 90% is reading, crying, debugging, and pressing alt+enter</p>— Jon F Hancock (<a href="https://github.com/JonFHancock" class="user-mention">@JonFHancock</a>) <a href="https://twitter.com/JonFHancock/status/702973001600364544">2016년 2월 25일</a>
 </blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>울며 겨자먹기로 코드를 읽고, Alt + Enter를 연타하는 것이 안드로이드 개발입니다. URL 등을 이야기했지만 코드를 읽는 것이 안드로이드 개발입니다. 중요하니까 두번 말했습니다. 우선 문제가 있으면 공식 이슈 트래커 등에 찾아보고, 나오지 않을 경우 아래의 URL을 이용해서 SDK 소스 코드를 읽을 수 있습니다.</p>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script><p>울며 겨자먹기로 코드를 읽고, Alt + Enter를 연타하는 것이 안드로이드 개발입니다. URL 등을 이야기했지만 코드를 읽는 것이 안드로이드 개발입니다. 중요하니까 두번 말했습니다. 우선 문제가 있으면 공식 이슈 트래커 등에 찾아보고, 나오지 않을 경우 아래의 URL을 이용해서 SDK 소스 코드를 읽을 수 있습니다.</p>
 
 <ul>
-  <li><a href="https://sites.google.com/site/devcollaboration/codesearch">소스 코드 검색 (OpenGrok)</a></li>
+<li><a href="https://sites.google.com/site/devcollaboration/codesearch">소스 코드 검색 (OpenGrok)</a></li>
   <li>
 <a href="https://github.com/android">GitHub의 안드로이드 미러</a>
     <ul>
-      <li><a href="https://github.com/android/platform_frameworks_base">Android Framework의 Mirror Repository</a></li>
+<li><a href="https://github.com/android/platform_frameworks_base">Android Framework의 Mirror Repository</a></li>
       <li><a href="https://github.com/android/platform_frameworks_support">Support Library의 Mirror Repository</a></li>
     </ul>
-  </li>
+</li>
   <li>Android Studio SDK의 소스 코드를 참조해서 읽는 방법 <a href="http://qiita.com/makoto_kw/items/032e210aecf57deeb5a5">(조금 낡은 기사)</a>
 </li>
-</ul>
-
-<h3 id="section-9">샘플 애플리케이션과 읽어봐야 할 부분</h3>
+</ul><h3 id="section-9">샘플 애플리케이션과 읽어봐야 할 부분</h3>
 
 <p>konifar 씨의 DroidKaigi 2016의 애플리케이션은 간단하게 정보를 표시하고 즐겨찾기 등을 관리할 수 있는 샘플 응용 프로그램으로 매우 깨끗한 코드라고 정평이 나 있습니다. 우리들의 신, Jake Wharton 씨의 u2020도 일부를 차용했다는 이야기를 간혹 듣기 때문에 분명 뭔가 얻을 수 있을 것입니다. 확인하니 RxJava라던가 Retrofit 2 등의 현대적인 구성으로 되어있는 것 같습니다.</p>
 
@@ -211,18 +200,12 @@ h5 {
 
 <h2 id="section-10">마치며</h2>
 <p>일본에서는 iOS 사용자가 많기 때문인지 iOS 개발자가 더 우세하고 Android는 iOS의 디자인 카피같은 시안도 많이 받고 외롭습니다. Android 다운 멋진 애플리케이션을 늘려갑시다.</p>
-
     <h5> <!-- footer start -->
 
-<footer class="site-footer">
-  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+<footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2016 • All rights reserved.</section>
-         <section class="poweredby">For Geeky Tomorrow.</section>
-    </div>
-</footer>
-
-<!-- footer end -->
-</h5>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2016 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
+</div>
+</footer><!-- footer end --></h5>
   </body>
 </html>

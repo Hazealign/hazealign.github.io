@@ -107,11 +107,7 @@ class ExampleActivity extends Activity {
 <p>레이아웃 전체를 <code>&lt;layout&gt;&lt;/layout&gt;</code>으로 감싸준다.</p>
 
 <p>```xml</p>
-<layout>
-  <linearlayout>
-    <textview android:id="@+id/title">
-    <textview android:id="@+id/subtitle">
-    <textview android:id="@+id/footer">
+<layout><linearlayout><textview android:id="@+id/title"><textview android:id="@+id/subtitle"><textview android:id="@+id/footer">
   
 
 ```
@@ -295,12 +291,7 @@ public void submit(View view) {
 레이아웃에 Activity의 인스턴스를 지정해주고, `Button`의 `android:onClick` 항목에 Listener 메소드를 지정해준다.
 
 ```xml
-<layout>
-  <data>
-    <variable name="activity" type="info.izumin.android.databindingsample.SampleActivity"></variable>
-  </data>
-  <linearlayout>
-    <button android:onclick="@{activity.onSampleButtonClick}">
+<layout><data><variable name="activity" type="info.izumin.android.databindingsample.SampleActivity"></variable></data><linearlayout><button android:onclick="@{activity.onSampleButtonClick}">
   
 
 ```
@@ -343,8 +334,7 @@ Data Binding은 `<a href="https://github.com/BindingAdapter" class="user-mention
 ```xml
 <button android:onclick="@{handlers.onPrevButtonClick}"></button>
 <button android:onclick="@{handlers.onNextButtonClick}"></button>
-<edittext android:ontextchanged="@{handlers.onTextChanged}"></edittext>
-<listview android:onscroll="@{handlers.onScroll}"></listview>
+<edittext android:ontextchanged="@{handlers.onTextChanged}"></edittext><listview android:onscroll="@{handlers.onScroll}"></listview>
 ```
 
 ```java
@@ -378,17 +368,7 @@ public interface SampleActivityHandlers {
 ```
 
 ```xml
-<layout>
-  <data>
-    <variable name="handlers" type="info.izumin.android.databindingsample.SampleActivityHandlers"></variable>
-    <variable name="adapter" type="android.support.v7.widget.RecyclerView.Adapter"></variable>
-  </data>
-  <android.support.v4.widget.swiperefreshlayout android:onrefresh="@{handlers.onRefresh}">
-
-    <android.support.v7.widget.recyclerview android:adapter="@{adapter}"></android.support.v7.widget.recyclerview>
-
-  </android.support.v4.widget.swiperefreshlayout>
-</layout>
+<layout><data><variable name="handlers" type="info.izumin.android.databindingsample.SampleActivityHandlers"></variable><variable name="adapter" type="android.support.v7.widget.RecyclerView.Adapter"></variable></data><android.support.v4.widget.swiperefreshlayout android:onrefresh="@{handlers.onRefresh}"><android.support.v7.widget.recyclerview android:adapter="@{adapter}"></android.support.v7.widget.recyclerview></android.support.v4.widget.swiperefreshlayout></layout>
 ```
 
 이렇게까지 해야할 필요성이 있는지 모르겠다.
@@ -414,16 +394,7 @@ public final class ViewBindingUtils {
 ```
 
 ```xml
-<layout>
-  <data>
-    <variable name="device" type="android.bluetooth.BluetoothDevice"></variable>
-  </data>
-  <linearlayout>
-    <imageview app:signalstrength="@{device}"></imageview>
-    <textview android:text="@{device.getName()}"></textview>
-    <textview android:text="@{device.getAddress()}"></textview>
-  </linearlayout>
-</layout>
+<layout><data><variable name="device" type="android.bluetooth.BluetoothDevice"></variable></data><linearlayout><imageview app:signalstrength="@{device}"></imageview><textview android:text="@{device.getName()}"></textview><textview android:text="@{device.getAddress()}"></textview></linearlayout></layout>
 ```
 
 `BindingAdapter`로 namespace를 쓰지 않는 것(`app`)과, `android`를 쓰는 것 중 어느 쪽이 좋은가요?
@@ -519,18 +490,12 @@ ButterKnife.apply(nameViews, DISABLE);
   - [The Clean Architecture - 8th Light](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)
   - [extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google](https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters)
 </view></view></edittext></button></linearlayout></layout></samplerecycleradapter.bindingholder></textview></textview></textview></linearlayout></layout>
-
     <h5> <!-- footer start -->
 
-<footer class="site-footer">
-  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+<footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2016 • All rights reserved.</section>
-         <section class="poweredby">For Geeky Tomorrow.</section>
-    </div>
-</footer>
-
-<!-- footer end -->
-</h5>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2016 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
+</div>
+</footer><!-- footer end --></h5>
   </body>
 </html>
