@@ -22,12 +22,8 @@ layout: amp
     <h1 class="post-title">
       {{ page.title | amp_images }}
     </h1>
-    <span>
-  {{ page.date | date: "%Y년 %m월 %d일 작성" }} - Haze Lee.
-  </span> 
-  {{ content | markdownify | amp_images }}
-    <h5>
-      {% capture footer %}{% include footer.html %}{% endcapture %} {{ footer | amp_images: false, 24, 24 }}
-    </h5>
+    <span>{{ page.date | date: "%Y년 %m월 %d일 작성" }} - Haze Lee.</span>
+    {{ content | markdownify | amp_images }}
+    <h5>{% capture footer %}{% include footer.html %}{% endcapture %} {{ footer | amp_images: false, 24, 24 }}</h5>
   </body>
 </html>
