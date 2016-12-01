@@ -9,7 +9,7 @@ script:
 - bundle exec jekyll build
 
 after_success:
-- './scripts/deploy.sh'
+- 'bash ./scripts/deploy.sh'
 
 env:
   global:

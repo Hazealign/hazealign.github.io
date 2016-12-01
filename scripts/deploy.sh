@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e # Exit with nonzero exit code if anything fails
 
 ENCRYPTION_LABEL="7fd66f08a613"
 SOURCE_BRANCH="master"
@@ -44,7 +43,7 @@ ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
 chmod 600 deploy_key
 eval `ssh-agent -s`
-ssh-add deploy_key
+ssh-add deploy_key 
 
 # Now that we're all set up, we can push.
 git push $SSH_REPO $TARGET_BRANCH
