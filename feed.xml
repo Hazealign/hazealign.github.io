@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 01 Dec 2016 17:50:29 +0900</pubDate>
-    <lastBuildDate>Thu, 01 Dec 2016 17:50:29 +0900</lastBuildDate>
+    <pubDate>Thu, 01 Dec 2016 17:55:47 +0900</pubDate>
+    <lastBuildDate>Thu, 01 Dec 2016 17:55:47 +0900</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -42,8 +42,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 01 Oct 2016 01:00:00 +0900</pubDate>
-        <link>http://realignist.me/developmente/2016/10/01/rust-osx-openssl-issue.html</link>
-        <guid isPermaLink="true">http://realignist.me/developmente/2016/10/01/rust-osx-openssl-issue.html</guid>
+        <link>http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</link>
+        <guid isPermaLink="true">http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</guid>
         
         <category>featured</category>
         
@@ -54,7 +54,7 @@
         <category>openssl</category>
         
         
-        <category>developmente</category>
+        <category>code</category>
         
       </item>
     
