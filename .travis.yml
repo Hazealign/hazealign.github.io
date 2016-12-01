@@ -9,7 +9,7 @@ script:
 - bundle exec jekyll build
 
 after_success:
-- '[ "${TRAVIS_BRANCH}" = "master" ] && ./scripts/deploy.sh || false'
+- './scripts/deploy.sh'
 
 notifications:
   irc: "irc.ozinger.org#hazealign"
