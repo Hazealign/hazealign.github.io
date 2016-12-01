@@ -9,7 +9,10 @@ script:
 - bundle exec jekyll build
 
 after_success:
-- 'bash ./scripts/deploy.sh'
+- './scripts/deploy.sh'
+
+notifications:
+  irc: "irc.ozinger.org#hazealign"
 
 env:
   global:
