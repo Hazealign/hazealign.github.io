@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.1
+
+# bundler 를 사용한다고 가정함. 따라서
+# `install` 단계에 `bundle install` 이 디폴트로 실행됨.
+script:
+- chmod +x ./scripts/deploy.sh
+- bundle install
+- bundle exec jekyll build
+- bundle exec htmlproof ./_site
+
+after_success:
+- '[ "${TRAVIS_BRANCH}" = "src" ] && ./scripts/deploy.sh || false'
+
+notifications:
+  irc: "irc.ozinger.org#hazealign"
+
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # html-proofer 의 설치 속도를 높여줌
