@@ -2,7 +2,7 @@
 layout: post
 title: "macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기"
 date: 2016-10-01 01:00:00 +09:00
-categories: Developmente
+categories: Code
 tags: featured development rust openssl 
 ---
 
