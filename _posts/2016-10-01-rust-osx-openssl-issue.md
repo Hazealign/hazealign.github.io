@@ -18,7 +18,7 @@ Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 �
 
 이럴 때는 다음과 같이 해결할 수 있습니다.
 
-{% highlight shell %}
+{% highlight bash %}
 brew install openssl
 
  # 다음 내용을 환경 변수로 추가해주세요.
@@ -28,7 +28,7 @@ export OPENSSL_LIB_DIR=`brew --prefix openssl`/lib/
 
 이럼에도 불구하고, 간혹 같은 에러가 난다면 `OPENSLL_LIB_DIR`를 직접 설정해주면 됩니다.
 
-{% highlight shell %}
+{% highlight bash %}
 export OPENSSL_INCLUDE_DIR=/usr/local/Cellar/openssl/(버전)/include/
 {% endhighlight %}
 
