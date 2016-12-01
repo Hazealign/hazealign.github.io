@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ENCRYPTION_LABEL="7fd66f08a613"
-SOURCE_BRANCH="master"
-TARGET_BRANCH="gh-pages"
+SOURCE_BRANCH="src"
+TARGET_BRANCH="master"
 
 # Save some useful information
 REPO=`git config remote.origin.url`
@@ -21,8 +21,10 @@ rm -rf out/**/* || exit 0
 
 # Now let's go have some fun with the cloned repo
 cd out
+cp -R ./../_site/* .
+
 git config user.name "Travis CI"
-git config user.email "hazelee@re.aligni.st"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
 if [ -z `git diff --exit-code` ]; then
@@ -43,7 +45,7 @@ ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
 openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
 chmod 600 deploy_key
 eval `ssh-agent -s`
-ssh-add deploy_key 
+ssh-add deploy_key
 
 # Now that we're all set up, we can push.
-git push $SSH_REPO $TARGET_BRANCH
+git push -f $SSH_REPO $TARGET_BRANCH 
