@@ -11,9 +11,6 @@ script:
 after_success:
 - './scripts/deploy.sh'
 
-notifications:
-  irc: "irc.ozinger.org#hazealign"
-
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
