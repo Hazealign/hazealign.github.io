@@ -32,12 +32,10 @@ if [ -z `git diff --exit-code` ]; then
     exit 0
 fi
 
-echo "$(ls)"
-
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
 git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Now that we're all set up, we can push.
-git push $SSH_REPO $TARGET_BRANCH 
+git push origin $TARGET_BRANCH 
