@@ -23,8 +23,8 @@ rm -rf out/**/* || exit 0
 cd out
 cp -R ./../_site/* .
 
-git config user.name "Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
+git config --global user.name "Travis CI"
+git config --global user.email "hazelee@re.aligni.st"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
 if [ -z `git diff --exit-code` ]; then
@@ -38,4 +38,4 @@ git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Now that we're all set up, we can push.
-git push origin $TARGET_BRANCH 
+git push -f origin $TARGET_BRANCH 
