@@ -38,4 +38,4 @@ git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Now that we're all set up, we can push.
-git push -f $TARGET_BRANCH 
+git push -f origin $TARGET_BRANCH 
