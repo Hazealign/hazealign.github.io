@@ -10,7 +10,7 @@ script:
 - bundle exec htmlproofer ./_site
 
 after_success:
-- '[ "${TRAVIS_BRANCH}" = "src" ] && ./scripts/deploy.sh || false'
+- '[ "${TRAVIS_BRANCH}" = "master" ] && ./scripts/deploy.sh || false'
 
 notifications:
   irc: "irc.ozinger.org#hazealign"
