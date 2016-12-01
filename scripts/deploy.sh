@@ -32,6 +32,8 @@ if [ -z `git diff --exit-code` ]; then
     exit 0
 fi
 
+echo "$(ls)"
+
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
 git add .
@@ -46,7 +48,6 @@ openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out 
 chmod 600 deploy_key
 eval `ssh-agent -s`
 ssh-add deploy_key
-send '\r'
 
 # Now that we're all set up, we can push.
-git push -f $SSH_REPO $TARGET_BRANCH 
+git push -f $SSH_REPO HEAD:$TARGET_BRANCH 

@@ -1,0 +1,113 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기</title>
+    <link rel="canonical" href="http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>.radius-half {
+  border-radius: 50%; }
+
+.site-header {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 16px auto 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .site-header .page-links {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 30px; }
+    .site-header .page-links a {
+      text-decoration: none;
+      color: #999999; }
+      .site-header .page-links a:hover {
+        color: #333333; }
+
+code {
+  word-break: break-all;
+  white-space: pre-wrap; }
+
+body {
+  padding: 5%;
+  max-width: 700px; }
+
+h1 {
+  font-size: 1.7em; }
+
+h2 {
+  font-size: 1.35em; }
+
+h5 {
+  text-align: center;
+  padding-top: 10%; }
+</style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+      <div class="page-links">
+        <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
+      </div>
+    </header>
+    <h1 class="post-title">
+      macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기
+    </h1>
+    <span>
+  2016년 10월 01일 작성 - Haze Lee.
+  </span> 
+  <p>Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 에러를 볼 수 있습니다.</p>
+
+<p><code>
+--- stderr
+/…/openssl-sys-0.6.4/src/openssl_shim.c:1:10: fatal error: 'openssl/hmac.h' file not found
+#include &lt;openssl/hmac.h&gt;
+         ^
+1 error generated.
+</code></p>
+
+<p>이럴 때는 다음과 같이 해결할 수 있습니다.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">brew install openssl
+
+ <span class="c"># 다음 내용을 환경 변수로 추가해주세요.</span>
+<span class="nb">export </span><span class="nv">OPENSSL_INCLUDE_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/include/
+<span class="nb">export </span><span class="nv">OPENSSL_LIB_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/lib/</code></pre></div>
+
+<p>이럼에도 불구하고, 간혹 같은 에러가 난다면 <code>OPENSLL_LIB_DIR</code>를 직접 설정해주면 됩니다.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">OPENSSL_INCLUDE_DIR</span><span class="o">=</span>/usr/local/Cellar/openssl/<span class="o">(</span>버전<span class="o">)</span>/include/</code></pre></div>
+
+<p>아 그리고 나서, <code>cargo clean</code>을 해주고 다시 빌드하는걸 잊지 마세요. :)</p>
+
+<h1 id="reference">Reference</h1>
+<ul>
+  <li><a href="https://github.com/sfackler/rust-openssl">https://github.com/sfackler/rust-openssl</a></li>
+  <li><a href="https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099">https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099</a></li>
+</ul>
+
+    <h5>
+       <!-- footer start -->
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2016 • All rights reserved.</section>
+         <section class="poweredby">For Geeky Tomorrow.</section>
+    </div>
+</footer>
+
+<!-- footer end -->
+
+    </h5>
+  </body>
+</html>

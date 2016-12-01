@@ -62,10 +62,8 @@ h5 {
     <h1 class="post-title">
       JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자
     </h1>
-    <span>
-  2016년 05월 21일 작성 - Haze Lee.
-  </span> 
-  <p>Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.</p>
+    <span>2016년 05월 21일 작성 - Haze Lee.</span>
+    <p>Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.</p>
 
 <p>프로필 가이드에 기반한 최적화는 프로파일링을 통해 런타임의 퍼포먼스를 높여주는 컴파일러의 최적화 기술이다. 그러면 ART는 언제부터 JIT 컴파일 기능이 추가가 되었는지, 어떻게 동작하는지 궁금한 나같은 사람들을 위해 같이 ART의 소스 코드와 커밋을 살펴보기로 하자.</p>
 
@@ -120,8 +118,7 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
   <li><a href="http://www.slideshare.net/kmt-t/art-47396171">진화하는 ART</a></li>
 </ul>
 
-    <h5>
-       <!-- footer start -->
+    <h5> <!-- footer start -->
 
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
@@ -132,7 +129,6 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
 </footer>
 
 <!-- footer end -->
-
-    </h5>
+</h5>
   </body>
 </html>
