@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 01 Dec 2016 19:34:18 +0900</pubDate>
-    <lastBuildDate>Thu, 01 Dec 2016 19:34:18 +0900</lastBuildDate>
+    <pubDate>Thu, 01 Dec 2016 19:42:57 +0900</pubDate>
+    <lastBuildDate>Thu, 01 Dec 2016 19:42:57 +0900</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -42,7 +42,7 @@
 
 &lt;h3 id=&quot;amp---&quot;&gt;그래서 내 AMP 페이지는 어떻게 보일까?&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/20161201_1.png&quot; alt=&quot;스크린샷&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20161201_1.png&quot; alt=&quot;스크린샷&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;대충 이렇게 보인다. 디자인적으로는 아쉽긴 하지만, 모바일에서 검색했을 때 빨리 보인다는 메리트 때문에 AMP를 쓰는거라서 크게 거슬리거나 하지는 않았다. 이제 구글 검색이 AMP 검색 결과를 보여주길 기다리면… 될 것 같다. :D&lt;/p&gt;
 </description>
@@ -397,7 +397,7 @@
 
 &lt;h2 id=&quot;profit&quot;&gt;Profit!&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/20160624/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160624/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이렇게 깔끔하게 문서가 나온다! 이렇게 나오는 문서를 보니 기분이 너무 조크든요… 개인적으로 클린한 코드를 짰을 때, 좋은 문서를 봤을 때, 문서화를 잘 했을 때 기분이 너무 좋다. 넘나 좋은 것.&lt;/p&gt;
 
