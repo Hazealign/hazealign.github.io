@@ -5,57 +5,22 @@ date:   2016-03-03 12:00:00
 ---
 
 ## Profile
-  - **Name** : 이하제 (Haze Lee)
-  - **Mail** : [hazelee@re.aligni.st](mailto:hazelee@re.aligni.st)
-  - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
-  - **Where** : 온라인 속에 떠돌아다니고 있습니다. [트위터](http://twitter.com/Hazealign), [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) 등에서 저를 찾을 수 있습니다.
-  - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 기계보다 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
-  - **Language** : 한국어 (Native), English (Not Good), 日本語 (Not Bad)
-  - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다.
-  - **LOVE IT!!**
-    - **캐릭터**
-      - **피카츄**
-    - **음식**
-      - 닭 / 오리고기
-      - 커피, 허브티, 말차, 홍차 등의 차
-      - 자몽, 귤, 오렌지, 포도 등의 과일
-    - **음악(한국 아티스트)**
-      - 윤하
-      - 김재중
-      - 윤건
-      - 에픽하이 (Epik High)
-      - 넬 (Nell)
-      - 홀린 (Hlin)
-      - 옥상달빛
-      - M2U
-      - Paul Bazooka
-      - ESTi
-    - **음악 (해외 아티스트)**
-      - EQUAL
-      - SEKAI NO OWARI
-      - ONE OK ROCK
-      - FLOWER FLOWER
-      - 凛として時雨 (린토시테시구레)
-      - amazarashi
-      - まじ娘 (마지코)
-      - supercell, EGOIST, Tia
-      - Fear, and Loathing in Las Vegas
-    - **성우**
-      - 佐倉綾音 (사쿠라 아야네)
-      - 水瀬いのり (미나세 이노리)
-      - 内田真礼 (우치다 마아야)
-      - 黒沢ともよ (쿠로사와 토모요)
-      - 雨宮天 (아마미야 소라)
-      - 茅野愛衣 (카야노 아이)
+- **Name** : 이하제 (Haze Lee)
+- **Mail** : [hazelee@re.aligni.st](mailto:hazelee@re.aligni.st)
+    - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
+    - **Where** : 온라인 속에 떠돌아다니고 있습니다. [트위터](http://twitter.com/Hazealign), [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) 등에서 저를 찾을 수 있습니다.
+    - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 기계보다 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
+    - **Language** : 한국어 (Native), English (Not Good), 日本語 (Not Bad)
+    - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다.
 
 ## Technologies
-  - Web Framework
+- Web Framework
     - Angular.js 1.x
-  - Server Framework
+- Server Framework
     - Play Framework 2.x (Java / Scala)
     - Finatra (Scala)
     - Express, Restify, Koa (Node.js)
-  - Application Development
+- Application Development
     - Windows
       - Using C# (.NET Framework 4.x)
     - Android
@@ -67,17 +32,17 @@ date:   2016-03-03 12:00:00
       - Jailbreak Tweak / Application Development (with Theos)
     - Fusetools
       - Cross-platform Application Development Tools
-  - Database
+- Database
     - Redis, MariaDB(MySQL), PostgreSQL, MS-SQL, MongoDB, Amazon DynamoDB
 
 ## Business Experience
-  - **말랑스튜디오 (2013년 01월 ~ 10월)**
+- **말랑스튜디오 (2013년 01월 ~ 10월)**
     - 말랑스튜디오에서 안드로이드 개발자로 근무했었습니다.
     - 다양한 태블릿이나 해상도에서도 대응 가능한 레이아웃을 만들었습니다.
     - 안드로이드 알람몬 앱의 유지보수 및 새 버전 프로토타입을 만들었습니다.
     - Java에서 cocos2d-x로 구현된 알람 영역과 연동을 했습니다.
     - 에러 로그 수집, 사용자 트래킹, 다양한 광고 라이브러리들을 사용할 수 있었습니다.
-  - **C2Soft (2014년 03월 ~ 2015년 6월)** 
+- **C2Soft (2014년 03월 ~ 2015년 6월)** 
     - 공동으로 창업했었고 전반적인 개발을 맡았습니다.
     - 아웃소싱으로 2014년 대한지적공사의 공간정보경진대회 웹 보드과 관리자 패널을 개발했었습니다. (MEAN Stack)
     - 2014년 청소년용 6.4 지방선거 모의투표 시스템을 개발했습니다. (MEAN Stack)
@@ -107,20 +72,23 @@ date:   2016-03-03 12:00:00
     - 아웃소싱으로 B2B 중국어 교육 애플리케이션을 개발했었습니다.
       - Android 앱 전체를 설계하고 개발했습니다.
       - Retrolambda, Retrofit, RxAndroid, ButterKnife 등의 라이브러리를 사용했으며 이미지 관리는 Picasso를 이용했습니다.
-  - **클래스체크 (2015년 7월 ~ 12월**)
+- **클래스체크 (2015년 7월 ~ 12월**)
     - 기존 개발된 클래스체크 서버와 안드로이드 앱을 유지보수했습니다.
     - GMO AppsCloud에서 돌아갈 수 있도록 운영을 진행했습니다.
     - 버그 수정과 일부 신규 기능을 추가했습니다.
     - Java와 Android에 경험이 없던 후임 직원에게 1개월간 Java 언어 기능과 Android 앱 개발에 대해서 교육했었습니다.
-  - **0101RGB (2015년 12월 ~ 2016년 5월)**
+- **0101RGB (2015년 12월 ~ 2016년 5월)**
     - ARM 어셈블리를 이용한 iOS 탈옥 감지 우회 기술에 대해서 연구했었습니다.
     - 탈옥 환경에서 iOS의 SpringBoard(System Context)에 동적으로 후킹해서 알림을 자동으로 확인해주는 트윅을 개발했습니다.
     - 탈옥 환경에서 iOS의 실시간 CPU, Memory 등의 리소스 사용량을 시스템 데몬 레벨에서 주고 받을 수 있도록 개발했습니다.
     - iOS의 CoreImage Framework를 이용해서 영수증 등의 문서를 인식하고, 필터 등을 이용해서 후처리하는 프로젝트를 개발했습니다.
     - Android에서 OpenCV를 이용해서 영수증 등의 문서를 인식하고, GPU 가속 필터를 이용해 후처리하는 프로젝트를 개발했습니다.
-  - **Frientrip (2016년 6월 ~ )**
+- **Frientrip (2016년 6월 ~ 2016년 11월)**
     - 프립의 안드로이드 애플리케이션을 유지보수하면서 새로운 기능들을 개발했습니다. 그런 과정에서 Kotlin을 적극적으로 사용하였습니다.
-    - 프립의 서버를 유지보수하고 있습니다. 일부 기능의 개발이나 테스트 케이스를 작성하고 있습니다.
+    - Node.js + Loopback 기반의 프립의 서버를 유지보수하고 있습니다. 일부 기능의 개발이나 테스트 케이스를 작성하고 있습니다.
+    - 서버로의 배포나 빌드를 자동화해주는 툴을 개발했습니다.
+- **아주대학병원 (아주대학교 의료정보학과, 2016년 12월 ~ )**
+    - 아주대학교 의료정보학과에서 특임연구원으로 일하고 있습니다. 
 
 ## Personal Development
 - **[eulrlega.js](https://github.com/Hazealign/eulrlega.js)**
@@ -169,17 +137,3 @@ date:   2016-03-03 12:00:00
   - iPhone에 Clickwheel이 들어간 iPod과 같은 음악 플레이어를 만들고자 하는 팀입니다.
 
 ![](https://raw.githubusercontent.com/RecoverTeam/recover-design/master/out/Whole%20Screens.png)
-
-## Disorders
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#H60-H95|H80-H83|H81|H81.0">**메니에르병 (Ménière's disease)**</a>
-    - 2011년 8월 ~ 2013년
-    - 2013년에 내림프낭감압술을 통해서 현재는 병이 특별히 진행되지는 않습니다.
-    - 잔존 청력과 입 모양을 통해 커뮤니케이션에는 지장이 없습니다.
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F43|F43.1">**외상 후 스트레스 장애 (Post Traumatic Stress Disorder)**</a>
-    - 만성화된 외상 후 스트레스 장애로 어릴 때에 생긴 트라우마가 있습니다. 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F30-F39|F33|F33.2">**우울장애 (Major Depression Disorder)**</a>
-    - 2014년 10월 ~ 현재
-    - 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
-  - <a href="http://www.koicd.kr/kcd/kcdTree.do?ver=v6#F00-F99|F40-F48|F41|F41.0">**광장공포증을 동반한 공황장애 (Panic Disorder with Agoraphobia)**</a>
-    - 2015년 2월 ~ 현재
-    - 다양한 요인의 스트레스로 인하여 예측 불가능한 상황과 지하철, 버스 안 등 사람이 많은 곳에서 공황 발작을 겪고 있습니다. 필요한 진료와 상담을 받고 있으며 꾸준히 약을 복용하고 있습니다.
