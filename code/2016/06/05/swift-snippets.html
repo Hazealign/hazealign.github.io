@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta charset="utf-8">
-  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <title>[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음</title>
-  <meta name="description" content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다." />
-
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@realignist" />
-    <meta name="twitter:title" content="[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음" />
-    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-    
-    <meta name="twitter:description"  content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다." />
-    
-  
-  
-  <meta property="og:site_name" content="Haze Lee" />
-  <meta property="og:title" content="[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음"/>
-  
-  <meta property="og:description" content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다." />
-  
-  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-  <meta property="og:url" content="http://realignist.me/code/2016/06/05/swift-snippets.html" >
-  <meta property="og:type" content="blog" />
-  <meta property="article:published_time" content="2016-06-05T12:00:00+09:00">
-
-  <link rel="canonical" href="http://realignist.me/code/2016/06/05/swift-snippets.html"/>
-  <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
-  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-  <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
-
-  
-    <link rel="amphtml" href="http://realignist.me/amp/code/2016/06/05/swift-snippets">
-  
-
-  <style type="text/css">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 --><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음</title>
+<meta name="description" content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다.">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@realignist">
+<meta name="twitter:title" content="[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음">
+<meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta name="twitter:description" content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다.">
+<meta property="og:site_name" content="Haze Lee">
+<meta property="og:title" content="[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음">
+<meta property="og:description" content="이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다.">
+<meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta property="og:url" content="http://realignist.me/code/2016/06/05/swift-snippets.html">
+<meta property="og:type" content="blog">
+<meta property="article:published_time" content="2016-06-05T12:00:00+09:00">
+<link rel="canonical" href="http://realignist.me/code/2016/06/05/swift-snippets.html">
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/prism.css">
+<link rel="amphtml" href="http://realignist.me/amp/code/2016/06/05/swift-snippets">
+<style type="text/css">
     
 code[class*="language-"],
 pre[class*="language-"] {
@@ -182,33 +167,23 @@ pre[class*="language-"] {
 
   </style>
 </head>
-
-  <body itemscope itemtype="http://schema.org/Article">
+<body itemscope itemtype="http://schema.org/Article">
     <!-- header start -->
 
 <!-- header end -->
 
-    <main class="content" role="main">
-      <article class="post">
-        
-        <div class="noarticleimage">
+    <main class="content" role="main"><article class="post"><div class="noarticleimage">
           <div class="post-meta">
             <h1 class="post-title">[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2016-06-05T12:00:00+09:00">05 Jun 2016</time>
-              <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
-            </div>
+              <time datetime="2016-06-05T12:00:00+09:00">05 Jun 2016</time><!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+</div>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
-        
-        <section class="post-content">
-          <div class="post-reading">
+        <br><br><br><section class="post-content"><div class="post-reading">
             <span class="post-reading-time"></span> read
           </div>
           <a name="topofpage"></a>
@@ -218,360 +193,291 @@ pre[class*="language-"] {
 
 <h2 id="section">클래스 이름의 표시</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">NSObject</span> <span class="p">{</span>
-    <span class="k">class</span> <span class="k">var</span> <span class="nl">className</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">NSObject</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="k">var</span> <span class="nv">className</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">String</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">var</span> <span class="nl">className</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="kt">dynamicType</span><span class="p">.</span><span class="n">className</span>
+    <span class="k">var</span> <span class="nv">className</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="k">dynamicType</span><span class="o">.</span><span class="n">className</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">MyClass</span><span class="p">.</span><span class="n">className</span>   <span class="c1">//=&gt; &quot;MyClass&quot;</span>
-<span class="n">MyClass</span><span class="p">().</span><span class="n">className</span> <span class="c1">//=&gt; &quot;MyClass&quot;</span></code></pre></div>
-
-<h2 id="xib--">XIB를 등록하고 호출하기</h2>
+<span class="kt">MyClass</span><span class="o">.</span><span class="n">className</span>   <span class="c1">//=&gt; "MyClass"</span>
+<span class="kt">MyClass</span><span class="p">()</span><span class="o">.</span><span class="n">className</span> <span class="c1">//=&gt; "MyClass"</span></code></pre></figure><h2 id="xib--">XIB를 등록하고 호출하기</h2>
 
 <p>XIB 파일과 클래스 이름을 똑같이 설정한 뒤 이용해주세요. 위에서 이야기한 “클래스 이름의 표시”를 활용하고 있습니다.</p>
 
 <h3 id="uitableview">UITableView</h3>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UITableView</span> <span class="p">{</span>
-    <span class="k">func</span> <span class="n">registerCell</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">className</span> <span class="o">=</span> <span class="n">type</span><span class="p">.</span><span class="n">className</span>
-        <span class="k">let</span> <span class="n">nib</span> <span class="o">=</span> <span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="n">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nl">forCellReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">UITableView</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="n">registerCell</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">className</span> <span class="o">=</span> <span class="n">type</span><span class="o">.</span><span class="n">className</span>
+        <span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="kt">UINib</span><span class="p">(</span><span class="nv">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="nf">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nv">forCellReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">registerCells</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">types</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">types</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">registerCell</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="n">registerCells</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">types</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="nf">registerCell</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">dequeueCell</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">,</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="bp">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="n">type</span><span class="p">.</span><span class="n">className</span><span class="p">,</span> <span class="nl">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">T</span>
+    <span class="kd">func</span> <span class="n">dequeueCell</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="n">type</span><span class="o">.</span><span class="n">className</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as!</span> <span class="kt">T</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">tableView</span><span class="o">.</span><span class="nf">registerCell</span><span class="p">(</span><span class="kt">MyCell</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+<span class="n">tableView</span><span class="o">.</span><span class="nf">registerCells</span><span class="p">([</span><span class="kt">MyCell1</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="kt">MyCell2</span><span class="o">.</span><span class="k">self</span><span class="p">])</span>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">tableView</span><span class="p">.</span><span class="n">registerCell</span><span class="p">(</span><span class="n">MyCell</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
-<span class="n">tableView</span><span class="p">.</span><span class="n">registerCells</span><span class="p">([</span><span class="n">MyCell1</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="n">MyCell2</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueCell</span><span class="p">(</span><span class="kt">MyCell</span><span class="o">.</span><span class="k">self</span><span class="p">)</span></code></pre></figure><h2 id="uicollectionview">UICollectionView</h2>
 
-<span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueCell</span><span class="p">(</span><span class="n">MyCell</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span></code></pre></div>
-
-<h2 id="uicollectionview">UICollectionView</h2>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UICollectionView</span> <span class="p">{</span>
-    <span class="k">func</span> <span class="n">registerCell</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">className</span> <span class="o">=</span> <span class="n">type</span><span class="p">.</span><span class="n">className</span>
-        <span class="k">let</span> <span class="n">nib</span> <span class="o">=</span> <span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="n">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nl">forCellWithReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">UICollectionView</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="n">registerCell</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">className</span> <span class="o">=</span> <span class="n">type</span><span class="o">.</span><span class="n">className</span>
+        <span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="kt">UINib</span><span class="p">(</span><span class="nv">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="nf">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nv">forCellWithReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">registerCells</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">types</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">types</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">registerCell</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="n">registerCells</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">types</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="nf">registerCell</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">registerReusableView</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">,</span> <span class="nl">kind</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">className</span> <span class="o">=</span> <span class="n">type</span><span class="p">.</span><span class="n">className</span>
-        <span class="k">let</span> <span class="n">nib</span> <span class="o">=</span> <span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="n">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nl">forSupplementaryViewOfKind</span><span class="p">:</span> <span class="n">kind</span><span class="p">,</span> <span class="nl">withReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
+    <span class="kd">func</span> <span class="n">registerReusableView</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">className</span> <span class="o">=</span> <span class="n">type</span><span class="o">.</span><span class="n">className</span>
+        <span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="kt">UINib</span><span class="p">(</span><span class="nv">nibName</span><span class="p">:</span> <span class="n">className</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="nf">registerNib</span><span class="p">(</span><span class="n">nib</span><span class="p">,</span> <span class="nv">forSupplementaryViewOfKind</span><span class="p">:</span> <span class="n">kind</span><span class="p">,</span> <span class="nv">withReuseIdentifier</span><span class="p">:</span> <span class="n">className</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">registerReusableViews</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">types</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">],</span> <span class="nl">kind</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">types</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">registerReusableView</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="nl">kind</span><span class="p">:</span> <span class="n">kind</span><span class="p">)</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="n">registerReusableViews</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">types</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">],</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="nf">registerReusableView</span><span class="p">(</span><span class="nv">$0</span><span class="p">,</span> <span class="nv">kind</span><span class="p">:</span> <span class="n">kind</span><span class="p">)</span> <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">dequeueCell</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">,</span> <span class="n">forIndexPath</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="bp">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">dequeueReusableCellWithReuseIdentifier</span><span class="p">(</span><span class="n">type</span><span class="p">.</span><span class="n">className</span><span class="p">,</span> <span class="nl">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">T</span>
+    <span class="kd">func</span> <span class="n">dequeueCell</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="n">forIndexPath</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">dequeueReusableCellWithReuseIdentifier</span><span class="p">(</span><span class="n">type</span><span class="o">.</span><span class="n">className</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as!</span> <span class="kt">T</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="n">dequeueReusableView</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="bp">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">,</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="bp">NSIndexPath</span><span class="p">,</span> <span class="nl">kind</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="n">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">dequeueReusableSupplementaryViewOfKind</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="nl">withReuseIdentifier</span><span class="p">:</span> <span class="n">type</span><span class="p">.</span><span class="n">className</span><span class="p">,</span> <span class="nl">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">T</span>
+    <span class="kd">func</span> <span class="n">dequeueReusableView</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UICollectionReusableView</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">NSIndexPath</span><span class="p">,</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">UICollectionElementKindSectionHeader</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">dequeueReusableSupplementaryViewOfKind</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="nv">withReuseIdentifier</span><span class="p">:</span> <span class="n">type</span><span class="o">.</span><span class="n">className</span><span class="p">,</span> <span class="nv">forIndexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as!</span> <span class="kt">T</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">collectionView</span><span class="o">.</span><span class="nf">registerCell</span><span class="p">(</span><span class="kt">MyCell</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+<span class="n">collectionView</span><span class="o">.</span><span class="nf">registerCells</span><span class="p">([</span><span class="kt">MyCell1</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="kt">MyCell2</span><span class="o">.</span><span class="k">self</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">collectionView</span><span class="o">.</span><span class="nf">dequeueCell</span><span class="p">(</span><span class="kt">MyCell</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">collectionView</span><span class="p">.</span><span class="n">registerCell</span><span class="p">(</span><span class="n">MyCell</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
-<span class="n">collectionView</span><span class="p">.</span><span class="n">registerCells</span><span class="p">([</span><span class="n">MyCell1</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="n">MyCell2</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
-<span class="k">let</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">collectionView</span><span class="p">.</span><span class="n">dequeueCell</span><span class="p">(</span><span class="n">MyCell</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
+<span class="n">collectionView</span><span class="o">.</span><span class="nf">registerReusableView</span><span class="p">(</span><span class="kt">MyReusableView</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+<span class="n">collectionView</span><span class="o">.</span><span class="nf">registerReusableViews</span><span class="p">([</span><span class="kt">MyReusableView1</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="kt">MyReusableView2</span><span class="o">.</span><span class="k">self</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="n">collectionView</span><span class="o">.</span><span class="nf">dequeueReusableView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">MyReusableView</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span></code></pre></figure><h2 id="nscolor-">16진수를 이용해서 NSColor 만들기</h2>
 
-<span class="n">collectionView</span><span class="p">.</span><span class="n">registerReusableView</span><span class="p">(</span><span class="n">MyReusableView</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span>
-<span class="n">collectionView</span><span class="p">.</span><span class="n">registerReusableViews</span><span class="p">([</span><span class="n">MyReusableView1</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="n">MyReusableView2</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
-<span class="k">let</span> <span class="n">view</span> <span class="o">=</span> <span class="n">collectionView</span><span class="p">.</span><span class="n">dequeueReusableView</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="n">MyReusableView</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="nl">indexPath</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span></code></pre></div>
-
-<h2 id="nscolor-">16진수를 이용해서 NSColor 만들기</h2>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UIColor</span> <span class="p">{</span>
-    <span class="n">convenience</span> <span class="k">init</span><span class="p">(</span><span class="nl">hex</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">Double</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">r</span> <span class="o">=</span> <span class="n">CGFloat</span><span class="p">((</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
-        <span class="k">let</span> <span class="n">g</span> <span class="o">=</span> <span class="n">CGFloat</span><span class="p">((</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0x00FF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
-        <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0x0000FF</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
-        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">red</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="nl">green</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="nl">blue</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">UIColor</span> <span class="p">{</span>
+    <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">hex</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">r</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0xFF0000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+        <span class="k">let</span> <span class="nv">g</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">((</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0x00FF00</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+        <span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="n">hex</span> <span class="o">&amp;</span> <span class="mh">0x0000FF</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">color</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">color</span><span class="p">(</span><span class="mh">0xAABBCC</span><span class="p">)</span></code></pre></figure><h2 id="uiviewcontroller--">제일 최상위 UIViewController 객체를 가져오기</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xAABBCC</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">UIApplication</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">topViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">var</span> <span class="nv">topViewController</span> <span class="o">=</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="nf">sharedApplication</span><span class="p">()</span><span class="o">.</span><span class="n">keyWindow</span><span class="p">?</span><span class="o">.</span><span class="n">rootViewController</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
 
-<h2 id="uiviewcontroller--">제일 최상위 UIViewController 객체를 가져오기</h2>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UIApplication</span> <span class="p">{</span>
-    <span class="k">func</span> <span class="n">topViewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">UIViewController</span><span class="o">?</span> <span class="p">{</span>
-        <span class="n">guard</span> <span class="k">var</span> <span class="n">topViewController</span> <span class="o">=</span> <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">keyWindow</span><span class="o">?</span><span class="p">.</span><span class="n">rootViewController</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
-
-        <span class="k">while</span> <span class="k">let</span> <span class="n">presentedViewController</span> <span class="o">=</span> <span class="n">topViewController</span><span class="p">.</span><span class="n">presentedViewController</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="k">let</span> <span class="nv">presentedViewController</span> <span class="o">=</span> <span class="n">topViewController</span><span class="o">.</span><span class="n">presentedViewController</span> <span class="p">{</span>
             <span class="n">topViewController</span> <span class="o">=</span> <span class="n">presentedViewController</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">topViewController</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kt">UIApplication</span><span class="o">.</span><span class="nf">sharedApplication</span><span class="p">()</span><span class="o">.</span><span class="nf">topViewController</span><span class="p">()?</span></code></pre></figure><h2 id="storyboard-viewcontroller-">Storyboard의 ViewController 생성하기</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">topViewController</span><span class="p">()</span><span class="o">?</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">protocol</span> <span class="kt">StoryBoardHelper</span> <span class="p">{}</span>
 
-<h2 id="storyboard-viewcontroller-">Storyboard의 ViewController 생성하기</h2>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">protocol</span> <span class="n">StoryBoardHelper</span> <span class="p">{}</span>
-
-<span class="k">extension</span> <span class="n">StoryBoardHelper</span> <span class="k">where</span> <span class="nl">Self</span><span class="p">:</span> <span class="bp">UIViewController</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">func</span> <span class="n">instantiate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">storyboard</span> <span class="o">=</span> <span class="bp">UIStoryboard</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">storyboard</span><span class="p">.</span><span class="n">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">className</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="kt">Self</span>
+<span class="kd">extension</span> <span class="kt">StoryBoardHelper</span> <span class="k">where</span> <span class="k">Self</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">instantiate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">storyboard</span> <span class="o">=</span> <span class="kt">UIStoryboard</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">className</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">storyboard</span><span class="o">.</span><span class="nf">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">className</span><span class="p">)</span> <span class="k">as!</span> <span class="k">Self</span>
     <span class="p">}</span>
 
-    <span class="k">static</span> <span class="k">func</span> <span class="n">instantiate</span><span class="p">(</span><span class="nl">storyboard</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">storyboard</span> <span class="o">=</span> <span class="bp">UIStoryboard</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="n">storyboard</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">storyboard</span><span class="p">.</span><span class="n">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">className</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="kt">Self</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">instantiate</span><span class="p">(</span><span class="nv">storyboard</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">storyboard</span> <span class="o">=</span> <span class="kt">UIStoryboard</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="n">storyboard</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">storyboard</span><span class="o">.</span><span class="nf">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">className</span><span class="p">)</span> <span class="k">as!</span> <span class="k">Self</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">extension</span> <span class="nl">UIViewController</span><span class="p">:</span> <span class="n">StoryBoardHelper</span> <span class="p">{}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Storyboard 파일과 클래스 이름이 같을 때</span>
-<span class="n">MyViewController</span><span class="p">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="kd">extension</span> <span class="kt">UIViewController</span><span class="p">:</span> <span class="kt">StoryBoardHelper</span> <span class="p">{}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Storyboard 파일과 클래스 이름이 같을 때</span>
+<span class="kt">MyViewController</span><span class="o">.</span><span class="nf">instantiate</span><span class="p">()</span>
 <span class="c1">// Storyboard 파일과 클래스 이름이 다를 때</span>
-<span class="n">MyViewController</span><span class="p">.</span><span class="n">instantiate</span><span class="p">(</span><span class="s">&quot;MyStoryboard&quot;</span><span class="p">)</span></code></pre></div>
-
-<p>위에서 이야기한 “클래스 이름의 표시”를 활용하고 있습니다.</p>
+<span class="kt">MyViewController</span><span class="o">.</span><span class="nf">instantiate</span><span class="p">(</span><span class="s">"MyStoryboard"</span><span class="p">)</span></code></pre></figure><p>위에서 이야기한 “클래스 이름의 표시”를 활용하고 있습니다.</p>
 
 <h2 id="xib-view-">XIB의 View를 생성</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">protocol</span> <span class="n">NibHelper</span> <span class="p">{}</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">protocol</span> <span class="kt">NibHelper</span> <span class="p">{}</span>
 
-<span class="k">extension</span> <span class="n">NibHelper</span> <span class="k">where</span> <span class="nl">Self</span><span class="p">:</span> <span class="bp">UIView</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">func</span> <span class="n">instantiate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="n">nib</span> <span class="o">=</span> <span class="bp">UINib</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">className</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">nib</span><span class="p">.</span><span class="n">instantiateWithOwner</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="kt">as</span><span class="o">!</span> <span class="kt">Self</span>
+<span class="kd">extension</span> <span class="kt">NibHelper</span> <span class="k">where</span> <span class="k">Self</span><span class="p">:</span> <span class="kt">UIView</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">instantiate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="kt">UINib</span><span class="p">(</span><span class="nv">nibName</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">className</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nib</span><span class="o">.</span><span class="nf">instantiateWithOwner</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">as!</span> <span class="k">Self</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">extension</span> <span class="nl">UIView</span><span class="p">:</span> <span class="n">NibHelper</span> <span class="p">{}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">MyView</span><span class="p">.</span><span class="n">instantiate</span><span class="p">(</span><span class="nl">owner</span><span class="p">:</span> <span class="nb">self</span><span class="p">)</span></code></pre></div>
-
-<p>XIB 파일과 클래스 이름을 똑같이 설정한 뒤 이용해주세요. 위에서 이야기한 “클래스 이름의 표시”를 활용하고 있습니다.</p>
+<span class="kd">extension</span> <span class="kt">UIView</span><span class="p">:</span> <span class="kt">NibHelper</span> <span class="p">{}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kt">MyView</span><span class="o">.</span><span class="nf">instantiate</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span></code></pre></figure><p>XIB 파일과 클래스 이름을 똑같이 설정한 뒤 이용해주세요. 위에서 이야기한 “클래스 이름의 표시”를 활용하고 있습니다.</p>
 
 <h2 id="view-">모든 자식 View를 죽이기</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UIView</span> <span class="p">{</span>
-    <span class="k">func</span> <span class="n">removeAllSubviews</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="n">subview</span> <span class="k">in</span> <span class="nb">self</span><span class="p">.</span><span class="n">subviews</span> <span class="p">{</span>
-            <span class="n">subview</span><span class="p">.</span><span class="n">removeFromSuperview</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">UIView</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">removeAllSubviews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">subview</span> <span class="k">in</span> <span class="k">self</span><span class="o">.</span><span class="n">subviews</span> <span class="p">{</span>
+            <span class="n">subview</span><span class="o">.</span><span class="nf">removeFromSuperview</span><span class="p">()</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">view</span><span class="o">.</span><span class="nf">removeAllSubViews</span><span class="p">()</span></code></pre></figure><h2 id="selector-">Selector를 모으기</h2>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">view</span><span class="p">.</span><span class="n">removeAllSubViews</span><span class="p">()</span></code></pre></div>
-
-<h2 id="selector-">Selector를 모으기</h2>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">private</span> <span class="k">extension</span> <span class="n">Selector</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">let</span> <span class="n">buttonTapped</span> <span class="o">=</span> <span class="err">#</span><span class="n">selector</span><span class="p">(</span><span class="n">MyViewController</span><span class="p">.</span><span class="n">buttonTapped</span><span class="p">(</span><span class="nl">_</span><span class="p">:))</span>
-<span class="p">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">button</span> <span class="o">=</span> <span class="bp">UIButton</span><span class="p">()</span>
-<span class="n">button</span><span class="p">.</span><span class="n">addTarget</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="p">.</span><span class="n">buttonTapped</span><span class="p">,</span> <span class="nl">forControlEvents</span><span class="p">:</span> <span class="p">.</span><span class="n">TouchUpInside</span><span class="p">)</span></code></pre></div>
-
-<h2 id="section-1">라이브러리</h2>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">private</span> <span class="kd">extension</span> <span class="kt">Selector</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">buttonTapped</span> <span class="o">=</span> <span class="kd">#selector(</span><span class="nf">MyViewController.buttonTapped(_:)</span><span class="kd">)</span>
+<span class="p">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+<span class="n">button</span><span class="o">.</span><span class="nf">addTarget</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="o">.</span><span class="n">buttonTapped</span><span class="p">,</span> <span class="nv">forControlEvents</span><span class="p">:</span> <span class="o">.</span><span class="kt">TouchUpInside</span><span class="p">)</span></code></pre></figure><h2 id="section-1">라이브러리</h2>
 <p>개발을 쉽게 해주는 다용도 extension 계의 라이브러리를 정리했습니다.</p>
 
 <h3 id="swiftdatehttpsgithubcommalcommacswiftdate"><a href="https://github.com/malcommac/SwiftDate">SwiftDate</a></h3>
 
 <p>NSDate를 쉽게 쓸 수  있게 만들어주는 라이브러리</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">date1</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">(</span><span class="nl">year</span><span class="p">:</span> <span class="mi">2016</span><span class="p">,</span> <span class="nl">month</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nl">day</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nl">hour</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">date2</span> <span class="o">=</span> <span class="s">&quot;2016-01-05T22:10:55.200Z&quot;</span><span class="p">.</span><span class="n">toDate</span><span class="p">(</span><span class="n">DateFormat</span><span class="p">.</span><span class="n">ISO8601</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">date3</span> <span class="o">=</span> <span class="s">&quot;22/01/2016&quot;</span><span class="p">.</span><span class="n">toDate</span><span class="p">(</span><span class="n">DateFormat</span><span class="p">.</span><span class="n">Custom</span><span class="p">(</span><span class="s">&quot;dd/MM/yyyy&quot;</span><span class="p">))</span>
-<span class="k">let</span> <span class="n">date4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">5.</span><span class="n">days</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">hours</span> <span class="o">-</span> <span class="mf">15.</span><span class="n">minutes</span><span class="p">).</span><span class="n">fromNow</span>
-<span class="k">let</span> <span class="n">date5</span> <span class="o">=</span> <span class="n">date4</span> <span class="o">+</span> <span class="mf">1.</span><span class="n">years</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">months</span> <span class="o">+</span> <span class="mf">1.</span><span class="n">days</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">hours</span></code></pre></div>
-
-<p>더 자세히 알고 싶으신 분들은 <a href="https://github.com/malcommac/SwiftDate/blob/master/Documentation/UserGuide.md">여기</a>에서.</p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">date1</span> <span class="o">=</span> <span class="kt">NSDate</span><span class="p">(</span><span class="nv">year</span><span class="p">:</span> <span class="mi">2016</span><span class="p">,</span> <span class="nv">month</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">day</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nv">hour</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">date2</span> <span class="o">=</span> <span class="s">"2016-01-05T22:10:55.200Z"</span><span class="o">.</span><span class="nf">toDate</span><span class="p">(</span><span class="kt">DateFormat</span><span class="o">.</span><span class="kt">ISO8601</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">date3</span> <span class="o">=</span> <span class="s">"22/01/2016"</span><span class="o">.</span><span class="nf">toDate</span><span class="p">(</span><span class="kt">DateFormat</span><span class="o">.</span><span class="kt">Custom</span><span class="p">(</span><span class="s">"dd/MM/yyyy"</span><span class="p">))</span>
+<span class="k">let</span> <span class="nv">date4</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">2</span><span class="o">.</span><span class="n">hours</span> <span class="o">-</span> <span class="mi">15</span><span class="o">.</span><span class="n">minutes</span><span class="p">)</span><span class="o">.</span><span class="n">fromNow</span>
+<span class="k">let</span> <span class="nv">date5</span> <span class="o">=</span> <span class="n">date4</span> <span class="o">+</span> <span class="mi">1</span><span class="o">.</span><span class="n">years</span> <span class="o">+</span> <span class="mi">2</span><span class="o">.</span><span class="n">months</span> <span class="o">+</span> <span class="mi">1</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">2</span><span class="o">.</span><span class="n">hours</span></code></pre></figure><p>더 자세히 알고 싶으신 분들은 <a href="https://github.com/malcommac/SwiftDate/blob/master/Documentation/UserGuide.md">여기</a>에서.</p>
 
 <h3 id="chameleonhttpsgithubcomviccalexanderchameleon"><a href="https://github.com/ViccAlexander/Chameleon">Chameleon</a></h3>
 
-<p><img src="http://realignist.me/assets/images/20160605/1.png" alt="" /></p>
+<p><img src="http://realignist.me/assets/images/20160605/1.png" alt=""></p>
 
 <p>좋은 느낌의 플랫 컬러를 제공해주는 라이브러리</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">color1</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">flatGreenColorDark</span><span class="p">()</span>
-<span class="k">let</span> <span class="n">color2</span> <span class="o">=</span> <span class="n">FlatGreenDark</span><span class="p">()</span> <span class="c1">// 위의 축약형</span>
-<span class="k">let</span> <span class="n">color3</span> <span class="o">=</span> <span class="n">RandomFlatColor</span><span class="p">()</span>
-<span class="k">let</span> <span class="n">color4</span> <span class="o">=</span> <span class="n">ComplementaryFlatColorOf</span><span class="p">(</span><span class="n">color1</span><span class="p">)</span> <span class="c1">// 보색</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">color1</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">flatGreenColorDark</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">color2</span> <span class="o">=</span> <span class="kt">FlatGreenDark</span><span class="p">()</span> <span class="c1">// 위의 축약형</span>
+<span class="k">let</span> <span class="nv">color3</span> <span class="o">=</span> <span class="kt">RandomFlatColor</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">color4</span> <span class="o">=</span> <span class="kt">ComplementaryFlatColorOf</span><span class="p">(</span><span class="n">color1</span><span class="p">)</span> <span class="c1">// 보색</span>
 
-<span class="bp">UIColor</span><span class="p">.</span><span class="n">pinkColor</span><span class="p">().</span><span class="n">flatten</span><span class="p">()</span>
-<span class="n">FlatGreen</span><span class="p">.</span><span class="n">hexValue</span> <span class="c1">//=&gt; &quot;2ecc71&quot;</span>
-<span class="bp">UIColor</span><span class="p">(</span><span class="nl">averageColorFromImage</span><span class="p">:</span> <span class="n">image</span><span class="p">)</span></code></pre></div>
+<span class="kt">UIColor</span><span class="o">.</span><span class="nf">pinkColor</span><span class="p">()</span><span class="o">.</span><span class="nf">flatten</span><span class="p">()</span>
+<span class="kt">FlatGreen</span><span class="o">.</span><span class="n">hexValue</span> <span class="c1">//=&gt; "2ecc71"</span>
+<span class="kt">UIColor</span><span class="p">(</span><span class="nv">averageColorFromImage</span><span class="p">:</span> <span class="n">image</span><span class="p">)</span></code></pre></figure><p>컨트롤의 색을 일괄적으로 변경하는 것도 가능합니다.</p>
 
-<p>컨트롤의 색을 일괄적으로 변경하는 것도 가능합니다.</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Chameleon</span><span class="p">.</span><span class="n">setGlobalThemeUsingPrimaryColor</span><span class="p">(</span><span class="n">FlatBlue</span><span class="p">(),</span> <span class="nl">withSecondaryColor</span><span class="p">:</span> <span class="n">FlatMagenta</span><span class="p">(),</span> <span class="nl">andContentStyle</span><span class="p">:</span> <span class="n">UIContentStyle</span><span class="p">.</span><span class="n">Contrast</span><span class="p">)</span></code></pre></div>
-
-<h3 id="rswifthttpsgithubcommac-cain13rswift"><a href="https://github.com/mac-cain13/R.swift">R.swift</a></h3>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kt">Chameleon</span><span class="o">.</span><span class="nf">setGlobalThemeUsingPrimaryColor</span><span class="p">(</span><span class="kt">FlatBlue</span><span class="p">(),</span> <span class="nv">withSecondaryColor</span><span class="p">:</span> <span class="kt">FlatMagenta</span><span class="p">(),</span> <span class="nv">andContentStyle</span><span class="p">:</span> <span class="kt">UIContentStyle</span><span class="o">.</span><span class="kt">Contrast</span><span class="p">)</span></code></pre></figure><h3 id="rswifthttpsgithubcommac-cain13rswift"><a href="https://github.com/mac-cain13/R.swift">R.swift</a></h3>
 
 <p>안드로이드의 R.java와 같이 파일 이름 등을 프로퍼티화해주는 라이브러리입니다. Typo가 컴파일 시점에 알 수 있으니 행복해집니다.</p>
 
 <p>Before</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">icon</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;settings-icon&quot;</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">font</span> <span class="o">=</span> <span class="bp">UIFont</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;San Francisco&quot;</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">viewController</span> <span class="o">=</span> <span class="n">CustomViewController</span><span class="p">(</span><span class="nl">nibName</span><span class="p">:</span> <span class="s">&quot;CustomView&quot;</span><span class="p">,</span> <span class="nl">bundle</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;welcome.withName&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">),</span> <span class="nl">locale</span><span class="p">:</span> <span class="bp">NSLocale</span><span class="p">.</span><span class="n">currentLocale</span><span class="p">(),</span> <span class="s">&quot;Arthur Dent&quot;</span><span class="p">)</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">icon</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"settings-icon"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">font</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"San Francisco"</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="kt">CustomViewController</span><span class="p">(</span><span class="nv">nibName</span><span class="p">:</span> <span class="s">"CustomView"</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">string</span> <span class="o">=</span> <span class="kt">String</span><span class="p">(</span><span class="nv">format</span><span class="p">:</span> <span class="kt">NSLocalizedString</span><span class="p">(</span><span class="s">"welcome.withName"</span><span class="p">,</span> <span class="nv">comment</span><span class="p">:</span> <span class="s">""</span><span class="p">),</span> <span class="nv">locale</span><span class="p">:</span> <span class="kt">NSLocale</span><span class="o">.</span><span class="nf">currentLocale</span><span class="p">(),</span> <span class="s">"Arthur Dent"</span><span class="p">)</span></code></pre></figure><p>After</p>
 
-<p>After</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">icon</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">settingsIcon</span><span class="p">()</span>
-<span class="k">let</span> <span class="n">font</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="n">font</span><span class="p">.</span><span class="n">sanFrancisco</span><span class="p">(</span><span class="nl">size</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">viewController</span> <span class="o">=</span> <span class="n">CustomViewController</span><span class="p">(</span><span class="nl">nib</span><span class="p">:</span> <span class="n">R</span><span class="p">.</span><span class="n">nib</span><span class="p">.</span><span class="n">customView</span><span class="p">)</span>
-<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">localizable</span><span class="p">.</span><span class="n">welcomeWithName</span><span class="p">(</span><span class="s">&quot;Arthur Dent&quot;</span><span class="p">)</span></code></pre></div>
-
-<h3 id="swiftstringhttpsgithubcomamayneswiftstring"><a href="https://github.com/amayne/SwiftString">SwiftString</a></h3>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">icon</span> <span class="o">=</span> <span class="kt">R</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="nf">settingsIcon</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">font</span> <span class="o">=</span> <span class="kt">R</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="nf">sanFrancisco</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">viewController</span> <span class="o">=</span> <span class="kt">CustomViewController</span><span class="p">(</span><span class="nv">nib</span><span class="p">:</span> <span class="kt">R</span><span class="o">.</span><span class="n">nib</span><span class="o">.</span><span class="n">customView</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">string</span> <span class="o">=</span> <span class="kt">R</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">localizable</span><span class="o">.</span><span class="nf">welcomeWithName</span><span class="p">(</span><span class="s">"Arthur Dent"</span><span class="p">)</span></code></pre></figure><h3 id="swiftstringhttpsgithubcomamayneswiftstring"><a href="https://github.com/amayne/SwiftString">SwiftString</a></h3>
 
 <p>String에 편리한 메소드를 추가해주는 라이브러리입니다.</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;foobar&quot;</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>         <span class="c1">//=&gt; true</span>
-<span class="s">&quot;,&quot;</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>                <span class="c1">//=&gt; &quot;1,2,3&quot;</span>
-<span class="s">&quot;hello world&quot;</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>      <span class="c1">//=&gt; &quot;world&quot;</span>
-<span class="s">&quot;hello world&quot;</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="mf">.1</span><span class="p">]</span>             <span class="c1">//=&gt; &quot;he&quot;</span>
-<span class="s">&quot;hi hi ho hey hihey&quot;</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="s">&quot;hi&quot;</span><span class="p">)</span> <span class="c1">//=&gt; 3</span></code></pre></div>
-
-<h3 id="swiftyuserdefaultshttpsgithubcomradexswiftyuserdefaults"><a href="https://github.com/radex/SwiftyUserDefaults">SwiftyUserDefaults</a></h3>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">"foobar"</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>         <span class="c1">//=&gt; true</span>
+<span class="s">","</span><span class="o">.</span><span class="nf">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>                <span class="c1">//=&gt; "1,2,3"</span>
+<span class="s">"hello world"</span><span class="o">.</span><span class="nf">split</span><span class="p">(</span><span class="s">" "</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>      <span class="c1">//=&gt; "world"</span>
+<span class="s">"hello world"</span><span class="p">[</span><span class="mi">0</span><span class="o">...</span><span class="mi">1</span><span class="p">]</span>             <span class="c1">//=&gt; "he"</span>
+<span class="s">"hi hi ho hey hihey"</span><span class="o">.</span><span class="nf">count</span><span class="p">(</span><span class="s">"hi"</span><span class="p">)</span> <span class="c1">//=&gt; 3</span></code></pre></figure><h3 id="swiftyuserdefaultshttpsgithubcomradexswiftyuserdefaults"><a href="https://github.com/radex/SwiftyUserDefaults">SwiftyUserDefaults</a></h3>
 
 <p>NSUserDefaults를 Swift스럽게 쓰게 해주는 라이브러리입니다.</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="n">DefaultsKeys</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="k">let</span> <span class="n">username</span> <span class="o">=</span> <span class="n">DefaultsKey</span><span class="o">&lt;</span><span class="n">String</span><span class="o">?&gt;</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">)</span>
-    <span class="k">static</span> <span class="k">let</span> <span class="n">launchCount</span> <span class="o">=</span> <span class="n">DefaultsKey</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;launchCount&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">DefaultsKeys</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="kt">DefaultsKey</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">?</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"username"</span><span class="p">)</span>
+    <span class="kd">static</span> <span class="k">let</span> <span class="nv">launchCount</span> <span class="o">=</span> <span class="kt">DefaultsKey</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"launchCount"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 값을 가져오거나 설정하기</span>
-<span class="k">let</span> <span class="n">username</span> <span class="o">=</span> <span class="n">Defaults</span><span class="p">[.</span><span class="n">username</span><span class="p">]</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">hotkeyEnabled</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">username</span><span class="p">]</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">hotkeyEnabled</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span>
 
 <span class="c1">// 값의 변경</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">launchCount</span><span class="p">]</span><span class="o">++</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">volume</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.1</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">strings</span><span class="p">]</span> <span class="o">+=</span> <span class="s">&quot;… can easily be extended!&quot;</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">launchCount</span><span class="p">]</span><span class="o">++</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">volume</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.1</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">strings</span><span class="p">]</span> <span class="o">+=</span> <span class="s">"… can easily be extended!"</span>
 
 <span class="c1">// 배열의 작업</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">libraries</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;SwiftyUserDefaults&quot;</span><span class="p">)</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">libraries</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="s">&quot; 2.0&quot;</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">libraries</span><span class="p">]</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"SwiftyUserDefaults"</span><span class="p">)</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">libraries</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="s">" 2.0"</span>
 
 <span class="c1">// 커스텀 타입도 OK</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="n">NSColor</span><span class="p">.</span><span class="n">whiteColor</span><span class="p">()</span>
-<span class="n">Defaults</span><span class="p">[.</span><span class="n">color</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="n">whiteComponent</span> <span class="c1">// =&gt; 1.0</span></code></pre></div>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">color</span><span class="p">]</span> <span class="o">=</span> <span class="kt">NSColor</span><span class="o">.</span><span class="nf">whiteColor</span><span class="p">()</span>
+<span class="kt">Defaults</span><span class="p">[</span><span class="o">.</span><span class="n">color</span><span class="p">]?</span><span class="o">.</span><span class="n">whiteComponent</span> <span class="c1">// =&gt; 1.0</span></code></pre></figure><h3 id="textattributeshttpsgithubcomdelbatextattributes"><a href="https://github.com/delba/TextAttributes">TextAttributes</a></h3>
 
-<h3 id="textattributeshttpsgithubcomdelbatextattributes"><a href="https://github.com/delba/TextAttributes">TextAttributes</a></h3>
-
-<p><img src="http://realignist.me/assets/images/20160605/2.gif" alt="" /></p>
+<p><img src="http://realignist.me/assets/images/20160605/2.gif" alt=""></p>
 
 <p>NSAttributedString를 쉽게 설정할 수 있는 라이브러리입니다.</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">TextAttributes</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">font</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;HelveticaNeue&quot;</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">foregroundColor</span><span class="p">(</span><span class="nl">white</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="nl">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">lineHeightMultiple</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">attrs</span> <span class="o">=</span> <span class="kt">TextAttributes</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"HelveticaNeue"</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">lineHeightMultiple</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
 
-<span class="bp">NSAttributedString</span><span class="p">(</span><span class="s">&quot;ほげ&quot;</span><span class="p">,</span> <span class="nl">attributes</span><span class="p">:</span> <span class="n">attrs</span><span class="p">)</span></code></pre></div>
-
-<h3 id="asynchttpsgithubcomduemunkasync"><a href="https://github.com/duemunk/Async">Async</a></h3>
+<span class="kt">NSAttributedString</span><span class="p">(</span><span class="s">"ほげ"</span><span class="p">,</span> <span class="nv">attributes</span><span class="p">:</span> <span class="n">attrs</span><span class="p">)</span></code></pre></figure><h3 id="asynchttpsgithubcomduemunkasync"><a href="https://github.com/duemunk/Async">Async</a></h3>
 
 <p>Grand Central Dispatch (GCD)를 쉽게 쓰게 해주는 라이브러리입니다.</p>
 
 <p>Before</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">DISPATCH_QUEUE_PRIORITY_BACKGROUND</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">{</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;This is run on the background queue&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="nf">dispatch_async</span><span class="p">(</span><span class="nf">dispatch_get_global_queue</span><span class="p">(</span><span class="kt">DISPATCH_QUEUE_PRIORITY_BACKGROUND</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This is run on the background queue"</span><span class="p">)</span>
 
-    <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="p">{</span>
-        <span class="n">print</span><span class="p">(</span><span class="s">&quot;This is run on the main queue, after the previous block&quot;</span><span class="p">)</span>
+    <span class="nf">dispatch_async</span><span class="p">(</span><span class="nf">dispatch_get_main_queue</span><span class="p">(),</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"This is run on the main queue, after the previous block"</span><span class="p">)</span>
     <span class="p">})</span>
-<span class="p">})</span></code></pre></div>
+<span class="p">})</span></code></pre></figure><p>After</p>
 
-<p>After</p>
-
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Async</span><span class="p">.</span><span class="n">background</span> <span class="p">{</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;This is run on the background queue&quot;</span><span class="p">)</span>
-<span class="p">}.</span><span class="n">main</span> <span class="p">{</span>
-    <span class="n">print</span><span class="p">(</span><span class="s">&quot;This is run on the main queue, after the previous block&quot;</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
-
-<h3 id="asynckithttpsgithubcommishimayasynckit"><a href="https://github.com/mishimay/AsyncKit">AsyncKit</a></h3>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kt">Async</span><span class="o">.</span><span class="n">background</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This is run on the background queue"</span><span class="p">)</span>
+<span class="p">}</span><span class="o">.</span><span class="n">main</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This is run on the main queue, after the previous block"</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure><h3 id="asynckithttpsgithubcommishimayasynckit"><a href="https://github.com/mishimay/AsyncKit">AsyncKit</a></h3>
 
 <p><a href="http://qiita.com/mishimay/items/7df447969a1c38d856d8">http://qiita.com/mishimay/items/7df447969a1c38d856d8</a></p>
 
 <p>여러 비동기 처리를 끝낸 뒤 다음 작업을 할 수 있게 도와주는 라이브러리입니다.</p>
 
-<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">async</span> <span class="o">=</span> <span class="n">AsyncKit</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">&gt;</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">async</span> <span class="o">=</span> <span class="kt">AsyncKit</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">NSError</span><span class="o">&gt;</span><span class="p">()</span>
 
-<span class="n">async</span><span class="p">.</span><span class="n">parallel</span><span class="p">([</span>
-    <span class="p">{</span> <span class="n">done</span> <span class="k">in</span> <span class="n">done</span><span class="p">(.</span><span class="n">Success</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">))</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="n">done</span> <span class="k">in</span> <span class="n">done</span><span class="p">(.</span><span class="n">Success</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">))</span> <span class="p">}</span>
+<span class="n">async</span><span class="o">.</span><span class="nf">parallel</span><span class="p">([</span>
+    <span class="p">{</span> <span class="n">done</span> <span class="k">in</span> <span class="nf">done</span><span class="p">(</span><span class="o">.</span><span class="kt">Success</span><span class="p">(</span><span class="s">"one"</span><span class="p">))</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">done</span> <span class="k">in</span> <span class="nf">done</span><span class="p">(</span><span class="o">.</span><span class="kt">Success</span><span class="p">(</span><span class="s">"two"</span><span class="p">))</span> <span class="p">}</span>
 <span class="p">])</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="n">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1">//=&gt; Success([&quot;one&quot;, &quot;two&quot;])</span>
-<span class="p">}</span></code></pre></div>
-
-
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+%EC%93%B0%EA%B8%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4+%EB%A9%88%EC%B6%9C+%EC%88%98+%EC%97%86%EC%96%B4%EC%A7%80%EB%8A%94+Swift+Extension+%EB%AA%A8%EC%9D%8C&amp;url=http://realignist.me/code/2016/06/05/swift-snippets"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+    <span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1">//=&gt; Success(["one", "two"])</span>
+<span class="p">}</span></code></pre></figure></section><footer class="post-footer"><section class="share"><a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+%EC%93%B0%EA%B8%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4+%EB%A9%88%EC%B6%9C+%EC%88%98+%EC%97%86%EC%96%B4%EC%A7%80%EB%8A%94+Swift+Extension+%EB%AA%A8%EC%9D%8C&amp;url=http://realignist.me/code/2016/06/05/swift-snippets" onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+%EC%93%B0%EA%B8%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4+%EB%A9%88%EC%B6%9C+%EC%88%98+%EC%97%86%EC%96%B4%EC%A7%80%EB%8A%94+Swift+Extension+%EB%AA%A8%EC%9D%8C&amp;u=http://realignist.me/code/2016/06/05/swift-snippets"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+%EC%93%B0%EA%B8%B0+%EC%8B%9C%EC%9E%91%ED%95%98%EB%A9%B4+%EB%A9%88%EC%B6%9C+%EC%88%98+%EC%97%86%EC%96%B4%EC%A7%80%EB%8A%94+Swift+Extension+%EB%AA%A8%EC%9D%8C&amp;u=http://realignist.me/code/2016/06/05/swift-snippets" onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
             
-          </section>
-        </footer>
-        <div class="bottom-teaser cf">
+          </section></footer><div class="bottom-teaser cf">
           <div class="isLeft">
             <h5 class="index-headline featured"><span>Written by</span></h5>
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+            <section class="author"><div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Haze Lee</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Published <time datetime="2016-06-05 12:00">05 Jun 2016</time></p>
+<p class="published">Published <time datetime="2016-06-05 12:00">05 Jun 2016</time></p>
             </section>
-          </div>
+</div>
           
           <div class="isRight">
             <h5 class="index-headline featured"><span>Supported by</span></h5>
-            <footer class="site-footer">
-              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
-              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+            <footer class="site-footer"><section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
-              </div>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> © 2017<br>All rights reserved.</section>
+</div>
             </footer>
-          </div>
+</div>
         </div>
         
         <div id="disqus_thread"></div>
@@ -585,13 +491,11 @@ pre[class*="language-"] {
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
         
-      </article>
-    </main>
-    <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/background.jpg)">
+      </article></main><div class="bottom-closer">
+      <div class="background-closer-image" style="background-image: url(/assets/images/background.jpg)">
         Image
       </div>
       <div class="inner">
@@ -600,12 +504,7 @@ pre[class*="language-"] {
         <a href="/" class="btn">Back to Overview</a>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/index.js"></script>
-<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
-<script type="text/javascript" src="/assets/js/prism.js"></script>
-<script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script><script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script><script type="text/javascript" src="/assets/js/index.js"></script><script type="text/javascript" src="/assets/js/readingTime.min.js"></script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
 (function ($) {
   "use strict";
   $(document).ready(function(){
@@ -640,9 +539,7 @@ pre[class*="language-"] {
 
   });
 }(jQuery));
-</script>
-<script type="text/javascript" src="/assets/js/prism.js"></script>
-<script>
+</script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -652,6 +549,5 @@ pre[class*="language-"] {
   ga('send', 'pageview');
 
 </script>
-
-  </body>
+</body>
 </html>

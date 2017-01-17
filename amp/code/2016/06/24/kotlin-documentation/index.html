@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html amp lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Kotlin 코드를 문서화하자. (for Android)</title>
-    <link rel="canonical" href="http://realignist.me/code/2016/06/24/kotlin-documentation.html" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>.radius-half {
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Kotlin 코드를 문서화하자. (for Android)</title>
+<link rel="canonical" href="http://realignist.me/code/2016/06/24/kotlin-documentation.html">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<style amp-custom>.radius-half {
   border-radius: 50%; }
 
 .site-header {
@@ -50,17 +51,15 @@ h5 {
   text-align: center;
   padding-top: 10%; }
 </style>
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+</head>
+<body>
+<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script><header class="site-header"><a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half"></amp-img></span></a>
       <div class="page-links">
         <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
       </div>
-    </header>
-    <h1 class="post-title">
+    </header><h1 class="post-title">
       Kotlin 코드를 문서화하자. (for Android)
     </h1>
     <span>2016년 06월 24일 작성 - Haze Lee.</span>
@@ -70,46 +69,46 @@ h5 {
 
 <h2 id="kdoc--">KDoc을 남기는 방법</h2>
 
-<p>KDoc은 Kotlin의 Javadoc같은 개념이라고 생각하면 된다. <code>/**</code>로 시작해서 <code>*/</code>로 끝이 난다. 여러 줄인데 매 줄마다 아스테리크 문자가 들어가는 형태이다. Kotlin 공식 문서가 제공하는 예시를 보자.</p>
+<p>KDoc은 Kotlin의 Javadoc같은 개념이라고 생각하면 된다. <code class="highlighter-rouge">/**</code>로 시작해서 <code class="highlighter-rouge">*/</code>로 끝이 난다. 여러 줄인데 매 줄마다 아스테리크 문자가 들어가는 형태이다. Kotlin 공식 문서가 제공하는 예시를 보자.</p>
 
-<div class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="cm">/**</span>
-<span class="cm"> * A group of *members*.</span>
-<span class="cm"> *</span>
-<span class="cm"> * This class has no useful logic; it's just a documentation example.</span>
-<span class="cm"> *</span>
-<span class="cm"> * &lt;a href='https://github.com/param' class='user-mention'&gt;@param&lt;/a&gt; T the type of a member in this group.</span>
-<span class="cm"> * &lt;a href='https://github.com/property' class='user-mention'&gt;@property&lt;/a&gt; name the name of this group.</span>
-<span class="cm"> * &lt;a href='https://github.com/constructor' class='user-mention'&gt;@constructor&lt;/a&gt; Creates an empty group.</span>
-<span class="cm"> */</span>
-<span class="k">class</span> <span class="nc">Group</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
-    <span class="cm">/**</span>
-<span class="cm">     * Adds a [member] to this group.</span>
-<span class="cm">     * &lt;a href='https://github.com/return' class='user-mention'&gt;@return&lt;/a&gt; the new size of the group.</span>
-<span class="cm">     */</span>
-    <span class="k">fun</span> <span class="nf">add</span><span class="p">(</span><span class="n">member</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="cm">/**
+ * A group of *members*.
+ *
+ * This class has no useful logic; it's just a documentation example.
+ *
+ * @param T the type of a member in this group.
+ * @property name the name of this group.
+ * @constructor Creates an empty group.
+ */</span>
+<span class="kd">class</span> <span class="nc">Group</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/**
+     * Adds a [member] to this group.
+     * @return the new size of the group.
+     */</span>
+    <span class="k">fun</span> <span class="nf">add</span><span class="p">(</span><span class="n">member</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span> <span class="n">Int</span> <span class="p">{</span> <span class="o">..</span><span class="p">.</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure><p>그리고 KDoc은 인라인 마크업에 대해서는 C#의 xml같은 형태가 아니라 마크다운 문법을 따라하고 있다. 그리고 약간 특이한 점은 요런 식으로의 클래스, 프로퍼티, 메소드의 링킹이 가능하다.</p>
 
-<p>그리고 KDoc은 인라인 마크업에 대해서는 C#의 xml같은 형태가 아니라 마크다운 문법을 따라하고 있다. 그리고 약간 특이한 점은 요런 식으로의 클래스, 프로퍼티, 메소드의 링킹이 가능하다.</p>
+<p><code class="highlighter-rouge">Use [this method][doSomething] for this purpose.</code></p>
 
-<p><code>Use [this method][doSomething] for this purpose.</code></p>
-
-<p>블록 태그를 지원하며 이 부분은 Javadoc과 굉장히 유사한데, Kotlin에서는 다음과 같은 블록 태그를 지원한다. 그리고 <code>deprecated</code> 태그가 먹히지 않기 때문에 이 부분은 <code>Deprecated</code> 어노테이션을 달아줘야한다.</p>
+<p>블록 태그를 지원하며 이 부분은 Javadoc과 굉장히 유사한데, Kotlin에서는 다음과 같은 블록 태그를 지원한다. 그리고 <code class="highlighter-rouge">deprecated</code> 태그가 먹히지 않기 때문에 이 부분은 <code class="highlighter-rouge">Deprecated</code> 어노테이션을 달아줘야한다.</p>
 
 <ul>
 <li>param</li>
   <li>return</li>
   <li>constructor</li>
-  <li>property </li>
-  <li>throws, exception </li>
+  <li>property</li>
+  <li>throws, exception</li>
   <li>sample</li>
   <li>author</li>
   <li>since</li>
   <li>suppress</li>
-</ul><h2 id="gradle-dokka-kotlin--export-">Gradle에서 Dokka로 Kotlin 문서를 Export하는 방법</h2>
+</ul>
+<h2 id="gradle-dokka-kotlin--export-">Gradle에서 Dokka로 Kotlin 문서를 Export하는 방법</h2>
 
 <ul>
-<li>루트 프로젝트의 <code>build.gradle</code>을 열어 다음과 같이 추가한다.</li>
-</ul><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">buildscript</span> <span class="o">{</span>
+<li>루트 프로젝트의 <code class="highlighter-rouge">build.gradle</code>을 열어 다음과 같이 추가한다.</li>
+</ul>
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">buildscript</span> <span class="o">{</span>
     <span class="o">...</span>
     
     <span class="n">repositories</span> <span class="o">{</span>
@@ -127,11 +126,10 @@ h5 {
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="o">...</span></code></pre></div>
-
-<ul>
-<li>앱 혹은 라이브러리 프로젝트의 <code>build.gradle</code>을 다음과 같이 설정한다.</li>
-</ul><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="o">...</span>
+<span class="o">...</span></code></pre></figure><ul>
+<li>앱 혹은 라이브러리 프로젝트의 <code class="highlighter-rouge">build.gradle</code>을 다음과 같이 설정한다.</li>
+</ul>
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="o">...</span>
 <span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'org.jetbrains.dokka-android'</span>
 
 <span class="n">android</span> <span class="o">{...}</span>
@@ -156,15 +154,14 @@ h5 {
     <span class="n">sourceDirs</span> <span class="o">=</span> <span class="n">files</span><span class="o">(</span><span class="s1">'src/main/kotlin'</span><span class="o">)</span>
 <span class="o">}</span>
 
-<span class="o">...</span></code></pre></div>
-
-<p>Dokka의 상세한 정보는 <a href="https://github.com/Kotlin/dokka">GitHub</a>에서 볼 수 있다. <code>afterEvaluate</code>에, <code>generateDebugAndroidTestSources</code>는 <code>dokka</code>에 의존 관계를 갖는다고 명시했기 때문에 프로젝트를 빌드할 때 문서는 자동으로 생성될 것이다.</p>
+<span class="o">...</span></code></pre></figure><p>Dokka의 상세한 정보는 <a href="https://github.com/Kotlin/dokka">GitHub</a>에서 볼 수 있다. <code class="highlighter-rouge">afterEvaluate</code>에, <code class="highlighter-rouge">generateDebugAndroidTestSources</code>는 <code class="highlighter-rouge">dokka</code>에 의존 관계를 갖는다고 명시했기 때문에 프로젝트를 빌드할 때 문서는 자동으로 생성될 것이다.</p>
 
 <h2 id="stylesheet--">커스텀 Stylesheet를 적용하는 방법</h2>
 
 <ul>
-<li>빌드가 끝나면 css와 html 파일이 나오는데 화면의 스타일시트를 수정하고 싶을 때는  Dokka의 소스를 열…뻔 했지만 생각해보니 생성이 끝나고 css 파일만 바꿔치기해주면 된다는 방법을 깨닫고 짜치게 구현해봤다. 앱이나 라이브러리 프로젝트의 <code>build.gradle</code> 파일을 수정해보자.</li>
-</ul><div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="o">...</span>
+<li>빌드가 끝나면 css와 html 파일이 나오는데 화면의 스타일시트를 수정하고 싶을 때는  Dokka의 소스를 열…뻔 했지만 생각해보니 생성이 끝나고 css 파일만 바꿔치기해주면 된다는 방법을 깨닫고 짜치게 구현해봤다. 앱이나 라이브러리 프로젝트의 <code class="highlighter-rouge">build.gradle</code> 파일을 수정해보자.</li>
+</ul>
+<figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="o">...</span>
 <span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'org.jetbrains.dokka-android'</span>
 
 <span class="n">android</span> <span class="o">{...}</span>
@@ -184,13 +181,12 @@ h5 {
 
 <span class="n">dokka</span> <span class="o">{...}</span>
 
-<span class="o">...</span></code></pre></div>
-
-<ul>
+<span class="o">...</span></code></pre></figure><ul>
 <li>
-<code>switchStylesheet</code>라는 task를 만들었다. 얘는 <code>dock</code> 태스크가 끝나면 실행되도록 의존성이 설정되어있고, 디버그 소스를 빌드할 때는 <code>switchStylesheet</code>에 의존성을 걸어주면 자연스럽게 동작하게 된다.</li>
+<code class="highlighter-rouge">switchStylesheet</code>라는 task를 만들었다. 얘는 <code class="highlighter-rouge">dock</code> 태스크가 끝나면 실행되도록 의존성이 설정되어있고, 디버그 소스를 빌드할 때는 <code class="highlighter-rouge">switchStylesheet</code>에 의존성을 걸어주면 자연스럽게 동작하게 된다.</li>
   <li>프로젝트 디렉토리에 dokka 폴더를 만들고, 그 안에 css 파일을 넣으면 잘 동작할 것이다.</li>
-</ul><h2 id="profit">Profit!</h2>
+</ul>
+<h2 id="profit">Profit!</h2>
 
 <p><amp-img src="http://realignist.me/assets/images/20160624/1.png" alt="" width="924" height="955" layout="responsive"></amp-img></p>
 
@@ -202,12 +198,13 @@ h5 {
 <li><a href="https://kotlinlang.org/docs/reference/kotlin-doc.html">https://kotlinlang.org/docs/reference/kotlin-doc.html</a></li>
   <li><a href="https://github.com/Kotlin/dokka">https://github.com/Kotlin/dokka</a></li>
 </ul>
-    <h5> <!-- footer start -->
+<h5> <!-- footer start -->
 
 <footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
          <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
 </div>
-</footer><!-- footer end --></h5>
-  </body>
+</footer><!-- footer end -->
+</h5>
+</body>
 </html>

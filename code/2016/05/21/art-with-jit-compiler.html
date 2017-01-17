@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <meta charset="utf-8">
-  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <title>JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자</title>
-  <meta name="description" content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게..." />
-
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@realignist" />
-    <meta name="twitter:title" content="JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자" />
-    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-    
-    <meta name="twitter:description"  content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게..." />
-    
-  
-  
-  <meta property="og:site_name" content="Haze Lee" />
-  <meta property="og:title" content="JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자"/>
-  
-  <meta property="og:description" content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게..." />
-  
-  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-  <meta property="og:url" content="http://realignist.me/code/2016/05/21/art-with-jit-compiler.html" >
-  <meta property="og:type" content="blog" />
-  <meta property="article:published_time" content="2016-05-21T17:30:00+09:00">
-
-  <link rel="canonical" href="http://realignist.me/code/2016/05/21/art-with-jit-compiler.html"/>
-  <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
-  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
-  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
-  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-  <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
-
-  
-    <link rel="amphtml" href="http://realignist.me/amp/code/2016/05/21/art-with-jit-compiler">
-  
-
-  <style type="text/css">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 --><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자</title>
+<meta name="description" content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게...">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@realignist">
+<meta name="twitter:title" content="JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자">
+<meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta name="twitter:description" content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게...">
+<meta property="og:site_name" content="Haze Lee">
+<meta property="og:title" content="JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자">
+<meta property="og:description" content="Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게...">
+<meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta property="og:url" content="http://realignist.me/code/2016/05/21/art-with-jit-compiler.html">
+<meta property="og:type" content="blog">
+<meta property="article:published_time" content="2016-05-21T17:30:00+09:00">
+<link rel="canonical" href="http://realignist.me/code/2016/05/21/art-with-jit-compiler.html">
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/prism.css">
+<link rel="amphtml" href="http://realignist.me/amp/code/2016/05/21/art-with-jit-compiler">
+<style type="text/css">
     
 code[class*="language-"],
 pre[class*="language-"] {
@@ -182,33 +167,23 @@ pre[class*="language-"] {
 
   </style>
 </head>
-
-  <body itemscope itemtype="http://schema.org/Article">
+<body itemscope itemtype="http://schema.org/Article">
     <!-- header start -->
 
 <!-- header end -->
 
-    <main class="content" role="main">
-      <article class="post">
-        
-        <div class="noarticleimage">
+    <main class="content" role="main"><article class="post"><div class="noarticleimage">
           <div class="post-meta">
             <h1 class="post-title">JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2016-05-21T17:30:00+09:00">21 May 2016</time>
-              <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
-            </div>
+              <time datetime="2016-05-21T17:30:00+09:00">21 May 2016</time><!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+</div>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
-        
-        <section class="post-content">
-          <div class="post-reading">
+        <br><br><br><section class="post-content"><div class="post-reading">
             <span class="post-reading-time"></span> read
           </div>
           <a name="topofpage"></a>
@@ -220,7 +195,8 @@ pre[class*="language-"] {
 
 <p>아니 이게 무슨 소리인가. 실시간으로 컴파일을 하는 JIT는 Android N 런타임에 추가된 새로운 기능이다. 근데 ART가 시범적으로 적용됬었던 Android 4.4부터 비슷한 기능이 있었다니?</p>
 
-<pre><code>I/art     (  636): DexFile_isDexOptNeeded size of new profile file /data/dalvik-cache/profiles/com.android.launcher is significantly different from old profile file /data/dalvik-cache/profile-cache/com.android.launcher (top 90% samples changed in proportion of 18.75%)
+<div class="highlighter-rouge">
+<pre class="highlight"><code>I/art     (  636): DexFile_isDexOptNeeded size of new profile file /data/dalvik-cache/profiles/com.android.launcher is significantly different from old profile file /data/dalvik-cache/profile-cache/com.android.launcher (top 90% samples changed in proportion of 18.75%)
 I/PackageManager(  636): Running dexopt on: com.android.launcher
 I/dex2oat ( 1047): dex2oat: /system/bin/dex2oat --zip-fd=6 --zip-location=/system/priv-app/Launcher2.apk --oat-fd=7 --oat-location=/data/dalvik-cache/system@priv-app@Launcher2.apk@classes.dex --profile-file=/data/dalvik-cache/profiles/com.android.launcher
  ...
@@ -233,22 +209,23 @@ I/dex2oat ( 1047): compiling method void com.android.launcher2.Workspace.addInSc
 I/dex2oat ( 1047): dex2oat took 3.496627214s (threads: 1)
 I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 10000us.  Profile file /data/dalvik-cache/profiles/com.android.launcher
 </code></pre>
+</div>
 
 <p>Android 4.4에서 ART 방식으로 런타임을 사용할 때 볼 수 있는 로그의 일부분이다. 로그를 보면 별도의 쓰레드에서 프로파일링을 하고, 그 결과에 따라 많이 실행되는 메소드를 다시 컴파일하는걸 볼 수 있다. <em><a href="http://d.hatena.ne.jp/embedded/20140511/p1">참고한 글</a></em></p>
 
-<p><a href="https://android.googlesource.com/platform/art/+/39c3bfbd03d85c63cfbe69f17ce5800ccc7d6c13/runtime/profiler.cc"><code>runtime/profiler.cc</code></a>의 <code>void BackgroundMethodSamplingProfiler::Start(int period, int duration, ...)</code> 메소드와 <a href="https://android.googlesource.com/platform/art/+/39c3bfbd03d85c63cfbe69f17ce5800ccc7d6c13%5E%21/compiler/driver/compiler_driver.cc"><code>compiler/driver/compiler_driver.cc</code></a>의 <code>bool CompilerDriver::SkipCompilation(const std::string&amp; method_name)</code> 메소드를 통해 위에 있는 로그가 어떻게 찍혔는지 알 수 있다.</p>
+<p><a href="https://android.googlesource.com/platform/art/+/39c3bfbd03d85c63cfbe69f17ce5800ccc7d6c13/runtime/profiler.cc"><code class="highlighter-rouge">runtime/profiler.cc</code></a>의 <code class="highlighter-rouge">void BackgroundMethodSamplingProfiler::Start(int period, int duration, ...)</code> 메소드와 <a href="https://android.googlesource.com/platform/art/+/39c3bfbd03d85c63cfbe69f17ce5800ccc7d6c13%5E%21/compiler/driver/compiler_driver.cc"><code class="highlighter-rouge">compiler/driver/compiler_driver.cc</code></a>의 <code class="highlighter-rouge">bool CompilerDriver::SkipCompilation(const std::string&amp; method_name)</code> 메소드를 통해 위에 있는 로그가 어떻게 찍혔는지 알 수 있다.</p>
 
-<p>지금 Marshmallow나 N의 소스 코드를 보면 <code>compiler/driver/compiler_driver.cc</code>에는 <code>CompilerDriver::SkipCompilation</code>라는 메소드가 존재하지 않을 것이다. 그러면 이 메소드는 언제 왜 없어졌는지에 대해서는 후술하도록 하겠다.</p>
+<p>지금 Marshmallow나 N의 소스 코드를 보면 <code class="highlighter-rouge">compiler/driver/compiler_driver.cc</code>에는 <code class="highlighter-rouge">CompilerDriver::SkipCompilation</code>라는 메소드가 존재하지 않을 것이다. 그러면 이 메소드는 언제 왜 없어졌는지에 대해서는 후술하도록 하겠다.</p>
 
 <h2 id="jit--aosp-">JIT 컴파일러가 AOSP에 들어갔다!</h2>
 
 <p>정식으로 ART에 JIT 컴파일과 관련된 코드가 등록된 것은 2015년 2월의 일이다. <a href="https://android.googlesource.com/platform/art/+/2535abe7d1fcdd0e6aca782b1f1932a703ed50a4">다음 커밋</a>을 보면 작년 2월부터 JIT의 기능을 시험적으로 써볼 수 있는걸 확인할 수 있다.</p>
 
-<p>커밋이 큰데, diff를 보면 Runtime의 <code>IsCompiler()</code> 메소드의 이름이 <code>IsAotCompiler()</code>로 바뀐 것을 확인할 수 있다. AOT 컴파일과 JIT 컴파일을 구분하기 위함이라고 생각한다. 또, 해당 커밋의 <a href="https://android.googlesource.com/platform/art/+/2535abe7d1fcdd0e6aca782b1f1932a703ed50a4/runtime/runtime.cc#474"><code>runtime/runtime.cc</code></a> 코드를 확인해보자. SELinux의 R/W/X 메모리 구역 제한으로 인해 Zygote에서는 Code Cache가 만들어질 때까지는 JIT 컴파일을 사용하지 못한다는 것을 확인할 수 있다.</p>
+<p>커밋이 큰데, diff를 보면 Runtime의 <code class="highlighter-rouge">IsCompiler()</code> 메소드의 이름이 <code class="highlighter-rouge">IsAotCompiler()</code>로 바뀐 것을 확인할 수 있다. AOT 컴파일과 JIT 컴파일을 구분하기 위함이라고 생각한다. 또, 해당 커밋의 <a href="https://android.googlesource.com/platform/art/+/2535abe7d1fcdd0e6aca782b1f1932a703ed50a4/runtime/runtime.cc#474"><code class="highlighter-rouge">runtime/runtime.cc</code></a> 코드를 확인해보자. SELinux의 R/W/X 메모리 구역 제한으로 인해 Zygote에서는 Code Cache가 만들어질 때까지는 JIT 컴파일을 사용하지 못한다는 것을 확인할 수 있다.</p>
 
 <h2 id="profile-guided-optimization-">Profile-Guided Optimization을 도입하다.</h2>
 
-<p>그 이후로 눈 여겨본 커밋은 Android N에서 도입되었다고 이야기하는 프로필 가이드에 기반한 최적화 컴파일을 가능하게 해주는 <a href="https://android.googlesource.com/platform/art/+/500c9be">커밋</a>이다. 이 커밋의 diff를 확인해보면 위에서 언급했었던 <code>CompilerDriver::SkipCompilation</code> 메소드가 사라진 것도 확인할 수 있다.</p>
+<p>그 이후로 눈 여겨본 커밋은 Android N에서 도입되었다고 이야기하는 프로필 가이드에 기반한 최적화 컴파일을 가능하게 해주는 <a href="https://android.googlesource.com/platform/art/+/500c9be">커밋</a>이다. 이 커밋의 diff를 확인해보면 위에서 언급했었던 <code class="highlighter-rouge">CompilerDriver::SkipCompilation</code> 메소드가 사라진 것도 확인할 수 있다.</p>
 
 <p>일단 이 커밋을 통해 ART에서도 dex2oat 과정에서 프로필 가이드에 기반한 최적화가 가능해졌다. JIT를 수행하는 동안의 프로필 결과를 파싱할 수 있고, 프로필 정보에 존재하지 않는 메소드는 컴파일하지 않는다. 오래된 컴파일 훅은 삭제하며, dex2oat에서 인터프리팅 모드가 추가되었다.</p>
 
@@ -261,56 +238,42 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
 <p><strong>참고했었던 자료들</strong></p>
 
 <ul>
-  <li><a href="https://android.googlesource.com/platform/art/">platform/art 소스 코드</a></li>
+<li><a href="https://android.googlesource.com/platform/art/">platform/art 소스 코드</a></li>
   <li><a href="http://www.slideshare.net/linaroorg/hkg15300-arts-quick-compiler-an-unofficial-overview">ART’s Quick Compiler: An unofficial overview</a></li>
   <li><a href="http://d.hatena.ne.jp/embedded/20140511/p1">안드로이드의 ART는 실행 중에 프로파일링을 통해 백그라운드에서 다시 컴파일을 하는 것 같다.</a></li>
   <li><a href="http://www.slideshare.net/kmt-t/art-47396171">진화하는 ART</a></li>
-</ul>
-
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=JIT%28Just-in-Time%29+%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EB%8F%84+%EB%93%A4%EC%96%B4%EA%B0%84+ART%EB%A5%BC+%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90&amp;url=http://realignist.me/code/2016/05/21/art-with-jit-compiler"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+</ul></section><footer class="post-footer"><section class="share"><a class="icon-twitter" href="http://twitter.com/share?text=JIT%28Just-in-Time%29+%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EB%8F%84+%EB%93%A4%EC%96%B4%EA%B0%84+ART%EB%A5%BC+%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90&amp;url=http://realignist.me/code/2016/05/21/art-with-jit-compiler" onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=JIT%28Just-in-Time%29+%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EB%8F%84+%EB%93%A4%EC%96%B4%EA%B0%84+ART%EB%A5%BC+%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90&amp;u=http://realignist.me/code/2016/05/21/art-with-jit-compiler"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=JIT%28Just-in-Time%29+%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%EB%8F%84+%EB%93%A4%EC%96%B4%EA%B0%84+ART%EB%A5%BC+%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90&amp;u=http://realignist.me/code/2016/05/21/art-with-jit-compiler" onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
             
-          </section>
-        </footer>
-        <div class="bottom-teaser cf">
+          </section></footer><div class="bottom-teaser cf">
           <div class="isLeft">
             <h5 class="index-headline featured"><span>Written by</span></h5>
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+            <section class="author"><div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Haze Lee</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published">Published <time datetime="2016-05-21 17:30">21 May 2016</time></p>
+<p class="published">Published <time datetime="2016-05-21 17:30">21 May 2016</time></p>
             </section>
-          </div>
+</div>
           
           <div class="isRight">
             <h5 class="index-headline featured"><span>Supported by</span></h5>
-            <footer class="site-footer">
-              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
-              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+            <footer class="site-footer"><section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
-              </div>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> © 2017<br>All rights reserved.</section>
+</div>
             </footer>
-          </div>
+</div>
         </div>
         
         <div id="disqus_thread"></div>
@@ -324,13 +287,11 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
         
-      </article>
-    </main>
-    <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/background.jpg)">
+      </article></main><div class="bottom-closer">
+      <div class="background-closer-image" style="background-image: url(/assets/images/background.jpg)">
         Image
       </div>
       <div class="inner">
@@ -339,12 +300,7 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
         <a href="/" class="btn">Back to Overview</a>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/index.js"></script>
-<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
-<script type="text/javascript" src="/assets/js/prism.js"></script>
-<script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script><script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script><script type="text/javascript" src="/assets/js/index.js"></script><script type="text/javascript" src="/assets/js/readingTime.min.js"></script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
 (function ($) {
   "use strict";
   $(document).ready(function(){
@@ -379,9 +335,7 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
 
   });
 }(jQuery));
-</script>
-<script type="text/javascript" src="/assets/js/prism.js"></script>
-<script>
+</script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -391,6 +345,5 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
   ga('send', 'pageview');
 
 </script>
-
-  </body>
+</body>
 </html>

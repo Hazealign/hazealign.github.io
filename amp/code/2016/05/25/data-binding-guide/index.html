@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html amp lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.</title>
-    <link rel="canonical" href="http://realignist.me/code/2016/05/25/data-binding-guide.html" />
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-custom>.radius-half {
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.</title>
+<link rel="canonical" href="http://realignist.me/code/2016/05/25/data-binding-guide.html">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<style amp-custom>.radius-half {
   border-radius: 50%; }
 
 .site-header {
@@ -50,17 +51,15 @@ h5 {
   text-align: center;
   padding-top: 10%; }
 </style>
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+</head>
+<body>
+<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script><header class="site-header"><a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half"></amp-img></span></a>
       <div class="page-links">
         <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
       </div>
-    </header>
-    <h1 class="post-title">
+    </header><h1 class="post-title">
       [번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.
     </h1>
     <span>2016년 05월 25일 작성 - Haze Lee.</span>
@@ -84,104 +83,92 @@ h5 {
 
 <h4 id="before">Before</h4>
 
-<p>아마 모두들 ButterKnife에서 제일 원하고 있는 기능, <code>findViewById(int id)</code>가 필요 없어지는 다음과 같은 코드</p>
+<p>아마 모두들 ButterKnife에서 제일 원하고 있는 기능, <code class="highlighter-rouge">findViewById(int id)</code>가 필요 없어지는 다음과 같은 코드</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.title) TextView title;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.subtitle) TextView subtitle;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.footer) TextView footer;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+  <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">title</span><span class="o">)</span> <span class="n">TextView</span> <span class="n">title</span><span class="o">;</span>
+  <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">subtitle</span><span class="o">)</span> <span class="n">TextView</span> <span class="n">subtitle</span><span class="o">;</span>
+  <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">footer</span><span class="o">)</span> <span class="n">TextView</span> <span class="n">footer</span><span class="o">;</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_activity</span><span class="o">);</span>
     <span class="n">ButterKnife</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-<p>이 부분은 전부 Data Binding으로 다음과 같이 바꿔서 사용할 수 있다.</p>
+<span class="o">}</span></code></pre></figure><p>이 부분은 전부 Data Binding으로 다음과 같이 바꿔서 사용할 수 있다.</p>
 
 <h4 id="after">After</h4>
 
-<p>레이아웃 전체를 <code>&lt;layout&gt;&lt;/layout&gt;</code>으로 감싸준다.</p>
+<p>레이아웃 전체를 <code class="highlighter-rouge">&lt;layout&gt;&lt;/layout&gt;</code>으로 감싸준다.</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;LinearLayout&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:id=</span><span class="s">"@+id/title"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:id=</span><span class="s">"@+id/subtitle"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:id=</span><span class="s">"@+id/footer"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></div>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>이렇게 하면 <code class="highlighter-rouge">activity_sample.xml</code> 파일이라고 한다면 <code class="highlighter-rouge">ActivitySampleBinding</code>이라는 클래스가 생성된다.<code class="highlighter-rouge">DataBindingUtils.setContentView(Activity activity, int id)</code>를 통해 Binding 인스턴스를 반환하기 때문에 이 인스턴스를 유지해두면 좋다.</p>
 
-<p>이렇게 하면 <code>activity_sample.xml</code> 파일이라고 한다면 <code>ActivitySampleBinding</code>이라는 클래스가 생성된다.<code>DataBindingUtils.setContentView(Activity activity, int id)</code>를 통해 Binding 인스턴스를 반환하기 때문에 이 인스턴스를 유지해두면 좋다.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">ActivitySampleBinding</span> <span class="n">binding</span><span class="o">;</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">DataBindingUtils</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_activity</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><p>이 Binding 인스턴스가 id로 설정된 각 View의 인스턴스를 가지고 있는걸 확인할 수 있다.</p>
 
-<p>이 Binding 인스턴스가 id로 설정된 각 View의 인스턴스를 가지고 있는걸 확인할 수 있다.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="na">footer</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span></code></pre></div>
-
-<h3 id="non-activity-binding">Non-Activity Binding</h3>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="na">footer</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span></code></pre></figure><h3 id="non-activity-binding">Non-Activity Binding</h3>
 
 <h4 id="before-1">Before</h4>
 
 <p>Activity 뿐만이 아니라, 예를 들면 Fragment에서의 View Binding.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FancyFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.button1) Button button1;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.button2) Button button2;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FancyFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
+  <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button1</span><span class="o">)</span> <span class="n">Button</span> <span class="n">button1</span><span class="o">;</span>
+  <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">button2</span><span class="o">)</span> <span class="n">Button</span> <span class="n">button2</span><span class="o">;</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">View</span> <span class="n">view</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fancy_fragment</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
     <span class="n">ButterKnife</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">view</span><span class="o">);</span>
     <span class="c1">// TODO Use fields...</span>
     <span class="k">return</span> <span class="n">view</span><span class="o">;</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><h4 id="after-1">After</h4>
 
-<h4 id="after-1">After</h4>
+<p>생성된 Binding 클래스에 <code class="highlighter-rouge">bind(View view)</code>라는 정적 메소드가 존재하기 때문에, 그것을 이용하면 된다. 그 다음은 같다.</p>
 
-<p>생성된 Binding 클래스에 <code>bind(View view)</code>라는 정적 메소드가 존재하기 때문에, 그것을 이용하면 된다. 그 다음은 같다.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FancyFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FancyFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">FragmentFancyBinding</span> <span class="n">binding</span><span class="o">;</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_fancy</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
   <span class="o">}</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onActivityCreated</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onActivityCreated</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">FragmentFancyBinding</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">getView</span><span class="o">());</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-<h3 id="view-binding-viewholder">View Binding (ViewHolder)</h3>
+<span class="o">}</span></code></pre></figure><h3 id="view-binding-viewholder">View Binding (ViewHolder)</h3>
 
 <h4 id="before-2">Before</h4>
 
-<p>ButterKnife를 이용하면 <code>ListView</code>를 위한 <code>ViewHolder</code>의 구현을 쉽게 할 수 있다.</p>
+<p>ButterKnife를 이용하면 <code class="highlighter-rouge">ListView</code>를 위한 <code class="highlighter-rouge">ViewHolder</code>의 구현을 쉽게 할 수 있다.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="n">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">ViewHolder</span> <span class="n">holder</span><span class="o">;</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">view</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">holder</span> <span class="o">=</span> <span class="o">(</span><span class="n">ViewHolder</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">getTag</span><span class="o">();</span>
     <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
       <span class="n">view</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">list_item_sample</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-      <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ViewHolder</span><span class="o">(</span><span class="n">view</span><span class="o">);</span>
+      <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ViewHolder</span><span class="o">(</span><span class="n">view</span><span class="o">);</span>
       <span class="n">view</span><span class="o">.</span><span class="na">setTag</span><span class="o">(</span><span class="n">holder</span><span class="o">);</span>
     <span class="o">}</span>
 
@@ -192,21 +179,19 @@ h5 {
   <span class="o">}</span>
 
   <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ViewHolder</span> <span class="o">{</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.title) TextView name;</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;(R.id.job_title) TextView jobTitle;</span>
+    <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">title</span><span class="o">)</span> <span class="n">TextView</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nd">@Bind</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">job_title</span><span class="o">)</span> <span class="n">TextView</span> <span class="n">jobTitle</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="nf">ViewHolder</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">ButterKnife</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">view</span><span class="o">);</span>
     <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><h4 id="after-listview">After (ListView)</h4>
 
-<h4 id="after-listview">After (ListView)</h4>
+<p>Data Binding을 이용하면 Binding 클래스가 ViewHolder와 같은 방식으로 작동하므로, 원래 <code class="highlighter-rouge">ViewHolder</code>가 필요 없어진다. (<code class="highlighter-rouge">RecyclerView</code>에 대해서는 조금 다른 이야기가 되기 때문에 후술하도록 하겠다.) Data Binding을 이용하고 있으면 setter 또한 구현 되어있기 때문에 각 View에 값을 일일히 줄 필요도 없다. (Snippet 안에 있는 주석을 참조하라.)</p>
 
-<p>Data Binding을 이용하면 Binding 클래스가 ViewHolder와 같은 방식으로 작동하므로, 원래 <code>ViewHolder</code>가 필요 없어진다. (<code>RecyclerView</code>에 대해서는 조금 다른 이야기가 되기 때문에 후술하도록 하겠다.) Data Binding을 이용하고 있으면 setter 또한 구현 되어있기 때문에 각 View에 값을 일일히 줄 필요도 없다. (Snippet 안에 있는 주석을 참조하라.)</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAdapter</span> <span class="kd">extends</span> <span class="n">BaseAdapter</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="n">View</span> <span class="nf">getView</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="n">View</span> <span class="n">convertView</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">ListItemSampleBinding</span> <span class="n">binding</span><span class="o">;</span>
       <span class="k">if</span> <span class="o">(</span><span class="n">convertView</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
@@ -224,21 +209,19 @@ h5 {
 
       <span class="k">return</span> <span class="n">convertView</span><span class="o">;</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><h4 id="after-recyclerview">After (RecyclerView)</h4>
 
-<h4 id="after-recyclerview">After (RecyclerView)</h4>
+<p><code class="highlighter-rouge">RecyclerView</code>같은 경우에는 <code class="highlighter-rouge">RecyclerView.ViewHolder</code>가 필수가 된다. 이 ViewHolder에 BindingHolder같은 이름을 붙이고 Binding 클래스와 연결해주도록 하면 된다.</p>
 
-<p><code>RecyclerView</code>같은 경우에는 <code>RecyclerView.ViewHolder</code>가 필수가 된다. 이 ViewHolder에 BindingHolder같은 이름을 붙이고 Binding 클래스와 연결해주도록 하면 된다.</p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleRecyclerAdapter</span> <span class="kd">extends</span> <span class="n">RecyclerView</span><span class="o">.</span><span class="na">Adapter</span><span class="o">&lt;</span><span class="n">SampleRecyclerAdapter</span><span class="o">.</span><span class="na">BindingHolder</span><span class="o">&gt;</span> <span class="o">{</span>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleRecyclerAdapter</span> <span class="kd">extends</span> <span class="n">RecyclerView</span><span class="o">.</span><span class="na">Adapter</span><span class="o">&lt;</span><span class="n">SampleRecyclerAdapter</span><span class="o">.</span><span class="na">BindingHolder</span><span class="o">&gt;</span> <span class="o">{</span>
-
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+    <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">RegisterableDeviceListAdapter</span><span class="o">.</span><span class="na">ViewHolder</span> <span class="nf">onCreateViewHolder</span><span class="o">(</span><span class="n">ViewGroup</span> <span class="n">parent</span><span class="o">,</span> <span class="kt">int</span> <span class="n">viewType</span><span class="o">)</span> <span class="o">{</span>
       <span class="kd">final</span> <span class="n">View</span> <span class="n">v</span> <span class="o">=</span> <span class="n">LayoutInflater</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">getContext</span><span class="o">()).</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">list_item_sample</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
       <span class="k">return</span> <span class="k">new</span> <span class="nf">BindingHolder</span><span class="o">(</span><span class="n">v</span><span class="o">);</span>
     <span class="o">}</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onBindViewHolder</span><span class="o">(</span><span class="n">BindingHolder</span> <span class="n">holder</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// BindingHolder#getBinding()がViewDataBindingを返すのでsetVariable()を呼んでいる</span>
     <span class="c1">// 専用のBinding（この場合だとListItemSampleBinding）を返すことが出来るなら普通にsetUser()でOK</span>
@@ -257,38 +240,32 @@ h5 {
       <span class="k">return</span> <span class="n">binding</span><span class="o">;</span>
     <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-<h3 id="listener-binding-onclick">Listener Binding (onClick)</h3>
+<span class="o">}</span></code></pre></figure><h3 id="listener-binding-onclick">Listener Binding (onClick)</h3>
 
 <h4 id="before-3">Before</h4>
 
-<p><code>&lt;a href='https://github.com/OnClick' class='user-mention'&gt;@OnClick&lt;/a&gt;</code>이나 <code>&lt;a href='https://github.com/OnItemClick' class='user-mention'&gt;@OnItemClick&lt;/a&gt;</code> 등의 어노테이션을 사용하는걸 통해 <code>setOnClickListener()</code>를 지정해주는 것과 비슷한 것을 할 수 있습니다.</p>
+<p><code class="highlighter-rouge">@OnClick</code>이나 <code class="highlighter-rouge">@OnItemClick</code> 등의 어노테이션을 사용하는걸 통해 <code class="highlighter-rouge">setOnClickListener()</code>를 지정해주는 것과 비슷한 것을 할 수 있습니다.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/OnClick' class='user-mention'&gt;@OnClick&lt;/a&gt;(R.id.submit)</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@OnClick</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">submit</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">submit</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
   <span class="c1">// TODO submit data to server...</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><h4 id="after-2">After</h4>
 
-<h4 id="after-2">After</h4>
+<p>레이아웃에 Activity의 인스턴스를 지정해주고, <code class="highlighter-rouge">Button</code>의 <code class="highlighter-rouge">android:onClick</code> 항목에 Listener 메소드를 지정해준다.</p>
 
-<p>레이아웃에 Activity의 인스턴스를 지정해주고, <code>Button</code>의 <code>android:onClick</code> 항목에 Listener 메소드를 지정해준다.</p>
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;data&gt;</span>
     <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"activity"</span> <span class="na">type=</span><span class="s">"info.izumin.android.databindingsample.SampleActivity"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/data&gt;</span>
   <span class="nt">&lt;LinearLayout&gt;</span>
     <span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{activity.onSampleButtonClick}"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></div>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>Activity의 <code class="highlighter-rouge">onCreate()</code>에서는 Binding 인스턴스에 Activity의 인스턴스를 지정해주면 그 이후에는 편하게 사용할 수 있다.</p>
 
-<p>Activity의 <code>onCreate()</code>에서는 Binding 인스턴스에 Activity의 인스턴스를 지정해주면 그 이후에는 편하게 사용할 수 있다.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">SampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">SampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">ActivitySampleBinding</span> <span class="n">binding</span><span class="o">;</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt;</span>
+  <span class="nd">@Override</span>
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">DataBindingUtils</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_activity</span><span class="o">);</span>
@@ -298,52 +275,40 @@ h5 {
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSampleButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// do something...</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><p>다만, 앞의 예제의 Activity는 Layout를 참고하고 있으며 Layout은 Activity를 참조하고 있는 것처럼 완전히 서로 결합되는 구조가 된다. 이것이 싫다면 이벤트 처리만을 담당하는 Interface를 만들어주면 좋다. 이제 느슨하게 서로 연결되는 구조가 실현된다.</p>
 
-<p>다만, 앞의 예제의 Activity는 Layout를 참고하고 있으며 Layout은 Activity를 참조하고 있는 것처럼 완전히 서로 결합되는 구조가 된다. 이것이 싫다면 이벤트 처리만을 담당하는 Interface를 만들어주면 좋다. 이제 느슨하게 서로 연결되는 구조가 실현된다.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onSampleButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
-<span class="o">}</span></code></pre></div>
-
-<p><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>에서 이야기하는 Controller에 해당될려나?</p>
+<span class="o">}</span></code></pre></figure><p><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>에서 이야기하는 Controller에 해당될려나?</p>
 
 <h3 id="data-binding--">그 외 Data Binding의 편리한 기능들</h3>
 
 <h4 id="listener-bindings">Listener Bindings</h4>
 
-<p>Data Binding은 <code>&lt;a href='https://github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;</code>나 <code>&lt;a href='https://github.com/BindingMethod' class='user-mention'&gt;@BindingMethod&lt;/a&gt;</code>라고 하는 어노테이션을 이용한 어노테이션 프로세싱을 통해 <code>OnClickListener</code> 이외의 Event Listener도 설정할 수 있다.</p>
+<p>Data Binding은 <code class="highlighter-rouge">@BindingAdapter</code>나 <code class="highlighter-rouge">@BindingMethod</code>라고 하는 어노테이션을 이용한 어노테이션 프로세싱을 통해 <code class="highlighter-rouge">OnClickListener</code> 이외의 Event Listener도 설정할 수 있다.</p>
 
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{handlers.onPrevButtonClick}"</span> <span class="nt">/&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{handlers.onPrevButtonClick}"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{handlers.onNextButtonClick}"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;EditText</span> <span class="na">android:onTextChanged=</span><span class="s">"@{handlers.onTextChanged}"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;ListView</span> <span class="na">android:onScroll=</span><span class="s">"@{handlers.onScroll}"</span> <span class="nt">/&gt;</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
+<span class="nt">&lt;ListView</span> <span class="na">android:onScroll=</span><span class="s">"@{handlers.onScroll}"</span> <span class="nt">/&gt;</span></code></pre></figure><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onPrevButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onNextButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onTextChanged</span><span class="o">(</span><span class="n">CharSequence</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">before</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onScroll</span><span class="o">(</span><span class="n">AbsListView</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">firstVisibleItem</span><span class="o">,</span> <span class="kt">int</span> <span class="n">visibleItemCount</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalItemCount</span><span class="o">);</span>
-<span class="o">}</span></code></pre></div>
-
-<p>표준으로 제공하는 Adapter에 대해서는 <a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/…/data-binding/</a>에 있는 파일을 참조하길 바란다.</p>
+<span class="o">}</span></code></pre></figure><p>표준으로 제공하는 Adapter에 대해서는 <a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/…/data-binding/</a>에 있는 파일을 참조하길 바란다.</p>
 
 <h4 id="adapter-binding">Adapter Binding</h4>
 
-<p><code>&lt;a href='https://github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;</code> 및 <code>&lt;a href='https://github.com/BindingMethod' class='user-mention'&gt;@BindingMethod&lt;/a&gt;</code>의 악용 사례</p>
+<p><code class="highlighter-rouge">@BindingAdapter</code> 및 <code class="highlighter-rouge">@BindingMethod</code>의 악용 사례</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingMethods' class='user-mention'&gt;@BindingMethods&lt;/a&gt;({</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingMethod' class='user-mention'&gt;@BindingMethod&lt;/a&gt;(type = SwipeRefreshLayout.class, attribute = "android:onRefresh", method = "setOnRefreshListener"),</span>
-    <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingMethod' class='user-mention'&gt;@BindingMethod&lt;/a&gt;(type = RecyclerView.class, attribute = "android:adapter", method = "setAdapter")</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@BindingMethods</span><span class="o">({</span>
+    <span class="nd">@BindingMethod</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="n">SwipeRefreshLayout</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">attribute</span> <span class="o">=</span> <span class="s">"android:onRefresh"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"setOnRefreshListener"</span><span class="o">),</span>
+    <span class="nd">@BindingMethod</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="n">RecyclerView</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">attribute</span> <span class="o">=</span> <span class="s">"android:adapter"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"setAdapter"</span><span class="o">)</span>
 <span class="o">})</span>
 <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ViewBindingUtils</span> <span class="o">{</span>
-<span class="o">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
+<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onRefresh</span><span class="o">();</span>
-<span class="o">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;data&gt;</span>
     <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"handlers"</span>
       <span class="na">type=</span><span class="s">"info.izumin.android.databindingsample.SampleActivityHandlers"</span> <span class="nt">/&gt;</span>
@@ -357,29 +322,25 @@ h5 {
       <span class="na">android:adapter=</span><span class="s">"@{adapter}"</span> <span class="nt">/&gt;</span>
 
   <span class="nt">&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></div>
-
-<p>이렇게까지 해야할 필요성이 있는지 모르겠다.</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>이렇게까지 해야할 필요성이 있는지 모르겠다.</p>
 
 <h4 id="image-source-binding">Image Source Binding</h4>
 
-<p>“어떤 값에 따라 표시하는 이미지를 바꿀 수 없을까?”같은 것도 <code>BindingAdapter</code>를 이용하면 쉽게 할 수 있다. 정적 메소드이기 때문에 테스트도 편하게 할 수 있지 않을까?</p>
+<p>“어떤 값에 따라 표시하는 이미지를 바꿀 수 없을까?”같은 것도 <code class="highlighter-rouge">BindingAdapter</code>를 이용하면 쉽게 할 수 있다. 정적 메소드이기 때문에 테스트도 편하게 할 수 있지 않을까?</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ViewBindingUtils</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;("signalStrength")</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ViewBindingUtils</span> <span class="o">{</span>
+  <span class="nd">@BindingAdapter</span><span class="o">(</span><span class="s">"signalStrength"</span><span class="o">)</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setSignalStrengthIcon</span><span class="o">(</span><span class="n">ImageView</span> <span class="n">imageView</span><span class="o">,</span> <span class="n">BluetoothDevice</span> <span class="n">device</span><span class="o">)</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">resId</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">ic_signal_weak</span><span class="o">;</span>
     <span class="kd">final</span> <span class="kt">int</span> <span class="n">rssi</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="na">getRssi</span><span class="o">();</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">rssi</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">40</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">resId</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">ic_signal_strong</span><span class="o">;</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">rssi</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">40</span> <span class="o">&amp;&amp;</span> <span class="n">rssi</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">60</span><span class="o">){</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rssi</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">40</span> <span class="o">&amp;&amp;</span> <span class="n">rssi</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">60</span><span class="o">){</span>
       <span class="n">resId</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">mipmap</span><span class="o">.</span><span class="na">ic_signal_medium</span><span class="o">;</span>
     <span class="o">}</span>
     <span class="n">imageView</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">resId</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;data&gt;</span>
     <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"device"</span> <span class="na">type=</span><span class="s">"android.bluetooth.BluetoothDevice"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/data&gt;</span>
@@ -388,15 +349,13 @@ h5 {
     <span class="nt">&lt;TextView</span> <span class="na">android:text=</span><span class="s">"@{device.getName()}"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:text=</span><span class="s">"@{device.getAddress()}"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></div>
-
-<p><code>BindingAdapter</code>로 namespace를 쓰지 않는 것(<code>app</code>)과, <code>android</code>를 쓰는 것 중 어느 쪽이 좋은가요?</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p><code class="highlighter-rouge">BindingAdapter</code>로 namespace를 쓰지 않는 것(<code class="highlighter-rouge">app</code>)과, <code class="highlighter-rouge">android</code>를 쓰는 것 중 어느 쪽이 좋은가요?</p>
 
 <h4 id="data-binding-on-custom-view">Data Binding on Custom View</h4>
 
-<p>당연하게도 Data Binding은 Custom View에서도 쓸 수 있다. <code>&lt;a href='https://github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;</code>를 잘못 사용하면 <code>attrs.xml</code>을 쓰고 <code>TypedArray</code>에서 Custom Attrs를 얻는 등의 일을 쉽게 할 수 있다. ~~그게 좋은지 나쁜지는 다른 문제로 두고~~.</p>
+<p>당연하게도 Data Binding은 Custom View에서도 쓸 수 있다. <code class="highlighter-rouge">@BindingAdapter</code>를 잘못 사용하면 <code class="highlighter-rouge">attrs.xml</code>을 쓰고 <code class="highlighter-rouge">TypedArray</code>에서 Custom Attrs를 얻는 등의 일을 쉽게 할 수 있다. <del>그게 좋은지 나쁜지는 다른 문제로 두고</del>.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pagination</span> <span class="kd">extends</span> <span class="n">RelativeLayout</span> <span class="o">{</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pagination</span> <span class="kd">extends</span> <span class="n">RelativeLayout</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">ViewPaginationBinding</span> <span class="n">binding</span><span class="o">;</span>
 
   <span class="kd">public</span> <span class="nf">Pagination</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
@@ -414,12 +373,12 @@ h5 {
     <span class="o">}</span>
   <span class="o">}</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;({"android:onPrevButtonClicked"})</span>
+  <span class="nd">@BindingAdapter</span><span class="o">({</span><span class="s">"android:onPrevButtonClicked"</span><span class="o">})</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setPrevClickListener</span><span class="o">(</span><span class="n">Pagination</span> <span class="n">view</span><span class="o">,</span> <span class="n">OnPaginationClickListener</span> <span class="n">listener</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">setListener</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">view</span><span class="o">.</span><span class="na">binding</span><span class="o">.</span><span class="na">btnPrevPage</span><span class="o">,</span> <span class="n">listener</span><span class="o">);</span>
   <span class="o">}</span>
 
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;({"android:onNextButtonClicked"})</span>
+  <span class="nd">@BindingAdapter</span><span class="o">({</span><span class="s">"android:onNextButtonClicked"</span><span class="o">})</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setNextClickListener</span><span class="o">(</span><span class="n">Pagination</span> <span class="n">view</span><span class="o">,</span> <span class="n">OnPaginationClickListener</span> <span class="n">listener</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">setListener</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">view</span><span class="o">.</span><span class="na">binding</span><span class="o">.</span><span class="na">btnNextPage</span><span class="o">,</span> <span class="n">listener</span><span class="o">);</span>
   <span class="o">}</span>
@@ -427,41 +386,35 @@ h5 {
   <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OnPaginationClickListener</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">Pagination</span> <span class="n">pagination</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></div>
-
-<h3 id="butterknife-data-binding----">ButterKnife에서 Data Binding으로 대체할 수 없는 기능들</h3>
+<span class="o">}</span></code></pre></figure><h3 id="butterknife-data-binding----">ButterKnife에서 Data Binding으로 대체할 수 없는 기능들</h3>
 
 <h4 id="resource-binding">Resource Binding</h4>
 
 <p>이 기능은 Data Binding에는 존재하지 않는다.</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindString' class='user-mention'&gt;@BindString&lt;/a&gt;(R.string.title) String title;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindDrawable' class='user-mention'&gt;@BindDrawable&lt;/a&gt;(R.drawable.graphic) Drawable graphic;</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindColor' class='user-mention'&gt;@BindColor&lt;/a&gt;(R.color.red) int red; // int or ColorStateList field</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/BindDimen' class='user-mention'&gt;@BindDimen&lt;/a&gt;(R.dimen.spacer) Float spacer; // int (for pixel size) or float (for exact value) field</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+  <span class="nd">@BindString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">title</span><span class="o">)</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+  <span class="nd">@BindDrawable</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">graphic</span><span class="o">)</span> <span class="n">Drawable</span> <span class="n">graphic</span><span class="o">;</span>
+  <span class="nd">@BindColor</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">red</span><span class="o">)</span> <span class="kt">int</span> <span class="n">red</span><span class="o">;</span> <span class="c1">// int or ColorStateList field</span>
+  <span class="nd">@BindDimen</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">dimen</span><span class="o">.</span><span class="na">spacer</span><span class="o">)</span> <span class="n">Float</span> <span class="n">spacer</span><span class="o">;</span> <span class="c1">// int (for pixel size) or float (for exact value) field</span>
   <span class="c1">// ...</span>
-<span class="o">}</span></code></pre></div>
+<span class="o">}</span></code></pre></figure><h4 id="view-lists">View Lists</h4>
 
-<h4 id="view-lists">View Lists</h4>
+<p>View Lists는 여러 View를 한 곳에 모아 처리하는 기능 같다. <del>이 글을 쓸 때 처음 안 기능이다</del>.</p>
 
-<p>View Lists는 여러 View를 한 곳에 모아 처리하는 기능 같다. ~~이 글을 쓸 때 처음 안 기능이다~~.</p>
-
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// 이렇게 해서…</span>
-<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Bind' class='user-mention'&gt;@Bind&lt;/a&gt;({ R.id.first_name, R.id.middle_name, R.id.last_name })</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// 이렇게 해서…</span>
+<span class="nd">@Bind</span><span class="o">({</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">first_name</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">middle_name</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">last_name</span> <span class="o">})</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">EditText</span><span class="o">&gt;</span> <span class="n">nameViews</span><span class="o">;</span>
 
 <span class="c1">// 이런 것들을 준비해주면…</span>
 <span class="kd">static</span> <span class="kd">final</span> <span class="n">ButterKnife</span><span class="o">.</span><span class="na">Action</span><span class="o">&lt;</span><span class="n">View</span><span class="o">&gt;</span> <span class="n">DISABLE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ButterKnife</span><span class="o">.</span><span class="na">Action</span><span class="o">&lt;</span><span class="n">View</span><span class="o">&gt;()</span> <span class="o">{</span>
-  <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="err">'</span><span class="nl">https:</span><span class="c1">//github.com/Override' class='user-mention'&gt;@Override&lt;/a&gt; public void apply(View view, int index) {</span>
+  <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">apply</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">view</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
   <span class="o">}</span>
 <span class="o">};</span>
 
 <span class="c1">// 이런 느낌으로 한번에 쓸 수 있다！</span>
-<span class="n">ButterKnife</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">nameViews</span><span class="o">,</span> <span class="n">DISABLE</span><span class="o">);</span></code></pre></div>
-
-<p>이것도 Data Binding에서는 존재하지 않는다.</p>
+<span class="n">ButterKnife</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">nameViews</span><span class="o">,</span> <span class="n">DISABLE</span><span class="o">);</span></code></pre></figure><p>이것도 Data Binding에서는 존재하지 않는다.</p>
 
 <h2 id="section">정리</h2>
 <ul>
@@ -471,15 +424,16 @@ h5 {
     </ul>
 </li>
   <li>
-<code>ViewHolder</code> 패턴은 모두 대체할 수 있다.
+<code class="highlighter-rouge">ViewHolder</code> 패턴은 모두 대체할 수 있다.
     <ul>
 <li>
-<code>RecyclerView.ViewHolder</code>는 Binding의 Wrapper로 감싸주면 OK</li>
+<code class="highlighter-rouge">RecyclerView.ViewHolder</code>는 Binding의 Wrapper로 감싸주면 OK</li>
     </ul>
 </li>
   <li>
-<code>&lt;a href='https://github.com/BindingAdapter' class='user-mention'&gt;@BindingAdapter&lt;/a&gt;</code>와 <code>&lt;a href='https://github.com/BindingMethod' class='user-mention'&gt;@BindingMethod&lt;/a&gt;</code>를 ~~악용~~이용하면 비교적 뭐든지 할 수 있다.</li>
-</ul><h2 id="references">References</h2>
+<code class="highlighter-rouge">@BindingAdapter</code>와 <code class="highlighter-rouge">@BindingMethod</code>를 <del>악용</del>이용하면 비교적 뭐든지 할 수 있다.</li>
+</ul>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="http://jakewharton.github.io/butterknife/">ButterKnife</a></li>
   <li><a href="http://developer.android.com/tools/data-binding/guide.html">Data Binding Guide - Android Developers</a></li>
@@ -487,12 +441,13 @@ h5 {
   <li><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">The Clean Architecture - 8th Light</a></li>
   <li><a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google</a></li>
 </ul>
-    <h5> <!-- footer start -->
+<h5> <!-- footer start -->
 
 <footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
          <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
 </div>
-</footer><!-- footer end --></h5>
-  </body>
+</footer><!-- footer end -->
+</h5>
+</body>
 </html>
