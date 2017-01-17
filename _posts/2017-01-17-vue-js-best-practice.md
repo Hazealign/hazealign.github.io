@@ -181,7 +181,7 @@ Vue.component('child', {
 
 ## 비동기 통신 라이브러리
 
-얼마 전 [vue-resource](https://github.com/pagekit/vue-resource)가 Vue.js의 공식 비동기 통신 라이브러리였지만, 현재 Vue.js가 공식으로 제공하는 비동기 통신 라이브러리는 없습니다. 원래 Vue.js는 외부 라이브러리를 통합하기 쉽도록 되어있어 펴오 사용하던 익숙한 비동기 통신 라이브러리를 사용하는 것이 좋습니다.
+얼마 전 [vue-resource](https://github.com/pagekit/vue-resource)가 Vue.js의 공식 비동기 통신 라이브러리였지만, 현재 Vue.js가 공식으로 제공하는 비동기 통신 라이브러리는 없습니다. 원래 Vue.js는 외부 라이브러리를 통합하기 쉽도록 되어있어 평소 사용하던 익숙한 비동기 통신 라이브러리를 사용하는 것이 좋습니다.
 
 공식에서 벗어나긴 했지만, vue-resource를 이용하고 있는 프로젝트도 많은 것 같습니다. Javascript 전체의 상황을 보면 [axios](https://github.com/mzabriskie/axios)나 [request](https://github.com/request/request) 등이 인기인 것 같습니다. 또한 브라우저의 fetch API를 이용하는 것도 괜찮겠죠. (Safari에서는 아직 네이티브로 구현되어있지 않기 때문에 [polyfill](https://github.com/github/fetch)의 사용이 필요합니다.)
 
