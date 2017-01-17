@@ -3,7 +3,7 @@ layout: post
 title: "macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기"
 date: 2016-10-01 01:00:00 +09:00
 categories: Code
-tags: featured development rust openssl 
+tags: development rust openssl 
 ---
 
 Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 에러를 볼 수 있습니다.

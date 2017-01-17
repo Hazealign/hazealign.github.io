@@ -3,7 +3,7 @@ layout: post
 title: "상반기를 정리하며."
 date: 2016-07-02 18:00:00 +09:00
 categories: Life
-tags: featured life
+tags: life
 ---
 
 
