@@ -49,7 +49,7 @@ class ExampleActivity extends Activity {
 
 레이아웃 전체를 `<layout></layout>`으로 감싸준다.
 
-{% endhighlight %}xml
+{% highlight xml %}
 <layout>
   <LinearLayout>
     <TextView android:id="@+id/title">
@@ -237,7 +237,7 @@ public void submit(View view) {
 
 레이아웃에 Activity의 인스턴스를 지정해주고, `Button`의 `android:onClick` 항목에 Listener 메소드를 지정해준다.
 
-{% endhighlight %}xml
+{% highlight xml %}
 <layout>
   <data>
     <variable name="activity" type="info.izumin.android.databindingsample.SampleActivity" />
@@ -283,7 +283,7 @@ interface SampleActivityHandlers {
 
 Data Binding은 `@BindingAdapter`나 `@BindingMethod`라고 하는 어노테이션을 이용한 어노테이션 프로세싱을 통해 `OnClickListener` 이외의 Event Listener도 설정할 수 있다.
 
-{% endhighlight %}xml
+{% highlight xml %}
 <Button android:onClick="@{handlers.onPrevButtonClick}" />
 <Button android:onClick="@{handlers.onNextButtonClick}" />
 <EditText android:onTextChanged="@{handlers.onTextChanged}" />
@@ -320,7 +320,7 @@ public interface SampleActivityHandlers {
 }
 {% endhighlight %}
 
-{% endhighlight %}xml
+{% highlight xml %}
 <layout>
   <data>
     <variable name="handlers"
@@ -360,7 +360,7 @@ public final class ViewBindingUtils {
 }
 {% endhighlight %}
 
-{% endhighlight %}xml
+{% highlight xml %}
 <layout>
   <data>
     <variable name="device" type="android.bluetooth.BluetoothDevice" />
