@@ -3,7 +3,7 @@ layout: post
 title: "지킬 블로그에 AMP를 적용해보자"
 date: 2016-12-01 18:00:00 +09:00
 categories: Code
-tags: featured development amphtml amp jekyll amp-jekyll amplify 
+tags: development amphtml amp jekyll amp-jekyll amplify 
 ---
 
 항상 그렇지만 사람이 백수가 되면 심심해지고, 사람이 잉여로워지면 무언가 재미난 것을 하게 된다. 오늘은 지킬 블로그에 AMP(Accelerated Mobile Pages) 페이지를 넣은 후기를 쓰려고 한다. 이 글은 AMP가 무엇인지 아는 사람을 위해 작성된 글로, AMP에 대한 설명과 소개는 [여기](https://www.ampproject.org/ko/learn/about-amp/)에서 볼 수 있다.

@@ -50,7 +50,7 @@ v-on과 v-bind를 이용할 때는 역시 간결한 단축법을 선호하는 �
 
 `props`를 통해 들어오는 값의 타입 체크는 가능한 사용하는 것이 좋겠죠. 예를 들어 양의 정수를 기대하는 `props`일 때에는 Number 형인지 검사하는 것과 함께 음수가 아닌지 validate해준다면 알아채기 어려운 버그를 줄이는데 큰 도움이 됩니다.
 
-```js
+{% highlight javascript %}
 // not so good
 Vue.component('child', {
   props: ['age']
@@ -77,7 +77,7 @@ Vue.component('child', {
     }
   }
 }) 
-```
+{% endhighlight %}
 
 `props`의 타입 체크에는 여러가지 형태를 지정하거나 `null`로 지정하여 모든 형태를 허용할 수 있습니다만, 이처럼 `null`로 지정하는 것은 지양하는 것을 추천합니다. 아무래도 `null`을 지정하는 경우에는 하나의 형식의 값을 전달할 수 있도록 컴포넌트나 `props`로 넘기는 방식으로 데이터의 구조를 다시 검토해보는 것이 좋을 것 같습니다. 
 
@@ -93,7 +93,7 @@ Vue.js에는 편리한 API가 많이 준비되어 있습니다만, 이벤트 계
 
 
 
-```javascript
+{% highlight javascript %}
 new Vue({
   mounted: function() {
     console.log("Hello from parent");
@@ -101,9 +101,9 @@ new Vue({
 })
 
 // => "Hello from parent"
-```
+{% endhighlight %}
 
-```javascript
+{% highlight javascript %}
 Vue.component('child', {
   mounted: function() {
     console.log("Hello from child");
@@ -118,9 +118,9 @@ new Vue({
 
 // => "Hello from child"
 // => "Hello from parent"
-```
+{% endhighlight %}
 
-```javascript
+{% highlight javascript %}
 Vue.component('child', {
   mounted: function() {
     console.log("Hello from child");
@@ -135,7 +135,7 @@ new Vue({
 
 // => "Hello from parent"
 // => "Hello from child"
-```
+{% endhighlight %}
 
 ## v-for로 표시된 컴포넌트의 제거
 
@@ -146,7 +146,7 @@ new Vue({
 
 필자 개인적으로는 어떤 방법이 다른 쪽에 비해 특히 우수하다고는 생각하지 않습니다만, UI나 컴포넌트의 분할 단위 관점에서 처리 흐름이 보다 자연스러운 쪽을 선택하는 것이 좋다고 생각합니다. 또한 자식 컴포넌트의 제거 이외에 추가 처리가 이것저것 부수적으로 있을 때에는 두 번째 방법이 더 다루기 쉬울지도 모릅니다.
 
-```javascript
+{% highlight javascript %}
 // 패턴 1
 Vue.component('child', {
   methods: {
@@ -155,9 +155,9 @@ Vue.component('child', {
     }
   }
 })
-```
+{% endhighlight %}
 
-```javascript
+{% highlight javascript %}
 // 패턴 2
 Vue.component('child', {
   props: {
@@ -166,7 +166,7 @@ Vue.component('child', {
     }
   }
 })
-```
+{% endhighlight %}
 
 ## 외부 라이브러리의 컴포넌트화
 

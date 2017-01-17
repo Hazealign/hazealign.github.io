@@ -28,7 +28,7 @@ tags: android butterknife dependencyinjection di development
 
 아마 모두들 ButterKnife에서 제일 원하고 있는 기능, `findViewById(int id)`가 필요 없어지는 다음과 같은 코드
 
-```java
+{% highlight java %}
 class ExampleActivity extends Activity {
   @Bind(R.id.title) TextView title;
   @Bind(R.id.subtitle) TextView subtitle;
@@ -41,7 +41,7 @@ class ExampleActivity extends Activity {
     ButterKnife.bind(this);
   }
 }
-```
+{% endhighlight %}
 
 이 부분은 전부 Data Binding으로 다음과 같이 바꿔서 사용할 수 있다.
 
@@ -49,7 +49,7 @@ class ExampleActivity extends Activity {
 
 레이아웃 전체를 `<layout></layout>`으로 감싸준다.
 
-```xml
+{% endhighlight %}xml
 <layout>
   <LinearLayout>
     <TextView android:id="@+id/title">
@@ -57,11 +57,11 @@ class ExampleActivity extends Activity {
     <TextView android:id="@+id/footer">
   </LinearLayout>
 </layout>
-```
+{% endhighlight %}
 
 이렇게 하면 `activity_sample.xml` 파일이라고 한다면 `ActivitySampleBinding`이라는 클래스가 생성된다.`DataBindingUtils.setContentView(Activity activity, int id)`를 통해 Binding 인스턴스를 반환하기 때문에 이 인스턴스를 유지해두면 좋다.
 
-```java
+{% highlight java %}
 class ExampleActivity extends Activity {
   private ActivitySampleBinding binding;
 
@@ -71,13 +71,13 @@ class ExampleActivity extends Activity {
     binding = DataBindingUtils.setContentView(this, R.layout.simple_activity);
   }
 }
-```
+{% endhighlight %}
 
 이 Binding 인스턴스가 id로 설정된 각 View의 인스턴스를 가지고 있는걸 확인할 수 있다.
 
-```java
+{% highlight java %}
 String text = binding.footer.getText();
-```
+{% endhighlight %}
 
 ### Non-Activity Binding
 
@@ -85,7 +85,7 @@ String text = binding.footer.getText();
 
 Activity 뿐만이 아니라, 예를 들면 Fragment에서의 View Binding.
 
-```java
+{% highlight java %}
 public class FancyFragment extends Fragment {
   @Bind(R.id.button1) Button button1;
   @Bind(R.id.button2) Button button2;
@@ -98,13 +98,13 @@ public class FancyFragment extends Fragment {
     return view;
   }
 }
-```
+{% endhighlight %}
 
 #### After
 
 생성된 Binding 클래스에 `bind(View view)`라는 정적 메소드가 존재하기 때문에, 그것을 이용하면 된다. 그 다음은 같다.
 
-```java
+{% highlight java %}
 
 public class FancyFragment extends Fragment {
   private FragmentFancyBinding binding;
@@ -120,7 +120,7 @@ public class FancyFragment extends Fragment {
     binding = FragmentFancyBinding.bind(getView());
   }
 }
-```
+{% endhighlight %}
 
 ### View Binding (ViewHolder)
 
@@ -128,7 +128,7 @@ public class FancyFragment extends Fragment {
 
 ButterKnife를 이용하면 `ListView`를 위한 `ViewHolder`의 구현을 쉽게 할 수 있다.
 
-```java
+{% highlight java %}
 public class MyAdapter extends BaseAdapter {
   @Override
   public View getView(int position, View view, ViewGroup parent) {
@@ -156,13 +156,13 @@ public class MyAdapter extends BaseAdapter {
     }
   }
 }
-```
+{% endhighlight %}
 
 #### After (ListView)
 
 Data Binding을 이용하면 Binding 클래스가 ViewHolder와 같은 방식으로 작동하므로, 원래 `ViewHolder`가 필요 없어진다. (`RecyclerView`에 대해서는 조금 다른 이야기가 되기 때문에 후술하도록 하겠다.) Data Binding을 이용하고 있으면 setter 또한 구현 되어있기 때문에 각 View에 값을 일일히 줄 필요도 없다. (Snippet 안에 있는 주석을 참조하라.)
 
-```java
+{% highlight java %}
 public class MyAdapter extends BaseAdapter {
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
@@ -183,13 +183,13 @@ public class MyAdapter extends BaseAdapter {
       return convertView;
   }
 }
-```
+{% endhighlight %}
 
 #### After (RecyclerView)
 
 `RecyclerView`같은 경우에는 `RecyclerView.ViewHolder`가 필수가 된다. 이 ViewHolder에 BindingHolder같은 이름을 붙이고 Binding 클래스와 연결해주도록 하면 된다.
 
-```java
+{% highlight java %}
 public class SampleRecyclerAdapter extends RecyclerView.Adapter<SampleRecyclerAdapter.BindingHolder> {
 
     @Override
@@ -218,7 +218,7 @@ public class SampleRecyclerAdapter extends RecyclerView.Adapter<SampleRecyclerAd
     }
   }
 }
-```
+{% endhighlight %}
 
 ### Listener Binding (onClick)
 
@@ -226,18 +226,18 @@ public class SampleRecyclerAdapter extends RecyclerView.Adapter<SampleRecyclerAd
 
 `@OnClick`이나 `@OnItemClick` 등의 어노테이션을 사용하는걸 통해 `setOnClickListener()`를 지정해주는 것과 비슷한 것을 할 수 있습니다.
 
-```java
+{% highlight java %}
 @OnClick(R.id.submit)
 public void submit(View view) {
   // TODO submit data to server...
 }
-```
+{% endhighlight %}
 
 #### After
 
 레이아웃에 Activity의 인스턴스를 지정해주고, `Button`의 `android:onClick` 항목에 Listener 메소드를 지정해준다.
 
-```xml
+{% endhighlight %}xml
 <layout>
   <data>
     <variable name="activity" type="info.izumin.android.databindingsample.SampleActivity" />
@@ -246,11 +246,11 @@ public void submit(View view) {
     <Button android:onClick="@{activity.onSampleButtonClick}">
   </LinearLayout>
 </layout>
-```
+{% endhighlight %}
 
 Activity의 `onCreate()`에서는 Binding 인스턴스에 Activity의 인스턴스를 지정해주면 그 이후에는 편하게 사용할 수 있다.
 
-```java
+{% highlight java %}
 class SampleActivity extends Activity {
   private ActivitySampleBinding binding;
 
@@ -265,15 +265,15 @@ class SampleActivity extends Activity {
     // do something...
   }
 }
-```
+{% endhighlight %}
 
 다만, 앞의 예제의 Activity는 Layout를 참고하고 있으며 Layout은 Activity를 참조하고 있는 것처럼 완전히 서로 결합되는 구조가 된다. 이것이 싫다면 이벤트 처리만을 담당하는 Interface를 만들어주면 좋다. 이제 느슨하게 서로 연결되는 구조가 실현된다.
 
-```java
+{% highlight java %}
 interface SampleActivityHandlers {
   void onSampleButtonClick(View view);
 }
-```
+{% endhighlight %}
 
 [Clean Architecture](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html)에서 이야기하는 Controller에 해당될려나?
 
@@ -283,21 +283,21 @@ interface SampleActivityHandlers {
 
 Data Binding은 `@BindingAdapter`나 `@BindingMethod`라고 하는 어노테이션을 이용한 어노테이션 프로세싱을 통해 `OnClickListener` 이외의 Event Listener도 설정할 수 있다.
 
-```xml
+{% endhighlight %}xml
 <Button android:onClick="@{handlers.onPrevButtonClick}" />
 <Button android:onClick="@{handlers.onNextButtonClick}" />
 <EditText android:onTextChanged="@{handlers.onTextChanged}" />
 <ListView android:onScroll="@{handlers.onScroll}" />
-```
+{% endhighlight %}
 
-```java
+{% highlight java %}
 interface SampleActivityHandlers {
   void onPrevButtonClick(View view);
   void onNextButtonClick(View view);
   void onTextChanged(CharSequence s, int start, int before, int count);
   void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount);
 }
-```
+{% endhighlight %}
 
 표준으로 제공하는 Adapter에 대해서는 [extensions/baseAdapters/.../data-binding/](https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters)에 있는 파일을 참조하길 바란다.
 
@@ -305,22 +305,22 @@ interface SampleActivityHandlers {
 
 `@BindingAdapter` 및 `@BindingMethod`의 악용 사례
 
-```java
+{% highlight java %}
 @BindingMethods({
     @BindingMethod(type = SwipeRefreshLayout.class, attribute = "android:onRefresh", method = "setOnRefreshListener"),
     @BindingMethod(type = RecyclerView.class, attribute = "android:adapter", method = "setAdapter")
 })
 public final class ViewBindingUtils {
 }
-```
+{% endhighlight %}
 
-```java
+{% highlight java %}
 public interface SampleActivityHandlers {
   void onRefresh();
 }
-```
+{% endhighlight %}
 
-```xml
+{% endhighlight %}xml
 <layout>
   <data>
     <variable name="handlers"
@@ -336,7 +336,7 @@ public interface SampleActivityHandlers {
 
   </android.support.v4.widget.SwipeRefreshLayout>
 </layout>
-```
+{% endhighlight %}
 
 이렇게까지 해야할 필요성이 있는지 모르겠다.
 
@@ -344,7 +344,7 @@ public interface SampleActivityHandlers {
 
 "어떤 값에 따라 표시하는 이미지를 바꿀 수 없을까?"같은 것도 `BindingAdapter`를 이용하면 쉽게 할 수 있다. 정적 메소드이기 때문에 테스트도 편하게 할 수 있지 않을까?
 
-```java
+{% highlight java %}
 public final class ViewBindingUtils {
   @BindingAdapter("signalStrength")
   public static void setSignalStrengthIcon(ImageView imageView, BluetoothDevice device) {
@@ -358,9 +358,9 @@ public final class ViewBindingUtils {
     imageView.setImageResource(resId);
   }
 }
-```
+{% endhighlight %}
 
-```xml
+{% endhighlight %}xml
 <layout>
   <data>
     <variable name="device" type="android.bluetooth.BluetoothDevice" />
@@ -371,7 +371,7 @@ public final class ViewBindingUtils {
     <TextView android:text="@{device.getAddress()}" />
   </LinearLayout>
 </layout>
-```
+{% endhighlight %}
 
 `BindingAdapter`로 namespace를 쓰지 않는 것(`app`)과, `android`를 쓰는 것 중 어느 쪽이 좋은가요?
 
@@ -379,7 +379,7 @@ public final class ViewBindingUtils {
 
 당연하게도 Data Binding은 Custom View에서도 쓸 수 있다. `@BindingAdapter`를 잘못 사용하면 `attrs.xml`을 쓰고 `TypedArray`에서 Custom Attrs를 얻는 등의 일을 쉽게 할 수 있다. ~~그게 좋은지 나쁜지는 다른 문제로 두고~~.
 
-```java
+{% highlight java %}
 public class Pagination extends RelativeLayout {
   private ViewPaginationBinding binding;
 
@@ -412,7 +412,7 @@ public class Pagination extends RelativeLayout {
     void onClick(Pagination pagination);
   }
 }
-```
+{% endhighlight %}
 
 ### ButterKnife에서 Data Binding으로 대체할 수 없는 기능들
 
@@ -420,7 +420,7 @@ public class Pagination extends RelativeLayout {
 
 이 기능은 Data Binding에는 존재하지 않는다.
 
-```java
+{% highlight java %}
 class ExampleActivity extends Activity {
   @BindString(R.string.title) String title;
   @BindDrawable(R.drawable.graphic) Drawable graphic;
@@ -428,13 +428,13 @@ class ExampleActivity extends Activity {
   @BindDimen(R.dimen.spacer) Float spacer; // int (for pixel size) or float (for exact value) field
   // ...
 }
-```
+{% endhighlight %}
 
 #### View Lists
 
 View Lists는 여러 View를 한 곳에 모아 처리하는 기능 같다. ~~이 글을 쓸 때 처음 안 기능이다~~.
 
-```java
+{% highlight java %}
 // 이렇게 해서…
 @Bind({ R.id.first_name, R.id.middle_name, R.id.last_name })
 List<EditText> nameViews;
@@ -448,7 +448,7 @@ static final ButterKnife.Action<View> DISABLE = new ButterKnife.Action<View>() {
 
 // 이런 느낌으로 한번에 쓸 수 있다！
 ButterKnife.apply(nameViews, DISABLE);
-```
+{% endhighlight %}
 
 이것도 Data Binding에서는 존재하지 않는다.
 
