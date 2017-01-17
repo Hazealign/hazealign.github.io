@@ -244,6 +244,21 @@ pre[class*="language-"] {
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
           <div class="article-item">
             <header class="post-header">
+              <h2 class="post-title" itemprop="name"><a href="/code/2017/01/17/vue-js-best-practice.html" itemprop="url">Vue.js를 쓸 때의 모범 사례에 대해서 생각해보다.</a></h2>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>글에 앞서, 이 글은 Qiita에 올라온 @EdwardKenFox님의 글을 한국어로 번역한 글입니다. 개인적으로 Vue.js에 관심이 있어서 찾아보면서 좋은 글을 발견해서 번역해봤습니다. 혹시 번역에 이상하거나 모르는 부분이 있다면 댓글로 남겨주시면 감사하겠습니다. 흔쾌히 번역을 허락해주신 EdwardKenFox님께도 감사하다는 말씀 드립니다. Vue.js는 공식 문서가 매우 충실하고, 또 포럼에서의 토론이나 의사 소통 또한 매우 활발합니다. 개발...</p>
+            </section>
+            <div class="post-meta">
+              <time datetime="17 January 2017">17 January 2017</time>
+  <!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
+            </div>
+          </div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          <div class="article-item">
+            <header class="post-header">
               <h2 class="post-title" itemprop="name"><a href="/code/2016/12/01/amp-my-jekyll-web.html" itemprop="url">지킬 블로그에 AMP를 적용해보자</a></h2>
             </header>
             <section class="post-excerpt" itemprop="description">
@@ -256,42 +271,27 @@ pre[class*="language-"] {
           </div>
         </article>
       
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          <div class="article-item">
-            <header class="post-header">
-              <h2 class="post-title" itemprop="name"><a href="/code/2016/10/01/rust-osx-openssl-issue.html" itemprop="url">macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기</a></h2>
-            </header>
-            <section class="post-excerpt" itemprop="description">
-              <p>Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 에러를 볼 수 있습니다. --- stderr /…/openssl-sys-0.6.4/src/openssl_shim.c:1:10: fatal error: 'openssl/hmac.h' file not found #include &lt;openssl/hmac.h&gt; ^ 1 error generated. 이럴 때는 다음과 같이 해결할 수 있습니다. brew install openssl # 다음 내용을 환경 변수로 추가해주세요. export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include/ export OPENSSL_LIB_DIR=`brew...</p>
-            </section>
-            <div class="post-meta">
-              <time datetime="01 October 2016">01 October 2016</time>
-  <!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
-            </div>
-          </div>
-        </article>
-      
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          <div class="article-item">
-            <header class="post-header">
-              <h2 class="post-title" itemprop="name"><a href="/life/2016/07/02/half-report.html" itemprop="url">상반기를 정리하며.</a></h2>
-            </header>
-            <section class="post-excerpt" itemprop="description">
-              <p>6월이 끝나간다. 곧 있으면 7월이 다가오며 하반기가 된다. 상반기 동안 내가 뭘했을까 정리라도 해둬야 나중에 잊지 못할 것 같다는 생각이 들었다. 이 글이 공개될 때 쯤이면 아마 나는 이상한모임의 720 컨퍼런스에서 내가 취업하면서 나 자신이나, 포트폴리오 등을 관리한 이야기를 이야기한 뒤가 될 것 같다. 이 글에도 그 내용이 일부 들어있다....</p>
-            </section>
-            <div class="post-meta">
-              <time datetime="02 July 2016">02 July 2016</time>
-  <!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
-            </div>
-          </div>
-        </article>
-      
     </div>
 
     <h5 class="index-headline normal"><span>Regular</span></h5>
     
 
     <div class="cf frame">
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          <div class="article-item">
+            <header class="post-header">
+              <h2 class="post-title" itemprop="name"><a href="/code/2016/02/28/pikachus-bizarre-deeplearning.html" itemprop="url">피카츄의 기묘한 딥러닝 체험</a></h2>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>최근에 나는 프로그래밍을 이용해서 재밌는 것들을 많이 하려고 노력하는 편인데, 프로그래밍을 이용한 영상 편집이 필요하다는 부탁을 듣고 작업을 하면서 딥러닝이 어떤 것인지 아주 조금 체험할 수 있었다. 다만 그 과정이 정말 기괴하고 힘든 삽질들로 가득했기 때문에 조금이나마 기록을 남기고자 한다. 이 글에서는 Ubuntu 14.04.4를 기준으로 설명해보고자 한다. 또한 이 글을...</p>
+            </section>
+            <div class="post-meta">
+              <time datetime="28 February 2016">28 February 2016</time>
+<!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
+            </div>
+          </div>
+        </article>
       
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
           <div class="article-item">
@@ -373,7 +373,7 @@ pre[class*="language-"] {
 <footer class="site-footer">
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> &copy; 2016 &bull; All rights reserved.</section>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> &copy; 2017 &bull; All rights reserved.</section>
          <section class="poweredby">For Geeky Tomorrow.</section>
     </div>
 </footer>
