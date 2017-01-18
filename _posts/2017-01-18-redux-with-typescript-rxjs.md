@@ -51,7 +51,7 @@ Middleware라는 개념은 잘 몰랐었고, 지금도 잘 모릅니다. 로거�
 
 [![687474703a2f2f692e696d6775722e636f6d2f4149696d5138432e6a7067.jpeg](https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg)](https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg)
 
-{ % highlight javascript % }
+{% highlight typescript %}
 import 'core-js';
 import 'zone.js/dist/zone-node';
 import * as lodash from 'lodash';
@@ -165,7 +165,7 @@ function promiseAction(action: Action, timeout: number): Promise<Action> {
 function observableAction(action: Action, timeout: number): Observable<Action> {
   return Observable.of(action).delay(timeout);
 }
-{ % endhighlight % }
+{% endhighlight %}
 
 어떤가요, 초간단하죠?
 
@@ -173,15 +173,15 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
 
 ## 요점 1. Subject
 
-{ % highlight javascript % }
+{% highlight typescript %}
   dispatcher$.next(promiseAction(new IncrementAction(1), 100));
-{ % endhighlight % }
+{% endhighlight %}
 
 이것이 Action의 시작점입니다. 덧붙여서 `dispatcher$`는 `Subject`의 인스턴스입니다. 이 다음에 스트림이 어디로 흐를까요? 정답은 `dispatcherQueue$`입니다.
 
 ## 요점 2. concatMap
 
-{ % highlight javascript % }
+{% highlight typescript %}
   const dispatcherQueue$ = // Queue
     dispatcher$
       .concatMap(action => { // async actions are resolved here.
@@ -192,7 +192,7 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
         }
       })
       .share();
-{ % endhighlight % }
+{% endhighlight %}
 
 `dispatcher$`로 부터 흘러들어온 Action을 `concatMap` 오퍼레이터로 받고 있습니다. 무엇을 하고 있냐면…
 
@@ -207,9 +207,9 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
 
 ## 요점 3. BehaviorSubject
 
-{ % highlight javascript % }
+{% highlight typescript %}
 const provider$ = new BehaviorSubject<AppState>(initialState);
-{ % endhighlight % }
+{% endhighlight %}
 
 여기에서는 `Subject`로서가 아니라 `BehaviorSubject`인게 의미가 있습니다. 만약 이를 Subject로 바꾼다면 처음 "counter: 0"이 출력되지 않습니다. 초기 값이 바로 전달되는 모습은 아래 마블 다이어그램에서 보면 알기 쉬울 것 같습니다.
 
@@ -219,7 +219,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 4. scan
 
-{ % highlight javascript % }
+{% highlight typescript %}
       dispatcherQueue$.scan((state, action) => { // Reducer
         if (action instanceof IncrementAction) {
           return { counter: state.counter + action.num };
@@ -227,7 +227,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
           return state;
         }
       }, initialState.increment)
-{ % endhighlight % }
+{% endhighlight %}
 
 이 부분이 바로 Reducer입니다. `scan` 오퍼레이터는 Store(Reducer)를 구축하게 됩니다. 이것은 시간과 만나는 reduce라고 이해하면 그걸로 충분할거라 생각합니다. 이 `scan`과 아래의 `zip`을 제대로 이해할 수 있는가가 이 글을 이해했는가를 결정합니다.
 
@@ -237,15 +237,15 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 5. zip, projection
 
-{ % highlight javascript % }
+{% highlight typescript %}
       (increment): AppState => { // projection
         return Object.assign<{}, AppState, {}>({}, initialState, { increment });
       }
-{ % endhighlight % }
+{% endhighlight %}
 
 `zip` 오퍼레이터의 마지막 인자로 projection이라고 불리는 함수를 넣어 반환 값을 갖추고 있습니다. 참고로 `zip` 안이 여러 개 있을 때에는 다음과 같이 씁니다.
 
-{ % highlight javascript % }
+{% highlight typescript %}
     .zip<AppState>(...[
       dispatcher$.scan(/* 생략 */), // state1
       dispatcher$.scan(/* 생략 */), // state2
@@ -255,7 +255,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
         return Object.assign<{}, AppState, {}>({}, initialState, { state1, state2, state3 });
       }
     ])
-{ % endhighlight % }
+{% endhighlight %}
 
 [zip의 마블 다이어그램](http://rxmarbles.com/#zip)
 `zip`과 비슷한 `combineLatest`라는 오퍼레이터가 있습니다만 `zip`은 내포하는 모든 Observable의 next를 기다리는 반면, `combineLatest`는 한 Observable이 next할 때마다 각각의 Observable의 최신 값을 넘겨줍니다.
@@ -265,23 +265,23 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 6. distinctUntilChanged
 
-{ % highlight javascript % }
+{% highlight typescript %}
     .distinctUntilChanged((oldValue, newValue) => lodash.isEqual(oldValue, newValue))
-{ % endhighlight % }
+{% endhighlight %}
 
 `distinctUntilChanged`오퍼레이터는 통과하는 스트림이 같은 값일 경우에는 없애주는 역할을 합니다. 하지만 이번 코드는 위의 Projection의 쪽에서, 
 
-{ % highlight javascript % }
+{% highlight typescript %}
 return Object.assign<{}, AppState, {}>({}, initialState, { increment });
-{ % endhighlight % }
+{% endhighlight %}
 
 이렇게 하고 있기 때문에, 단순히 `.distinctUntilChanged()`라고 써버리면 흘러온 데이터가 `{counter: 2}`→`{counter: 2}`와 같이 같은 값이 계속 오더라도 모두 통과해버립니다. 이것은 객체의 내용을 보지 않기 때문입니다.
 
 객체의 내용을 확인하기 위해 소위 deepEqual 비교를 해야하기 때문에, comparer라고 불리는 함수를 아래와 같이 작성합니다.
 
-{ % highlight javascript % }
+{% highlight typescript %}
 (oldValue, newValue) => lodash.isEqual(oldValue, newValue)
-{ % endhighlight % }
+{% endhighlight %}
 
 [distinctUntilChanged의 문서](http://reactivex.io/documentation/operators/distinct.html)
 [lodash.isEqual의 문서](https://lodash.com/docs/#isEqual)
