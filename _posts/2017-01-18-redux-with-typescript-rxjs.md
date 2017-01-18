@@ -51,7 +51,7 @@ Middleware라는 개념은 잘 몰랐었고, 지금도 잘 모릅니다. 로거�
 
 [![687474703a2f2f692e696d6775722e636f6d2f4149696d5138432e6a7067.jpeg](https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg)](https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg)
 
-{ % highlight typescript % }
+{ % highlight javascript % }
 import 'core-js';
 import 'zone.js/dist/zone-node';
 import * as lodash from 'lodash';
@@ -173,7 +173,7 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
 
 ## 요점 1. Subject
 
-{ % highlight typescript % }
+{ % highlight javascript % }
   dispatcher$.next(promiseAction(new IncrementAction(1), 100));
 { % endhighlight % }
 
@@ -181,7 +181,7 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
 
 ## 요점 2. concatMap
 
-{ % highlight typescript % }
+{ % highlight javascript % }
   const dispatcherQueue$ = // Queue
     dispatcher$
       .concatMap(action => { // async actions are resolved here.
@@ -207,7 +207,7 @@ function observableAction(action: Action, timeout: number): Observable<Action> {
 
 ## 요점 3. BehaviorSubject
 
-{ % highlight typescript % }
+{ % highlight javascript % }
 const provider$ = new BehaviorSubject<AppState>(initialState);
 { % endhighlight % }
 
@@ -219,7 +219,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 4. scan
 
-{ % highlight typescript % }
+{ % highlight javascript % }
       dispatcherQueue$.scan((state, action) => { // Reducer
         if (action instanceof IncrementAction) {
           return { counter: state.counter + action.num };
@@ -237,7 +237,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 5. zip, projection
 
-{ % highlight typescript % }
+{ % highlight javascript % }
       (increment): AppState => { // projection
         return Object.assign<{}, AppState, {}>({}, initialState, { increment });
       }
@@ -245,7 +245,7 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 `zip` 오퍼레이터의 마지막 인자로 projection이라고 불리는 함수를 넣어 반환 값을 갖추고 있습니다. 참고로 `zip` 안이 여러 개 있을 때에는 다음과 같이 씁니다.
 
-{ % highlight typescript % }
+{ % highlight javascript % }
     .zip<AppState>(...[
       dispatcher$.scan(/* 생략 */), // state1
       dispatcher$.scan(/* 생략 */), // state2
@@ -265,13 +265,13 @@ const provider$ = new BehaviorSubject<AppState>(initialState);
 
 ## 요점 6. distinctUntilChanged
 
-{ % highlight typescript % }
+{ % highlight javascript % }
     .distinctUntilChanged((oldValue, newValue) => lodash.isEqual(oldValue, newValue))
 { % endhighlight % }
 
 `distinctUntilChanged`오퍼레이터는 통과하는 스트림이 같은 값일 경우에는 없애주는 역할을 합니다. 하지만 이번 코드는 위의 Projection의 쪽에서, 
 
-{ % highlight typescript % }
+{ % highlight javascript % }
 return Object.assign<{}, AppState, {}>({}, initialState, { increment });
 { % endhighlight % }
 
@@ -279,7 +279,7 @@ return Object.assign<{}, AppState, {}>({}, initialState, { increment });
 
 객체의 내용을 확인하기 위해 소위 deepEqual 비교를 해야하기 때문에, comparer라고 불리는 함수를 아래와 같이 작성합니다.
 
-{ % highlight typescript % }
+{ % highlight javascript % }
 (oldValue, newValue) => lodash.isEqual(oldValue, newValue)
 { % endhighlight % }
 
