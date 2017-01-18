@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl --><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 --><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2</title>
+<meta name="description" content="글에 앞서,">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@realignist">
+<meta name="twitter:title" content="Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2">
+<meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta name="twitter:description" content="글에 앞서,">
+<meta property="og:site_name" content="Haze Lee">
+<meta property="og:title" content="Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2">
+<meta property="og:description" content="글에 앞서,">
+<meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png">
+<meta property="og:url" content="http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html">
+<meta property="og:type" content="blog">
+<meta property="article:published_time" content="2017-01-18T12:00:00+09:00">
+<link rel="canonical" href="http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html">
+<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
+<link rel="stylesheet" type="text/css" media="print" href="/css/prism.css">
+<link rel="amphtml" href="http://realignist.me/amp/code/2017/01/18/redux-with-typescript-rxjs">
+<style type="text/css">
+    
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  background: none;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+
+.token.punctuation {
+  color: #999;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+  background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a;
+}
+
+.token.function {
+  color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+  </style>
+</head>
+<body itemscope itemtype="http://schema.org/Article">
+    <!-- header start -->
+
+<!-- header end -->
+
+    <main class="content" role="main"><article class="post"><div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
+              on
+              <time datetime="2017-01-18T12:00:00+09:00">18 Jan 2017</time><!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+</div>
+          </div>
+        </div>
+        <br><br><br><section class="post-content"><div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+          <a name="topofpage"></a>
+          <h3 id="section">글에 앞서,</h3>
+
+<p>이 글은 <a href="https://github.com/ovrmrw" class="user-mention">@ovrmrw</a>님의 <a href="http://qiita.com/ovrmrw/items/8cca6f40d5f78909a3dc">글</a>을 한국어로 번역한 글입니다. 이미 꽤 인기를 얻어서 최신 버전까지 나온 글로, 제가 번역한 것은 2번째 버전입니다. 좋은 글을 번역할 수 있도록 흔쾌히 허락해주신 ovrmrw님께 다시 한번 감사의 말씀을 드립니다. 그리고 번역하다가 헷갈려할 때 도와주신 최종찬 형(<a href="https://github.com/disjukr" class="user-mention">@disjukr</a>), 이재호님(<a href="https://github.com/sairion" class="user-mention">@sairion</a>)께도 감사하다는 말씀 드립니다. :D</p>
+
+<p><a href="http://qiita.com/advent-calendar/2016/redux">Redux Advent Calendar 2016</a> 15일차입니다. 치키 씨입니다.</p>
+
+<h2 id="section-1">서론과 반성</h2>
+
+<p>이 글은 필자가 Qiita에 투고한 글 중 제일 스톡이 많이 된 글인 <a href="http://qiita.com/ovrmrw/items/89c79fae4a2acd8159fc">초심자를 위한 Redux의 개념을 RxJS와 TypeScript로 이해하기</a>를 다시 쓴 글입니다. (역주: Qiita에서는 스톡이라는 기능이 있어, 좋아하는 글을 담아두고 볼 수 있도록 제공하고 있습니다.)</p>
+
+<p>지금 다시 되돌아보면, 지난 글에는 몇가지 문제점이 있었습니다.</p>
+
+<ol>
+<li>State와 Reducer에 Promise를 넣는건 좋지 못했던 것 같습니다.</li>
+  <li>Action의 dispatch 순서를 무시하고, 비동기 처리가 끝난 순서대로 처리가 흐르는 구조로 되어있었다.</li>
+</ol>
+<p>1번에 관해서는 처음에는 문제가 없다고 생각했었지만, 점점 시간이 흘러 그 생각은 젊은 치기였던 것 같다고 생각하게 되었습니다. 2번은 요구사항에 따라선 그것대로 괜찮다고 생각되지만, 그래도 기본적으로 dispatch 순서대로 처리하는 것이 더 올바른 동작이라고 생각하게 되었습니다.</p>
+
+<p>“RxJS로 Redux를 쓰자”라는 테마는 이번에 글을 다시 쓰면서 이제서야 본질에 접근할 수 있었다고 생각합니다.</p>
+
+<h2 id="section-2">여기서부터 본편</h2>
+
+<p>GitHub 리포지터리는 여기에 있습니다. <a href="https://github.com/ovrmrw/understanding-redux-with-rxjs-2">ovrmrw/understanding-redux-with-rxjs-2</a></p>
+
+<p><code class="highlighter-rouge">git clone</code>한 뒤, <code class="highlighter-rouge">npm install</code>해서 <code class="highlighter-rouge">npm start</code>를 통해 실행해볼 수 있습니다.</p>
+
+<p>(주의사항: React에 관한 이야기는 일절 나오지 않습니다.)</p>
+
+<h2 id="redux">Redux는?</h2>
+
+<p><a href="http://redux.js.org/">Redux 공식 홈페이지</a></p>
+
+<p>전체 애플리케이션의 상태(State)를 하나의 JSON 트리 구조로 가지게 되어, Action이 발생할 때마다 트리를 전체적으로 업데이트해서 전달한다는 개념. 필자는 처음에 Flux나 Redux에 대해서 잘 몰랐지만, 다양한 것들을 참고하면서 직접 쓰면서 겨우 이해할 수 있었습니다.</p>
+
+<p>Middleware라는 개념은 잘 몰랐었고, 지금도 잘 모릅니다. 로거같은 편리한 것도 있습니다만, 원래 Redux를 그대로 사용해본 적이 없습니다. 치명적인 문제로 Redux는 Reducer의 안에서 비동기 처리를 할 수 없기 때문에, 그것을 처리하기 위한 미들웨어 전쟁이 일어나고 있는 것이 있습니다.</p>
+
+<h2 id="redux-">Redux를 이해하기</h2>
+
+<p>“그러나 Angular 파인 우리들은 원래부터 RxJS가 있었다! 그래서 RxJS를 풀로 써서 Redux같은걸 만들어서 쓰자!”같은 말도 나왔습니다. 원래 글은 여기에 있습니다. <a href="https://vsavkin.com/managing-state-in-angular-2-applications-caf78d123d02#.7zwj38sy1">“Tackling State” by Victor Savkin</a> (Victor Savkin은 Angular 팀의 핵심 멤버입니다. 그의 블로그는 구독할만한 가치가 있다고 생각합니다.)</p>
+
+<p>에서, 당시 RxJS에 대한 지식이 얕았었다. (JS에 대한 이해도 부족했었다.) 그래서 나는 이것을 이해하는데 매우 오랜 시간이 걸렸습니다. Savkin류 Redux를 나름대로 몇번이나 고쳐쓰는 것을 반복해서, 마침내 지금까지 오게 되었습니다. 사실은 하나의 간단한 짧은 코드로 모든 것을 설명할 수 있다는 것을 알 수 있었습니다.</p>
+
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg"><img src="https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg" alt="687474703a2f2f692e696d6775722e636f6d2f4149696d5138432e6a7067.jpeg"></a></p>
+
+<p>{ % highlight typescript % }
+import ‘core-js’;
+import ‘zone.js/dist/zone-node’;
+import * as lodash from ‘lodash’;
+import { Observable, Subject, BehaviorSubject } from ‘rxjs’;
+declare const Zone: any;</p>
+
+<p>///////////////////////////////// Action
+class IncrementAction {
+  constructor(public num: number) { }
+}</p>
+
+<p>class OtherAction {
+  constructor() { }
+}</p>
+
+<table><tbody><tr>
+<td>type Action = IncrementAction</td>
+      <td>OtherAction;</td>
+    </tr></tbody></table>
+<p>///////////////////////////////// State
+interface IncrementState {
+  counter: number;
+}</p>
+
+<p>interface OtherState {
+  foo: string;
+  bar: number;
+}</p>
+
+<p>interface AppState {
+  increment: IncrementState;
+  other?: OtherState;
+}</p>
+
+<p>const initialState: AppState = {
+  increment: {
+    counter: 0
+  }
+};</p>
+
+<p>///////////////////////////////// Redux
+Zone.current.fork({ name: ‘myZone’ }).runGuarded(() =&gt; {</p>
+
+<p>console.log(‘zone name:’, Zone.current.name); /* OUTPUT&gt; zone name: myZone */</p>
+
+<p>const dispatcher$ = new Subject&lt;Action | Promise<action> | Observable<action>&gt;(); // Dispatcher
+  const provider$ = new BehaviorSubject<appstate>(initialState); // Provider</appstate></action></action></p>
+
+<p>const dispatcherQueue$ = // Queue
+    dispatcher$
+      .concatMap(action =&gt; { // async actions are resolved here.
+        if (action instanceof Promise || action instanceof Observable) {
+          return Observable.from(action);
+        } else {
+          return Observable.of(action);
+        }
+      })
+      .share();</p>
+
+<p>Observable // ReducerContainer
+    .zip(…[
+      dispatcherQueue$.scan((state, action) =&gt; { // Reducer
+        if (action instanceof IncrementAction) {
+          return { counter: state.counter + action.num };
+        } else {
+          return state;
+        }
+      }, initialState.increment),</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>  (increment): AppState =&gt; { // projection
+    return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment }); // always create new state object!
+  }
+])
+.subscribe(newState =&gt; {
+  provider$.next(newState);
+});
+</code></pre>
+</div>
+
+<p>provider$
+    .map(appState =&gt; appState.increment)
+    .distinctUntilChanged((oldValue, newValue) =&gt; lodash.isEqual(oldValue, newValue)) // restrict same values to pass through.
+    .subscribe(state =&gt; {
+      console.log(‘counter:’, state.counter); /* (First time) OUTPUT&gt; counter: 0 */
+    });</p>
+
+<p>/* 
+    OUTPUT: 0 -&gt; 1 -&gt; 2 -&gt; 4 -&gt; 3 
+    outputs are not determined by async resolution order but by action dispatched order.
+  <em>/
+  dispatcher$.next(promiseAction(new IncrementAction(1), 100));  /</em> OUTPUT&gt; counter: 1 <em>/
+  dispatcher$.next(promiseAction(new IncrementAction(1), 50));  /</em> OUTPUT&gt; counter: 2 <em>/
+  dispatcher$.next(observableAction(new IncrementAction(0), 100));  /</em> OUTPUT&gt; (restricted) <em>/
+  dispatcher$.next(observableAction(new IncrementAction(2), 50));  /</em> OUTPUT&gt; counter: 4 <em>/
+  dispatcher$.next(new IncrementAction(-1)); /</em> OUTPUT&gt; counter: 3 */
+});</p>
+
+<p>///////////////////////////////// Helper
+function promiseAction(action: Action, timeout: number): Promise<action> {
+  return new Promise<action>(resolve =&gt; {
+    setTimeout(() =&gt; resolve(action), timeout);
+  });
+}</action></action></p>
+
+<p>function observableAction(action: Action, timeout: number): Observable<action> {
+  return Observable.of(action).delay(timeout);
+}
+{ % endhighlight % }</action></p>
+
+<p>어떤가요, 초간단하죠?</p>
+
+<p>덧붙여서 이번 코드는 <a href="https://github.com/angular/zone.js/">zone.js</a>을 사용할 필요는 없습니다만, 추후 Angular에서 돌아갈 코드는 가능한 Node.js 환경에서도 Zone을 이용하여 쓰는 것이 좋습니다. 그렇지 않으면 Node.js 환경에서 동작하는 코드가 Angular에서 동작하지 않는다던가 하는 일이 발생할 수 있기 때문입니다. (전 그저 Angular를 좋아할 뿐입니다.)</p>
+
+<h2 id="subject">요점 1. Subject</h2>
+
+<p>{ % highlight typescript % }
+  dispatcher$.next(promiseAction(new IncrementAction(1), 100));
+{ % endhighlight % }</p>
+
+<p>이것이 Action의 시작점입니다. 덧붙여서 <code class="highlighter-rouge">dispatcher$</code>는 <code class="highlighter-rouge">Subject</code>의 인스턴스입니다. 이 다음에 스트림이 어디로 흐를까요? 정답은 <code class="highlighter-rouge">dispatcherQueue$</code>입니다.</p>
+
+<h2 id="concatmap">요점 2. concatMap</h2>
+
+<p>{ % highlight typescript % }
+  const dispatcherQueue$ = // Queue
+    dispatcher$
+      .concatMap(action =&gt; { // async actions are resolved here.
+        if (action instanceof Promise || action instanceof Observable) {
+          return Observable.from(action);
+        } else {
+          return Observable.of(action);
+        }
+      })
+      .share();
+{ % endhighlight % }</p>
+
+<p><code class="highlighter-rouge">dispatcher$</code>로 부터 흘러들어온 Action을 <code class="highlighter-rouge">concatMap</code> 오퍼레이터로 받고 있습니다. 무엇을 하고 있냐면…</p>
+
+<ul>
+<li>Promise 혹은 Observable, 즉 비동기라면 <code class="highlighter-rouge">Obervable.from()</code>로 비동기를 해결해서 돌려줍니다.</li>
+  <li>그 외, 동기식이라면 <code class="highlighter-rouge">Observable.of()</code>로 단순히 Observable로 변환해줍니다.</li>
+</ul>
+<p>이것을 통해 <code class="highlighter-rouge">Observable | Observable&gt;</code>이었던 Action의 타입은 <code class="highlighter-rouge">Observable</code>로 통일됩니다.</p>
+
+<p>게다가 <code class="highlighter-rouge">concatMap</code>의 효과에 의해 Action의 dispatch 순서를 준수합니다. 멋지네요. 이 Reducer의 앞에서 비동기를 해결하자는 어프로치는 redux-observable에서도 통하는 부분이 있습니다.</p>
+
+<p><a href="http://reactivex.io/documentation/operators/images/concatMap.png"><img src="http://reactivex.io/documentation/operators/images/concatMap.png" alt="img"></a></p>
+
+<h2 id="behaviorsubject">요점 3. BehaviorSubject</h2>
+
+<p>{ % highlight typescript % }
+const provider$ = new BehaviorSubject<appstate>(initialState);
+{ % endhighlight % }</appstate></p>
+
+<p>여기에서는 <code class="highlighter-rouge">Subject</code>로서가 아니라 <code class="highlighter-rouge">BehaviorSubject</code>인게 의미가 있습니다. 만약 이를 Subject로 바꾼다면 처음 “counter: 0”이 출력되지 않습니다. 초기 값이 바로 전달되는 모습은 아래 마블 다이어그램에서 보면 알기 쉬울 것 같습니다.</p>
+
+<p><a href="http://reactivex.io/documentation/subject.html">Subject의 문서</a></p>
+
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/74793/ddbaa374-6810-129b-5ba1-d1162bd6902d.png"><img src="https://qiita-image-store.s3.amazonaws.com/0/74793/ddbaa374-6810-129b-5ba1-d1162bd6902d.png" alt="S.BehaviorSubject.png"></a></p>
+
+<h2 id="scan">요점 4. scan</h2>
+
+<p>{ % highlight typescript % }
+      dispatcherQueue$.scan((state, action) =&gt; { // Reducer
+        if (action instanceof IncrementAction) {
+          return { counter: state.counter + action.num };
+        } else {
+          return state;
+        }
+      }, initialState.increment)
+{ % endhighlight % }</p>
+
+<p>이 부분이 바로 Reducer입니다. <code class="highlighter-rouge">scan</code> 오퍼레이터는 Store(Reducer)를 구축하게 됩니다. 이것은 시간과 만나는 reduce라고 이해하면 그걸로 충분할거라 생각합니다. 이 <code class="highlighter-rouge">scan</code>과 아래의 <code class="highlighter-rouge">zip</code>을 제대로 이해할 수 있는가가 이 글을 이해했는가를 결정합니다.</p>
+
+<p><a href="http://rxmarbles.com/#scan">scan의 마블 다이어그램</a></p>
+
+<p><code class="highlighter-rouge">dispatcher$.scan()</code> 대신, <code class="highlighter-rouge">dispatcherQueue$.scan()</code>인 것이 중요합니다.</p>
+
+<h2 id="zip-projection">요점 5. zip, projection</h2>
+
+<p>{ % highlight typescript % }
+      (increment): AppState =&gt; { // projection
+        return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment });
+      }
+{ % endhighlight % }</p>
+
+<p><code class="highlighter-rouge">zip</code> 오퍼레이터의 마지막 인자로 projection이라고 불리는 함수를 넣어 반환 값을 갖추고 있습니다. 참고로 <code class="highlighter-rouge">zip</code> 안이 여러 개 있을 때에는 다음과 같이 씁니다.</p>
+
+<p>{ % highlight typescript % }
+    .zip<appstate>(...[
+      dispatcher$.scan(/* 생략 */), // state1
+      dispatcher$.scan(/* 생략 */), // state2
+      dispatcher$.scan(/* 생략 */), // state3</appstate></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>  (state1, state2, state3): AppState =&gt; { // projection
+    return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { state1, state2, state3 });
+  }
+]) { % endhighlight % }
+</code></pre>
+</div>
+
+<p><a href="http://rxmarbles.com/#zip">zip의 마블 다이어그램</a>
+<code class="highlighter-rouge">zip</code>과 비슷한 <code class="highlighter-rouge">combineLatest</code>라는 오퍼레이터가 있습니다만 <code class="highlighter-rouge">zip</code>은 내포하는 모든 Observable의 next를 기다리는 반면, <code class="highlighter-rouge">combineLatest</code>는 한 Observable이 next할 때마다 각각의 Observable의 최신 값을 넘겨줍니다.</p>
+
+<p>이와 같은 이유로, Redux의 개념에는 <code class="highlighter-rouge">zip</code>이 적합하다 할 수 있습니다.
+<a href="http://rxmarbles.com/#combineLatest">combineLatest의 마블 다이어그램</a></p>
+
+<h2 id="distinctuntilchanged">요점 6. distinctUntilChanged</h2>
+
+<p>{ % highlight typescript % }
+    .distinctUntilChanged((oldValue, newValue) =&gt; lodash.isEqual(oldValue, newValue))
+{ % endhighlight % }</p>
+
+<p><code class="highlighter-rouge">distinctUntilChanged</code>오퍼레이터는 통과하는 스트림이 같은 값일 경우에는 없애주는 역할을 합니다. 하지만 이번 코드는 위의 Projection의 쪽에서,</p>
+
+<p>{ % highlight typescript % }
+return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment });
+{ % endhighlight % }</p>
+
+<p>이렇게 하고 있기 때문에, 단순히 <code class="highlighter-rouge">.distinctUntilChanged()</code>라고 써버리면 흘러온 데이터가 <code class="highlighter-rouge"><span class="p">{</span><span class="err">counter:</span><span class="w"> </span><span class="err">2</span><span class="p">}</span></code>→<code class="highlighter-rouge"><span class="p">{</span><span class="err">counter:</span><span class="w"> </span><span class="err">2</span><span class="p">}</span></code>와 같이 같은 값이 계속 오더라도 모두 통과해버립니다. 이것은 객체의 내용을 보지 않기 때문입니다.</p>
+
+<p>객체의 내용을 확인하기 위해 소위 deepEqual 비교를 해야하기 때문에, comparer라고 불리는 함수를 아래와 같이 작성합니다.</p>
+
+<p>{ % highlight typescript % }
+(oldValue, newValue) =&gt; lodash.isEqual(oldValue, newValue)
+{ % endhighlight % }</p>
+
+<p><a href="http://reactivex.io/documentation/operators/distinct.html">distinctUntilChanged의 문서</a>
+<a href="https://lodash.com/docs/#isEqual">lodash.isEqual의 문서</a></p>
+
+<h2 id="angular--">Angular에서 쓰기 위해선</h2>
+
+<p>Dispatcher를 DI 컨테이너에 넣어 Component에 주입하면 Component부터 Action을 날릴 수 있습니다. 또한 Provider 스트림의 마지막 부분을 어떻게 해서 Component에 주입하면 Component에서 갱신된 State를 얻을 수 있습니다.</p>
+
+<p>덧붙여서 <a href="http://qiita.com/ovrmrw/items/27d06475f405fd4ca9b4">Firebase-as-a-Store “RxJS로 만드는 Firebase 백엔드의 Redux”</a>에서 소개하고 있는 Angular 애플리케이션은 이 개념을 고스란히 이용해 구축했습니다.</p>
+
+<h2 id="section-3">정리하기</h2>
+
+<p>요점은 여러 가지가 있지만 가장 중요한 것은 Reducer를 구성하는 <code class="highlighter-rouge">scan</code>, <code class="highlighter-rouge">zip</code> 오퍼레이터 부분입니다. Reducer를 늘리고 싶다면 <code class="highlighter-rouge">zip</code> 오퍼레이터에 점점 <code class="highlighter-rouge">dispatcherQueue$.scan</code>을 추가해가면 됩니다. 해야할 일은 그것 뿐입니다.</p>
+
+        </section><footer class="post-footer"><section class="share"><a class="icon-twitter" href="http://twitter.com/share?text=Redux%EC%9D%98+%EA%B0%9C%EB%85%90%EC%9D%84+RxJS%EC%99%80+TypeScript%EB%A1%9C+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0+Ver.+2&amp;url=http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs" onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=Redux%EC%9D%98+%EA%B0%9C%EB%85%90%EC%9D%84+RxJS%EC%99%80+TypeScript%EB%A1%9C+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0+Ver.+2&amp;u=http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs" onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+                </a>
+              
+            
+              
+            
+          </section></footer><div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author"><div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Haze Lee</h4>
+              <p class="bio"></p>
+              <hr>
+<p class="published">Published <time datetime="2017-01-18 12:00">18 Jan 2017</time></p>
+            </section>
+</div>
+          
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer"><section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> © 2017<br>All rights reserved.</section>
+</div>
+            </footer>
+</div>
+        </div>
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'realignist'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+        
+      </article></main><div class="bottom-closer">
+      <div class="background-closer-image" style="background-image: url(/assets/images/background.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Haze Lee</h1>
+        <h2 class="blog-description">책, 음악, 코딩, 피카츄와 함께하는 곳.</h2>
+        <a href="/" class="btn">Back to Overview</a>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script><script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script><script type="text/javascript" src="/assets/js/index.js"></script><script type="text/javascript" src="/assets/js/readingTime.min.js"></script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62976426-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
