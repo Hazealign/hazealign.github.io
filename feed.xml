@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 18 Jan 2017 13:25:05 +0900</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2017 13:25:05 +0900</lastBuildDate>
+    <pubDate>Wed, 18 Jan 2017 13:28:45 +0900</pubDate>
+    <lastBuildDate>Wed, 18 Jan 2017 13:28:45 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -56,7 +56,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg&quot;&gt;&lt;img src=&quot;https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg&quot; alt=&quot;687474703a2f2f692e696d6775722e636f6d2f4149696d5138432e6a7067.jpeg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
 import ‘core-js’;
 import ‘zone.js/dist/zone-node’;
 import * as lodash from ‘lodash’;
@@ -177,7 +177,7 @@ function promiseAction(action: Action, timeout: number): Promise&lt;Action&gt; {
 
 &lt;h2 id=&quot;subject&quot;&gt;요점 1. Subject&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
   dispatcher$.next(promiseAction(new IncrementAction(1), 100));
 { % endhighlight % }&lt;/p&gt;
 
@@ -185,7 +185,7 @@ function promiseAction(action: Action, timeout: number): Promise&lt;Action&gt; {
 
 &lt;h2 id=&quot;concatmap&quot;&gt;요점 2. concatMap&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
   const dispatcherQueue$ = // Queue
     dispatcher$
       .concatMap(action =&amp;gt; { // async actions are resolved here.
@@ -213,7 +213,7 @@ function promiseAction(action: Action, timeout: number): Promise&lt;Action&gt; {
 
 &lt;h2 id=&quot;behaviorsubject&quot;&gt;요점 3. BehaviorSubject&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
 const provider$ = new BehaviorSubject&lt;AppState&gt;(initialState);
 { % endhighlight % }&lt;/AppState&gt;&lt;/p&gt;
 
@@ -225,7 +225,7 @@ const provider$ = new BehaviorSubject&lt;AppState&gt;(initialState);
 
 &lt;h2 id=&quot;scan&quot;&gt;요점 4. scan&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
       dispatcherQueue$.scan((state, action) =&amp;gt; { // Reducer
         if (action instanceof IncrementAction) {
           return { counter: state.counter + action.num };
@@ -243,7 +243,7 @@ const provider$ = new BehaviorSubject&lt;AppState&gt;(initialState);
 
 &lt;h2 id=&quot;zip-projection&quot;&gt;요점 5. zip, projection&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
       (increment): AppState =&amp;gt; { // projection
         return Object.assign&amp;lt;{}, AppState, {}&amp;gt;({}, initialState, { increment });
       }
@@ -251,7 +251,7 @@ const provider$ = new BehaviorSubject&lt;AppState&gt;(initialState);
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;zip&lt;/code&gt; 오퍼레이터의 마지막 인자로 projection이라고 불리는 함수를 넣어 반환 값을 갖추고 있습니다. 참고로 &lt;code class=&quot;highlighter-rouge&quot;&gt;zip&lt;/code&gt; 안이 여러 개 있을 때에는 다음과 같이 씁니다.&lt;/p&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
     .zip&lt;AppState&gt;(...[
       dispatcher$.scan(/* 생략 */), // state1
       dispatcher$.scan(/* 생략 */), // state2
@@ -272,13 +272,13 @@ const provider$ = new BehaviorSubject&lt;AppState&gt;(initialState);
 
 &lt;h2 id=&quot;distinctuntilchanged&quot;&gt;요점 6. distinctUntilChanged&lt;/h2&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
     .distinctUntilChanged((oldValue, newValue) =&amp;gt; lodash.isEqual(oldValue, newValue))
 { % endhighlight % }&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;distinctUntilChanged&lt;/code&gt;오퍼레이터는 통과하는 스트림이 같은 값일 경우에는 없애주는 역할을 합니다. 하지만 이번 코드는 위의 Projection의 쪽에서,&lt;/p&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
 return Object.assign&amp;lt;{}, AppState, {}&amp;gt;({}, initialState, { increment });
 { % endhighlight % }&lt;/p&gt;
 
@@ -286,7 +286,7 @@ return Object.assign&amp;lt;{}, AppState, {}&amp;gt;({}, initialState, { increme
 
 &lt;p&gt;객체의 내용을 확인하기 위해 소위 deepEqual 비교를 해야하기 때문에, comparer라고 불리는 함수를 아래와 같이 작성합니다.&lt;/p&gt;
 
-&lt;p&gt;{ % highlight typescript % }
+&lt;p&gt;{ % highlight javascript % }
 (oldValue, newValue) =&amp;gt; lodash.isEqual(oldValue, newValue)
 { % endhighlight % }&lt;/p&gt;
 

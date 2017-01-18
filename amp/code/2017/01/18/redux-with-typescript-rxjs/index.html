@@ -107,7 +107,7 @@ h5 {
 
 <p><a href="https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg"><amp-img src="https://qiita-image-store.s3.amazonaws.com/0/74793/6c582eff-0424-3f65-c421-8dcbc931db4d.jpeg" alt="687474703a2f2f692e696d6775722e636f6d2f4149696d5138432e6a7067.jpeg" width="422" height="390" layout="responsive"></amp-img></a></p>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
 import ‘core-js’;
 import ‘zone.js/dist/zone-node’;
 import * as lodash from ‘lodash’;
@@ -224,7 +224,7 @@ function promiseAction(action: Action, timeout: number): Promise<action> {
 
 <h2 id="subject">요점 1. Subject</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
   dispatcher$.next(promiseAction(new IncrementAction(1), 100));
 { % endhighlight % }</p>
 
@@ -232,7 +232,7 @@ function promiseAction(action: Action, timeout: number): Promise<action> {
 
 <h2 id="concatmap">요점 2. concatMap</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
   const dispatcherQueue$ = // Queue
     dispatcher$
       .concatMap(action =&gt; { // async actions are resolved here.
@@ -259,7 +259,7 @@ function promiseAction(action: Action, timeout: number): Promise<action> {
 
 <h2 id="behaviorsubject">요점 3. BehaviorSubject</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
 const provider$ = new BehaviorSubject<appstate>(initialState);
 { % endhighlight % }</appstate></p>
 
@@ -271,7 +271,7 @@ const provider$ = new BehaviorSubject<appstate>(initialState);
 
 <h2 id="scan">요점 4. scan</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
       dispatcherQueue$.scan((state, action) =&gt; { // Reducer
         if (action instanceof IncrementAction) {
           return { counter: state.counter + action.num };
@@ -289,7 +289,7 @@ const provider$ = new BehaviorSubject<appstate>(initialState);
 
 <h2 id="zip-projection">요점 5. zip, projection</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
       (increment): AppState =&gt; { // projection
         return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment });
       }
@@ -297,7 +297,7 @@ const provider$ = new BehaviorSubject<appstate>(initialState);
 
 <p><code class="highlighter-rouge">zip</code> 오퍼레이터의 마지막 인자로 projection이라고 불리는 함수를 넣어 반환 값을 갖추고 있습니다. 참고로 <code class="highlighter-rouge">zip</code> 안이 여러 개 있을 때에는 다음과 같이 씁니다.</p>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
     .zip<appstate>(...[
       dispatcher$.scan(/* 생략 */), // state1
       dispatcher$.scan(/* 생략 */), // state2
@@ -319,13 +319,13 @@ const provider$ = new BehaviorSubject<appstate>(initialState);
 
 <h2 id="distinctuntilchanged">요점 6. distinctUntilChanged</h2>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
     .distinctUntilChanged((oldValue, newValue) =&gt; lodash.isEqual(oldValue, newValue))
 { % endhighlight % }</p>
 
 <p><code class="highlighter-rouge">distinctUntilChanged</code>오퍼레이터는 통과하는 스트림이 같은 값일 경우에는 없애주는 역할을 합니다. 하지만 이번 코드는 위의 Projection의 쪽에서,</p>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
 return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment });
 { % endhighlight % }</p>
 
@@ -333,7 +333,7 @@ return Object.assign&lt;{}, AppState, {}&gt;({}, initialState, { increment });
 
 <p>객체의 내용을 확인하기 위해 소위 deepEqual 비교를 해야하기 때문에, comparer라고 불리는 함수를 아래와 같이 작성합니다.</p>
 
-<p>{ % highlight typescript % }
+<p>{ % highlight javascript % }
 (oldValue, newValue) =&gt; lodash.isEqual(oldValue, newValue)
 { % endhighlight % }</p>
 
