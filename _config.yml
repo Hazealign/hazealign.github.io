@@ -3,7 +3,6 @@ gems:
   - jemoji
   - jekyll-paginate
   - jekyll-feed
-  - jekyll-mentions
   - jekyll-redirect-from
 
 # Site settings
