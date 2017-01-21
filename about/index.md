@@ -9,14 +9,17 @@ date:   2016-03-03 12:00:00
 - **Mail** : [hazelee@re.aligni.st](mailto:hazelee@re.aligni.st)
     - **Phone** : [+82-10-8210-0231](tel:+82-10-8210-0231)
     - **Where** : 온라인 속에 떠돌아다니고 있습니다. [트위터](http://twitter.com/Hazealign), [Line](http://line.naver.jp/ti/p/gkTIlmMJbH) / [OzingerIRC #hazealign](irc://irc.ozinger.org:16667/hazealign) 등에서 저를 찾을 수 있습니다.
-    - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 많은 곳을 꺼리며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 애니메이션이나 만화도 가끔씩 즐겨보고 있고 다양한 IT 제품들에 관심이 많습니다. 기계보다 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
+    - **Who?** : 책과 음악을 좋아하고, 피카츄를 사랑하는 사람입니다. 프로그래밍으로 재미난 것들을 만들고 싶으며, 디지털 예술에 관심이 많습니다. 사람이 적은 곳을 좋아하며 조용한 곳에서 멍하게 사색에 빠지거나 프로그래밍을 하는 것을 좋아합니다. 사람의 마음과 생각이 궁금해져서 심리학에 관심이 많습니다.
     - **Language** : 한국어 (Native), English (Not Good), 日本語 (Not Bad)
     - **DO NOT!!** : 생선을 먹지 못하며, 카페인과 알코올에 매우 민감합니다.
 
 ## Technologies
 - Web Framework
-    - Angular.js 1.x
+    - Angular 1.x / 2.x 
+    - React + Redux
+    - Vue.js + vuex
 - Server Framework
+    - Spring Boot
     - Play Framework 2.x (Java / Scala)
     - Finatra (Scala)
     - Express, Restify, Koa (Node.js)
@@ -33,7 +36,7 @@ date:   2016-03-03 12:00:00
     - Fusetools
       - Cross-platform Application Development Tools
 - Database
-    - Redis, MariaDB(MySQL), PostgreSQL, MS-SQL, MongoDB, Amazon DynamoDB
+    - Redis, MariaDB(MySQL), PostgreSQL, SQL Server, MongoDB, Amazon DynamoDB
 
 ## Business Experience
 - **말랑스튜디오 (2013년 01월 ~ 10월)**
@@ -87,8 +90,8 @@ date:   2016-03-03 12:00:00
     - 프립의 안드로이드 애플리케이션을 유지보수하면서 새로운 기능들을 개발했습니다. 그런 과정에서 Kotlin을 적극적으로 사용하였습니다.
     - Node.js + Loopback 기반의 프립의 서버를 유지보수하고 있습니다. 일부 기능의 개발이나 테스트 케이스를 작성하고 있습니다.
     - 서버로의 배포나 빌드를 자동화해주는 툴을 개발했습니다.
-- **아주대학병원 (아주대학교 의료정보학과, 2016년 12월 ~ )**
-    - 아주대학교 의료정보학과에서 특임연구원으로 일하고 있습니다.  
+- **아주대학교 의료원 (의료정보학과, 2016년 12월 ~ )**
+    - 아주대학교 의료정보학과에서 특임연구원으로 일하고 있습니다.
 
 ## Personal Development
 - **[eulrlega.js](https://github.com/Hazealign/eulrlega.js)**
@@ -114,26 +117,3 @@ date:   2016-03-03 12:00:00
 - **[node-line-bot](https://github.com/Hazealign/node-line-bot)**
   - node.js용 Line Bot API 구현체입니다.
   - 쉽게 co나 async에서 Promise로 받아와서 사용할 수 있습니다.
-
-## Activities & Organizations
-- **Link Team (2011년 ~ 2013년)**
-  - OneClick APN이라고 하는 Android용 APN 설정 애플리케이션을 개발했었습니다.
-  - “전화줘”라고 하는 Android용 전화 자동 거절 및 응답 애플리케이션을 개발했었습니다.
-- **Provision (2012년)**
-  - Provision Optimizer라고 하는 Android용 시스템 트윅 애플리케이션을 개발했었습니다.
-  - CyanogenMod를 기반으로 한 커스텀 펌웨어 Provision ROM을 개발했었습니다. 빌드를 관리하였으며 한국향 갤럭시S(SHW-M110S)에 Android 4.x를 포팅했었습니다.
-- **[KAIST IP-CEO](http://ipceo.kaist.ac.kr) 4th. (2013년 3월 ~ 2015년 2월**)
-  - 지적재산권, 기업가정신, 미래 기술, 인문학 등을 2년간 공부했었습니다.
-  - 비즈니스 캔버스, 사업계획서, 특허명세서 등에 대해 공부할 수 있었습니다. 
-  - 음성 및 가성 합성 기술을 연구했고, 이와 관련해서 특허 출원을 신청했었습니다.
-  - 수료 이후에도 전문과정에서 Team Recover로 활동 중입니다.
-  - 2015년 11월에 호주 Griffith University와 Queensland College of Art에서 진행한 워크샵을 수료했습니다. 아이디어를 계속 개발하면서 산업디자인과 지속 가능한 제품, 디지털을 이용한 예술 작품들을 경험할 수 있었습니다.
-- **한국청년기업가정신재단의 대학생 PEV(Planning the Entrepreneurial Venture) 이수 (2013년 11월**)
-  - 당시 대학생이 아니었지만 주최 측의 배려로 강의에 참여할 수 있었습니다.
-  - Kauffman FastTrac Planning the Entrepreneurial Venture 교육 과정을 이수했습니다.
-- **서울특별시 주민참여예산위원 (2015년 5월 ~ 2016년 2월**)
-  - 경제산업분과 주민참여예산 위원으로 활동했었습니다.
-- **[Team Recover](http://recover.team) (2015년 1월 ~ 현재)**
-  - iPhone에 Clickwheel이 들어간 iPod과 같은 음악 플레이어를 만들고자 하는 팀입니다.
-
-![](https://raw.githubusercontent.com/RecoverTeam/recover-design/master/out/Whole%20Screens.png)
