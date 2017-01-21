@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl --><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 --><meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</title>
-<meta name="description" content="글에 앞서">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@realignist">
-<meta name="twitter:title" content="[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.">
-<meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png">
-<meta name="twitter:description" content="글에 앞서">
-<meta property="og:site_name" content="Haze Lee">
-<meta property="og:title" content="[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.">
-<meta property="og:description" content="글에 앞서">
-<meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png">
-<meta property="og:url" content="http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html">
-<meta property="og:type" content="blog">
-<meta property="article:published_time" content="2015-10-17T09:00:00+09:00">
-<link rel="canonical" href="http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html">
-<link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
-<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
-<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css">
-<link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" media="print" href="/css/print.css">
-<link rel="stylesheet" type="text/css" media="print" href="/css/prism.css">
-<link rel="amphtml" href="http://realignist.me/amp/code/2015/10/17/translated-kotlin-was-awesome">
-<style type="text/css">
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</title>
+  <meta name="description" content="글에 앞서" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@realignist" />
+    <meta name="twitter:title" content="[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다." />
+    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
+    
+    <meta name="twitter:description"  content="글에 앞서" />
+    
+  
+  
+  <meta property="og:site_name" content="Haze Lee" />
+  <meta property="og:title" content="[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다."/>
+  
+  <meta property="og:description" content="글에 앞서" />
+  
+  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
+  <meta property="og:url" content="http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2015-10-17T09:00:00+09:00">
+
+  <link rel="canonical" href="http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html"/>
+  <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
+
+  
+    <link rel="amphtml" href="http://realignist.me/amp/code/2015/10/17/translated-kotlin-was-awesome">
+  
+
+  <style type="text/css">
     
 code[class*="language-"],
 pre[class*="language-"] {
@@ -167,23 +182,33 @@ pre[class*="language-"] {
 
   </style>
 </head>
-<body itemscope itemtype="http://schema.org/Article">
+
+  <body itemscope itemtype="http://schema.org/Article">
     <!-- header start -->
 
 <!-- header end -->
 
-    <main class="content" role="main"><article class="post"><div class="noarticleimage">
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="noarticleimage">
           <div class="post-meta">
             <h1 class="post-title">[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</h1>
             <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"></h4>
               on
-              <time datetime="2015-10-17T09:00:00+09:00">17 Oct 2015</time><!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
-</div>
+              <time datetime="2015-10-17T09:00:00+09:00">17 Oct 2015</time>
+              <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
+            </div>
           </div>
         </div>
-        <br><br><br><section class="post-content"><div class="post-reading">
+        <br>
+        <br>
+        <br>
+        
+        <section class="post-content">
+          <div class="post-reading">
             <span class="post-reading-time"></span> read
           </div>
           <a name="topofpage"></a>
@@ -263,7 +288,9 @@ pre[class*="language-"] {
 <span class="n">dependencies</span> <span class="o">{</span>
     <span class="n">compile</span> <span class="nf">fileTree</span><span class="o">(</span><span class="nl">dir:</span> <span class="s1">'libs'</span><span class="o">,</span> <span class="nl">include:</span> <span class="o">[</span><span class="s1">'*.jar'</span><span class="o">])</span>
     <span class="n">compile</span> <span class="s1">'com.android.support:appcompat-v7:22.2.0'</span>
-<span class="o">}</span></code></pre></figure><h5 id="kotlin---2">Kotlin 도입 후</h5>
+<span class="o">}</span></code></pre></figure>
+
+<h5 id="kotlin---2">Kotlin 도입 후</h5>
 
 <figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
 <span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'kotlin-android'</span>
@@ -307,7 +334,9 @@ pre[class*="language-"] {
 <span class="o">}</span>
 <span class="n">repositories</span> <span class="o">{</span>
     <span class="n">mavenCentral</span><span class="o">()</span>
-<span class="o">}</span></code></pre></figure><p>나머지는 빌드해주면, Gradle 스크립트가 Kotlin 컴파일러의 다운로드부터 환경 설정까지 자동으로 전부 알아서 해줍니다. 새로운 버전의 Kotlin이 나왔다면 <code class="highlighter-rouge">ext.kotlin_version</code> 부분을 고쳐주면 됩니다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>나머지는 빌드해주면, Gradle 스크립트가 Kotlin 컴파일러의 다운로드부터 환경 설정까지 자동으로 전부 알아서 해줍니다. 새로운 버전의 Kotlin이 나왔다면 <code class="highlighter-rouge">ext.kotlin_version</code> 부분을 고쳐주면 됩니다.</p>
 
 <h3 id="java---">Java와의 연계 기능이 강력하다.</h3>
 
@@ -327,7 +356,9 @@ pre[class*="language-"] {
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>세미콜론 없는 스타일, 코드 블록은 중괄호로 여닫는 스타일, 형태 표기는 Pascal 스타일(변수, 콜론, 자료형의 순서)을 볼 수 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>세미콜론 없는 스타일, 코드 블록은 중괄호로 여닫는 스타일, 형태 표기는 Pascal 스타일(변수, 콜론, 자료형의 순서)을 볼 수 있습니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">var</span> <span class="py">sum</span> <span class="p">=</span> <span class="m">0</span>
 
@@ -335,7 +366,9 @@ pre[class*="language-"] {
   <span class="n">sum</span> <span class="p">+=</span> <span class="n">it</span>
 <span class="p">}</span>
 
-<span class="n">print</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span></code></pre></figure><p>클로져의 경우 중괄호<code class="highlighter-rouge"><span class="p">{}</span></code>만 쓰기 때문에 마지막 인자의 클로져를 함수 호출 뒤에 쓰고, 그 때 인자가 없으면 소괄호<code class="highlighter-rouge">()</code>를 생략할 수 있습니다.</p>
+<span class="n">print</span><span class="p">(</span><span class="n">sum</span><span class="p">)</span></code></pre></figure>
+
+<p>클로져의 경우 중괄호<code class="highlighter-rouge"><span class="p">{}</span></code>만 쓰기 때문에 마지막 인자의 클로져를 함수 호출 뒤에 쓰고, 그 때 인자가 없으면 소괄호<code class="highlighter-rouge">()</code>를 생략할 수 있습니다.</p>
 
 <p>이쪽의 구문 사양이 Swift와 동일하기 때문에, 이식 작업이 편해집니다.</p>
 
@@ -360,7 +393,9 @@ pre[class*="language-"] {
     <span class="kd">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">getLengthOfStringOpt</span><span class="p">(</span><span class="s">"world"</span><span class="p">)</span>
     <span class="kd">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">getLengthOfStringOpt</span><span class="p">(</span><span class="k">null</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$a, $b, $c"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>Nullable 자료형은 자료형의 오른쪽에 물음표<code class="highlighter-rouge">?</code>를 붙여 표기합니다. Swift의 Optional과 같아서 기쁩니다. Java의 언어 기능에 Optional은 존재하지 않습니다. 아마 NullPointerException으로 죽겠죠.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>Nullable 자료형은 자료형의 오른쪽에 물음표<code class="highlighter-rouge">?</code>를 붙여 표기합니다. Swift의 Optional과 같아서 기쁩니다. Java의 언어 기능에 Optional은 존재하지 않습니다. 아마 NullPointerException으로 죽겠죠.</p>
 
 <h4 id="section-8">약간 특이한 부분</h4>
 
@@ -386,7 +421,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">??</span> <span class="p">=</span> <span class="n">wrap</span><span class="p">(</span><span class="k">null</span><span class="p">)</span>
     <span class="n">desc</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// Some(None)이 나와야하지만, None이 되어버린다.
-</span><span class="p">}</span></code></pre></figure><h3 id="smart-casts">플로우 기반 형변환 (Smart Casts)</h3>
+</span><span class="p">}</span></code></pre></figure>
+
+<h3 id="smart-casts">플로우 기반 형변환 (Smart Casts)</h3>
 
 <p>if 문에서 null인지를 체크하거나, is 연산자를 통해 타입을 검사하면 Kotlin에서는 그것을 고려해서 자동으로 형변환됩니다.</p>
 
@@ -414,7 +451,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="nf">speak2</span><span class="p">(</span><span class="kt">Cat</span><span class="p">())</span> <span class="c1">// nyaa라고 나옴</span>
     <span class="nf">speak2</span><span class="p">(</span><span class="kt">Dog</span><span class="p">())</span> <span class="c1">// wan이라고 나옴</span>
     <span class="nf">speak2</span><span class="p">(</span><span class="n">null</span><span class="p">)</span> <span class="c1">// null이라고 나옴</span>
-<span class="p">}</span></code></pre></figure><p>speak2의 앞 부분에서 null 인지를 체크하고 return 하고 있으므로 if 이후 <code class="highlighter-rouge">Animal?</code>이 아니라 <code class="highlighter-rouge">Animal</code> 자료형으로 변했으며, speak가 호출될 수 있습니다. speak의 if문의 분기에서 is를 이용한 체크를 통해 서브클래스인 <code class="highlighter-rouge">Cat</code>이나 <code class="highlighter-rouge">Dog</code>로 변해있으며 전용 메소드를 호출할 수 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>speak2의 앞 부분에서 null 인지를 체크하고 return 하고 있으므로 if 이후 <code class="highlighter-rouge">Animal?</code>이 아니라 <code class="highlighter-rouge">Animal</code> 자료형으로 변했으며, speak가 호출될 수 있습니다. speak의 if문의 분기에서 is를 이용한 체크를 통해 서브클래스인 <code class="highlighter-rouge">Cat</code>이나 <code class="highlighter-rouge">Dog</code>로 변해있으며 전용 메소드를 호출할 수 있습니다.</p>
 
 <p>동일한 코드에 대한 Swift 버전은 아래와 같습니다.</p>
 
@@ -444,7 +483,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="nf">speak2</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nf">main</span><span class="p">()</span></code></pre></figure><p>speak2에서는 이를 위해 일부러 guard 문이라는 것을 사용하지 않으면 안됩니다. speak, speak2 둘 다 <code class="highlighter-rouge">let animal = </code>을 쓰는 것이 중복됩니다. if 괄호를 생략할 수 있는 것은 좋네요.</p>
+<span class="nf">main</span><span class="p">()</span></code></pre></figure>
+
+<p>speak2에서는 이를 위해 일부러 guard 문이라는 것을 사용하지 않으면 안됩니다. speak, speak2 둘 다 <code class="highlighter-rouge">let animal = </code>을 쓰는 것이 중복됩니다. if 괄호를 생략할 수 있는 것은 좋네요.</p>
 
 <p>Java에서는 아마 아래와 같이 되겠죠.</p>
 
@@ -486,7 +527,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
         <span class="n">speak2</span><span class="o">(</span><span class="k">new</span> <span class="n">Dog</span><span class="o">());</span>
         <span class="n">speak2</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>null 체크에 관련해서는 그저 코드가 올바르길 기도하고 실행하는 수밖에 없습니다. 그리고 speak의 내용은 <code class="highlighter-rouge">Cat</code>과 <code class="highlighter-rouge">Dog</code>가 각각 세 번씩 나옵니다. (형변환용 메소드를 만든다면 2번 + null 체크로 줄일 수는 있겠지만요.)</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>null 체크에 관련해서는 그저 코드가 올바르길 기도하고 실행하는 수밖에 없습니다. 그리고 speak의 내용은 <code class="highlighter-rouge">Cat</code>과 <code class="highlighter-rouge">Dog</code>가 각각 세 번씩 나옵니다. (형변환용 메소드를 만든다면 2번 + null 체크로 줄일 수는 있겠지만요.)</p>
 
 <h3 id="unsafe-cast">Unsafe cast</h3>
 
@@ -496,13 +539,17 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="kd">val</span> <span class="py">c</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="n">a</span><span class="o">!!</span> <span class="c1">// null이라면 Exception
 </span>    <span class="kd">val</span> <span class="py">d</span><span class="p">:</span> <span class="n">Cat</span><span class="p">?</span> <span class="p">=</span> <span class="n">b</span> <span class="k">as</span><span class="p">?</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 null
 </span>    <span class="kd">val</span> <span class="py">e</span><span class="p">:</span> <span class="n">Cat</span> <span class="p">=</span> <span class="n">b</span> <span class="k">as</span> <span class="n">Cat</span> <span class="c1">// Cat이 아니라면 Exception
-</span><span class="p">}</span></code></pre></figure><p>Swift에서는 아래와 같이 작성할 수 있겠죠.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Swift에서는 아래와 같이 작성할 수 있겠죠.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Animal</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">a</span><span class="o">!</span> <span class="c1">// nil이라면 Exception</span>
     <span class="k">let</span> <span class="nv">d</span><span class="p">:</span> <span class="kt">Cat</span><span class="p">?</span> <span class="o">=</span> <span class="n">b</span> <span class="k">as?</span> <span class="kt">Cat</span> <span class="c1">// Cat이 아니라면 nil</span>
     <span class="k">let</span> <span class="nv">e</span><span class="p">:</span> <span class="kt">Cat</span> <span class="o">=</span> <span class="n">b</span> <span class="k">as!</span> <span class="kt">Cat</span> <span class="c1">// Cat이 아니라면 Exception</span>
-<span class="p">}</span></code></pre></figure><p>Kotlin에서는 두개의 느낌표<code class="highlighter-rouge">!</code>로 처리합니다. Swift에서는 한개죠.
+<span class="p">}</span></code></pre></figure>
+
+<p>Kotlin에서는 두개의 느낌표<code class="highlighter-rouge">!</code>로 처리합니다. Swift에서는 한개죠.
 위험한 as에서는 Swift에서는 느낌표가 붙어있습니다.</p>
 
 <h3 id="optional--">Optional의 메소드 호출</h3>
@@ -512,12 +559,16 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"name=$name"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>Elvis 연산자를 사용하면 null인 경우 기본값을 지정할 수 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>Elvis 연산자를 사용하면 null인 경우 기본값을 지정할 수 있습니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="o">?:</span> <span class="s">"no name"</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"name=$name"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>Swift에서도 물음표 + 점<code class="highlighter-rouge">?.</code>으로 쓰이는 메소드 호출이 있습니다. 또한 elvis 연산자에 대해서는 Swift에서는 물음표 두개<code class="highlighter-rouge">??</code>입니다.
+<span class="p">}</span></code></pre></figure>
+
+<p>Swift에서도 물음표 + 점<code class="highlighter-rouge">?.</code>으로 쓰이는 메소드 호출이 있습니다. 또한 elvis 연산자에 대해서는 Swift에서는 물음표 두개<code class="highlighter-rouge">??</code>입니다.
 비슷해보이는 두 언어지만, 물음표 + 점<code class="highlighter-rouge">?.</code>을 연속해서 사용할 때에는 구문 트리가 달라집니다.
 사용자 이름의 문자 수를 가져오는 경우를 생각해보세요.</p>
 
@@ -527,12 +578,18 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">?)</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="n">user</span><span class="o">?.</span><span class="n">name</span><span class="o">?.</span><span class="n">length</span><span class="p">())</span>
-<span class="p">}</span></code></pre></figure><p>Kotlin에서는 <code class="highlighter-rouge">?.</code>가 두번 나옵니다. 이것은 다음과 같이 해석할 수 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="p">(</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="p">)</span><span class="o">?.</span><span class="n">length</span><span class="p">()</span></code></pre></figure><p><code class="highlighter-rouge">?.</code>을 쓰지 않는 경우에는 아래와 같이 쓸 수 있겠습니다.</p>
+<p>Kotlin에서는 <code class="highlighter-rouge">?.</code>가 두번 나옵니다. 이것은 다음과 같이 해석할 수 있습니다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="p">(</span> <span class="n">user</span><span class="o">?.</span><span class="n">name</span> <span class="p">)</span><span class="o">?.</span><span class="n">length</span><span class="p">()</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">?.</code>을 쓰지 않는 경우에는 아래와 같이 쓸 수 있겠습니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="k">null</span> <span class="p">}</span>
-<span class="kd">val</span> <span class="py">length</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">name</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="k">null</span> <span class="p">}</span></code></pre></figure><p>마찬가지를 Swift에서는 아래와 같이 표현할 수 있습니다.</p>
+<span class="kd">val</span> <span class="py">length</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">name</span><span class="p">.</span><span class="n">length</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="k">null</span> <span class="p">}</span></code></pre></figure>
+
+<p>마찬가지를 Swift에서는 아래와 같이 표현할 수 있습니다.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">User</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"tanaka"</span>
@@ -542,15 +599,21 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="nf">print</span><span class="p">(</span><span class="n">user</span><span class="p">?</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nf">main</span><span class="p">()</span></code></pre></figure><p>name 뒤에 <code class="highlighter-rouge">?.</code>가 Swift에서는 <code class="highlighter-rouge">.</code>로 나와있습니다. 이것은 아래와 같이 해석되기 때문입니다.</p>
+<span class="nf">main</span><span class="p">()</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">user</span><span class="p">?</span><span class="o">.</span><span class="p">(</span> <span class="n">name</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span> <span class="p">)</span></code></pre></figure><p>하지만, 이 괄호는 개념을 설명하기 위해서 임의로 만든 것이며 Swift로는 올바른 문법이 아닙니다. 고쳐서 쓴다면 아래와 같습니다.</p>
+<p>name 뒤에 <code class="highlighter-rouge">?.</code>가 Swift에서는 <code class="highlighter-rouge">.</code>로 나와있습니다. 이것은 아래와 같이 해석되기 때문입니다.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">user</span><span class="p">?</span><span class="o">.</span><span class="p">(</span> <span class="n">name</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span> <span class="p">)</span></code></pre></figure>
+
+<p>하지만, 이 괄호는 개념을 설명하기 위해서 임의로 만든 것이며 Swift로는 올바른 문법이 아닙니다. 고쳐서 쓴다면 아래와 같습니다.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="n">user</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span></code></pre></figure><p>정리하면 다음과 같습니다. Kotlin의 경우 <code class="highlighter-rouge">?.</code>을 다음 번만의 키워드만 처리하고 그 결과를 다음에도 사용합니다. Swift의 경우에는 <code class="highlighter-rouge">?.</code>을 오른쪽 모두를 묶어버리며 None일 경우 오른쪽 모두를 스킵합니다. 이 차이는 똑같은 외형의 코드가 전혀 다른 의미를 가지게 된다는 뜻이므로 이식하는데는 주의할 필요가 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>정리하면 다음과 같습니다. Kotlin의 경우 <code class="highlighter-rouge">?.</code>을 다음 번만의 키워드만 처리하고 그 결과를 다음에도 사용합니다. Swift의 경우에는 <code class="highlighter-rouge">?.</code>을 오른쪽 모두를 묶어버리며 None일 경우 오른쪽 모두를 스킵합니다. 이 차이는 똑같은 외형의 코드가 전혀 다른 의미를 가지게 된다는 뜻이므로 이식하는데는 주의할 필요가 있습니다.</p>
 
 <p>개인적으로는 Kotlin의 사양이 더 직관적이고 좋았습니다. 처음 Swift로 개발했을 때 Kotlin의 사양을 상상하고 작업하다가 에러가 나서 당황했던 적이 있었습니다.</p>
 
@@ -566,17 +629,25 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="n">result</span> <span class="p">=</span> <span class="n">write</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="n">result</span> <span class="p">=</span> <span class="k">false</span>
-<span class="p">}</span></code></pre></figure><p>이런 케이스에서는 Kotlin에서는 다음과 같이 쓰는 것이 가능합니다.</p>
+<span class="p">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">result</span><span class="p">:</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">write</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span> <span class="o">?:</span> <span class="k">false</span></code></pre></figure><p>let의 정의와 구현은 다음과 같이 되어있습니다.</p>
+<p>이런 케이스에서는 Kotlin에서는 다음과 같이 쓰는 것이 가능합니다.</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">let</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="k">this</span><span class="p">)</span></code></pre></figure><p>이것은 모든 타입 T에서 정의된 확장 메소드로 인자로 클로져를 하나 가지고 있습니다. 그리고 그 클로져에 메소드의 리시버가 전달되어 불러질 것이고 그 자체가 let 자체의 값이 됩니다.</p>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">result</span><span class="p">:</span> <span class="n">Boolean</span> <span class="p">=</span> <span class="n">user</span><span class="o">?.</span><span class="n">let</span> <span class="p">{</span> <span class="n">write</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">}</span> <span class="o">?:</span> <span class="k">false</span></code></pre></figure>
+
+<p>let의 정의와 구현은 다음과 같이 되어있습니다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">let</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="k">this</span><span class="p">)</span></code></pre></figure>
+
+<p>이것은 모든 타입 T에서 정의된 확장 메소드로 인자로 클로져를 하나 가지고 있습니다. 그리고 그 클로져에 메소드의 리시버가 전달되어 불러질 것이고 그 자체가 let 자체의 값이 됩니다.</p>
 
 <p>위의 예시에는 <code class="highlighter-rouge">?.</code>가 있으므로 let이 실행되는 것은 <code class="highlighter-rouge">User?</code>가 null이 아닌 경우입니다. it은 클로져의 암시적인 인자이므로 it은 <code class="highlighter-rouge">User</code>가 되는 것입니다. 그리고 write의 반환 값은 let의 반환 값이므로 기대했던대로 동작할 것입니다.</p>
 
 <p>Swift의 경우에는 Optional 자체에 정의된 <code class="highlighter-rouge">flatMap</code> 메소드를 쓸 수 있습니다.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="nf">write</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span> <span class="p">??</span> <span class="kc">false</span></code></pre></figure><p>이 경우에는 Optional 자체의 메소드임에도 불구하고 <code class="highlighter-rouge">?.</code>가 아닌 <code class="highlighter-rouge">.</code>이 됩니다.</p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="nf">write</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span> <span class="p">??</span> <span class="kc">false</span></code></pre></figure>
+
+<p>이 경우에는 Optional 자체의 메소드임에도 불구하고 <code class="highlighter-rouge">?.</code>가 아닌 <code class="highlighter-rouge">.</code>이 됩니다.</p>
 
 <h3 id="section-9">기본적인 콜백 함수</h3>
 
@@ -591,7 +662,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
         <span class="p">}</span>
 
     <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// 0_4_16_36_64_100가 나온다.
-</span><span class="p">}</span></code></pre></figure><p>Swift도 비슷한 느낌으로 작성할 수 있습니다.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Swift도 비슷한 느낌으로 작성할 수 있습니다.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">...</span><span class="mi">10</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}</span>
@@ -601,7 +674,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
         <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="kt">String</span><span class="p">(</span><span class="nv">$1</span><span class="p">)</span>
     <span class="p">}</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// 0_4_16_36_64_100가 나온다.</span></code></pre></figure><p>Java라면 이렇게 나오겠죠.</p>
+<span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// 0_4_16_36_64_100가 나온다.</span></code></pre></figure>
+
+<p>Java라면 이렇게 나오겠죠.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">IntStream</span><span class="o">.</span><span class="na">rangeClosed</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
     <span class="o">.</span><span class="na">mapToObj</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">))</span>
@@ -611,7 +686,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
         <span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">)</span> <span class="o">?</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">:</span> <span class="s">""</span><span class="o">)</span> <span class="o">+</span> <span class="n">i</span>
     <span class="o">,</span> <span class="o">(</span><span class="n">s1</span><span class="o">,</span> <span class="n">s2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span><span class="o">);</span>
 
-<span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">);</span></code></pre></figure><p>Kotlin은 Swift의 클로져 리터럴과 함수를 호출할 때의 표기법이 비슷합니다. Swift 버전의 reduce의 내부는 한 줄로 쓰고 싶었습니다만 타입 추론에 타임아웃이 걸려서 컴파일하지 못했기 때문에 let으로 나눴습니다. Kotlin에서는 클로져의 암시적 인자는 인자가 1개일 때만 <code class="highlighter-rouge">it</code>을 쓸 수 있습니다. 복수일 때는 인자명이 필요합니다. Swift에서는 <code class="highlighter-rouge">$0</code>, <code class="highlighter-rouge">$1</code>, <code class="highlighter-rouge">$2</code>… 이런 식으로 쓰입니다. 또 Kotlin에서는 삼항연산자가 없지만 if문을 이용해서 쓸 수 있습니다.</p>
+<span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">);</span></code></pre></figure>
+
+<p>Kotlin은 Swift의 클로져 리터럴과 함수를 호출할 때의 표기법이 비슷합니다. Swift 버전의 reduce의 내부는 한 줄로 쓰고 싶었습니다만 타입 추론에 타임아웃이 걸려서 컴파일하지 못했기 때문에 let으로 나눴습니다. Kotlin에서는 클로져의 암시적 인자는 인자가 1개일 때만 <code class="highlighter-rouge">it</code>을 쓸 수 있습니다. 복수일 때는 인자명이 필요합니다. Swift에서는 <code class="highlighter-rouge">$0</code>, <code class="highlighter-rouge">$1</code>, <code class="highlighter-rouge">$2</code>… 이런 식으로 쓰입니다. 또 Kotlin에서는 삼항연산자가 없지만 if문을 이용해서 쓸 수 있습니다.</p>
 
 <h3 id="section-10">문자열 안에서의 변수 접근</h3>
 
@@ -619,11 +696,15 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hoge</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"i is $i, user name is ${user.name}"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p><code class="highlighter-rouge">$i</code> 부분이 변수가, <code class="highlighter-rouge">${user.name}</code> 부분이 식을 표시합니다. Swift에서는 <code class="highlighter-rouge">\()</code>로 쓸 수 있죠.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">$i</code> 부분이 변수가, <code class="highlighter-rouge">${user.name}</code> 부분이 식을 표시합니다. Swift에서는 <code class="highlighter-rouge">\()</code>로 쓸 수 있죠.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="nv">i</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">user</span><span class="p">:</span> <span class="kt">User</span><span class="p">)</span> <span class="p">{</span>
     <span class="nf">print</span><span class="p">(</span><span class="s">"i is </span><span class="se">\(</span><span class="n">i</span><span class="se">)</span><span class="s">, user name is </span><span class="se">\(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>Java에서는 이런 기능에 대한 문법이 없으니 아래와 같이 되겠죠.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>Java에서는 이런 기능에 대한 문법이 없으니 아래와 같이 되겠죠.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">print</span><span class="o">(</span><span class="s">"i is "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">", user name is "</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
@@ -631,7 +712,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <span class="kt">void</span> <span class="nf">hoge2</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">printf</span><span class="o">(</span><span class="s">"i is %d, user name is %s"</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure><h3 id="java---sam-">Java의 단일 추상 메소드(SAM) 변환</h3>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="java---sam-">Java의 단일 추상 메소드(SAM) 변환</h3>
 
 <p>Java에서는 Java8이 나오면서 람다식과 단일 추상 메소드를 가지는 함수형 인터페이스라는 큰 기능이 추가되었습니다. 이것은 단일 메소드를 가지고 있는 인터페이스에서 람다식을 쓸 수 있게 됬다는 것을 의미합니다.</p>
 
@@ -642,11 +725,15 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">println</span><span class="o">(</span><span class="s">"clicked"</span><span class="o">);</span>
     <span class="o">}</span>
-<span class="o">});</span></code></pre></figure><p>이게 Java8이라면 다음과 같이 표현할 수 있게 됩니다.</p>
+<span class="o">});</span></code></pre></figure>
+
+<p>이게 Java8이라면 다음과 같이 표현할 수 있게 됩니다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">button</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">view</span> <span class="o">-&gt;</span> <span class="o">{</span>
     <span class="n">println</span><span class="o">(</span><span class="s">"clicked"</span><span class="o">);</span>
-<span class="o">});</span></code></pre></figure><p>이는 Java8에서 람다식을 도입함에 있어 Java7 이전에 있었던 코드의 낭비하거나 수정하지 않고도 람다식을 이용해 보다 쾌적하게 쓸 수 있게 되었습니다.</p>
+<span class="o">});</span></code></pre></figure>
+
+<p>이는 Java8에서 람다식을 도입함에 있어 Java7 이전에 있었던 코드의 낭비하거나 수정하지 않고도 람다식을 이용해 보다 쾌적하게 쓸 수 있게 되었습니다.</p>
 
 <p>이렇게 람다식으로 자동 변환될 수 있는 인터페이스는 단일 메소드여야만 합니다.
 그래서 이것을 단일 추상 메소드(Single Abstract Method), 줄여서 SAM이라고 칭하며 이 변환을 SAM 변환이라고 합니다.</p>
@@ -661,7 +748,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">button</span><span class="p">.</span><span class="n">setOnClickListener</span> <span class="p">{</span> <span class="n">view</span> <span class="p">-&gt;</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"clicked"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>쓰기 쉬워 좋네요. 위의 예에서는 인수가 클로져 한개일 뿐이라 함수 호출 괄호<code class="highlighter-rouge">()</code>를 생략했습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>쓰기 쉬워 좋네요. 위의 예에서는 인수가 클로져 한개일 뿐이라 함수 호출 괄호<code class="highlighter-rouge">()</code>를 생략했습니다.</p>
 
 <h3 id="section-12">확장 메소드</h3>
 
@@ -680,7 +769,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 </span>
     <span class="kd">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">squareEvens</span><span class="p">())</span> <span class="c1">// [100, 900, 2500]라고 출력
-</span><span class="p">}</span></code></pre></figure><p>제너릭 자료형의 확장 메소드에 관해서는 T 모두에 대한 것과 특정 T에 대한 정의가 가능합니다. 함수의 본문은 <code class="highlighter-rouge">=</code> 스타일로 써봤습니다.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>제너릭 자료형의 확장 메소드에 관해서는 T 모두에 대한 것과 특정 T에 대한 정의가 가능합니다. 함수의 본문은 <code class="highlighter-rouge">=</code> 스타일로 써봤습니다.</p>
 
 <p>Swift에서는 다음과 같이 쓸 수 있겠습니다.</p>
 
@@ -711,7 +802,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="nf">squareEvens</span><span class="p">())</span> <span class="c1">// [100, 900, 2500]라고 출력</span>
 <span class="p">}</span>
 
-<span class="nf">main</span><span class="p">()</span></code></pre></figure><p>Element에 대한 제약은 프로토콜에 필요가 있으므로 <code class="highlighter-rouge">Int</code>로 쓸 수 없어서 그 대신 <code class="highlighter-rouge">IntegerType</code>으로 되어있습니다. 이유를 잘 모르겠습니다.</p>
+<span class="nf">main</span><span class="p">()</span></code></pre></figure>
+
+<p>Element에 대한 제약은 프로토콜에 필요가 있으므로 <code class="highlighter-rouge">Int</code>로 쓸 수 없어서 그 대신 <code class="highlighter-rouge">IntegerType</code>으로 되어있습니다. 이유를 잘 모르겠습니다.</p>
 
 <p>Kotlin도 Swift도 둘 다 프로퍼티를 추가하는 것이 가능합니다. 이식했을 때는 <code class="highlighter-rouge">withIndex</code>와 <code class="highlighter-rouge">enumerate</code>가 대응되어서 기뻤습니다.</p>
 
@@ -747,7 +840,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
         <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">intListSquareEvens</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">50</span><span class="o">));</span>
         <span class="n">print</span><span class="o">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">c</span><span class="o">);</span> <span class="c1">// [100, 900, 2500]라고 출력</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>이 방식이 괴로운 것은 충돌을 피하고자 메소드 이름에 접두사가 필요하다는 점과 호출할 때 <code class="highlighter-rouge">f(g(h(x)))</code>라는 형식이 되므로 나중에 적용하는 함수일수록 앞에 오는 등의 문제가 있습니다. 특히 이식을 할 때에는 원래 메소드 체인의 형태로 되어있다면 기술 순서가 완전히 거꾸로 되어버리기 때문에 매우 번거로운 작업이 됩니다. 개인적으로는 이 부분이 가독성도 떨어트린다고 생각합니다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>이 방식이 괴로운 것은 충돌을 피하고자 메소드 이름에 접두사가 필요하다는 점과 호출할 때 <code class="highlighter-rouge">f(g(h(x)))</code>라는 형식이 되므로 나중에 적용하는 함수일수록 앞에 오는 등의 문제가 있습니다. 특히 이식을 할 때에는 원래 메소드 체인의 형태로 되어있다면 기술 순서가 완전히 거꾸로 되어버리기 때문에 매우 번거로운 작업이 됩니다. 개인적으로는 이 부분이 가독성도 떨어트린다고 생각합니다.</p>
 
 <p>또, 이 코드는 <code class="highlighter-rouge">withIndex</code>에 대응하는 방법을 몰랐기 때문에 얼버무려 쓴 코드입니다.</p>
 
@@ -772,7 +867,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
 </span>
     <span class="kd">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">2.0</span><span class="p">,</span> <span class="m">0.0</span><span class="p">)</span> <span class="n">dot</span> <span class="n">Vector2</span><span class="p">(</span><span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">// 4.0라고 출력
-</span><span class="p">}</span></code></pre></figure><p>덧셈은 메소드로 곱셈은 Double 자료형의 확장 메소드로 썼습니다. <code class="highlighter-rouge">dot</code>은 보통의 방법입니다만 중간에 저렇게 사용할 수 있습니다.
+</span><span class="p">}</span></code></pre></figure>
+
+<p>덧셈은 메소드로 곱셈은 Double 자료형의 확장 메소드로 썼습니다. <code class="highlighter-rouge">dot</code>은 보통의 방법입니다만 중간에 저렇게 사용할 수 있습니다.
 데이터 클래스와 기본 생성자의 기능도 쓰고 있습니다.</p>
 
 <p>Swift로도 써봤습니다.</p>
@@ -816,7 +913,9 @@ Swift에서 Optional의 Optional이 나올 때 어떻게 이식할지 고민하�
     <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="c1">// 4.0라고 출력</span>
 <span class="p">}</span>
 
-<span class="nf">main</span><span class="p">()</span></code></pre></figure><p>●은 유니코드 문자입니다. 이번 예시에서는 Swift의 기능을 이용해 이 마크를 연산자로 정의했습니다.</p>
+<span class="nf">main</span><span class="p">()</span></code></pre></figure>
+
+<p>●은 유니코드 문자입니다. 이번 예시에서는 Swift의 기능을 이용해 이 마크를 연산자로 정의했습니다.</p>
 
 <p>Kotlin은 연산자를 만드는 것은 불가능하기 때문에 Swift에서 정의된 독자 연산자의 이식은 메소드로 합니다.
 하지만, 연산자 우선 순위까지 이식할 수 없기 때문에 소괄호<code class="highlighter-rouge">()</code>를 붙여 나갈 필요가 있겠죠.</p>
@@ -852,7 +951,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
     <span class="kd">val</span> <span class="py">u</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
     <span class="n">u</span><span class="p">.</span><span class="n">familyName</span> <span class="p">=</span> <span class="s">"사이토"</span>
     <span class="n">u</span><span class="p">.</span><span class="n">died</span> <span class="p">=</span> <span class="k">true</span> <span class="c1">// 사이토 타로는 죽어버렸다... 라고 표시됩니다.
-</span><span class="p">}</span></code></pre></figure><p>위의 예에서 <code class="highlighter-rouge">id</code>는 상수이기 때문에 getter가 자동 생성되었고, <code class="highlighter-rouge">familyName</code>, <code class="highlighter-rouge">firstName</code>은 변수이기 때문에 getter와 setter가 자동으로 생성된 것을 볼 수 있습니다.
+</span><span class="p">}</span></code></pre></figure>
+
+<p>위의 예에서 <code class="highlighter-rouge">id</code>는 상수이기 때문에 getter가 자동 생성되었고, <code class="highlighter-rouge">familyName</code>, <code class="highlighter-rouge">firstName</code>은 변수이기 때문에 getter와 setter가 자동으로 생성된 것을 볼 수 있습니다.
 <code class="highlighter-rouge">fullName</code>은 getter를 직접 만들어서 다른 프로퍼티로부터 동적으로 가져올 수 있도록 했습니다. <code class="highlighter-rouge">died</code>는 getter와 setter를 직접 만들어서 지원 필드를 사용했습니다.</p>
 
 <p>Swift에서도 필드와 같은 것은 프로퍼티입니다. getter, setter 뿐만이 아니라 <code class="highlighter-rouge">willSet</code>과 <code class="highlighter-rouge">didSet</code>같은 것들도 정의할 수 있습니다. 하지만 Kotlin처럼 지원 필드는 자동으로 정의되지 않습니다.</p>
@@ -885,7 +986,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
     <span class="n">u</span><span class="o">.</span><span class="n">died</span> <span class="o">=</span> <span class="kc">true</span> <span class="c1">// saito taro는 죽어버렸다... 라고 표시됩니다.</span>
 <span class="p">}</span>
 
-<span class="nf">main</span><span class="p">()</span></code></pre></figure><p>Java에서는 필드와 프로퍼티는 명확하게 구분되어있으며 메소드로 직접 getter과 setter를 구현한 것을 프로퍼티라고 부릅니다.</p>
+<span class="nf">main</span><span class="p">()</span></code></pre></figure>
+
+<p>Java에서는 필드와 프로퍼티는 명확하게 구분되어있으며 메소드로 직접 getter과 setter를 구현한 것을 프로퍼티라고 부릅니다.</p>
 
 <p>이 부분이 이식할 때 귀찮은 일이 되어버립니다. Swift로 쓰인 다음 클래스가 있다고 생각해봅시다.</p>
 
@@ -895,7 +998,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <span class="kd">func</span> <span class="nf">hoge</span><span class="p">(</span><span class="nv">u</span><span class="p">:</span> <span class="kt">User</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">u</span><span class="o">.</span><span class="n">died</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="p">}</span></code></pre></figure><p>이것을 Java의 필드로 이식해보겠습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이것을 Java의 필드로 이식해보겠습니다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
     <span class="kt">boolean</span> <span class="n">died</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
@@ -903,14 +1008,18 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">u</span><span class="o">.</span><span class="na">died</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="o">}</span></code></pre></figure><p>그 뒤에 Swift 코드가 이렇게 변했다고 칩시다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>그 뒤에 Swift 코드가 이렇게 변했다고 칩시다.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">User</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">died</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span>
     <span class="k">didSet</span> <span class="p">{</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"죽어버렸다!"</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure><p>이런 경우 Java에서는 다음과 같이 수정해야합니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이런 경우 Java에서는 다음과 같이 수정해야합니다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
     <span class="kt">boolean</span> <span class="n">died</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
@@ -923,7 +1032,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <span class="kt">void</span> <span class="nf">hoge</span><span class="o">(</span><span class="n">User</span> <span class="n">u</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">u</span><span class="o">.</span><span class="na">setDied</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure><p>getter와 setter를 직접 구현해야 하는 것은 둘째치고, 필드에 대입하고 있는 부분을 setter를 호출할 때 구현해야 할 필요가 있습니다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>getter와 setter를 직접 구현해야 하는 것은 둘째치고, 필드에 대입하고 있는 부분을 setter를 호출할 때 구현해야 할 필요가 있습니다.</p>
 
 <p>이것은 여러 부분에 있습니다만 원래 이식하는 곳에서는 diff가 발생하지 않기 때문에 놓칠 위험이 큽니다. 간과해버렸다간 버그가 나며 심지어 컴파일했을 때 알 수도 없습니다.</p>
 
@@ -937,17 +1048,23 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// 읽기</span>
 <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
 <span class="c1">// 쓰기</span>
-<span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">newName</span><span class="o">);</span></code></pre></figure><p>하지만 Kotlin의 경우에는 프로퍼티 <code class="highlighter-rouge">name</code>에 대해서 호출할 때 함수의 형태를 띄지 않습니다.</p>
+<span class="n">user</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">newName</span><span class="o">);</span></code></pre></figure>
+
+<p>하지만 Kotlin의 경우에는 프로퍼티 <code class="highlighter-rouge">name</code>에 대해서 호출할 때 함수의 형태를 띄지 않습니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">// 읽기
 </span><span class="kd">val</span> <span class="py">name</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span>
 <span class="c1">// 쓰기
-</span><span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">newName</span></code></pre></figure><p>함수 호출의 형태는 아닙니다만 name에 대한 getter와 setter가 동작하게 됩니다.</p>
+</span><span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="n">newName</span></code></pre></figure>
+
+<p>함수 호출의 형태는 아닙니다만 name에 대한 getter와 setter가 동작하게 됩니다.</p>
 
 <p>Kotlin에서 Java 메소드를 호출할 때 이러한 <code class="highlighter-rouge">getXxxx()</code>와 <code class="highlighter-rouge">setXxxx(value)</code>를 Kotlin의 프로퍼티 <code class="highlighter-rouge">xxxx</code>를 취급할 때 엑세스할 수 있습니다.
 예를 들어, 아래코드는 안드로이드에서 버튼을 보이지 않게 만드는 코드입니다.</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">button</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span></code></pre></figure><p>Android SDK는 Java로 작성되었으므로 원래는 <code class="highlighter-rouge">setVisibility()</code>를 호출하는게 맞지만, Kotlin에서는 마치 <code class="highlighter-rouge">visibility</code>라는 프로퍼티에 접근하는 것처럼 사용할 수 있습니다.</p>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">button</span><span class="p">.</span><span class="n">visibility</span> <span class="p">=</span> <span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span></code></pre></figure>
+
+<p>Android SDK는 Java로 작성되었으므로 원래는 <code class="highlighter-rouge">setVisibility()</code>를 호출하는게 맞지만, Kotlin에서는 마치 <code class="highlighter-rouge">visibility</code>라는 프로퍼티에 접근하는 것처럼 사용할 수 있습니다.</p>
 
 <h3 id="delegated-property">Delegated Property</h3>
 
@@ -959,7 +1076,9 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">fullName</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">lazy</span> <span class="p">{</span>
     <span class="n">familyName</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">firstName</span>
-<span class="p">}</span></code></pre></figure><p><code class="highlighter-rouge">fullName</code>은 상수이지만, 처음 getter가 호출되었을 때 lazy에 전달하는 클로져가 실행되고 그 결과가 반환됩니다. 두번째 이후부터 getter 호출에서는 첫번째 결과가 저장됩니다. 만약 이것을 Java로 구현하고자 할 때는, getter에서 if문을 작성해야만 합니다. 이러한 일반적으로 중복되는 코드를 쓸 필요가 없습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">fullName</code>은 상수이지만, 처음 getter가 호출되었을 때 lazy에 전달하는 클로져가 실행되고 그 결과가 반환됩니다. 두번째 이후부터 getter 호출에서는 첫번째 결과가 저장됩니다. 만약 이것을 Java로 구현하고자 할 때는, getter에서 if문을 작성해야만 합니다. 이러한 일반적으로 중복되는 코드를 쓸 필요가 없습니다.</p>
 
 <p>Swift에서도 <code class="highlighter-rouge">lazy</code>라는 키워드가 있고 동일한 기능을 제공하는 언어 기능이 있습니다. 그러나 Kotlin이 흥미로운 점은 lazy가 특별한 언어 기능이 아니라 <code class="highlighter-rouge">by</code>만이 언어 기능으로, lazy는 그저 <a href="http://kotlinlang.org/api/latest/jvm/stdlib/kotlin/lazy.html">클로져를 인수로 취하는 표준 라이브러리 함수</a>인 것입니다. 이 함수가 반환하는 객체가 실제 프로퍼티의 getter와 setter를 처리합니다.</p>
 
@@ -969,10 +1088,14 @@ getter와 setter를 구현하기 위한 지원 필드가 자동으로 정의되�
 
 <p>또 한 가지, 흥미로운 델리게이트를 소개해보곘습니다.</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">Delegates</span><span class="p">.</span><span class="n">notNull</span><span class="p">()</span></code></pre></figure><p>이것은 한번 설정되지 않은 상태에서 getter가 호출될 경우 예외가 생겨 크래시가 납니다. 한번 설정된 이후에는 getter가 일반적으로 값을 읽어올 수 있습니다.
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">Delegates</span><span class="p">.</span><span class="n">notNull</span><span class="p">()</span></code></pre></figure>
+
+<p>이것은 한번 설정되지 않은 상태에서 getter가 호출될 경우 예외가 생겨 크래시가 납니다. 한번 설정된 이후에는 getter가 일반적으로 값을 읽어올 수 있습니다.
 Swift에서 이와 비슷한 형태를 갖는 것은 느낌표<code class="highlighter-rouge">!</code> 형태입니다. 정확하게 말하자면 <code class="highlighter-rouge">Implicitly Unwrapped Optional</code>이라고 말합니다.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre></figure><p>이것은 초기 상태가 nil로 nil의 상태로 읽었을 때는 크래시가 나지만 값이 들어있을 때는 보통과 똑같이 사용할 수 있습니다.
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span></code></pre></figure>
+
+<p>이것은 초기 상태가 nil로 nil의 상태로 읽었을 때는 크래시가 나지만 값이 들어있을 때는 보통과 똑같이 사용할 수 있습니다.
 Kotlin과의 미묘한 차이는 Kotlin은 notNull에 null을 넣을 수 없지만 Swift의 <code class="highlighter-rouge">!</code>에는 nil을 넣을 수 있다는 것이겠네요.
 Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이라는 것이군요.</p>
 
@@ -1002,7 +1125,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
 
   <span class="c1">// List binding with optional items being omitted.
 </span>  <span class="kd">val</span> <span class="py">nameViews</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TextView</span><span class="p">&gt;</span> <span class="k">by</span> <span class="n">bindOptionalViews</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">middle_name</span><span class="p">,</span> <span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p><code class="highlighter-rouge">@IBOutlet</code>이나 <code class="highlighter-rouge">!</code>를 사용한 iOS 개발과, 어노테이션과 리플렉션으로 구현된 Android의 ButterKnife보다 이 방식이 깔끔하고 바람직하다고 생각됩니다.
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">@IBOutlet</code>이나 <code class="highlighter-rouge">!</code>를 사용한 iOS 개발과, 어노테이션과 리플렉션으로 구현된 Android의 ButterKnife보다 이 방식이 깔끔하고 바람직하다고 생각됩니다.
 또한 빌드에 개입하는 것으로 확장 메소드를 구현해주고, 프로퍼티 정의조차 불필요한 플러그인이 있습니다.</p>
 
 <p>나는 이런 언어기능이 바람직하다고 생각합니다.</p>
@@ -1013,7 +1138,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">User</span> <span class="p">{</span>
     <span class="k">lateinit</span> <span class="kd">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span>
-<span class="p">}</span></code></pre></figure><p>lateinit으로 지정되어있는 변수는 쓰기 전에 읽으면 크래시가 납니다. Swift의 <code class="highlighter-rouge">!</code>처럼 사용할 수 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>lateinit으로 지정되어있는 변수는 쓰기 전에 읽으면 크래시가 납니다. Swift의 <code class="highlighter-rouge">!</code>처럼 사용할 수 있습니다.</p>
 
 <h4 id="delegatenotnull-">Delegate.notNull과의 차이</h4>
 
@@ -1044,7 +1171,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
     <span class="kd">val</span> <span class="py">b</span><span class="p">:</span> <span class="n">Box</span><span class="p">&lt;</span><span class="n">Cat</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">Cat</span><span class="p">())</span>
     <span class="n">a</span> <span class="p">=</span> <span class="n">b</span>
     <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1">// Box(Cat@xxxxxxxx)로 표시
-</span><span class="p">}</span></code></pre></figure><p>Variance가 작동하고 있으므로 Box의 값을 Box의 변수에 대입할 수 있습니다.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Variance가 작동하고 있으므로 Box의 값을 Box의 변수에 대입할 수 있습니다.</p>
 
 <p>Declaration Site라고 하는 것은 선언 시에 지정하는 것으로 Box의 변수형 파라미터 T를 쓰는 그 자리에서 <code class="highlighter-rouge">out T</code>라고 기술함으로써 Box가 T에 대해 covariance라고 선언하고 있습니다.
 이 out을 지우면 컴파일 에러가 발생합니다. Swift도 Declaration Site지만, Java는 Use Site입니다.</p>
@@ -1073,7 +1202,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
         <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">;</span>
         <span class="n">print</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span> <span class="c1">// Box(Cat@xxxxxxxx)라고 출력된다.</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>Box 자체의 정의에 대한 Variance에 대해 적지 않고 <code class="highlighter-rouge">a</code>라는 로컬 변수를 정의할 때의 형태를 꺽쇠 기호<code class="highlighter-rouge">&lt;&gt;</code>로 설명하고 있습니다. 그 외 함수 인수의 정의에서 꺽쇠 기호가 나옵니다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>Box 자체의 정의에 대한 Variance에 대해 적지 않고 <code class="highlighter-rouge">a</code>라는 로컬 변수를 정의할 때의 형태를 꺽쇠 기호<code class="highlighter-rouge">&lt;&gt;</code>로 설명하고 있습니다. 그 외 함수 인수의 정의에서 꺽쇠 기호가 나옵니다.</p>
 
 <p>Declaration Site와 Use Site의 좋고 나쁨에 대해서는 여기까지만 이야기하겠습니다. 저는 Declaration Site 쪽을 선호하기 때문에 Kotlin을 선호합니다. 그 외 Swift나 C#, Go 또한 Declaration Site입니다.</p>
 
@@ -1091,7 +1222,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
     <span class="k">if</span> <span class="p">(</span><span class="n">it</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">true</span> <span class="p">}</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="k">false</span>
-<span class="p">}</span></code></pre></figure><p>사실 이 코드는 <code class="highlighter-rouge">forEach</code>에 쓰여진 <code class="highlighter-rouge">return true</code>가 그 클로져 자신이 아닌 <code class="highlighter-rouge">fun hasZeros()</code>를 탈출하는 것입니다. 원래 Kotlin의 클로져 안에는 return을 쓸 수 없습니다. 클로져의 실행 결과는 클로져 코드 마지막의 식의 값입니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>사실 이 코드는 <code class="highlighter-rouge">forEach</code>에 쓰여진 <code class="highlighter-rouge">return true</code>가 그 클로져 자신이 아닌 <code class="highlighter-rouge">fun hasZeros()</code>를 탈출하는 것입니다. 원래 Kotlin의 클로져 안에는 return을 쓸 수 없습니다. 클로져의 실행 결과는 클로져 코드 마지막의 식의 값입니다.</p>
 
 <p>예외적으로 인라인된 콜백 함수에서는 <code class="highlighter-rouge">return</code>을 쓸 수 있고 그 경우에는 return을 호출한 곳에서부터 가장 가까운 함수를 탈출하게 됩니다.</p>
 
@@ -1099,7 +1232,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">&gt;</span> <span class="n">Iterable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">forEach</span><span class="p">(</span><span class="n">operation</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Unit</span><span class="p">):</span> <span class="n">Unit</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">element</span> <span class="k">in</span> <span class="k">this</span><span class="p">)</span> <span class="n">operation</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>이 <code class="highlighter-rouge">fun</code> 앞에 있는 <code class="highlighter-rouge">inline</code>이 포인트입니다. 이것이 붙어있으면 함수가 인라인이라는 것을 뜻하는데, 이 함수를 호출하는 곳에 이 함수의 내용이 쓰여지는 것과 같습니다. 즉 위의 예시는 아래와 같이 해석된다고 보면 됩니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이 <code class="highlighter-rouge">fun</code> 앞에 있는 <code class="highlighter-rouge">inline</code>이 포인트입니다. 이것이 붙어있으면 함수가 인라인이라는 것을 뜻하는데, 이 함수를 호출하는 곳에 이 함수의 내용이 쓰여지는 것과 같습니다. 즉 위의 예시는 아래와 같이 해석된다고 보면 됩니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">hasZeros</span><span class="p">(</span><span class="n">ints</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;):</span> <span class="n">Boolean</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">ints</span><span class="p">)</span> <span class="p">{</span>
@@ -1107,7 +1242,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="k">false</span>
-<span class="p">}</span></code></pre></figure><p>이걸로 왜 전역 탈출이 가능하게 되었는지 알 수 있었습니다. 또한 <code class="highlighter-rouge">inline</code>의 지정은 무턱대고 있는 것이 아닙니다. 인라인할 수 없는 함수에 붙어있을 경우에는 컴파일 에러가 납니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이걸로 왜 전역 탈출이 가능하게 되었는지 알 수 있었습니다. 또한 <code class="highlighter-rouge">inline</code>의 지정은 무턱대고 있는 것이 아닙니다. 인라인할 수 없는 함수에 붙어있을 경우에는 컴파일 에러가 납니다.</p>
 
 <p>그래서 이 전역 탈출이라는 기능은 위험한 냄새가 납니다. 올바르게 사용할 때만 구현해서 이용할 수 있으며 그렇지 않을 경우에는 컴파일 에러가 나기 때문에 안전합니다.</p>
 
@@ -1115,7 +1252,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
 
 <p>예를 들면 <code class="highlighter-rouge">run</code>이라고 하는 표준 함수가 있습니다.</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">R</span><span class="p">&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></figure><p>인수로 주어진 클로져만을 실행하기 위한 함수이지만, 이것은 로컬 스코프를 만드는데 사용할 수 있습니다.</p>
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">R</span><span class="p">&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></figure>
+
+<p>인수로 주어진 클로져만을 실행하기 위한 함수이지만, 이것은 로컬 스코프를 만드는데 사용할 수 있습니다.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">fun</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">run</span> <span class="p">{</span>
@@ -1127,7 +1266,9 @@ Swift의 <code class="highlighter-rouge">!</code>는 어디까지나 Optional이
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">createUser</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
     <span class="p">}</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"ok!"</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>위의 예에서는 2개의 x는 각각 다른 클로져의 지역 변수이므로 충돌하지 않습니다.
+<span class="p">}</span></code></pre></figure>
+
+<p>위의 예에서는 2개의 x는 각각 다른 클로져의 지역 변수이므로 충돌하지 않습니다.
 그리고 <code class="highlighter-rouge">createPoint</code>가 실패했을 때 <code class="highlighter-rouge">setup</code> 자체를 중단하고 있습니다.</p>
 
 <p>Swift에서 똑같이 콜백 함수를 사용하고자 하면 그 안에 return을 쓸 수 없게 되기 때문에 <code class="highlighter-rouge">for in</code>이나 <code class="highlighter-rouge">if true {}</code>를 사용하지 않을 수 없습니다.</p>
@@ -1145,12 +1286,16 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
         <span class="n">name</span> <span class="p">=</span> <span class="n">makeUserName</span><span class="p">()</span> <span class="o">?:</span> <span class="k">return</span>
         <span class="n">age</span> <span class="p">=</span> <span class="m">3</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure><p><code class="highlighter-rouge">run</code>의 안에서 액세스 되어있는 <code class="highlighter-rouge">name</code>이나 <code class="highlighter-rouge">age</code>는 <code class="highlighter-rouge">user</code>의 프로퍼티입니다.
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">run</code>의 안에서 액세스 되어있는 <code class="highlighter-rouge">name</code>이나 <code class="highlighter-rouge">age</code>는 <code class="highlighter-rouge">user</code>의 프로퍼티입니다.
 이 클로져의 안은 User의 메소드를 실행할 때와 같은 this 스코프입니다. 그리고 당연한 이야기지만 그 안에서도 전역 탈출을 쓸 수 있습니다.</p>
 
 <p>이것의 구현은 아래와 같습니다.</p>
 
-<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">T</span><span class="p">.()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></figure><p>모든 타입 T에 대한 확장 메소드 run으로 정의되어 있으며 인수의 클로져의 자료형은 T의 메소드, 즉 리시버로 T 자료형의 인스턴스를 받도록 되어있습니다.
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="k">inline</span> <span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">,</span> <span class="n">R</span><span class="p">&gt;</span> <span class="n">T</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">T</span><span class="p">.()</span> <span class="p">-&gt;</span> <span class="n">R</span><span class="p">):</span> <span class="n">R</span> <span class="p">=</span> <span class="n">f</span><span class="p">()</span></code></pre></figure>
+
+<p>모든 타입 T에 대한 확장 메소드 run으로 정의되어 있으며 인수의 클로져의 자료형은 T의 메소드, 즉 리시버로 T 자료형의 인스턴스를 받도록 되어있습니다.
 본체의 <code class="highlighter-rouge">f()</code>는 확장 메소드의 정의 중이기 때문에 <code class="highlighter-rouge">this.f()</code>의 축약형입니다.</p>
 
 <p>클로져의 형태가 run의 인수에 따라서 T 자료형의 메소드의 형태로 해결하고 있으므로 콜백 메소드 안에서 name과 age가 <code class="highlighter-rouge">this.</code> 없이 접근할 수 있는 것입니다.</p>
@@ -1185,7 +1330,9 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
           <span class="p">+</span><span class="n">arg</span>
       <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}</span></code></pre></figure><p>이걸 보면 HTML을 간단한 문법으로 쓰고 있는 것 같아도 이건 엄연히 Kotlin 코드입니다. 게다가 body 태그는 html 태그에 쓰기 같은 것들이 정적 타이핑 검사되고 있습니다.</p>
+  <span class="p">}</span></code></pre></figure>
+
+<p>이걸 보면 HTML을 간단한 문법으로 쓰고 있는 것 같아도 이건 엄연히 Kotlin 코드입니다. 게다가 body 태그는 html 태그에 쓰기 같은 것들이 정적 타이핑 검사되고 있습니다.</p>
 
 <p><a href="http://kotlinlang.org/docs/reference/type-safe-builders.html">자세한 내용은 문서를 읽어보십시오.</a></p>
 
@@ -1195,7 +1342,9 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
     <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span>
     <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
 <span class="p">})</span>
-<span class="p">//</span> <span class="m">13</span><span class="err">이</span> <span class="err">출력됩니다</span><span class="p">.</span></code></pre></figure><p><code class="highlighter-rouge">fun</code> 표기가 있으면 인라인과는 전혀 관계 없이 클로져에서 항상 return을 사용할 수 있습니다. 그리고 로컬한 return이 됩니다. 아까 말했듯이 return을 호출한 곳에서부터 가장 가까운 함수를 탈출한다는 규칙에도 맞습니다.</p>
+<span class="p">//</span> <span class="m">13</span><span class="err">이</span> <span class="err">출력됩니다</span><span class="p">.</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">fun</code> 표기가 있으면 인라인과는 전혀 관계 없이 클로져에서 항상 return을 사용할 수 있습니다. 그리고 로컬한 return이 됩니다. 아까 말했듯이 return을 호출한 곳에서부터 가장 가까운 함수를 탈출한다는 규칙에도 맞습니다.</p>
 
 <h3 id="section-17">기본 생성자</h3>
 
@@ -1228,7 +1377,9 @@ run에서는 사실 또 정의가 있고 그것을 사용하면 이런 코드를
 </span>    <span class="n">println</span><span class="p">()</span>
     <span class="n">Person</span><span class="p">()</span> <span class="c1">// 123이 출력됩니다.
 </span>    <span class="n">println</span><span class="p">()</span>
-<span class="p">}</span></code></pre></figure><p>기본 생성자의 인수로 있는 상수가 프로퍼티 정의를 지정합니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>기본 생성자의 인수로 있는 상수가 프로퍼티 정의를 지정합니다.</p>
 
 <p>기본 생성자를 정의하지 않는 것 또한 가능합니다.</p>
 
@@ -1263,7 +1414,9 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
         <span class="c1">// 2차 생성자 2</span>
         <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="s">"saito"</span><span class="p">)</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure><p>이식의 관점에서 보면 Swift에서 지정 이니셜라이저가 다수 있어도 프로퍼티를 모두 채울 기본 생성자를 만들고 나머지 지정 이니셜라이저와 편의 이니셜라이저를 보조로 쓰면 크게 문제되지 않는다고 생각됩니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이식의 관점에서 보면 Swift에서 지정 이니셜라이저가 다수 있어도 프로퍼티를 모두 채울 기본 생성자를 만들고 나머지 지정 이니셜라이저와 편의 이니셜라이저를 보조로 쓰면 크게 문제되지 않는다고 생각됩니다.</p>
 
 <p>Java의 경우 Swift와 거의 비슷한 규칙이지만 convenience같은 키워드는 존재하지 않네요.</p>
 
@@ -1277,7 +1430,9 @@ Kotlin하고는 다르게 지정 이니셜라이저를 다중 정의할 수도 �
 제네릭형의 매개변수를 정의할 때 null을 제거할 때 쓰입니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">NonNullBox</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Any</span><span class="p">&gt;</span>
-<span class="kd">class</span> <span class="nc">NullableBox</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span></code></pre></figure><p><code class="highlighter-rouge">NonNullBox</code>에는 Optional 자료형이 들어갈 수 없지만 <code class="highlighter-rouge">NullableBox</code>는 들어갈 수 있습니다.</p>
+<span class="kd">class</span> <span class="nc">NullableBox</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">NonNullBox</code>에는 Optional 자료형이 들어갈 수 없지만 <code class="highlighter-rouge">NullableBox</code>는 들어갈 수 있습니다.</p>
 
 <h4 id="unit">Unit</h4>
 
@@ -1291,7 +1446,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 <span class="k">fun</span> <span class="nf">b</span><span class="p">():</span> <span class="n">Unit</span> <span class="p">{</span>
     <span class="k">return</span>
 <span class="p">}</span>
-<span class="k">fun</span> <span class="nf">c</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure><p>여기서 <code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">c</code>는 모두 같은 의미입니다.</p>
+<span class="k">fun</span> <span class="nf">c</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+
+<p>여기서 <code class="highlighter-rouge">a</code>, <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">c</code>는 모두 같은 의미입니다.</p>
 
 <p>역으로 Kotlin엔 void라는 개념이 존재하지 않습니다.</p>
 
@@ -1310,12 +1467,16 @@ Unit 자료형의 값은 Unit입니다.</p>
     <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">proc</span><span class="p">()</span>
     <span class="p">}</span>
-<span class="p">}</span></code></pre></figure><p>이외에도 Nothing의 값이 존재하지 않는 것을 이용하여 <code class="highlighter-rouge">null</code>에만 매칭되는 변수의 형태를 만들 수 있습니다. 예를 들면 다음과 같습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이외에도 Nothing의 값이 존재하지 않는 것을 이용하여 <code class="highlighter-rouge">null</code>에만 매칭되는 변수의 형태를 만들 수 있습니다. 예를 들면 다음과 같습니다.</p>
 
 <figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">Json</span> <span class="p">{</span>
     <span class="k">constructor</span><span class="p">(</span><span class="n">aNull</span><span class="p">:</span> <span class="n">Nothing</span><span class="p">?)</span> <span class="p">{}</span>
     <span class="k">constructor</span><span class="p">(</span><span class="n">aString</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">}</span></code></pre></figure><p>이렇게 하면 <code class="highlighter-rouge">Json(null)</code>은 첫 번째 생성자, <code class="highlighter-rouge">Json("aaa")</code>는 두번째 생성자라는 식으로 오버로드를 구분할 수 있습니다. Kotlin에서는 null 자체에는 자료형이 없기 때문에 이렇게 Nothing을 사용하고 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>이렇게 하면 <code class="highlighter-rouge">Json(null)</code>은 첫 번째 생성자, <code class="highlighter-rouge">Json("aaa")</code>는 두번째 생성자라는 식으로 오버로드를 구분할 수 있습니다. Kotlin에서는 null 자체에는 자료형이 없기 때문에 이렇게 Nothing을 사용하고 있습니다.</p>
 
 <p>그런데 값이 존재하지 않는데 할당 할 수 있다는 것은 무슨 뜻인가하면, 제네릭의 Variance에서 이것이 효과가 있습니다. 아래를 예로 들어보곘습니다.</p>
 
@@ -1336,7 +1497,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">ret</span><span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">,</span> <span class="n">Exception</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">proc1</span><span class="p">()</span>
-<span class="p">}</span></code></pre></figure><p>Result는 값과 에러의 두 가지 자료형를 covariance로 가지는 제너릭형입니다. 여기서 <code class="highlighter-rouge">proc1</code>은 절대로 문제가 생길 일이 없는 메소드이므로 오류값에 대해 Nothing으로 지정하고 있습니다.
+<span class="p">}</span></code></pre></figure>
+
+<p>Result는 값과 에러의 두 가지 자료형를 covariance로 가지는 제너릭형입니다. 여기서 <code class="highlighter-rouge">proc1</code>은 절대로 문제가 생길 일이 없는 메소드이므로 오류값에 대해 Nothing으로 지정하고 있습니다.
 그리고 그 결과를 <code class="highlighter-rouge">Result&lt;Int, Exception&gt;</code>에 대입하고 있습니다. 즉, 일반 오류가 있을 수 있는 경우의 처리에 대해 에러가 없었던 경우의 자료형을 형변환 없이 안전하게 할당 할 수 있습니다.</p>
 
 <p>이것은 <code class="highlighter-rouge">Nothing is Exception</code>이기 떄문입니다만 is의 오른쪽에는 어떤 자료형도 넣을 수도 있습니다. Exception 대신 에러 메세지로 String으로 에러를 핸들링하고 있는 경우에도 <code class="highlighter-rouge">Result&lt;Int, String&gt;</code>에 <code class="highlighter-rouge">Result&lt;Int, Nothing&gt;</code>을 넣을 수 있다는 것입니다. 값이 존재하지 않기 때문에 무엇이든 될 수 있다는 것은 흥미롭습니다.</p>
@@ -1353,7 +1516,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 </span>    <span class="kd">val</span> <span class="err">(</span><span class="py">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="p">=</span> <span class="n">a</span>
     <span class="kd">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="m">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">=</span><span class="m">4.0</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1">// Vector3(x=0.0, y=2.0, z=4.0) 라고 출력됩니다.
-</span><span class="p">}</span></code></pre></figure><p>데이터 클래스를 이용하면 몇개의 메소드가 자동적으로 생성됩니다.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>데이터 클래스를 이용하면 몇개의 메소드가 자동적으로 생성됩니다.</p>
 
 <p><code class="highlighter-rouge">equals</code>와 <code class="highlighter-rouge">hashCode</code>가 정의됩니다. 이것을 통해 직접 비교를 할 수 있으며 Map의 키로서도 쓸 수 있습니다.</p>
 
@@ -1378,7 +1543,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">fuga</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">ABitmap</span><span class="p">)</span> <span class="p">{</span>
-<span class="p">}</span></code></pre></figure><p>Swift에서도 같은 기능을 쓸 수 있습니다. Java라면 이게 괴로웠겠죠?</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>Swift에서도 같은 기능을 쓸 수 있습니다. Java라면 이게 괴로웠겠죠?</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.omochimetaru.Bitmap</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">android.graphics.Bitmap</span><span class="o">;</span>
@@ -1387,7 +1554,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 <span class="o">}</span>
 
 <span class="kt">void</span> <span class="nf">fuga</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">graphics</span><span class="o">.</span><span class="na">Bitmap</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-<span class="o">}</span></code></pre></figure><h3 id="enum---enum-sealed-classtagged-enum">Enum, 값을 포함한 Enum, Sealed Class(Tagged Enum)</h3>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="enum---enum-sealed-classtagged-enum">Enum, 값을 포함한 Enum, Sealed Class(Tagged Enum)</h3>
 
 <p>Kotlin에서도 당연히 Enum이 있습니다.</p>
 
@@ -1399,14 +1568,18 @@ Unit 자료형의 값은 Unit입니다.</p>
     <span class="n">RED</span><span class="p">(</span><span class="m">0</span><span class="n">xFF0000</span><span class="p">),</span>
     <span class="n">GREEN</span><span class="p">(</span><span class="m">0</span><span class="n">x00FF00</span><span class="p">),</span>
     <span class="n">BLUE</span><span class="p">(</span><span class="m">0</span><span class="n">x0000FF</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>두번째 예와 같이 값을 포함한 Enum도 만들 수 있습니다. 그러나 Swift에서 할 수 있는 같은 enum마다 다른 property를 갖게 하는 Tagged Enum이라는 기능은 enum으로는 만들 수 없습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>두번째 예와 같이 값을 포함한 Enum도 만들 수 있습니다. 그러나 Swift에서 할 수 있는 같은 enum마다 다른 property를 갖게 하는 Tagged Enum이라는 기능은 enum으로는 만들 수 없습니다.</p>
 
 <p>Swift의 예를 한번 보시죠.</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="kt">Either</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span> <span class="kt">U</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="k">case</span> <span class="kt">Left</span><span class="p">(</span><span class="kt">T</span><span class="p">)</span>
     <span class="k">case</span> <span class="kt">Right</span><span class="p">(</span><span class="kt">U</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure><p>Left와 Right에서 프로퍼티의 자료형이 다릅니다. 기타 Optional에서는 Some에는 프로퍼티가 있지만 None에는 없는 것과 같은 패턴도 있습니다.</p>
+<span class="p">}</span></code></pre></figure>
+
+<p>Left와 Right에서 프로퍼티의 자료형이 다릅니다. 기타 Optional에서는 Some에는 프로퍼티가 있지만 None에는 없는 것과 같은 패턴도 있습니다.</p>
 
 <p>Kotlin에는 <code class="highlighter-rouge">sealed class</code>라는걸 이용해서 같은 것을 만들 수가 있습니다. sealed class라는 것은 상속을 금지한 클래스입니다. 그러나 그 클래스의 내부에서는 상속할 수 있습니다. 따라서 사전에 준비한 서브클래스만을 가질 수 있는 클래스가 됩니다.</p>
 
@@ -1423,7 +1596,9 @@ Unit 자료형의 값은 Unit입니다.</p>
     <span class="k">is</span> <span class="n">Sum</span> <span class="p">-&gt;</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e1</span><span class="p">)</span> <span class="p">+</span> <span class="n">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">.</span><span class="n">e2</span><span class="p">)</span>
     <span class="n">NotANumber</span> <span class="p">-&gt;</span> <span class="n">Double</span><span class="p">.</span><span class="n">NaN</span>
     <span class="c1">// the `else` clause is not required because we've covered all the cases
-</span><span class="p">}</span></code></pre></figure><p>위의 예와 같이 Smart Cast가 있으므로 when문에서는 같은 변수 이름이 이미 형변환된 상태입니다.</p>
+</span><span class="p">}</span></code></pre></figure>
+
+<p>위의 예와 같이 Smart Cast가 있으므로 when문에서는 같은 변수 이름이 이미 형변환된 상태입니다.</p>
 
 <h3 id="type-alias-">Type Alias가 없다.</h3>
 
@@ -1433,38 +1608,50 @@ Unit 자료형의 값은 Unit입니다.</p>
 
 <p>이 내용 중 쓸 수 없는 경우도 있겠지만 여기까지 읽은 사람이라면 꽤나 Kotlin이 쓰고 싶은게 아닐까요!</p>
 
-        </section><footer class="post-footer"><section class="share"><a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+Android+%EA%B0%9C%EB%B0%9C%EC%9D%84+%EC%88%98%EC%A3%BC%ED%95%B4%EC%84%9C+Kotlin%EC%9D%84+%EC%A0%9C%EB%8C%80%EB%A1%9C+%EC%8D%A8%EB%B4%A4%EB%8D%94%EB%8B%88+%EC%B5%9C%EA%B3%A0%EC%98%80%EB%8B%A4.&amp;url=http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome" onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+Android+%EA%B0%9C%EB%B0%9C%EC%9D%84+%EC%88%98%EC%A3%BC%ED%95%B4%EC%84%9C+Kotlin%EC%9D%84+%EC%A0%9C%EB%8C%80%EB%A1%9C+%EC%8D%A8%EB%B4%A4%EB%8D%94%EB%8B%88+%EC%B5%9C%EA%B3%A0%EC%98%80%EB%8B%A4.&amp;url=http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+Android+%EA%B0%9C%EB%B0%9C%EC%9D%84+%EC%88%98%EC%A3%BC%ED%95%B4%EC%84%9C+Kotlin%EC%9D%84+%EC%A0%9C%EB%8C%80%EB%A1%9C+%EC%8D%A8%EB%B4%A4%EB%8D%94%EB%8B%88+%EC%B5%9C%EA%B3%A0%EC%98%80%EB%8B%A4.&amp;u=http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome" onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+Android+%EA%B0%9C%EB%B0%9C%EC%9D%84+%EC%88%98%EC%A3%BC%ED%95%B4%EC%84%9C+Kotlin%EC%9D%84+%EC%A0%9C%EB%8C%80%EB%A1%9C+%EC%8D%A8%EB%B4%A4%EB%8D%94%EB%8B%88+%EC%B5%9C%EA%B3%A0%EC%98%80%EB%8B%A4.&amp;u=http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome"
+                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
             
-          </section></footer><div class="bottom-teaser cf">
+          </section>
+        </footer>
+        <div class="bottom-teaser cf">
           <div class="isLeft">
             <h5 class="index-headline featured"><span>Written by</span></h5>
-            <section class="author"><div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Haze Lee</h4>
               <p class="bio"></p>
               <hr>
-<p class="published">Published <time datetime="2015-10-17 09:00">17 Oct 2015</time></p>
+              <p class="published">Published <time datetime="2015-10-17 09:00">17 Oct 2015</time></p>
             </section>
-</div>
+          </div>
           
           <div class="isRight">
             <h5 class="index-headline featured"><span>Supported by</span></h5>
-            <footer class="site-footer"><section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> © 2017<br>All rights reserved.</section>
-</div>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
             </footer>
-</div>
+          </div>
         </div>
         
         <div id="disqus_thread"></div>
@@ -1478,11 +1665,13 @@ Unit 자료형의 값은 Unit입니다.</p>
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript>
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         
-      </article></main><div class="bottom-closer">
-      <div class="background-closer-image" style="background-image: url(/assets/images/background.jpg)">
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/background.jpg)">
         Image
       </div>
       <div class="inner">
@@ -1491,7 +1680,12 @@ Unit 자료형의 값은 Unit입니다.</p>
         <a href="/" class="btn">Back to Overview</a>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script><script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script><script type="text/javascript" src="/assets/js/index.js"></script><script type="text/javascript" src="/assets/js/readingTime.min.js"></script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/prism.js"></script>
+<script>
 (function ($) {
   "use strict";
   $(document).ready(function(){
@@ -1526,7 +1720,9 @@ Unit 자료형의 값은 Unit입니다.</p>
 
   });
 }(jQuery));
-</script><script type="text/javascript" src="/assets/js/prism.js"></script><script>
+</script>
+<script type="text/javascript" src="/assets/js/prism.js"></script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -1536,5 +1732,6 @@ Unit 자료형의 값은 Unit입니다.</p>
   ga('send', 'pageview');
 
 </script>
-</body>
+
+  </body>
 </html>

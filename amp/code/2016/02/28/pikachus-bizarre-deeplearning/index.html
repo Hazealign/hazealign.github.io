@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html amp lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>피카츄의 기묘한 딥러닝 체험</title>
-<link rel="canonical" href="http://realignist.me/code/2016/02/28/pikachus-bizarre-deeplearning.html">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<style amp-custom>.radius-half {
+  <head>
+    <meta charset="utf-8">
+    <title>피카츄의 기묘한 딥러닝 체험</title>
+    <link rel="canonical" href="http://realignist.me/code/2016/02/28/pikachus-bizarre-deeplearning.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>.radius-half {
   border-radius: 50%; }
 
 .site-header {
@@ -51,15 +50,17 @@ h5 {
   text-align: center;
   padding-top: 10%; }
 </style>
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-</head>
-<body>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script><header class="site-header"><a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half"></amp-img></span></a>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
       <div class="page-links">
         <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
       </div>
-    </header><h1 class="post-title">
+    </header>
+    <h1 class="post-title">
       피카츄의 기묘한 딥러닝 체험
     </h1>
     <span>2016년 02월 28일 작성 - Haze Lee.</span>
@@ -93,8 +94,7 @@ h5 {
 7.5로 설치를 성공했다.</li>
   <li>Ubuntu 14.04.4 기준 mdm이라는 service는 존재하지 않는다. Cuda(와 엔비디아의 드라이버)를 설치하기 위해서는 X
 Window는 꺼져있어야 한다. 그러기 위해서는 “sudo service lightdm stop / start / restart”를 이용하자.</li>
-</ol>
-<p>Caffe 빌드를 위해서는 위에서 언급한 Reddit의 글대로 진행하면 되는데 나는 CUDNN이나 CPU_ONLY, Intel Composer XE같은 것들의 설정을 하지 않고 바로 빌드를 했다. 다른 점이 있다면 나는 <a href="https://github.com/NVIDIA/caffe">엔비디아에서 Fork한 Caffe</a>를 빌드했다는 점이다. 둘 다 써본 결과, 큰 차이가 없기 때문에 어느
+</ol><p>Caffe 빌드를 위해서는 위에서 언급한 Reddit의 글대로 진행하면 되는데 나는 CUDNN이나 CPU_ONLY, Intel Composer XE같은 것들의 설정을 하지 않고 바로 빌드를 했다. 다른 점이 있다면 나는 <a href="https://github.com/NVIDIA/caffe">엔비디아에서 Fork한 Caffe</a>를 빌드했다는 점이다. 둘 다 써본 결과, 큰 차이가 없기 때문에 어느
 쪽을 사용해도 큰 차이는 없을 것이다.</p>
 
 <p>Google의 DeepDream을 설치할 필요는 없지만, Caffe 내의 모델로 “bvlc_googlenet.caffemodel”는 꼭 설치해야한다.</p>
@@ -134,13 +134,12 @@ nvidia-settings</code></pre></figure><p>여러가지 정책들을 통해 GPU Fan
   <li><a href="https://www.reddit.com/r/deepdream/comments/3cd1yf/howto_install_on_ubuntulinux_mint_including_cuda/">Ubuntu CUDA, Caffe Guide</a></li>
   <li><a href="https://developer.nvidia.com/cuda-downloads">CUDA Download</a></li>
 </ul>
-<h5> <!-- footer start -->
+    <h5> <!-- footer start -->
 
 <footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
          <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
 </div>
-</footer><!-- footer end -->
-</h5>
-</body>
+</footer><!-- footer end --></h5>
+  </body>
 </html>

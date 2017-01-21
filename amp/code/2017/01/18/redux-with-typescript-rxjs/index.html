@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html amp lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2</title>
-<link rel="canonical" href="http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<style amp-custom>.radius-half {
+  <head>
+    <meta charset="utf-8">
+    <title>Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2</title>
+    <link rel="canonical" href="http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-custom>.radius-half {
   border-radius: 50%; }
 
 .site-header {
@@ -51,21 +50,23 @@ h5 {
   text-align: center;
   padding-top: 10%; }
 </style>
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-</head>
-<body>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-    <script async src="https://cdn.ampproject.org/v0.js"></script><header class="site-header"><a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half"></amp-img></span></a>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="logo"><span class="logo"><amp-img src="/assets/images/pikachu_logo.png" width="48" height="48" class="radius-half" /></span></a>
       <div class="page-links">
         <a class="page-link" href="/">Home</a> • <a class="page-link" href="/about/">About</a>
       </div>
-    </header><h1 class="post-title">
+    </header>
+    <h1 class="post-title">
       Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2
     </h1>
     <span>2017년 01월 18일 작성 - Haze Lee.</span>
     <h3 id="section">글에 앞서,</h3>
 
-<p>이 글은 <a href="https://github.com/ovrmrw" class="user-mention">@ovrmrw</a>님의 <a href="http://qiita.com/ovrmrw/items/8cca6f40d5f78909a3dc">글</a>을 한국어로 번역한 글입니다. 이미 꽤 인기를 얻어서 최신 버전까지 나온 글로, 제가 번역한 것은 2번째 버전입니다. 좋은 글을 번역할 수 있도록 흔쾌히 허락해주신 ovrmrw님께 다시 한번 감사의 말씀을 드립니다. 그리고 번역하다가 헷갈려할 때 도와주신 최종찬 형(<a href="https://github.com/disjukr" class="user-mention">@disjukr</a>), 이재호님(<a href="https://github.com/sairion" class="user-mention">@sairion</a>)께도 감사하다는 말씀 드립니다. :D</p>
+<p>이 글은 @ovrmrw님의 <a href="http://qiita.com/ovrmrw/items/8cca6f40d5f78909a3dc">글</a>을 한국어로 번역한 글입니다. 이미 꽤 인기를 얻어서 최신 버전까지 나온 글로, 제가 번역한 것은 2번째 버전입니다. 좋은 글을 번역할 수 있도록 흔쾌히 허락해주신 ovrmrw님께 다시 한번 감사의 말씀을 드립니다. 그리고 번역하다가 헷갈려할 때 도와주신 최종찬 형(@disjukr), 이재호님(@sairion)께도 감사하다는 말씀 드립니다. :D</p>
 
 <p><a href="http://qiita.com/advent-calendar/2016/redux">Redux Advent Calendar 2016</a> 15일차입니다. 치키 씨입니다.</p>
 
@@ -78,8 +79,7 @@ h5 {
 <ol>
 <li>State와 Reducer에 Promise를 넣는건 좋지 못했던 것 같습니다.</li>
   <li>Action의 dispatch 순서를 무시하고, 비동기 처리가 끝난 순서대로 처리가 흐르는 구조로 되어있었다.</li>
-</ol>
-<p>1번에 관해서는 처음에는 문제가 없다고 생각했었지만, 점점 시간이 흘러 그 생각은 젊은 치기였던 것 같다고 생각하게 되었습니다. 2번은 요구사항에 따라선 그것대로 괜찮다고 생각되지만, 그래도 기본적으로 dispatch 순서대로 처리하는 것이 더 올바른 동작이라고 생각하게 되었습니다.</p>
+</ol><p>1번에 관해서는 처음에는 문제가 없다고 생각했었지만, 점점 시간이 흘러 그 생각은 젊은 치기였던 것 같다고 생각하게 되었습니다. 2번은 요구사항에 따라선 그것대로 괜찮다고 생각되지만, 그래도 기본적으로 dispatch 순서대로 처리하는 것이 더 올바른 동작이라고 생각하게 되었습니다.</p>
 
 <p>“RxJS로 Redux를 쓰자”라는 테마는 이번에 글을 다시 쓰면서 이제서야 본질에 접근할 수 있었다고 생각합니다.</p>
 
@@ -243,8 +243,7 @@ h5 {
 <ul>
 <li>Promise 혹은 Observable, 즉 비동기라면 <code class="highlighter-rouge">Obervable.from()</code>로 비동기를 해결해서 돌려줍니다.</li>
   <li>그 외, 동기식이라면 <code class="highlighter-rouge">Observable.of()</code>로 단순히 Observable로 변환해줍니다.</li>
-</ul>
-<p>이것을 통해 <code class="highlighter-rouge">Observable | Observable&gt;</code>이었던 Action의 타입은 <code class="highlighter-rouge">Observable</code>로 통일됩니다.</p>
+</ul><p>이것을 통해 <code class="highlighter-rouge">Observable | Observable&gt;</code>이었던 Action의 타입은 <code class="highlighter-rouge">Observable</code>로 통일됩니다.</p>
 
 <p>게다가 <code class="highlighter-rouge">concatMap</code>의 효과에 의해 Action의 dispatch 순서를 준수합니다. 멋지네요. 이 Reducer의 앞에서 비동기를 해결하자는 어프로치는 redux-observable에서도 통하는 부분이 있습니다.</p>
 
@@ -318,7 +317,6 @@ h5 {
     <div class="inner">
          <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
 </div>
-</footer><!-- footer end -->
-</h5>
-</body>
+</footer><!-- footer end --></h5>
+  </body>
 </html>
