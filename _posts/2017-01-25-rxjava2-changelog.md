@@ -807,9 +807,9 @@ public static <T> Subscriber<T> mockSubscriber() {
 | `single(T)`                    | `Observable` | `Single`      | 유일한 항목 혹은 미리 지정한 항목을 방출합니다.              |
 | `singleElement()`              | `Observable` | `Maybe`       | 유일한 항목을 방출하거나 완료합니다.                     |
 | `toList()`                     | `Observable` | `Single`      | `List`로 항목을 모읍니다.                        |
-| `toMap()`                      | `Observable` | `Single>      | `Map`으로 항목을 모읍니다.                        |
+| `toMap()`                      | `Observable` | `Single`      | `Map`으로 항목을 모읍니다.                        |
 | `toMultimap()`                 | `Observable` | `Single`      | `Map`과 콜렉션으로 항목을 모읍니다.                   |
-| `toSortedList()`               | `Observable` | `Single>      | `List`로 항목을 모으고 정렬합니다.                   |
+| `toSortedList()`               | `Observable` | `Single`      | `List`로 항목을 모으고 정렬합니다.                   |
 
 ### 삭제된 사항
 
