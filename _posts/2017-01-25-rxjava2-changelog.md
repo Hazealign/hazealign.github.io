@@ -389,14 +389,14 @@ Flowable.range(1, 3).subscribe(new Subscriber<Integer>() {
 
 이는 다음과 같이 출력될 것입니다.
 
-{% endhighlight %}
+```
 OnSubscribe start
 1
 2
 3
 Done
 OnSubscribe end
-{% endhighlight %}
+```
 
 문제는 `request`를 호출한 뒤  `onSubscribe/onStart`에서 초기화를 수행할 때 문제가 발생하고, `onNext`는 초기화의 결과를 볼 수도 있고 보지 않을 수도 있습니다. 이 상황을 피하려면 onSubscribe / onStart에서 **모든 초기화가 완료된 후**에 request를 호출해야 합니다.
 
