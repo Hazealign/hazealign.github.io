@@ -552,7 +552,8 @@ body {
     color: #333;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
-    hyphens: auto; }
+    hyphens: auto;
+    overflow-wrap: break-word; }
   .post .post-content a {
     color: #333;
     text-decoration: underline; }
