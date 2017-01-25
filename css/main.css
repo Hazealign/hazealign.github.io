@@ -523,6 +523,20 @@ body {
   width: 100%;
   font-family: local("Apple SD Gothic Neo"), local("Nanum Gothic");
   color: #333; }
+  .post .post-content table {
+    display: block;
+    width: 100%;
+    overflow: auto; }
+  .post .post-content table th {
+    font-weight: bold; }
+  .post .post-content table th, .post .post-content table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd; }
+  .post .post-content table tr {
+    background-color: #fff;
+    border-top: 1px solid #ccc; }
+  .post .post-content table tr:nth-child(2n) {
+    background-color: #f8f8f8; }
   .post .post-content h1, .post .post-content h2, .post .post-content h3 {
     font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica, sans-serif; }
   .post .post-content h3, .post .post-content h4, .post .post-content h5, .post .post-content h6 {
