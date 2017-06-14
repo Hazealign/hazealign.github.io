@@ -61,7 +61,7 @@ task buildDocker(type: Docker) {
 똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.
 
 {% highlight shell %}
-> gradle -Ddocker.push=true build shadowJar buildDocker
+gradle -Ddocker.push=true build shadowJar buildDocker
 {% endhighlight %}
 
 ## 자동으로 이미지를 만들자.
@@ -119,12 +119,13 @@ branches:
 - [mesos/chronos](https://github.com/mesos/chronos)를 통해 스케쥴링을 돌릴 수 있다.
 - 설치와 관리가 비교적 어려운 편이다.
 
+
 필자의 프로젝트는 아직 릴리즈되지 않았기 때문에 아직은 개발 환경에서 watchtower만 쓰고 있다. 다음과 같은 커맨드로 watchover를 구성할 수 있다.
 
 {% highlight shell %}
 # watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.
 # 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.
-> docker run -d \
+docker run -d \
   --name watchtower \
   -v /var/run/docker.sock:/var/run/docker.sock \
   v2tec/watchtower
