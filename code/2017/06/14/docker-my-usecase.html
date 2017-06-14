@@ -245,24 +245,25 @@ pre[class*="language-"] {
 <p>필자는 <a href="https://github.com/advantageous/vertx-node-ec2-eventbus-example/wiki/Step-7-Adding-docker-support-to-gradle-and-deploying-our-image-to-Mesos-Marathon#add-docker-support-to-gradle">이 글</a>을 참조했고, <code class="highlighter-rouge">buildscript.dependencies</code>에 <code class="highlighter-rouge">gradle-docker</code> 플러그인을 추가한 것 이외에는 다음 코드만으로 Docker 이미지를 생성할 수 있게 되었다.</p>
 
 <figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">docker</span> <span class="o">{</span>
-<span class="n">baseImage</span> <span class="s2">"vertx/vertx3-exec"</span>
-<span class="n">maintainer</span> <span class="s1">'Haze Lee "hazelee@realignist.me"'</span>
-<span class="n">registry</span>
+    <span class="n">baseImage</span> <span class="s2">"vertx/vertx3-exec"</span>
+    <span class="n">maintainer</span> <span class="s1">'Haze Lee "hazelee@realignist.me"'</span>
+    <span class="n">registry</span>
 <span class="o">}</span>
 
 <span class="n">task</span> <span class="nf">buildDocker</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Docker</span><span class="o">)</span> <span class="o">{</span>
-<span class="n">tagVersion</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">(</span><span class="s2">"COMMIT"</span><span class="o">)</span> <span class="o">?:</span> <span class="n">project</span><span class="o">.</span><span class="na">version</span>
-<span class="n">push</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="s2">"docker.push"</span><span class="o">)</span>
-<span class="n">applicationName</span> <span class="o">=</span> <span class="s2">"realignist/..."</span>
-<span class="n">tag</span> <span class="o">=</span> <span class="s2">"${applicationName}"</span>
+    <span class="n">tagVersion</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">(</span><span class="s2">"COMMIT"</span><span class="o">)</span> <span class="o">?:</span> <span class="n">project</span><span class="o">.</span><span class="na">version</span>
+    <span class="n">push</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="s2">"docker.push"</span><span class="o">)</span>
+    <span class="n">applicationName</span> <span class="o">=</span> <span class="s2">"realignist/..."</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="s2">"${applicationName}"</span>
 
-<span class="n">addFile</span> <span class="o">{</span>
-<span class="n">from</span> <span class="s2">"${project.shadowJar.outputs.files.singleFile}"</span>
-<span class="n">into</span> <span class="s2">"/opt/hello/"</span>
-<span class="o">}</span>
-<span class="n">exposePort</span> <span class="mi">8080</span>
-<span class="n">entryPoint</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"sh"</span><span class="o">,</span>  <span class="s2">"-c"</span><span class="o">]</span>
-<span class="n">defaultCommand</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"java -jar /opt/hello/${project.name}-${project.version}-fat.jar"</span><span class="o">]</span>
+    <span class="n">addFile</span> <span class="o">{</span>
+        <span class="n">from</span> <span class="s2">"${project.shadowJar.outputs.files.singleFile}"</span>
+        <span class="n">into</span> <span class="s2">"/opt/hello/"</span>
+    <span class="o">}</span>
+
+    <span class="n">exposePort</span> <span class="mi">8080</span>
+    <span class="n">entryPoint</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"sh"</span><span class="o">,</span>  <span class="s2">"-c"</span><span class="o">]</span>
+    <span class="n">defaultCommand</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"java -jar /opt/hello/${project.name}-${project.version}-fat.jar"</span><span class="o">]</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.</p>
@@ -276,27 +277,27 @@ pre[class*="language-"] {
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">sudo</span><span class="pi">:</span> <span class="s">false</span>
 <span class="s">language</span><span class="pi">:</span> <span class="s">java</span>
 <span class="s">jdk</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">oraclejdk8</span>
+  <span class="pi">-</span> <span class="s">oraclejdk8</span>
 
 <span class="s">services</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">docker</span>
+  <span class="pi">-</span> <span class="s">docker</span>
 
 <span class="s">before_script</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">chmod +x gradlew</span>
+  <span class="pi">-</span> <span class="s">chmod +x gradlew</span>
 
 <span class="s">before_install</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"</span>
+  <span class="pi">-</span> <span class="s">docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"</span>
 
 <span class="s">script</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">gradle -Ddocker.push=true build shadowJar buildDocker</span>
+  <span class="pi">-</span> <span class="s">gradle -Ddocker.push=true build shadowJar buildDocker</span>
 
 <span class="s">env</span><span class="pi">:</span>
-<span class="s">global</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">COMMIT=${TRAVIS_COMMIT::7}</span>
+  <span class="s">global</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">COMMIT=${TRAVIS_COMMIT::7}</span>
 
 <span class="s">branches</span><span class="pi">:</span>
-<span class="s">only</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="s">master</span></code></pre></figure>
+  <span class="s">only</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">master</span></code></pre></figure>
 
 <p>위 yaml 파일은 필자가 실제로 쓰고 있는 Travis 셋팅 파일이다. Travis의 프로젝트 셋팅에서 DockerHub의 계정 정보(<code class="highlighter-rouge">$DOCER_EMAIL</code>, <code class="highlighter-rouge">DOCKER_USERNAME</code>, <code class="highlighter-rouge">DOCKER_PASSWORD</code>)를 미리 지정해두면 <code class="highlighter-rouge">master</code> 브랜치에 새 커밋이 올라올 때마다 이미지를 빌드하고 업로드한다. gradle 코드 부분을 보면 알겠지만 <code class="highlighter-rouge">COMMIT</code>이라는 이름의 환경변수가 있으면 생성되는 도커 이미지의 버전을 이 환경변수로 올리도록 해놨기 때문에, <code class="highlighter-rouge">env.global</code>에 <code class="highlighter-rouge">COMMIT</code>이라는 환경변수를 추가해뒀다. 저렇게 <code class="highlighter-rouge">${TRAVIS_COMMIT::7}</code>이라 표현해두면 빌드가 실행되는 프로젝트 마지막 커밋의 해쉬값에서 7자만 따오는게 된다.</p>
 
@@ -329,9 +330,9 @@ pre[class*="language-"] {
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.</span>
 <span class="c"># 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.</span>
 <span class="gp">&gt; </span>docker run -d <span class="se">\</span>
---name watchtower <span class="se">\</span>
--v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
-v2tec/watchtower</code></pre></figure>
+  --name watchtower <span class="se">\</span>
+  -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
+  v2tec/watchtower</code></pre></figure>
 
 <h2 id="section-3">후기</h2>
 

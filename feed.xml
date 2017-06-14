@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Jun 2017 15:15:02 +0900</pubDate>
-    <lastBuildDate>Wed, 14 Jun 2017 15:15:02 +0900</lastBuildDate>
+    <pubDate>Wed, 14 Jun 2017 15:20:01 +0900</pubDate>
+    <lastBuildDate>Wed, 14 Jun 2017 15:20:01 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -44,24 +44,25 @@
 &lt;p&gt;필자는 &lt;a href=&quot;https://github.com/advantageous/vertx-node-ec2-eventbus-example/wiki/Step-7-Adding-docker-support-to-gradle-and-deploying-our-image-to-Mesos-Marathon#add-docker-support-to-gradle&quot;&gt;이 글&lt;/a&gt;을 참조했고, &lt;code class=&quot;highlighter-rouge&quot;&gt;buildscript.dependencies&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;gradle-docker&lt;/code&gt; 플러그인을 추가한 것 이외에는 다음 코드만으로 Docker 이미지를 생성할 수 있게 되었다.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-groovy&quot; data-lang=&quot;groovy&quot;&gt;&lt;span class=&quot;n&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;baseImage&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vertx/vertx3-exec&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;maintainer&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Haze Lee &quot;hazelee@realignist.me&quot;'&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;registry&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;baseImage&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vertx/vertx3-exec&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;maintainer&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Haze Lee &quot;hazelee@realignist.me&quot;'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;registry&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;buildDocker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Docker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tagVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;COMMIT&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBoolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker.push&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;applicationName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;realignist/...&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;${applicationName}&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tagVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;COMMIT&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBoolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;docker.push&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;applicationName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;realignist/...&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;${applicationName}&quot;&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;addFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;${project.shadowJar.outputs.files.singleFile}&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/opt/hello/&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;exposePort&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;entryPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sh&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;-c&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;defaultCommand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;java -jar /opt/hello/${project.name}-${project.version}-fat.jar&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;addFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;${project.shadowJar.outputs.files.singleFile}&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/opt/hello/&quot;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;exposePort&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;entryPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sh&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;-c&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;defaultCommand&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;java -jar /opt/hello/${project.name}-${project.version}-fat.jar&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.&lt;/p&gt;
@@ -75,27 +76,27 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;java&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;jdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;oraclejdk8&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;oraclejdk8&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x gradlew&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x gradlew&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;before_install&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker login -e=&quot;$DOCKER_EMAIL&quot; -u=&quot;$DOCKER_USERNAME&quot; -p=&quot;$DOCKER_PASSWORD&quot;&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker login -e=&quot;$DOCKER_EMAIL&quot; -u=&quot;$DOCKER_USERNAME&quot; -p=&quot;$DOCKER_PASSWORD&quot;&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gradle -Ddocker.push=true build shadowJar buildDocker&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gradle -Ddocker.push=true build shadowJar buildDocker&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;COMMIT=${TRAVIS_COMMIT::7}&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;COMMIT=${TRAVIS_COMMIT::7}&lt;/span&gt;
 
 &lt;span class=&quot;s&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;s&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+  &lt;span class=&quot;s&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;위 yaml 파일은 필자가 실제로 쓰고 있는 Travis 셋팅 파일이다. Travis의 프로젝트 셋팅에서 DockerHub의 계정 정보(&lt;code class=&quot;highlighter-rouge&quot;&gt;$DOCER_EMAIL&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DOCKER_USERNAME&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DOCKER_PASSWORD&lt;/code&gt;)를 미리 지정해두면 &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; 브랜치에 새 커밋이 올라올 때마다 이미지를 빌드하고 업로드한다. gradle 코드 부분을 보면 알겠지만 &lt;code class=&quot;highlighter-rouge&quot;&gt;COMMIT&lt;/code&gt;이라는 이름의 환경변수가 있으면 생성되는 도커 이미지의 버전을 이 환경변수로 올리도록 해놨기 때문에, &lt;code class=&quot;highlighter-rouge&quot;&gt;env.global&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;COMMIT&lt;/code&gt;이라는 환경변수를 추가해뒀다. 저렇게 &lt;code class=&quot;highlighter-rouge&quot;&gt;${TRAVIS_COMMIT::7}&lt;/code&gt;이라 표현해두면 빌드가 실행되는 프로젝트 마지막 커밋의 해쉬값에서 7자만 따오는게 된다.&lt;/p&gt;
 
@@ -128,9 +129,9 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.&lt;/span&gt;
 &lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;docker run -d &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
---name watchtower &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--v /var/run/docker.sock:/var/run/docker.sock &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-v2tec/watchtower&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+  --name watchtower &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -v /var/run/docker.sock:/var/run/docker.sock &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  v2tec/watchtower&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;section-3&quot;&gt;후기&lt;/h2&gt;
 
