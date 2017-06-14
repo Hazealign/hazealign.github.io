@@ -3,7 +3,7 @@ layout: post
 title: "내가 Docker를 시작했던 방법"
 date: 2017-06-14 00:00:00
 categories: Code
-tags: docker 도커 container kubernetes mesosphere watchtower 배포 자동화
+tags: featured docker 도커 container kubernetes mesosphere watchtower 배포 자동화
 ---
 
 요즘 세상에 Docker를 들어보지 않은 소프트웨어 개발자는 꽤나 드물 것이다. Docker가 컨테이너를 이용한 격리 환경을 만들어주고, 배포나 관리 등에 이점이 있다는걸 알고 있는 사람도 많지만 그럼에도 불구하고 Docker를 쓰기엔 주저하는 일이 많다. 필자 또한 최근까지 Docker가 어려운 존재라고 생각했었고 지금까지 도입하는걸 주저하고 있었다. 필자는 "이번엔 무슨 일이 있어도 내가 Docker를 써봐야겠다!"라는 일념으로 새로 시작하는 프로젝트에 Docker를 도입하게 되었는데 이게 생각보다 너무 간단한 일이었기 때문에 이번 글에서는 필자가 어떻게 Docker를 시작하게 되었는지를 공유하려고 한다. 
