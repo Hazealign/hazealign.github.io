@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "내가 Docker를 시작했던 방법"
-date: 2017-06-14 12:00:00
+date: 2017-06-14 00:00:00
 categories: Code
 tags: docker 도커 container kubernetes mesosphere watchtower 배포 자동화
 ---
