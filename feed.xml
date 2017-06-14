@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Jun 2017 15:26:10 +0900</pubDate>
-    <lastBuildDate>Wed, 14 Jun 2017 15:26:10 +0900</lastBuildDate>
+    <pubDate>Wed, 14 Jun 2017 15:35:10 +0900</pubDate>
+    <lastBuildDate>Wed, 14 Jun 2017 15:35:10 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -112,16 +112,25 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/v2tec/watchtower&quot;&gt;v2tec/watchtower&lt;/a&gt;는 DockerHub 등에서 베이스 이미지가 업데이트되면 그걸 감지해서 새 이미지를 받아서 재시작해주는 툴이다. 처음 시작할 때만 셋팅해주면 되기 때문에 서버 노드가 적을 때 고려해볼 수 있다.&lt;/li&gt;
-  &lt;li&gt;만약 노드 수가 늘어난다면… 이제 정말로 여러 컨테이너를 관리해주는 Container Orchestration 도구가 필요할 것이다.&lt;/li&gt;
-  &lt;li&gt;Docker에서 클러스터를 위해 &lt;a href=&quot;https://docs.docker.com/engine/swarm/&quot;&gt;Swarm&lt;/a&gt;이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 &lt;a href=&quot;https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html&quot;&gt;subicura님의 글&lt;/a&gt;을 강력 추천한다.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt;는 구글 클라우드에서 도커 컨테이너를 관리해주기 위해 만든 오픈소스 도구이다. 로컬 머신이나 싱글 노드에서는 Minikube를 통해 로컬에서도 실행할 수 있다.&lt;/li&gt;
-  &lt;li&gt;https://www.slideshare.net/seungyongoh3/ndc17-kubernetes&lt;/li&gt;
-  &lt;li&gt;https://www.slideshare.net/naver-labs/docker-kubernetes&lt;/li&gt;
-  &lt;li&gt;https://1ambda.github.io/infrastructure/container/kubernetes-intro/&lt;/li&gt;
-  &lt;li&gt;트위터나 Airbnb, 애플&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, 우버 등이 쓰고 있는 분산 시스템 커널인 아파치의 &lt;a href=&quot;http://mesos.apache.org/&quot;&gt;Mesos&lt;/a&gt;도 있다. &lt;a href=&quot;https://mesosphere.com/solutions/container-orchestration/&quot;&gt;Mesosphere&lt;/a&gt;라는 회사에서 만든 &lt;a href=&quot;https://github.com/mesosphere/marathon&quot;&gt;Marathon&lt;/a&gt;을 통해 컨테이너를 관리할 수 있다.&lt;/li&gt;
-  &lt;li&gt;Mesos는 &lt;a href=&quot;https://zookeeper.apache.org/&quot;&gt;Zookeeper&lt;/a&gt;를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mesos/chronos&quot;&gt;mesos/chronos&lt;/a&gt;를 통해 스케쥴링을 돌릴 수 있다.&lt;/li&gt;
-  &lt;li&gt;설치와 관리가 비교적 어려운 편이다.&lt;/li&gt;
+  &lt;li&gt;만약 노드 수가 늘어난다면… 이제 정말로 여러 컨테이너를 관리해주는 Container Orchestration 도구가 필요할 것이다.
+    &lt;ul&gt;
+      &lt;li&gt;Docker에서 클러스터를 위해 &lt;a href=&quot;https://docs.docker.com/engine/swarm/&quot;&gt;Swarm&lt;/a&gt;이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 &lt;a href=&quot;https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html&quot;&gt;subicura님의 글&lt;/a&gt;을 강력 추천한다.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt;는 구글 클라우드에서 도커 컨테이너를 관리해주기 위해 만든 오픈소스 도구이다. 로컬 머신이나 싱글 노드에서는 Minikube를 통해 로컬에서도 실행할 수 있다.
+        &lt;ul&gt;
+          &lt;li&gt;https://www.slideshare.net/seungyongoh3/ndc17-kubernetes&lt;/li&gt;
+          &lt;li&gt;https://www.slideshare.net/naver-labs/docker-kubernetes&lt;/li&gt;
+          &lt;li&gt;https://1ambda.github.io/infrastructure/container/kubernetes-intro/&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;트위터나 Airbnb, 애플&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, 우버 등이 쓰고 있는 분산 시스템 커널인 아파치의 &lt;a href=&quot;http://mesos.apache.org/&quot;&gt;Mesos&lt;/a&gt;도 있다. &lt;a href=&quot;https://mesosphere.com/solutions/container-orchestration/&quot;&gt;Mesosphere&lt;/a&gt;라는 회사에서 만든 &lt;a href=&quot;https://github.com/mesosphere/marathon&quot;&gt;Marathon&lt;/a&gt;을 통해 컨테이너를 관리할 수 있다.
+        &lt;ul&gt;
+          &lt;li&gt;Mesos는 &lt;a href=&quot;https://zookeeper.apache.org/&quot;&gt;Zookeeper&lt;/a&gt;를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://github.com/mesos/chronos&quot;&gt;mesos/chronos&lt;/a&gt;를 통해 스케쥴링을 돌릴 수 있다.&lt;/li&gt;
+          &lt;li&gt;설치와 관리가 비교적 어려운 편이다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;필자의 프로젝트는 아직 릴리즈되지 않았기 때문에 아직은 개발 환경에서 watchtower만 쓰고 있다. 다음과 같은 커맨드로 watchover를 구성할 수 있다.&lt;/p&gt;

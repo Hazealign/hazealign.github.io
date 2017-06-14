@@ -156,18 +156,27 @@ h5 {
 <ul>
 <li>
 <a href="https://github.com/v2tec/watchtower">v2tec/watchtower</a>는 DockerHub 등에서 베이스 이미지가 업데이트되면 그걸 감지해서 새 이미지를 받아서 재시작해주는 툴이다. 처음 시작할 때만 셋팅해주면 되기 때문에 서버 노드가 적을 때 고려해볼 수 있다.</li>
-  <li>만약 노드 수가 늘어난다면… 이제 정말로 여러 컨테이너를 관리해주는 Container Orchestration 도구가 필요할 것이다.</li>
-  <li>Docker에서 클러스터를 위해 <a href="https://docs.docker.com/engine/swarm/">Swarm</a>이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 <a href="https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html">subicura님의 글</a>을 강력 추천한다.</li>
-  <li>
-<a href="https://kubernetes.io/">Kubernetes</a>는 구글 클라우드에서 도커 컨테이너를 관리해주기 위해 만든 오픈소스 도구이다. 로컬 머신이나 싱글 노드에서는 Minikube를 통해 로컬에서도 실행할 수 있다.</li>
-  <li>https://www.slideshare.net/seungyongoh3/ndc17-kubernetes</li>
-  <li>https://www.slideshare.net/naver-labs/docker-kubernetes</li>
-  <li>https://1ambda.github.io/infrastructure/container/kubernetes-intro/</li>
-  <li>트위터나 Airbnb, 애플<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, 우버 등이 쓰고 있는 분산 시스템 커널인 아파치의 <a href="http://mesos.apache.org/">Mesos</a>도 있다. <a href="https://mesosphere.com/solutions/container-orchestration/">Mesosphere</a>라는 회사에서 만든 <a href="https://github.com/mesosphere/marathon">Marathon</a>을 통해 컨테이너를 관리할 수 있다.</li>
-  <li>Mesos는 <a href="https://zookeeper.apache.org/">Zookeeper</a>를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.</li>
-  <li>
+  <li>만약 노드 수가 늘어난다면… 이제 정말로 여러 컨테이너를 관리해주는 Container Orchestration 도구가 필요할 것이다.
+    <ul>
+<li>Docker에서 클러스터를 위해 <a href="https://docs.docker.com/engine/swarm/">Swarm</a>이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 <a href="https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html">subicura님의 글</a>을 강력 추천한다.</li>
+      <li>
+<a href="https://kubernetes.io/">Kubernetes</a>는 구글 클라우드에서 도커 컨테이너를 관리해주기 위해 만든 오픈소스 도구이다. 로컬 머신이나 싱글 노드에서는 Minikube를 통해 로컬에서도 실행할 수 있다.
+        <ul>
+<li>https://www.slideshare.net/seungyongoh3/ndc17-kubernetes</li>
+          <li>https://www.slideshare.net/naver-labs/docker-kubernetes</li>
+          <li>https://1ambda.github.io/infrastructure/container/kubernetes-intro/</li>
+        </ul>
+</li>
+      <li>트위터나 Airbnb, 애플<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, 우버 등이 쓰고 있는 분산 시스템 커널인 아파치의 <a href="http://mesos.apache.org/">Mesos</a>도 있다. <a href="https://mesosphere.com/solutions/container-orchestration/">Mesosphere</a>라는 회사에서 만든 <a href="https://github.com/mesosphere/marathon">Marathon</a>을 통해 컨테이너를 관리할 수 있다.
+        <ul>
+<li>Mesos는 <a href="https://zookeeper.apache.org/">Zookeeper</a>를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.</li>
+          <li>
 <a href="https://github.com/mesos/chronos">mesos/chronos</a>를 통해 스케쥴링을 돌릴 수 있다.</li>
-  <li>설치와 관리가 비교적 어려운 편이다.</li>
+          <li>설치와 관리가 비교적 어려운 편이다.</li>
+        </ul>
+</li>
+    </ul>
+</li>
 </ul><p>필자의 프로젝트는 아직 릴리즈되지 않았기 때문에 아직은 개발 환경에서 watchtower만 쓰고 있다. 다음과 같은 커맨드로 watchover를 구성할 수 있다.</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.</span>
