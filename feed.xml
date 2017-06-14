@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Jun 2017 15:20:01 +0900</pubDate>
-    <lastBuildDate>Wed, 14 Jun 2017 15:20:01 +0900</lastBuildDate>
+    <pubDate>Wed, 14 Jun 2017 15:26:10 +0900</pubDate>
+    <lastBuildDate>Wed, 14 Jun 2017 15:26:10 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -67,7 +67,7 @@
 
 &lt;p&gt;똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;gradle -Ddocker.push&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;build shadowJar buildDocker&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;gradle -Ddocker.push&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true &lt;/span&gt;build shadowJar buildDocker&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;자동으로 이미지를 만들자.&lt;/h2&gt;
 
@@ -128,7 +128,7 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;docker run -d &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+docker run -d &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   --name watchtower &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   -v /var/run/docker.sock:/var/run/docker.sock &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   v2tec/watchtower&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;

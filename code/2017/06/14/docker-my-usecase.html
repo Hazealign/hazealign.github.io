@@ -268,7 +268,7 @@ pre[class*="language-"] {
 
 <p>똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">&gt; </span>gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure>
 
 <h2 id="section-1">자동으로 이미지를 만들자.</h2>
 
@@ -329,7 +329,7 @@ pre[class*="language-"] {
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.</span>
 <span class="c"># 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.</span>
-<span class="gp">&gt; </span>docker run -d <span class="se">\</span>
+docker run -d <span class="se">\</span>
   --name watchtower <span class="se">\</span>
   -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
   v2tec/watchtower</code></pre></figure>

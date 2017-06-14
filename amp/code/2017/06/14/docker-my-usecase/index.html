@@ -114,7 +114,7 @@ h5 {
     <span class="n">defaultCommand</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"java -jar /opt/hello/${project.name}-${project.version}-fat.jar"</span><span class="o">]</span>
 <span class="o">}</span></code></pre></figure><p>똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">&gt; </span>gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure><h2 id="section-1">자동으로 이미지를 만들자.</h2>
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure><h2 id="section-1">자동으로 이미지를 만들자.</h2>
 
 <p>놀랍게도 DockerHub는 GitHub 연동을 통해 자동으로 이미지 빌드를 뽑아낼 수 있다. <a href="https://docs.docker.com/docker-hub/builds/">이 문서</a>에 자세히 나와있는데, Dockerfile이 프로젝트 안에 있어야하고 또 많은 프로젝트들이 의존성 관계도 있기 때문에 이 기능을 그대로 쓰기는 어렵다. 하지만 우리에겐 Travis나 CircleCI같은 CI 서비스가 있고 우리는 이걸 활용하면 커밋에 따라 자동으로 이미지를 만들고 업로드할 수 있다.</p>
 
@@ -172,7 +172,7 @@ h5 {
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.</span>
 <span class="c"># 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.</span>
-<span class="gp">&gt; </span>docker run -d <span class="se">\</span>
+docker run -d <span class="se">\</span>
   --name watchtower <span class="se">\</span>
   -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
   v2tec/watchtower</code></pre></figure><h2 id="section-3">후기</h2>
