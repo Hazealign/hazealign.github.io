@@ -3,7 +3,7 @@ layout: post
 title: Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2
 date: 2017-01-18 12:00:00 +09:00
 categories: Code
-tags: featured development redux javascript rxjs angular typescript
+tags: development redux javascript rxjs angular typescript
 ---
 
 ### 글에 앞서,

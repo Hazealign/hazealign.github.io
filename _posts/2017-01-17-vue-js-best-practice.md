@@ -3,7 +3,7 @@ layout: post
 title: Vue.js를 쓸 때의 모범 사례에 대해서 생각해보다.
 date: 2017-01-17 12:00:00 +09:00
 categories: Code
-tags: featured development vue vuejs jsx javascript 
+tags: development vue vuejs jsx javascript 
 ---
 
 ### 글에 앞서,
