@@ -36,24 +36,25 @@ tags: featured docker 도커 container kubernetes mesosphere watchtower 배포 �
 
 {% highlight groovy %}
 docker {
-baseImage "vertx/vertx3-exec"
-maintainer 'Haze Lee "hazelee@realignist.me"'
-registry
+    baseImage "vertx/vertx3-exec"
+    maintainer 'Haze Lee "hazelee@realignist.me"'
+    registry
 }
 
 task buildDocker(type: Docker) {
-tagVersion = System.getenv("COMMIT") ?: project.version
-push = Boolean.getBoolean("docker.push")
-applicationName = "realignist/..."
-tag = "${applicationName}"
+    tagVersion = System.getenv("COMMIT") ?: project.version
+    push = Boolean.getBoolean("docker.push")
+    applicationName = "realignist/..."
+    tag = "${applicationName}"
 
-addFile {
-from "${project.shadowJar.outputs.files.singleFile}"
-into "/opt/hello/"
-}
-exposePort 8080
-entryPoint = ["sh",  "-c"]
-defaultCommand = ["java -jar /opt/hello/${project.name}-${project.version}-fat.jar"]
+    addFile {
+        from "${project.shadowJar.outputs.files.singleFile}"
+        into "/opt/hello/"
+    }
+
+    exposePort 8080
+    entryPoint = ["sh",  "-c"]
+    defaultCommand = ["java -jar /opt/hello/${project.name}-${project.version}-fat.jar"]
 }
 {% endhighlight %}
 
@@ -71,27 +72,27 @@ defaultCommand = ["java -jar /opt/hello/${project.name}-${project.version}-fat.j
 sudo: false
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 
 services:
-- docker
+  - docker
 
 before_script:
-- chmod +x gradlew
+  - chmod +x gradlew
 
 before_install:
-- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 
 script:
-- gradle -Ddocker.push=true build shadowJar buildDocker
+  - gradle -Ddocker.push=true build shadowJar buildDocker
 
 env:
-global:
-- COMMIT=${TRAVIS_COMMIT::7}
+  global:
+    - COMMIT=${TRAVIS_COMMIT::7}
 
 branches:
-only:
-- master
+  only:
+    - master
 {% endhighlight %}
 
 위 yaml 파일은 필자가 실제로 쓰고 있는 Travis 셋팅 파일이다. Travis의 프로젝트 셋팅에서 DockerHub의 계정 정보(`$DOCER_EMAIL`, `DOCKER_USERNAME`, `DOCKER_PASSWORD`)를 미리 지정해두면 `master` 브랜치에 새 커밋이 올라올 때마다 이미지를 빌드하고 업로드한다. gradle 코드 부분을 보면 알겠지만 `COMMIT`이라는 이름의 환경변수가 있으면 생성되는 도커 이미지의 버전을 이 환경변수로 올리도록 해놨기 때문에, `env.global`에 `COMMIT`이라는 환경변수를 추가해뒀다. 저렇게 `${TRAVIS_COMMIT::7}`이라 표현해두면 빌드가 실행되는 프로젝트 마지막 커밋의 해쉬값에서 7자만 따오는게 된다.
@@ -124,9 +125,9 @@ only:
 # watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.
 # 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.
 > docker run -d \
---name watchtower \
--v /var/run/docker.sock:/var/run/docker.sock \
-v2tec/watchtower
+  --name watchtower \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  v2tec/watchtower
 {% endhighlight %}
 
 ## 후기
