@@ -5,8 +5,8 @@
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
     <link>http://realignist.me/</link>
     <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 14 Jun 2017 15:10:48 +0900</pubDate>
-    <lastBuildDate>Wed, 14 Jun 2017 15:10:48 +0900</lastBuildDate>
+    <pubDate>Wed, 14 Jun 2017 15:15:02 +0900</pubDate>
+    <lastBuildDate>Wed, 14 Jun 2017 15:15:02 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -149,6 +149,8 @@ v2tec/watchtower&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
         <pubDate>Wed, 14 Jun 2017 09:00:00 +0900</pubDate>
         <link>http://realignist.me/code/2017/06/14/docker-my-usecase.html</link>
         <guid isPermaLink="true">http://realignist.me/code/2017/06/14/docker-my-usecase.html</guid>
+        
+        <category>featured</category>
         
         <category>docker</category>
         
