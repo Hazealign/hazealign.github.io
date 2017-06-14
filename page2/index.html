@@ -266,6 +266,21 @@ pre[class*="language-"] {
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
           <div class="article-item">
             <header class="post-header">
+              <h2 class="post-title" itemprop="name"><a href="/code/2016/10/01/rust-osx-openssl-issue.html" itemprop="url">macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기</a></h2>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 에러를 볼 수 있습니다. --- stderr /…/openssl-sys-0.6.4/src/openssl_shim.c:1:10: fatal error: 'openssl/hmac.h' file not found #include &lt;openssl/hmac.h&gt; ^ 1 error generated. 이럴 때는 다음과 같이 해결할 수 있습니다. brew install openssl # 다음 내용을 환경 변수로 추가해주세요. export OPENSSL_INCLUDE_DIR=`brew --prefix openssl`/include/ export OPENSSL_LIB_DIR=`brew...</p>
+            </section>
+            <div class="post-meta">
+              <time datetime="01 October 2016">01 October 2016</time>
+<!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
+            </div>
+          </div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          <div class="article-item">
+            <header class="post-header">
               <h2 class="post-title" itemprop="name"><a href="/life/2016/07/06/dm200h-review.html" itemprop="url">Dynamic Motion, DM200H 가벼운 리뷰</a></h2>
             </header>
             <section class="post-excerpt" itemprop="description">
@@ -318,21 +333,6 @@ pre[class*="language-"] {
             </section>
             <div class="post-meta">
               <time datetime="09 June 2016">09 June 2016</time>
-<!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
-            </div>
-          </div>
-        </article>
-      
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          <div class="article-item">
-            <header class="post-header">
-              <h2 class="post-title" itemprop="name"><a href="/code/2016/06/05/swift-snippets.html" itemprop="url">[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음</a></h2>
-            </header>
-            <section class="post-excerpt" itemprop="description">
-              <p>이 글은 tattn님이 Qiita에 올린 글을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다. 범용성 높은 Extension 집입니다. 후반에 있는 라이브러리도 정리했습니다. Swift 2.2 기준으로 확인되었습니다. 클래스 이름의 표시 extension NSObject { class var...</p>
-            </section>
-            <div class="post-meta">
-              <time datetime="05 June 2016">05 June 2016</time>
 <!--            <span class="post-tags-set">on <span class="post-tag-">, <a href="/tag/"></a></span></span>-->
             </div>
           </div>
