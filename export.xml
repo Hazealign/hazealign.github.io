@@ -16,7 +16,7 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress.com" created="Fri, 18 Aug 2017 12:52:32 +0900"-->
+<!-- generator="WordPress.com" created="Fri, 18 Aug 2017 12:53:00 +0900"-->
 <rss
     version="2.0"
     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
@@ -25,27 +25,27 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:wp="http://wordpress.org/export/1.2/">
     <channel>
-        <title>Foo Bar</title>
-        <link>http://foo.bar/</link>
-        <description>Foobar foobar hodor!</description>
-        <pubDate>Fri, 18 Aug 2017 12:52:32 +0900</pubDate>
+        <title>Realignist's Lifelog</title>
+        <link>http://realignist.me/</link>
+        <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
+        <pubDate>Fri, 18 Aug 2017 12:53:00 +0900</pubDate>
         <language>en</language>
         <wp:wxr_version>1.2</wp:wxr_version>
-        <wp:base_site_url>http://foo.bar/</wp:base_site_url>
-        <wp:base_blog_url>http://foo.bar/</wp:base_blog_url>
+        <wp:base_site_url>http://realignist.me/</wp:base_site_url>
+        <wp:base_blog_url>http://realignist.me/</wp:base_blog_url>
         <wp:wp_author>
-            <wp:author_login>foo-bar</wp:author_login>
-            <wp:author_email>foo@bar.com</wp:author_email>
-            <wp:author_display_name>Foo Bar</wp:author_display_name>
+            <wp:author_login>haze-lee</wp:author_login>
+            <wp:author_email>hazelee@realignist.me</wp:author_email>
+            <wp:author_display_name>Haze Lee</wp:author_display_name>
         </wp:wp_author>
         <generator>http://wordpress.com/</generator>
         
         <item>
             <title>내가 Docker를 시작했던 방법</title>
-            <link>http://foo.bar/code/2017/06/14/docker-my-usecase.html</link>
+            <link>http://realignist.me/code/2017/06/14/docker-my-usecase.html</link>
             <pubDate>Wed, 14 Jun 2017 09:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2017/06/14/docker-my-usecase.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2017/06/14/docker-my-usecase.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>요즘 세상에 Docker를 들어보지 않은 소프트웨어 개발자는 꽤나 드물 것이다. Docker가 컨테이너를 이용한 격리 환경을 만들어주고, 배포나 관리 등에 이점이 있다는걸 알고 있는 사람도 많지만 그럼에도 불구하고 Docker를 쓰기엔 주저하는 일이 많다. 필자 또한 최근까지 Docker가 어려운 존재라고 생각했었고 지금까지 도입하는걸 주저하고 있었다. 필자는 “이번엔 무슨 일이 있어도 내가 Docker를 써봐야겠다!”라는 일념으로 새로 시작하는 프로젝트에 Docker를 도입하게 되었는데 이게 생각보다 너무 간단한 일이었기 때문에 이번 글에서는 필자가 어떻게 Docker를 시작하게 되었는지를 공유하려고 한다.</p>
@@ -212,10 +212,10 @@ docker run -d <span class="se">\</span>
         
         <item>
             <title>RxJava 2.x, 무엇이 달라졌을까?</title>
-            <link>http://foo.bar/code/2017/01/25/rxjava2-changelog.html</link>
+            <link>http://realignist.me/code/2017/01/25/rxjava2-changelog.html</link>
             <pubDate>Wed, 25 Jan 2017 12:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2017/01/25/rxjava2-changelog.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2017/01/25/rxjava2-changelog.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h2 id="section">글에 앞서,</h2>
@@ -1470,10 +1470,10 @@ OnSubscribe end
         
         <item>
             <title>Redux의 개념을 RxJS와 TypeScript로 이해하기 Ver. 2</title>
-            <link>http://foo.bar/code/2017/01/18/redux-with-typescript-rxjs.html</link>
+            <link>http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</link>
             <pubDate>Wed, 18 Jan 2017 12:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2017/01/18/redux-with-typescript-rxjs.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h3 id="section">글에 앞서,</h3>
@@ -1767,10 +1767,10 @@ OnSubscribe end
         
         <item>
             <title>Vue.js를 쓸 때의 모범 사례에 대해서 생각해보다.</title>
-            <link>http://foo.bar/code/2017/01/17/vue-js-best-practice.html</link>
+            <link>http://realignist.me/code/2017/01/17/vue-js-best-practice.html</link>
             <pubDate>Tue, 17 Jan 2017 12:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2017/01/17/vue-js-best-practice.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2017/01/17/vue-js-best-practice.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h3 id="section">글에 앞서,</h3>
@@ -2016,10 +2016,10 @@ OnSubscribe end
         
         <item>
             <title>지킬 블로그에 AMP를 적용해보자</title>
-            <link>http://foo.bar/code/2016/12/01/amp-my-jekyll-web.html</link>
+            <link>http://realignist.me/code/2016/12/01/amp-my-jekyll-web.html</link>
             <pubDate>Thu, 01 Dec 2016 18:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/12/01/amp-my-jekyll-web.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/12/01/amp-my-jekyll-web.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>항상 그렇지만 사람이 백수가 되면 심심해지고, 사람이 잉여로워지면 무언가 재미난 것을 하게 된다. 오늘은 지킬 블로그에 AMP(Accelerated Mobile Pages) 페이지를 넣은 후기를 쓰려고 한다. 이 글은 AMP가 무엇인지 아는 사람을 위해 작성된 글로, AMP에 대한 설명과 소개는 <a href="https://www.ampproject.org/ko/learn/about-amp/">여기</a>에서 볼 수 있다.</p>
@@ -2076,10 +2076,10 @@ OnSubscribe end
         
         <item>
             <title>macOS 기준 Rust에서 OpenSSL과 관련된 빌드 오류 해결하기</title>
-            <link>http://foo.bar/code/2016/10/01/rust-osx-openssl-issue.html</link>
+            <link>http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</link>
             <pubDate>Sat, 01 Oct 2016 01:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/10/01/rust-osx-openssl-issue.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>Rust로 OpenSSL과 연결된 것들을 빌드할 때, 간혹 다음과 같은 에러를 볼 수 있습니다.</p>
@@ -2131,10 +2131,10 @@ OnSubscribe end
         
         <item>
             <title>Dynamic Motion, DM200H 가벼운 리뷰</title>
-            <link>http://foo.bar/life/2016/07/06/dm200h-review.html</link>
+            <link>http://realignist.me/life/2016/07/06/dm200h-review.html</link>
             <pubDate>Wed, 06 Jul 2016 01:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/life/2016/07/06/dm200h-review.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/life/2016/07/06/dm200h-review.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>개인적으로 밸런스드 아마츄어의 장점과 다이나믹 드라이버의 장점을 합친 하이브리드 이어폰을 좋아하는데 국내 기업이 세계 최초로 동축 배치의 하이브리드 이어폰을 출시했다는 이야기를 듣고 흥미를 느껴 DM-200H를 구해보았다.</p>
@@ -2202,10 +2202,10 @@ OnSubscribe end
         
         <item>
             <title>상반기를 정리하며.</title>
-            <link>http://foo.bar/life/2016/07/02/half-report.html</link>
+            <link>http://realignist.me/life/2016/07/02/half-report.html</link>
             <pubDate>Sat, 02 Jul 2016 18:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/life/2016/07/02/half-report.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/life/2016/07/02/half-report.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>6월이 끝나간다. 곧 있으면 7월이 다가오며 하반기가 된다. 상반기 동안 내가 뭘했을까 정리라도 해둬야 나중에 잊지 못할 것 같다는 생각이 들었다. 이 글이 공개될 때 쯤이면 아마 나는 이상한모임의 720 컨퍼런스에서 내가 취업하면서 나 자신이나, 포트폴리오 등을 관리한 이야기를 이야기한 뒤가 될 것 같다. 이 글에도 그 내용이 일부 들어있다.</p>
@@ -2281,10 +2281,10 @@ OnSubscribe end
         
         <item>
             <title>Kotlin 코드를 문서화하자. (for Android)</title>
-            <link>http://foo.bar/code/2016/06/24/kotlin-documentation.html</link>
+            <link>http://realignist.me/code/2016/06/24/kotlin-documentation.html</link>
             <pubDate>Fri, 24 Jun 2016 19:30:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/06/24/kotlin-documentation.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/06/24/kotlin-documentation.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>처음 내가 Kotlin을 접할 때만 하더라도 많은 사람들이 Kotlin의 존재를 모르고 있었다. 그리고 Kotlin을 이리저리 설파하려고 하는 나조차도 최근에서야 나도 실무에서 Kotlin을 제대로 쓸 수 있게 되었다. 다른 사람과 협업을 할 때, 문서화는 중요하다. 내가 문법이나 이런걸 프로젝트에 문서화해둘 수는 없어도 프로젝트 안 클래스나 메소드, 프로퍼티들이 어떤 역할을 하고 있는지는 남길 수 있다.</p>
@@ -2454,10 +2454,10 @@ OnSubscribe end
         
         <item>
             <title>GDG Android Korea RxJava 스터디: 1회차</title>
-            <link>http://foo.bar/code/2016/06/09/rxjava-study-1.html</link>
+            <link>http://realignist.me/code/2016/06/09/rxjava-study-1.html</link>
             <pubDate>Thu, 09 Jun 2016 10:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/06/09/rxjava-study-1.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/06/09/rxjava-study-1.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h2 id="section">주제</h2>
@@ -2567,10 +2567,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>[번역] 쓰기 시작하면 멈출 수 없어지는 Swift Extension 모음</title>
-            <link>http://foo.bar/code/2016/06/05/swift-snippets.html</link>
+            <link>http://realignist.me/code/2016/06/05/swift-snippets.html</link>
             <pubDate>Sun, 05 Jun 2016 12:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/06/05/swift-snippets.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/06/05/swift-snippets.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>이 글은 tattn님이 Qiita에 올린 <a href="http://qiita.com/tattn/items/647e094936287a6bd2d3">글</a>을 한국어로 번역한 글입니다. 번역을 허락해주신 tattn님께 감사합니다. Swift를 쓰면서 생산성을 높여주는 짤막한 코드들이 인상적입니다. 혹시 어떤 부분이 제일 인상적이었는지 댓글로 남겨주셔도 좋을 것 같습니다.</p>
@@ -2908,10 +2908,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>Samsung Portable SSD T3 짧은 리뷰</title>
-            <link>http://foo.bar/gadget/2016/06/02/samsung-t3-short-review.html</link>
+            <link>http://realignist.me/gadget/2016/06/02/samsung-t3-short-review.html</link>
             <pubDate>Thu, 02 Jun 2016 11:50:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/gadget/2016/06/02/samsung-t3-short-review.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/gadget/2016/06/02/samsung-t3-short-review.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h2 id="section">사게 된 계기?</h2>
@@ -2972,10 +2972,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>[번역] RxJava를 3일만에 입문해서, 안드로이드 애플리케이션의 리스트 작업이나 비동기 처리와 알림을 해결한 이야기.</title>
-            <link>http://foo.bar/code/2016/05/29/rxjava-on-android.html</link>
+            <link>http://realignist.me/code/2016/05/29/rxjava-on-android.html</link>
             <pubDate>Sun, 29 May 2016 16:55:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/05/29/rxjava-on-android.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/05/29/rxjava-on-android.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>이번 글도 <a href="http://twitter.com/yuya_presto">@yuya_presto</a>님이 쓰신 <a href="http://qiita.com/yuya_presto/items/152fa80d073d865cfc90">글</a>을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며 댓글로의 지적도 환영합니다, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다.</p>
@@ -3410,10 +3410,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해.</title>
-            <link>http://foo.bar/code/2016/05/25/data-binding-guide.html</link>
+            <link>http://realignist.me/code/2016/05/25/data-binding-guide.html</link>
             <pubDate>Wed, 25 May 2016 15:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/05/25/data-binding-guide.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/05/25/data-binding-guide.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>이 글은 @izumin5210님이 Qiita에 올린 <a href="http://qiita.com/izumin5210/items/2784576d86ce6b9b51e6">글</a>을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다.</p>
@@ -3858,10 +3858,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>[번역] 중급 이상의 Android 개발자가 Android다운 개발을 하려면 봐야할 URL 목록들</title>
-            <link>http://foo.bar/code/2016/05/25/better-android-developer-guide.html</link>
+            <link>http://realignist.me/code/2016/05/25/better-android-developer-guide.html</link>
             <pubDate>Wed, 25 May 2016 02:30:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/05/25/better-android-developer-guide.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/05/25/better-android-developer-guide.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>이 글은 <a href="http://twitter.com/yuya_presto">@yuya_presto</a>님이 쓰신 <a href="http://qiita.com/yuya_presto/items/ab2162078e5d5076c718">글</a>을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다.</p>
@@ -4026,10 +4026,10 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
         
         <item>
             <title>JIT(Just-in-Time) 컴파일러도 들어간 ART를 살펴보자</title>
-            <link>http://foo.bar/code/2016/05/21/art-with-jit-compiler.html</link>
+            <link>http://realignist.me/code/2016/05/21/art-with-jit-compiler.html</link>
             <pubDate>Sat, 21 May 2016 17:30:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/05/21/art-with-jit-compiler.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/05/21/art-with-jit-compiler.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>Android N부터 ART에 JIT(Just-in-Time) 컴파일러 기능이 추가되었다고 한다. 종래의 버전에서 ART는 AOT(Ahead-of-Time) 컴파일 방식을 통해 dex 바이너리를 oat 형식의 네이티브 바이너리로 컴파일했는데, N부터는 프로필 가이드를 기반한 컴파일을 통해 AOT 컴파일 방식과 JIT 컴파일 방식을 혼용해서 쓸 수 있게끔 변경된 것이다. JIT 컴파일러를 혼용함으로써 앱의 설치와 시스템 업데이트 시 걸리는 시간이 단축될 수 있다는게 구글의 설명이다.</p>
@@ -4107,10 +4107,10 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
         
         <item>
             <title>우리는 지금 어디에 있는가?</title>
-            <link>http://foo.bar/life/2016/05/12/when-we-are.html</link>
+            <link>http://realignist.me/life/2016/05/12/when-we-are.html</link>
             <pubDate>Thu, 12 May 2016 01:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/life/2016/05/12/when-we-are.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/life/2016/05/12/when-we-are.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>나의 <a href="http://realignist.me/about/">소개</a>를 보면 알겠지만 나는 여러가지 신경증을 가지고 있다. 이 신경증들로부터 어떻게든 벗어나기 위해 뇌와 심리는 어떻게 동작하는지 알게 되면 조금이라도 더 도움이 될 수 있지 않을까 하는 마음에 혼자서 공부도 하면서 심리치료도 받고 약도 먹고 있다. 이런 과정 속에서 느끼게 된 점은 심리학이라는 학문은 사람의 뇌와 신경이라고 하는 정말 정밀한 과학의 영역과 사람의 마음이라는 매우 추상적인 철학의 영역 사이에 있는, 참 절묘한 위치에 있는 학문이라는 생각이 든다.</p>
@@ -4180,10 +4180,10 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
         
         <item>
             <title>Tennmak, 가성비를 찾는 사람을 위한 명답</title>
-            <link>http://foo.bar/life/2016/04/19/tennmak-shocks.html</link>
+            <link>http://realignist.me/life/2016/04/19/tennmak-shocks.html</link>
             <pubDate>Tue, 19 Apr 2016 08:10:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/life/2016/04/19/tennmak-shocks.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/life/2016/04/19/tennmak-shocks.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>최근 주변에서 중국의 이어폰 제조사인 텐막의 이어폰을 산 뒤 “충격적이다”라는 이야기를 들었다. 찾아보니 텐막의 모든 제품은 5만원을 넘지 않는 저가형 이어폰이었다. 저가형 이어폰을 듣고 정말 이게 충격적인 수준의 품질인지 궁금했던 나는 텐막의 프로 제품과 알리800을 구매해보았다.</p>
@@ -4251,10 +4251,10 @@ I/art     ( 1019): Starting profile with period 10s, duration 30s, interval 1000
         
         <item>
             <title>피카츄의 기묘한 딥러닝 체험</title>
-            <link>http://foo.bar/code/2016/02/28/pikachus-bizarre-deeplearning.html</link>
+            <link>http://realignist.me/code/2016/02/28/pikachus-bizarre-deeplearning.html</link>
             <pubDate>Sun, 28 Feb 2016 09:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2016/02/28/pikachus-bizarre-deeplearning.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2016/02/28/pikachus-bizarre-deeplearning.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>최근에 나는 프로그래밍을 이용해서 재밌는 것들을 많이 하려고 노력하는 편인데, 프로그래밍을 이용한 영상 편집이 필요하다는 부탁을 듣고 작업을 하면서 딥러닝이 어떤 것인지 아주 조금 체험할 수 있었다. 다만 그 과정이 정말 기괴하고 힘든 삽질들로 가득했기 때문에 조금이나마 기록을 남기고자 한다. 이 글에서는 Ubuntu 14.04.4를 기준으로 설명해보고자 한다. 또한 이 글을 통해 딥러닝을 같이 체험해보고 싶다면 고사양의 Nvidia GPU가 있는 머신에서 작업하길 권장한다. 아니면 Amazon EC2의 GPU 인스턴스도 좋다. (이 글에서는 CUDA를 활용하고 있다. 나는 i7 6700K와 32GB RAM 환경에서 작업했었는데… 그래픽카드에 대해서는 후술하겠다.)</p>
@@ -4358,10 +4358,10 @@ nvidia-settings</code></pre></figure>
         
         <item>
             <title>2016년의 목표 : “생존하기”</title>
-            <link>http://foo.bar/life/2016/01/19/life-of-2016.html</link>
+            <link>http://realignist.me/life/2016/01/19/life-of-2016.html</link>
             <pubDate>Tue, 19 Jan 2016 09:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/life/2016/01/19/life-of-2016.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/life/2016/01/19/life-of-2016.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>지난 해를 돌아보고 새해를 준비하는 이런 글은 연말이나 연초에 쓰는게 맞지만 사정이 있어서 1월이 절반이나 지난 지금에야 정리할 수 있게
@@ -4428,10 +4428,10 @@ nvidia-settings</code></pre></figure>
         
         <item>
             <title>[독후감] “미움받을 용기”를 읽고서</title>
-            <link>http://foo.bar/book/2015/12/16/courage-to-be-disliked.html</link>
+            <link>http://realignist.me/book/2015/12/16/courage-to-be-disliked.html</link>
             <pubDate>Wed, 16 Dec 2015 09:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/book/2015/12/16/courage-to-be-disliked.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/book/2015/12/16/courage-to-be-disliked.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<p>글에 앞서서 이상한모임의 <a href="http://1225.weirdx.io/">독후감 Advent Calendar</a> 덕분에 계속 미루던 책 읽기도 하고 읽고 난 후기를 이렇게 글로도 쓸 수 있게 된 것 같아서 감사하다는 마음이 먼저 들고 이런 기회를 만들어주신 이모님과 이상한모임의 다른 분들께 감사하다는 말씀을 먼저 드리고 싶습니다. :)</p>
@@ -4491,10 +4491,10 @@ nvidia-settings</code></pre></figure>
         
         <item>
             <title>[번역] Android 개발을 수주해서 Kotlin을 제대로 써봤더니 최고였다.</title>
-            <link>http://foo.bar/code/2015/10/17/translated-kotlin-was-awesome.html</link>
+            <link>http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html</link>
             <pubDate>Sat, 17 Oct 2015 09:00:00 +0900</pubDate>
-            <dc:creator>foo-bar</dc:creator>
-            <guid isPermaLink="false">http://foo.bar/code/2015/10/17/translated-kotlin-was-awesome.html</guid>
+            <dc:creator>haze-lee</dc:creator>
+            <guid isPermaLink="false">http://realignist.me/code/2015/10/17/translated-kotlin-was-awesome.html</guid>
             <description/>
             <content:encoded>
                 <![CDATA[<h2 id="section">글에 앞서</h2>
