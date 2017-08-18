@@ -1,9 +1,9 @@
 ---
-site_title: Foo Bar
-site_description: Foobar foobar hodor!
-site_root: http://foo.bar
-author_email: foo@bar.com
-author_name: Foo Bar
+site_title: Realignist's Lifelog
+site_description: 책, 음악, 코딩, 피카츄와 함께하는 곳.
+site_root: http://realignist.me
+author_email: hazelee@realignist.me
+author_name: Haze Lee
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
