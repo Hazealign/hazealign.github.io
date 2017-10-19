@@ -81,21 +81,31 @@ h5 {
 
  <span class="c"># 다음 내용을 환경 변수로 추가해주세요.</span>
 <span class="nb">export </span><span class="nv">OPENSSL_INCLUDE_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/include/
-<span class="nb">export </span><span class="nv">OPENSSL_LIB_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/lib/</code></pre></figure><p>이럼에도 불구하고, 간혹 같은 에러가 난다면 <code class="highlighter-rouge">OPENSLL_LIB_DIR</code>를 직접 설정해주면 됩니다.</p>
+<span class="nb">export </span><span class="nv">OPENSSL_LIB_DIR</span><span class="o">=</span><span class="sb">`</span>brew --prefix openssl<span class="sb">`</span>/lib/</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">OPENSSL_INCLUDE_DIR</span><span class="o">=</span>/usr/local/Cellar/openssl/<span class="o">(</span>버전<span class="o">)</span>/include/</code></pre></figure><p>아 그리고 나서, <code class="highlighter-rouge">cargo clean</code>을 해주고 다시 빌드하는걸 잊지 마세요. :)</p>
+<p>이럼에도 불구하고, 간혹 같은 에러가 난다면 <code class="highlighter-rouge">OPENSLL_LIB_DIR</code>를 직접 설정해주면 됩니다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">OPENSSL_INCLUDE_DIR</span><span class="o">=</span>/usr/local/Cellar/openssl/<span class="o">(</span>버전<span class="o">)</span>/include/</code></pre></figure>
+
+<p>아 그리고 나서, <code class="highlighter-rouge">cargo clean</code>을 해주고 다시 빌드하는걸 잊지 마세요. :)</p>
 
 <h1 id="reference">Reference</h1>
 <ul>
-<li><a href="https://github.com/sfackler/rust-openssl">https://github.com/sfackler/rust-openssl</a></li>
+  <li><a href="https://github.com/sfackler/rust-openssl">https://github.com/sfackler/rust-openssl</a></li>
   <li><a href="https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099">https://github.com/sfackler/rust-openssl/issues/255#issuecomment-133463099</a></li>
 </ul>
+
     <h5> <!-- footer start -->
 
-<footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
-</div>
-</footer><!-- footer end --></h5>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section>
+         <section class="poweredby">For Geeky Tomorrow.</section>
+    </div>
+</footer>
+
+<!-- footer end -->
+</h5>
   </body>
 </html>

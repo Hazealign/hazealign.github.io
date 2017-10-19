@@ -68,18 +68,20 @@ h5 {
 
 <p>이 글은 Docker가 무엇인지는 알고 있다는 전제 하에 써진 글이므로, Docker가 무엇인지 잘 모른다면 이재홍님의 <a href="http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter01">가장 빨리 만나는 도커 1장</a>을 읽는걸 추천한다. 이 글만 잘 따라해도 아래 사진처럼 커밋이 올라가면 CI가 Docker 이미지를 만들어서 업로드하고 서버에 배포까지 하는 플로우를 구성할 수 있다.</p>
 
-<p><amp-img src="http://realignist.me/assets/images/20170614/dockerhub_example.png" alt="" width="2047" height="684" layout="responsive"></amp-img></p>
+<p><amp-img src="http://realignist.me/assets/images/20170614/dockerhub_example.png" alt="" layout="responsive"></amp-img></p>
 
-<p><amp-img src="http://realignist.me/assets/images/20170614/travis_example.png" alt="" width="2046" height="470" layout="responsive"></amp-img></p>
+<p><amp-img src="http://realignist.me/assets/images/20170614/travis_example.png" alt="" layout="responsive"></amp-img></p>
 
 <h2 id="section">설치가 반이다.</h2>
 
 <p>시작이 반이라는 말처럼, Docker도 설치가 반이다. Docker가 리눅스 컨테이너 기술에서 시작된 물건이다보니, 리눅스에서는 옛날부터 설치가 그렇게 어렵지 않았지만 Windows와 macOS 환경에서는 제대로 Docker를 사용하려면 최신 운영체제를 써야하는 번거로움이 있다. 예전에는 리눅스가 아닌 운영체제에서는 Boot2Docker나 Docker Toolbox라는걸 통해 작은 리눅스 가상머신을 올려놓고 그 위에서 Docker가 돌아갔었다.</p>
 
 <ul>
-<li>macOS에서 Docker는 <a href="https://github.com/mist64/xhyve">xhyve</a>를 이용한다. xhyve는 macOS를 위한 경량 가상화 환경으로 <code class="highlighter-rouge">Hypervisor.framework</code>라는 10.10 Yosemite부터 추가된 애플의 API를 사용한다.</li>
+  <li>macOS에서 Docker는 <a href="https://github.com/mist64/xhyve">xhyve</a>를 이용한다. xhyve는 macOS를 위한 경량 가상화 환경으로 <code class="highlighter-rouge">Hypervisor.framework</code>라는 10.10 Yosemite부터 추가된 애플의 API를 사용한다.</li>
   <li>Windows에서 Docker는 윈도우 컨테이너와 Hyper-V 컨테이너 기술을 이용한다. Windows 10 Anniversary Edition부터 이를 지원하며, 윈도우10(Pro, Enterprise 에디션) 혹은 윈도우 서버 2016에서만 지원한다.</li>
-</ul><p>애석하게도 필자가 일하는 곳의 개발 서버 환경은 아직 윈도우 서버 2008 ~ 2012이다. 이럴 때는 VirtualBox나 Hyper-V를 이용하는 Docker Toolbox를 설치해야한다. 인스톨러가 잘 되어있는 편이라, 윈도우나 맥에서는 인스톨러대로 설치하면 별 문제 없이 설치할 수 있을 것이다.</p>
+</ul>
+
+<p>애석하게도 필자가 일하는 곳의 개발 서버 환경은 아직 윈도우 서버 2008 ~ 2012이다. 이럴 때는 VirtualBox나 Hyper-V를 이용하는 Docker Toolbox를 설치해야한다. 인스톨러가 잘 되어있는 편이라, 윈도우나 맥에서는 인스톨러대로 설치하면 별 문제 없이 설치할 수 있을 것이다.</p>
 
 <h2 id="docker-">기존 서버 프로젝트를 Docker로 감싸다.</h2>
 
@@ -88,9 +90,11 @@ h5 {
 <p>다행히 Gradle에도 Docker를 지원하는 플러그인이 있다. 두개가 있고, 둘 다 비슷한 Star 수를 가지고 있다.</p>
 
 <ul>
-<li><a href="https://github.com/Transmode/gradle-docker">Transmode/gradle-docker</a></li>
+  <li><a href="https://github.com/Transmode/gradle-docker">Transmode/gradle-docker</a></li>
   <li><a href="https://github.com/bmuschko/gradle-docker-plugin">bmuschko/gradle-docker-plugin</a></li>
-</ul><p>필자는 <a href="https://github.com/advantageous/vertx-node-ec2-eventbus-example/wiki/Step-7-Adding-docker-support-to-gradle-and-deploying-our-image-to-Mesos-Marathon#add-docker-support-to-gradle">이 글</a>을 참조했고, <code class="highlighter-rouge">buildscript.dependencies</code>에 <code class="highlighter-rouge">gradle-docker</code> 플러그인을 추가한 것 이외에는 다음 코드만으로 Docker 이미지를 생성할 수 있게 되었다.</p>
+</ul>
+
+<p>필자는 <a href="https://github.com/advantageous/vertx-node-ec2-eventbus-example/wiki/Step-7-Adding-docker-support-to-gradle-and-deploying-our-image-to-Mesos-Marathon#add-docker-support-to-gradle">이 글</a>을 참조했고, <code class="highlighter-rouge">buildscript.dependencies</code>에 <code class="highlighter-rouge">gradle-docker</code> 플러그인을 추가한 것 이외에는 다음 코드만으로 Docker 이미지를 생성할 수 있게 되었다.</p>
 
 <figure class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span class="n">docker</span> <span class="o">{</span>
     <span class="n">baseImage</span> <span class="s2">"vertx/vertx3-exec"</span>
@@ -112,9 +116,13 @@ h5 {
     <span class="n">exposePort</span> <span class="mi">8080</span>
     <span class="n">entryPoint</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"sh"</span><span class="o">,</span>  <span class="s2">"-c"</span><span class="o">]</span>
     <span class="n">defaultCommand</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"java -jar /opt/hello/${project.name}-${project.version}-fat.jar"</span><span class="o">]</span>
-<span class="o">}</span></code></pre></figure><p>똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.</p>
+<span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure><h2 id="section-1">자동으로 이미지를 만들자.</h2>
+<p>똑같이 jar 파일로 뽑아내서 실행할 수 있는 환경이라면 설정은 이와 크게 다르지 않을 것이다. 미리 Docker Hub에 로그인을 하고 프로젝트를 미리 만들어뒀다면, 다음 커맨드만으로 이미지 빌드부터 Docker Hub로의 업로드까지 한번에 할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gradle -Ddocker.push<span class="o">=</span><span class="nb">true </span>build shadowJar buildDocker</code></pre></figure>
+
+<h2 id="section-1">자동으로 이미지를 만들자.</h2>
 
 <p>놀랍게도 DockerHub는 GitHub 연동을 통해 자동으로 이미지 빌드를 뽑아낼 수 있다. <a href="https://docs.docker.com/docker-hub/builds/">이 문서</a>에 자세히 나와있는데, Dockerfile이 프로젝트 안에 있어야하고 또 많은 프로젝트들이 의존성 관계도 있기 때문에 이 기능을 그대로 쓰기는 어렵다. 하지만 우리에겐 Travis나 CircleCI같은 CI 서비스가 있고 우리는 이걸 활용하면 커밋에 따라 자동으로 이미지를 만들고 업로드할 수 있다.</p>
 
@@ -141,50 +149,56 @@ h5 {
 
 <span class="s">branches</span><span class="pi">:</span>
   <span class="s">only</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">master</span></code></pre></figure><p>위 yaml 파일은 필자가 실제로 쓰고 있는 Travis 셋팅 파일이다. Travis의 프로젝트 셋팅에서 DockerHub의 계정 정보(<code class="highlighter-rouge">$DOCER_EMAIL</code>, <code class="highlighter-rouge">DOCKER_USERNAME</code>, <code class="highlighter-rouge">DOCKER_PASSWORD</code>)를 미리 지정해두면 <code class="highlighter-rouge">master</code> 브랜치에 새 커밋이 올라올 때마다 이미지를 빌드하고 업로드한다. gradle 코드 부분을 보면 알겠지만 <code class="highlighter-rouge">COMMIT</code>이라는 이름의 환경변수가 있으면 생성되는 도커 이미지의 버전을 이 환경변수로 올리도록 해놨기 때문에, <code class="highlighter-rouge">env.global</code>에 <code class="highlighter-rouge">COMMIT</code>이라는 환경변수를 추가해뒀다. 저렇게 <code class="highlighter-rouge">${TRAVIS_COMMIT::7}</code>이라 표현해두면 빌드가 실행되는 프로젝트 마지막 커밋의 해쉬값에서 7자만 따오는게 된다.</p>
+    <span class="pi">-</span> <span class="s">master</span></code></pre></figure>
+
+<p>위 yaml 파일은 필자가 실제로 쓰고 있는 Travis 셋팅 파일이다. Travis의 프로젝트 셋팅에서 DockerHub의 계정 정보(<code class="highlighter-rouge">$DOCER_EMAIL</code>, <code class="highlighter-rouge">DOCKER_USERNAME</code>, <code class="highlighter-rouge">DOCKER_PASSWORD</code>)를 미리 지정해두면 <code class="highlighter-rouge">master</code> 브랜치에 새 커밋이 올라올 때마다 이미지를 빌드하고 업로드한다. gradle 코드 부분을 보면 알겠지만 <code class="highlighter-rouge">COMMIT</code>이라는 이름의 환경변수가 있으면 생성되는 도커 이미지의 버전을 이 환경변수로 올리도록 해놨기 때문에, <code class="highlighter-rouge">env.global</code>에 <code class="highlighter-rouge">COMMIT</code>이라는 환경변수를 추가해뒀다. 저렇게 <code class="highlighter-rouge">${TRAVIS_COMMIT::7}</code>이라 표현해두면 빌드가 실행되는 프로젝트 마지막 커밋의 해쉬값에서 7자만 따오는게 된다.</p>
 
 <p>또 <code class="highlighter-rouge">before_script</code>의 chmod는 CI 환경에서 gradle로 빌드하기 위해서 프로젝트에 있는 <code class="highlighter-rouge">gradlew</code> 파일에 권한을 주는 것이다. Travis는 gradle 프로젝트에서는 자동으로 <code class="highlighter-rouge">gradlew assemble</code>를 실행하기 때문에, chmod로 권한을 주지 않으면 빌드 오류가 발생한다.</p>
 
 <h2 id="section-2">자동으로 업데이트되는 환경을 만들자.</h2>
 
-<p><amp-img src="http://realignist.me/assets/images/20170614/google_docker_deploy.png" alt="" width="1724" height="2226" layout="responsive"></amp-img></p>
+<p><amp-img src="http://realignist.me/assets/images/20170614/google_docker_deploy.png" alt="" layout="responsive"></amp-img></p>
 
 <p>구글에 Docker를 쳐보면 수많은 배포 자동화 사례들을 볼 수 있다. 대부분 DockerHub로 이미지를 배포하는 부분에서 글이 끝나는데 나는 정말로 실제 쓰고 있는 스테이징 혹은 릴리즈 서버에 새 이미지가 자동으로 올라가게 하는 것까지 이야기해보고 싶다.</p>
 
 <p>실제 서비스 환경에서는 확장성을 위해 컨테이너를 여러 개 쓰는 경우도 있다. 인스턴스가 하나라면 그냥 들어가서 수동으로 이미지를 받고 다시 올리는 방법도 있겠지만, 여러 대의 서버가 있다면 이걸 자동화해야한다. 선택지가 꽤 많고 정답이 없기 때문에 도구는 자신이 선택하면 될 것 같다.</p>
 
 <ul>
-<li>
+  <li>
 <a href="https://github.com/v2tec/watchtower">v2tec/watchtower</a>는 DockerHub 등에서 베이스 이미지가 업데이트되면 그걸 감지해서 새 이미지를 받아서 재시작해주는 툴이다. 처음 시작할 때만 셋팅해주면 되기 때문에 서버 노드가 적을 때 고려해볼 수 있다.</li>
   <li>만약 노드 수가 늘어난다면… 이제 정말로 여러 컨테이너를 관리해주는 Container Orchestration 도구가 필요할 것이다.
     <ul>
-<li>Docker에서 클러스터를 위해 <a href="https://docs.docker.com/engine/swarm/">Swarm</a>이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 <a href="https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html">subicura님의 글</a>을 강력 추천한다.</li>
+      <li>Docker에서 클러스터를 위해 <a href="https://docs.docker.com/engine/swarm/">Swarm</a>이라는 도구를 자체적으로 제공하지만 아직은 3rd 파티 도구가 더 많이 쓰이는 것 같다. Swarm에 관심이 있다면 <a href="https://subicura.com/2017/02/25/container-orchestration-with-docker-swarm.html">subicura님의 글</a>을 강력 추천한다.</li>
       <li>
 <a href="https://kubernetes.io/">Kubernetes</a>는 구글 클라우드에서 도커 컨테이너를 관리해주기 위해 만든 오픈소스 도구이다. 로컬 머신이나 싱글 노드에서는 Minikube를 통해 로컬에서도 실행할 수 있다.
         <ul>
-<li>https://www.slideshare.net/seungyongoh3/ndc17-kubernetes</li>
+          <li>https://www.slideshare.net/seungyongoh3/ndc17-kubernetes</li>
           <li>https://www.slideshare.net/naver-labs/docker-kubernetes</li>
           <li>https://1ambda.github.io/infrastructure/container/kubernetes-intro/</li>
         </ul>
-</li>
+      </li>
       <li>트위터나 Airbnb, 애플<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, 우버 등이 쓰고 있는 분산 시스템 커널인 아파치의 <a href="http://mesos.apache.org/">Mesos</a>도 있다. <a href="https://mesosphere.com/solutions/container-orchestration/">Mesosphere</a>라는 회사에서 만든 <a href="https://github.com/mesosphere/marathon">Marathon</a>을 통해 컨테이너를 관리할 수 있다.
         <ul>
-<li>Mesos는 <a href="https://zookeeper.apache.org/">Zookeeper</a>를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.</li>
+          <li>Mesos는 <a href="https://zookeeper.apache.org/">Zookeeper</a>를 이용해서 여러 대의 서버를 하나의 클러스터로 관리한다.</li>
           <li>
 <a href="https://github.com/mesos/chronos">mesos/chronos</a>를 통해 스케쥴링을 돌릴 수 있다.</li>
           <li>설치와 관리가 비교적 어려운 편이다.</li>
         </ul>
-</li>
+      </li>
     </ul>
-</li>
-</ul><p>필자의 프로젝트는 아직 릴리즈되지 않았기 때문에 아직은 개발 환경에서 watchtower만 쓰고 있다. 다음과 같은 커맨드로 watchover를 구성할 수 있다.</p>
+  </li>
+</ul>
+
+<p>필자의 프로젝트는 아직 릴리즈되지 않았기 때문에 아직은 개발 환경에서 watchtower만 쓰고 있다. 다음과 같은 커맨드로 watchover를 구성할 수 있다.</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="c"># watchover를 실행하기 전에 먼저 프로젝트의 docker container를 실행해야한다.</span>
 <span class="c"># 이 커맨드를 실행하면 watchover 컨테이너에서 실행 중인 다른 모든 컨테이너들을 모니터링할 것이다.</span>
 docker run -d <span class="se">\</span>
   --name watchtower <span class="se">\</span>
   -v /var/run/docker.sock:/var/run/docker.sock <span class="se">\</span>
-  v2tec/watchtower</code></pre></figure><h2 id="section-3">후기</h2>
+  v2tec/watchtower</code></pre></figure>
+
+<h2 id="section-3">후기</h2>
 
 <p>뭔가 한게 없는 것 같지만, 아니 실제로도 Docker의 설치를 제외하곤 <code class="highlighter-rouge">build.gradle</code>와 <code class="highlighter-rouge">.travis.yml</code>  몇 줄 추가했을 뿐이다. 이제 열심히 개발해서 master 브랜치로 커밋을 머지하면, CI가 Docker 이미지를 만들어서 업로드하고 이 이미지는 자동으로 서버로 올라가게 된다. 물론 나중에 프로젝트가 커지면 여러 실행 환경들을 Dockerfile에 담아야하니 설정이 더욱 복잡해지긴 하겠지만, 마치 하스켈의 <a href="https://e.xtendo.org/haskell/ko/monad_fear/slide#1">모나드 괴담</a>처럼 Docker는 어쩌면 사람들이 아니 내가 너무 어렵게 생각해온 것 같다. 이 글을 통해 독자도 자신의 프로젝트에 도커를 적용할 수 있었으면 좋겠다.</p>
 
@@ -192,17 +206,23 @@ docker run -d <span class="se">\</span>
 
 <div class="footnotes">
   <ol>
-<li id="fn:1">
+    <li id="fn:1">
       <p>애플은 전 세계에서 쓰이는 시리를 위해 Mesos와 애플 내부의 커스텀 스케쥴러인 JARVIS를 쓰고 있다. <a href="#fnref:1" class="reversefootnote">↩</a></p>
     </li>
   </ol>
 </div>
+
     <h5> <!-- footer start -->
 
-<footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
-</div>
-</footer><!-- footer end --></h5>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section>
+         <section class="poweredby">For Geeky Tomorrow.</section>
+    </div>
+</footer>
+
+<!-- footer end -->
+</h5>
   </body>
 </html>

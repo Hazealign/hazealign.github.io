@@ -16,7 +16,7 @@
  7. WordPress will then import each of the posts, pages, comments, categories, etc.
     contained in this file into your site.
 -->
-<!-- generator="WordPress.com" created="Fri, 18 Aug 2017 12:53:00 +0900"-->
+<!-- generator="WordPress.com" created="Thu, 19 Oct 2017 19:39:55 +0900"-->
 <rss
     version="2.0"
     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
@@ -28,7 +28,7 @@
         <title>Realignist's Lifelog</title>
         <link>http://realignist.me/</link>
         <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
-        <pubDate>Fri, 18 Aug 2017 12:53:00 +0900</pubDate>
+        <pubDate>Thu, 19 Oct 2017 19:39:55 +0900</pubDate>
         <language>en</language>
         <wp:wxr_version>1.2</wp:wxr_version>
         <wp:base_site_url>http://realignist.me/</wp:base_site_url>

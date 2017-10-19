@@ -70,7 +70,7 @@ h5 {
 
 <p>어떤 어플리케이션의 master 브랜치에 <a href="http://jakewharton.github.io/butterknife/">ButterKnife</a>로 되어있던 부분을 없애는 Pull Request를 머지했다.</p>
 
-<p><amp-img src="http://realignist.me/assets/images/20160525/5.png" alt="" width="313" height="91" layout="responsive"></amp-img></p>
+<p><amp-img src="http://realignist.me/assets/images/20160525/5.png" alt="" layout="responsive"></amp-img></p>
 
 <p>지금까지 ButterKnife가 하고 있던 일은 전부 <a href="http://developer.android.com/tools/data-binding/guide.html">Data Binding</a>이 대신 하게 되었다. Data Binding은 공식에서는 아직 beta release 단계에 있는 상태로, <a href="https://bintray.com/android/android-tools">거의 1.0에 가까운 RC(Release Candidate) 수준</a>까지 되었기 때문에 실전에 투입할 수 있게 되었다.</p>
 
@@ -97,7 +97,9 @@ h5 {
     <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_activity</span><span class="o">);</span>
     <span class="n">ButterKnife</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>이 부분은 전부 Data Binding으로 다음과 같이 바꿔서 사용할 수 있다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>이 부분은 전부 Data Binding으로 다음과 같이 바꿔서 사용할 수 있다.</p>
 
 <h4 id="after">After</h4>
 
@@ -109,7 +111,9 @@ h5 {
     <span class="nt">&lt;TextView</span> <span class="na">android:id=</span><span class="s">"@+id/subtitle"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:id=</span><span class="s">"@+id/footer"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>이렇게 하면 <code class="highlighter-rouge">activity_sample.xml</code> 파일이라고 한다면 <code class="highlighter-rouge">ActivitySampleBinding</code>이라는 클래스가 생성된다.<code class="highlighter-rouge">DataBindingUtils.setContentView(Activity activity, int id)</code>를 통해 Binding 인스턴스를 반환하기 때문에 이 인스턴스를 유지해두면 좋다.</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure>
+
+<p>이렇게 하면 <code class="highlighter-rouge">activity_sample.xml</code> 파일이라고 한다면 <code class="highlighter-rouge">ActivitySampleBinding</code>이라는 클래스가 생성된다.<code class="highlighter-rouge">DataBindingUtils.setContentView(Activity activity, int id)</code>를 통해 Binding 인스턴스를 반환하기 때문에 이 인스턴스를 유지해두면 좋다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ExampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">ActivitySampleBinding</span> <span class="n">binding</span><span class="o">;</span>
@@ -119,9 +123,13 @@ h5 {
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">DataBindingUtils</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_activity</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>이 Binding 인스턴스가 id로 설정된 각 View의 인스턴스를 가지고 있는걸 확인할 수 있다.</p>
+<span class="o">}</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="na">footer</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span></code></pre></figure><h3 id="non-activity-binding">Non-Activity Binding</h3>
+<p>이 Binding 인스턴스가 id로 설정된 각 View의 인스턴스를 가지고 있는걸 확인할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">binding</span><span class="o">.</span><span class="na">footer</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span></code></pre></figure>
+
+<h3 id="non-activity-binding">Non-Activity Binding</h3>
 
 <h4 id="before-1">Before</h4>
 
@@ -138,7 +146,9 @@ h5 {
     <span class="c1">// TODO Use fields...</span>
     <span class="k">return</span> <span class="n">view</span><span class="o">;</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h4 id="after-1">After</h4>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="after-1">After</h4>
 
 <p>생성된 Binding 클래스에 <code class="highlighter-rouge">bind(View view)</code>라는 정적 메소드가 존재하기 때문에, 그것을 이용하면 된다. 그 다음은 같다.</p>
 
@@ -155,7 +165,9 @@ h5 {
     <span class="kd">super</span><span class="o">.</span><span class="na">onActivityCreated</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">binding</span> <span class="o">=</span> <span class="n">FragmentFancyBinding</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">getView</span><span class="o">());</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h3 id="view-binding-viewholder">View Binding (ViewHolder)</h3>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="view-binding-viewholder">View Binding (ViewHolder)</h3>
 
 <h4 id="before-2">Before</h4>
 
@@ -187,7 +199,9 @@ h5 {
       <span class="n">ButterKnife</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">view</span><span class="o">);</span>
     <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h4 id="after-listview">After (ListView)</h4>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="after-listview">After (ListView)</h4>
 
 <p>Data Binding을 이용하면 Binding 클래스가 ViewHolder와 같은 방식으로 작동하므로, 원래 <code class="highlighter-rouge">ViewHolder</code>가 필요 없어진다. (<code class="highlighter-rouge">RecyclerView</code>에 대해서는 조금 다른 이야기가 되기 때문에 후술하도록 하겠다.) Data Binding을 이용하고 있으면 setter 또한 구현 되어있기 때문에 각 View에 값을 일일히 줄 필요도 없다. (Snippet 안에 있는 주석을 참조하라.)</p>
 
@@ -210,7 +224,9 @@ h5 {
 
       <span class="k">return</span> <span class="n">convertView</span><span class="o">;</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h4 id="after-recyclerview">After (RecyclerView)</h4>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="after-recyclerview">After (RecyclerView)</h4>
 
 <p><code class="highlighter-rouge">RecyclerView</code>같은 경우에는 <code class="highlighter-rouge">RecyclerView.ViewHolder</code>가 필수가 된다. 이 ViewHolder에 BindingHolder같은 이름을 붙이고 Binding 클래스와 연결해주도록 하면 된다.</p>
 
@@ -241,7 +257,9 @@ h5 {
       <span class="k">return</span> <span class="n">binding</span><span class="o">;</span>
     <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h3 id="listener-binding-onclick">Listener Binding (onClick)</h3>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="listener-binding-onclick">Listener Binding (onClick)</h3>
 
 <h4 id="before-3">Before</h4>
 
@@ -250,7 +268,9 @@ h5 {
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@OnClick</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">submit</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">submit</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
   <span class="c1">// TODO submit data to server...</span>
-<span class="o">}</span></code></pre></figure><h4 id="after-2">After</h4>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="after-2">After</h4>
 
 <p>레이아웃에 Activity의 인스턴스를 지정해주고, <code class="highlighter-rouge">Button</code>의 <code class="highlighter-rouge">android:onClick</code> 항목에 Listener 메소드를 지정해준다.</p>
 
@@ -261,7 +281,9 @@ h5 {
   <span class="nt">&lt;LinearLayout&gt;</span>
     <span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{activity.onSampleButtonClick}"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>Activity의 <code class="highlighter-rouge">onCreate()</code>에서는 Binding 인스턴스에 Activity의 인스턴스를 지정해주면 그 이후에는 편하게 사용할 수 있다.</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure>
+
+<p>Activity의 <code class="highlighter-rouge">onCreate()</code>에서는 Binding 인스턴스에 Activity의 인스턴스를 지정해주면 그 이후에는 편하게 사용할 수 있다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">SampleActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
   <span class="kd">private</span> <span class="n">ActivitySampleBinding</span> <span class="n">binding</span><span class="o">;</span>
@@ -276,11 +298,15 @@ h5 {
   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSampleButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// do something...</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><p>다만, 앞의 예제의 Activity는 Layout를 참고하고 있으며 Layout은 Activity를 참조하고 있는 것처럼 완전히 서로 결합되는 구조가 된다. 이것이 싫다면 이벤트 처리만을 담당하는 Interface를 만들어주면 좋다. 이제 느슨하게 서로 연결되는 구조가 실현된다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>다만, 앞의 예제의 Activity는 Layout를 참고하고 있으며 Layout은 Activity를 참조하고 있는 것처럼 완전히 서로 결합되는 구조가 된다. 이것이 싫다면 이벤트 처리만을 담당하는 Interface를 만들어주면 좋다. 이제 느슨하게 서로 연결되는 구조가 실현된다.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onSampleButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure><p><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>에서 이야기하는 Controller에 해당될려나?</p>
+<span class="o">}</span></code></pre></figure>
+
+<p><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a>에서 이야기하는 Controller에 해당될려나?</p>
 
 <h3 id="data-binding--">그 외 Data Binding의 편리한 기능들</h3>
 
@@ -291,12 +317,16 @@ h5 {
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{handlers.onPrevButtonClick}"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;Button</span> <span class="na">android:onClick=</span><span class="s">"@{handlers.onNextButtonClick}"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;EditText</span> <span class="na">android:onTextChanged=</span><span class="s">"@{handlers.onTextChanged}"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;ListView</span> <span class="na">android:onScroll=</span><span class="s">"@{handlers.onScroll}"</span> <span class="nt">/&gt;</span></code></pre></figure><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
+<span class="nt">&lt;ListView</span> <span class="na">android:onScroll=</span><span class="s">"@{handlers.onScroll}"</span> <span class="nt">/&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onPrevButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onNextButtonClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onTextChanged</span><span class="o">(</span><span class="n">CharSequence</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">before</span><span class="o">,</span> <span class="kt">int</span> <span class="n">count</span><span class="o">);</span>
   <span class="kt">void</span> <span class="nf">onScroll</span><span class="o">(</span><span class="n">AbsListView</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">firstVisibleItem</span><span class="o">,</span> <span class="kt">int</span> <span class="n">visibleItemCount</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalItemCount</span><span class="o">);</span>
-<span class="o">}</span></code></pre></figure><p>표준으로 제공하는 Adapter에 대해서는 <a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/…/data-binding/</a>에 있는 파일을 참조하길 바란다.</p>
+<span class="o">}</span></code></pre></figure>
+
+<p>표준으로 제공하는 Adapter에 대해서는 <a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/…/data-binding/</a>에 있는 파일을 참조하길 바란다.</p>
 
 <h4 id="adapter-binding">Adapter Binding</h4>
 
@@ -307,9 +337,13 @@ h5 {
     <span class="nd">@BindingMethod</span><span class="o">(</span><span class="n">type</span> <span class="o">=</span> <span class="n">RecyclerView</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">attribute</span> <span class="o">=</span> <span class="s">"android:adapter"</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">"setAdapter"</span><span class="o">)</span>
 <span class="o">})</span>
 <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ViewBindingUtils</span> <span class="o">{</span>
-<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SampleActivityHandlers</span> <span class="o">{</span>
   <span class="kt">void</span> <span class="nf">onRefresh</span><span class="o">();</span>
-<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;data&gt;</span>
     <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"handlers"</span>
       <span class="na">type=</span><span class="s">"info.izumin.android.databindingsample.SampleActivityHandlers"</span> <span class="nt">/&gt;</span>
@@ -323,7 +357,9 @@ h5 {
       <span class="na">android:adapter=</span><span class="s">"@{adapter}"</span> <span class="nt">/&gt;</span>
 
   <span class="nt">&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p>이렇게까지 해야할 필요성이 있는지 모르겠다.</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure>
+
+<p>이렇게까지 해야할 필요성이 있는지 모르겠다.</p>
 
 <h4 id="image-source-binding">Image Source Binding</h4>
 
@@ -341,7 +377,9 @@ h5 {
     <span class="o">}</span>
     <span class="n">imageView</span><span class="o">.</span><span class="na">setImageResource</span><span class="o">(</span><span class="n">resId</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;layout&gt;</span>
   <span class="nt">&lt;data&gt;</span>
     <span class="nt">&lt;variable</span> <span class="na">name=</span><span class="s">"device"</span> <span class="na">type=</span><span class="s">"android.bluetooth.BluetoothDevice"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/data&gt;</span>
@@ -350,7 +388,9 @@ h5 {
     <span class="nt">&lt;TextView</span> <span class="na">android:text=</span><span class="s">"@{device.getName()}"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;TextView</span> <span class="na">android:text=</span><span class="s">"@{device.getAddress()}"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/LinearLayout&gt;</span>
-<span class="nt">&lt;/layout&gt;</span></code></pre></figure><p><code class="highlighter-rouge">BindingAdapter</code>로 namespace를 쓰지 않는 것(<code class="highlighter-rouge">app</code>)과, <code class="highlighter-rouge">android</code>를 쓰는 것 중 어느 쪽이 좋은가요?</p>
+<span class="nt">&lt;/layout&gt;</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">BindingAdapter</code>로 namespace를 쓰지 않는 것(<code class="highlighter-rouge">app</code>)과, <code class="highlighter-rouge">android</code>를 쓰는 것 중 어느 쪽이 좋은가요?</p>
 
 <h4 id="data-binding-on-custom-view">Data Binding on Custom View</h4>
 
@@ -387,7 +427,9 @@ h5 {
   <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OnPaginationClickListener</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">Pagination</span> <span class="n">pagination</span><span class="o">);</span>
   <span class="o">}</span>
-<span class="o">}</span></code></pre></figure><h3 id="butterknife-data-binding----">ButterKnife에서 Data Binding으로 대체할 수 없는 기능들</h3>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="butterknife-data-binding----">ButterKnife에서 Data Binding으로 대체할 수 없는 기능들</h3>
 
 <h4 id="resource-binding">Resource Binding</h4>
 
@@ -399,7 +441,9 @@ h5 {
   <span class="nd">@BindColor</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">red</span><span class="o">)</span> <span class="kt">int</span> <span class="n">red</span><span class="o">;</span> <span class="c1">// int or ColorStateList field</span>
   <span class="nd">@BindDimen</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">dimen</span><span class="o">.</span><span class="na">spacer</span><span class="o">)</span> <span class="n">Float</span> <span class="n">spacer</span><span class="o">;</span> <span class="c1">// int (for pixel size) or float (for exact value) field</span>
   <span class="c1">// ...</span>
-<span class="o">}</span></code></pre></figure><h4 id="view-lists">View Lists</h4>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="view-lists">View Lists</h4>
 
 <p>View Lists는 여러 View를 한 곳에 모아 처리하는 기능 같다. <del>이 글을 쓸 때 처음 안 기능이다</del>.</p>
 
@@ -415,38 +459,48 @@ h5 {
 <span class="o">};</span>
 
 <span class="c1">// 이런 느낌으로 한번에 쓸 수 있다！</span>
-<span class="n">ButterKnife</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">nameViews</span><span class="o">,</span> <span class="n">DISABLE</span><span class="o">);</span></code></pre></figure><p>이것도 Data Binding에서는 존재하지 않는다.</p>
+<span class="n">ButterKnife</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">nameViews</span><span class="o">,</span> <span class="n">DISABLE</span><span class="o">);</span></code></pre></figure>
+
+<p>이것도 Data Binding에서는 존재하지 않는다.</p>
 
 <h2 id="section">정리</h2>
 <ul>
-<li>ButterKnife의 기능은 대체로 Data Binding으로 대체할 수 있다.
+  <li>ButterKnife의 기능은 대체로 Data Binding으로 대체할 수 있다.
     <ul>
-<li>Resource Binding, View Lists만 Data Binding에서 대체 불가</li>
+      <li>Resource Binding, View Lists만 Data Binding에서 대체 불가</li>
     </ul>
-</li>
+  </li>
   <li>
 <code class="highlighter-rouge">ViewHolder</code> 패턴은 모두 대체할 수 있다.
     <ul>
-<li>
+      <li>
 <code class="highlighter-rouge">RecyclerView.ViewHolder</code>는 Binding의 Wrapper로 감싸주면 OK</li>
     </ul>
-</li>
+  </li>
   <li>
 <code class="highlighter-rouge">@BindingAdapter</code>와 <code class="highlighter-rouge">@BindingMethod</code>를 <del>악용</del>이용하면 비교적 뭐든지 할 수 있다.</li>
-</ul><h2 id="references">References</h2>
+</ul>
+
+<h2 id="references">References</h2>
 <ul>
-<li><a href="http://jakewharton.github.io/butterknife/">ButterKnife</a></li>
+  <li><a href="http://jakewharton.github.io/butterknife/">ButterKnife</a></li>
   <li><a href="http://developer.android.com/tools/data-binding/guide.html">Data Binding Guide - Android Developers</a></li>
   <li><a href="http://tech.recruit-mp.co.jp/mobile/android-data-binding/">Android – Data Binding 연결해봤다. – NET BIZ DIV. TECH BLOG</a></li>
   <li><a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">The Clean Architecture - 8th Light</a></li>
   <li><a href="https://android.googlesource.com/platform/frameworks/data-binding/+/android-6.0.0_r7/extensions/baseAdapters/src/main/java/android/databinding/adapters">extensions/baseAdapters/src/main/java/android/databinding/adapters - platform/frameworks/data-binding - Git at Google</a></li>
 </ul>
+
     <h5> <!-- footer start -->
 
-<footer class="site-footer"><a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
     <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section><section class="poweredby">For Geeky Tomorrow.</section>
-</div>
-</footer><!-- footer end --></h5>
+         <section class="copyright">All content copyright <a href="mailto:hazelee@re.aligni.st">Haze Lee</a> © 2017 • All rights reserved.</section>
+         <section class="poweredby">For Geeky Tomorrow.</section>
+    </div>
+</footer>
+
+<!-- footer end -->
+</h5>
   </body>
 </html>
