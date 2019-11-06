@@ -8,7 +8,7 @@ gems:
 # Site settings
 title: "Haze Lee"
 description: "책, 음악, 코딩, 피카츄와 함께하는 곳."
-email: 'hazelee@re.aligni.st'
+email: 'hazelee@realignist.me'
 #blog logo
 logo: "/assets/images/pikachu_logo.png"
 # blog cover
@@ -21,7 +21,7 @@ author_image: "/assets/images/author.jpg"
 paginate: 5
 exclude: [vendor]
 
-url: "http://realignist.me" # the base hostname & protocol for your site
+url: "http://archived.realignist.me" # the base hostname & protocol for your site
 baseurl: ""
 #used to display twitter cards
 twitter_handle: '@realignist'
