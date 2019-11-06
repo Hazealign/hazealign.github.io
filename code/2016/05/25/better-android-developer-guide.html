@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@realignist" />
     <meta name="twitter:title" content="[번역] 중급 이상의 Android 개발자가 Android다운 개발을 하려면 봐야할 URL 목록들" />
-    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
+    <meta name="twitter:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
     
     <meta name="twitter:description"  content="이 글은 @yuya_presto님이 쓰신 글을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다." />
     
@@ -29,22 +29,18 @@
   
   <meta property="og:description" content="이 글은 @yuya_presto님이 쓰신 글을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다." />
   
-  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-  <meta property="og:url" content="http://realignist.me/code/2016/05/25/better-android-developer-guide.html" >
+  <meta property="og:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
+  <meta property="og:url" content="http://archived.realignist.me/code/2016/05/25/better-android-developer-guide.html" >
   <meta property="og:type" content="blog" />
   <meta property="article:published_time" content="2016-05-25T02:30:00+09:00">
 
-  <link rel="canonical" href="http://realignist.me/code/2016/05/25/better-android-developer-guide.html"/>
+  <link rel="canonical" href="http://archived.realignist.me/code/2016/05/25/better-android-developer-guide.html"/>
   <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
-
-  
-    <link rel="amphtml" href="http://realignist.me/amp/code/2016/05/25/better-android-developer-guide">
-  
 
   <style type="text/css">
     
@@ -229,7 +225,7 @@ pre[class*="language-"] {
 
 <p>사용해야할 UI 컴포넌트, ListView 등의 레이아웃, 다이얼로그를 띄울 타이밍과 표시할 내용, 화면 전환 시의 애니메이션과 사용 방법 등에 대한 설명이 다양하게 적혀있습니다. 이 내용에 따라 개발하면 상당히 현대적인 Android 앱으로 보이게 됩니다. 사용하려고 마음 먹은 UI 컴포넌트에 대해 조사하는 것만으로도 꽤 큰 효과를 발휘합니다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160525/1.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160525/1.png" alt="" /></p>
 
 <p>※ 여담입니다만, iOS를 하는 사람들에게는 iOS Human Interface Guidelines가 필수 요소라고 생각합니다.</p>
 
@@ -241,7 +237,7 @@ pre[class*="language-"] {
 
 <p>그에 대한 정리가 다음 <a href="https://github.com/xxv/android-lifecycle">Repository</a>에 올라와있습니다. (CC-BY-SA 4.0)</p>
 
-<p><img src="http://realignist.me/assets/images/20160525/2.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160525/2.png" alt="" /></p>
 
 <p>※ 여담입니다만, Android N에서 멀티윈도우가 지원되면서 onPause()와 onStop()에 대한 개념이 약간 미묘하게 복잡하게 변할 수도 있기 때문에 이 부분은 주의할 필요가 있다고 생각합니다.</p>
 
@@ -262,7 +258,7 @@ pre[class*="language-"] {
 
 <p>아래 그림은 “그림으로 이해하는 액티비티 스택”에서 인용한 것입니다. 그림이 매우 알기 쉬웠습니다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160525/3.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160525/3.png" alt="" /></p>
 
 <p>※ 사실은 “taskAffinity”에 대해서도 알아야한다고 생각하지만, 저는 아직 이 부분에 대해서 확실하게 이해하지 못하고 있습니다.</p>
 
@@ -272,7 +268,7 @@ pre[class*="language-"] {
 
 <p><a href="http://developer.android.com/intl/ko/design/patterns/navigation.html">http://developer.android.com/intl/ko/design/patterns/navigation.html</a></p>
 
-<p><img src="http://realignist.me/assets/images/20160525/4.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160525/4.png" alt="" /></p>
 
 <p>구현 방법은 <a href="http://developer.android.com/intl/ko/training/implementing-navigation/ancestral.html">여기</a>서 확인할 수 있습니다.</p>
 
@@ -360,14 +356,14 @@ pre[class*="language-"] {
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+%EC%A4%91%EA%B8%89+%EC%9D%B4%EC%83%81%EC%9D%98+Android+%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80+Android%EB%8B%A4%EC%9A%B4+%EA%B0%9C%EB%B0%9C%EC%9D%84+%ED%95%98%EB%A0%A4%EB%A9%B4+%EB%B4%90%EC%95%BC%ED%95%A0+URL+%EB%AA%A9%EB%A1%9D%EB%93%A4&amp;url=http://realignist.me/code/2016/05/25/better-android-developer-guide"
+                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+%EC%A4%91%EA%B8%89+%EC%9D%B4%EC%83%81%EC%9D%98+Android+%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80+Android%EB%8B%A4%EC%9A%B4+%EA%B0%9C%EB%B0%9C%EC%9D%84+%ED%95%98%EB%A0%A4%EB%A9%B4+%EB%B4%90%EC%95%BC%ED%95%A0+URL+%EB%AA%A9%EB%A1%9D%EB%93%A4&amp;url=http://archived.realignist.me/code/2016/05/25/better-android-developer-guide"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+%EC%A4%91%EA%B8%89+%EC%9D%B4%EC%83%81%EC%9D%98+Android+%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80+Android%EB%8B%A4%EC%9A%B4+%EA%B0%9C%EB%B0%9C%EC%9D%84+%ED%95%98%EB%A0%A4%EB%A9%B4+%EB%B4%90%EC%95%BC%ED%95%A0+URL+%EB%AA%A9%EB%A1%9D%EB%93%A4&amp;u=http://realignist.me/code/2016/05/25/better-android-developer-guide"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+%EC%A4%91%EA%B8%89+%EC%9D%B4%EC%83%81%EC%9D%98+Android+%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80+Android%EB%8B%A4%EC%9A%B4+%EA%B0%9C%EB%B0%9C%EC%9D%84+%ED%95%98%EB%A0%A4%EB%A9%B4+%EB%B4%90%EC%95%BC%ED%95%A0+URL+%EB%AA%A9%EB%A1%9D%EB%93%A4&amp;u=http://archived.realignist.me/code/2016/05/25/better-android-developer-guide"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
@@ -395,7 +391,7 @@ pre[class*="language-"] {
               <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
               <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2019<br>All rights reserved.</section>
               </div>
             </footer>
           </div>

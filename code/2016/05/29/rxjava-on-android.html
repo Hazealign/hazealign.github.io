@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@realignist" />
     <meta name="twitter:title" content="[번역] RxJava를 3일만에 입문해서, 안드로이드 애플리케이션의 리스트 작업이나 비동기 처리와 알림을 해결한 이야기." />
-    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
+    <meta name="twitter:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
     
     <meta name="twitter:description"  content="이번 글도 @yuya_presto님이 쓰신 글을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며 댓글로의 지적도 환영합니다, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다." />
     
@@ -29,22 +29,18 @@
   
   <meta property="og:description" content="이번 글도 @yuya_presto님이 쓰신 글을 한국어로 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며 댓글로의 지적도 환영합니다, 좋은 글을 한국어로도 번역할 수 있게 해주신 yuya_presto님께 감사하다는 말씀 드립니다." />
   
-  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-  <meta property="og:url" content="http://realignist.me/code/2016/05/29/rxjava-on-android.html" >
+  <meta property="og:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
+  <meta property="og:url" content="http://archived.realignist.me/code/2016/05/29/rxjava-on-android.html" >
   <meta property="og:type" content="blog" />
   <meta property="article:published_time" content="2016-05-29T16:55:00+09:00">
 
-  <link rel="canonical" href="http://realignist.me/code/2016/05/29/rxjava-on-android.html"/>
+  <link rel="canonical" href="http://archived.realignist.me/code/2016/05/29/rxjava-on-android.html"/>
   <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
-
-  
-    <link rel="amphtml" href="http://realignist.me/amp/code/2016/05/29/rxjava-on-android">
-  
 
   <style type="text/css">
     
@@ -253,7 +249,7 @@ pre[class*="language-"] {
 
 <p>공통적인 사용법만 아래에 적어뒀습니다. 코드 샘플은 후술하도록 하겠습니다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160529/1.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160529/1.png" alt="" /></p>
 
 <ul>
   <li><a href="http://reactivex.io/documentation/observable.html">Observable</a>부터 Item이 동기식으로나 비동기식으로 내려옵니다. (스트림)</li>
@@ -396,11 +392,11 @@ pre[class*="language-"] {
 
 <p>표시할 때마다 Fragment에서 Model을 호출하는 장소에서 변경 알림 이벤트에 의한 View의 갱신을 가하면 호출의 흐름이 복잡하게 되어버립니다. 또 이것을 EventBus를 통해서 구현하면 그 이벤트가 어디서 날아오는지 명확히 알 수 없다는 문제도 존재합니다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160529/2.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160529/2.png" alt="" /></p>
 
 <p>이것을 Observer 패턴을 이용하면 변경 내용이 통지될 때마다 render하는 것만으로도 괜찮아지며, 또 subscribe할 때에 Model를 참조하기 때문에 가독성이 높아집니다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160529/3.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160529/3.png" alt="" /></p>
 
 <h4 id="rxjava--">그거 RxJava로… (이하 생략)</h4>
 
@@ -630,14 +626,14 @@ pre[class*="language-"] {
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+RxJava%EB%A5%BC+3%EC%9D%BC%EB%A7%8C%EC%97%90+%EC%9E%85%EB%AC%B8%ED%95%B4%EC%84%9C%2C+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98+%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EC%9E%91%EC%97%85%EC%9D%B4%EB%82%98+%EB%B9%84%EB%8F%99%EA%B8%B0+%EC%B2%98%EB%A6%AC%EC%99%80+%EC%95%8C%EB%A6%BC%EC%9D%84+%ED%95%B4%EA%B2%B0%ED%95%9C+%EC%9D%B4%EC%95%BC%EA%B8%B0.&amp;url=http://realignist.me/code/2016/05/29/rxjava-on-android"
+                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+RxJava%EB%A5%BC+3%EC%9D%BC%EB%A7%8C%EC%97%90+%EC%9E%85%EB%AC%B8%ED%95%B4%EC%84%9C%2C+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98+%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EC%9E%91%EC%97%85%EC%9D%B4%EB%82%98+%EB%B9%84%EB%8F%99%EA%B8%B0+%EC%B2%98%EB%A6%AC%EC%99%80+%EC%95%8C%EB%A6%BC%EC%9D%84+%ED%95%B4%EA%B2%B0%ED%95%9C+%EC%9D%B4%EC%95%BC%EA%B8%B0.&amp;url=http://archived.realignist.me/code/2016/05/29/rxjava-on-android"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+RxJava%EB%A5%BC+3%EC%9D%BC%EB%A7%8C%EC%97%90+%EC%9E%85%EB%AC%B8%ED%95%B4%EC%84%9C%2C+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98+%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EC%9E%91%EC%97%85%EC%9D%B4%EB%82%98+%EB%B9%84%EB%8F%99%EA%B8%B0+%EC%B2%98%EB%A6%AC%EC%99%80+%EC%95%8C%EB%A6%BC%EC%9D%84+%ED%95%B4%EA%B2%B0%ED%95%9C+%EC%9D%B4%EC%95%BC%EA%B8%B0.&amp;u=http://realignist.me/code/2016/05/29/rxjava-on-android"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+RxJava%EB%A5%BC+3%EC%9D%BC%EB%A7%8C%EC%97%90+%EC%9E%85%EB%AC%B8%ED%95%B4%EC%84%9C%2C+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98+%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EC%9E%91%EC%97%85%EC%9D%B4%EB%82%98+%EB%B9%84%EB%8F%99%EA%B8%B0+%EC%B2%98%EB%A6%AC%EC%99%80+%EC%95%8C%EB%A6%BC%EC%9D%84+%ED%95%B4%EA%B2%B0%ED%95%9C+%EC%9D%B4%EC%95%BC%EA%B8%B0.&amp;u=http://archived.realignist.me/code/2016/05/29/rxjava-on-android"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
@@ -665,7 +661,7 @@ pre[class*="language-"] {
               <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
               <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2019<br>All rights reserved.</section>
               </div>
             </footer>
           </div>

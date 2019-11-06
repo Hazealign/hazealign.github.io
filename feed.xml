@@ -3,10 +3,10 @@
   <channel>
     <title>Haze Lee</title>
     <description>책, 음악, 코딩, 피카츄와 함께하는 곳.</description>
-    <link>http://realignist.me/</link>
-    <atom:link href="http://realignist.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 19 Oct 2017 19:39:55 +0900</pubDate>
-    <lastBuildDate>Thu, 19 Oct 2017 19:39:55 +0900</lastBuildDate>
+    <link>http://archived.realignist.me/</link>
+    <atom:link href="http://archived.realignist.me/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 06 Nov 2019 22:26:09 +0900</pubDate>
+    <lastBuildDate>Wed, 06 Nov 2019 22:26:09 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -15,9 +15,9 @@
 
 &lt;p&gt;이 글은 Docker가 무엇인지는 알고 있다는 전제 하에 써진 글이므로, Docker가 무엇인지 잘 모른다면 이재홍님의 &lt;a href=&quot;http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter01&quot;&gt;가장 빨리 만나는 도커 1장&lt;/a&gt;을 읽는걸 추천한다. 이 글만 잘 따라해도 아래 사진처럼 커밋이 올라가면 CI가 Docker 이미지를 만들어서 업로드하고 서버에 배포까지 하는 플로우를 구성할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20170614/dockerhub_example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20170614/dockerhub_example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20170614/travis_example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20170614/travis_example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section&quot;&gt;설치가 반이다.&lt;/h2&gt;
 
@@ -104,7 +104,7 @@
 
 &lt;h2 id=&quot;section-2&quot;&gt;자동으로 업데이트되는 환경을 만들자.&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20170614/google_docker_deploy.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20170614/google_docker_deploy.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;구글에 Docker를 쳐보면 수많은 배포 자동화 사례들을 볼 수 있다. 대부분 DockerHub로 이미지를 배포하는 부분에서 글이 끝나는데 나는 정말로 실제 쓰고 있는 스테이징 혹은 릴리즈 서버에 새 이미지가 자동으로 올라가게 하는 것까지 이야기해보고 싶다.&lt;/p&gt;
 
@@ -157,8 +157,8 @@ docker run -d &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 14 Jun 2017 09:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2017/06/14/docker-my-usecase.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2017/06/14/docker-my-usecase.html</guid>
+        <link>http://archived.realignist.me/code/2017/06/14/docker-my-usecase.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2017/06/14/docker-my-usecase.html</guid>
         
         <category>featured</category>
         
@@ -1419,8 +1419,8 @@ OnSubscribe end
 &lt;p&gt;주관적인 생각이지만 영어 번역은 확실히 일본어 번역보다 더 어려웠던 것 같습니다. 특히 글의 분량도 많았고, 어떻게 하면 이 표현을 자연스럽게 우리말로 쓸 수 있을까에 대한 고민도 꽤 했지만 그럼에도 많이 부족한 것 같습니다. 이 글을 통해 RxJava 2가 어떤 점들이 바뀌었는지 아는데 도움이 되면 좋겠습니다. 오타나 번역에 대한 지적이라던가 댓글은 언제나 환영합니다. 감사합니다. :D&lt;/p&gt;
 </description>
         <pubDate>Wed, 25 Jan 2017 12:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2017/01/25/rxjava2-changelog.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2017/01/25/rxjava2-changelog.html</guid>
+        <link>http://archived.realignist.me/code/2017/01/25/rxjava2-changelog.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2017/01/25/rxjava2-changelog.html</guid>
         
         <category>featured</category>
         
@@ -1714,8 +1714,8 @@ OnSubscribe end
 &lt;p&gt;요점은 여러 가지가 있지만 가장 중요한 것은 Reducer를 구성하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;scan&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;zip&lt;/code&gt; 오퍼레이터 부분입니다. Reducer를 늘리고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;zip&lt;/code&gt; 오퍼레이터에 점점 &lt;code class=&quot;highlighter-rouge&quot;&gt;dispatcherQueue$.scan&lt;/code&gt;을 추가해가면 됩니다. 해야할 일은 그것 뿐입니다.&lt;/p&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 12:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</guid>
+        <link>http://archived.realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2017/01/18/redux-with-typescript-rxjs.html</guid>
         
         <category>development</category>
         
@@ -1961,8 +1961,8 @@ OnSubscribe end
 &lt;p&gt;Vue.js에 한정하지 않고 어떤 프레임워크도 프레임워크의 특성과 습관을 이해하고 활용하는 것이 중요하다는 것은 의심할 여지가 없습니다. 또한 개발된 애플리케이션도 다양하고, 개발자는 요구사항에 부합하는 설계를 하고 적당한 라이브러리를 쓰는 것이 필요합니다. 이 문서가 Vue.js를 이용하여 프론트엔드 개발을 하고 있는 사람과 앞으로 프론트엔드 개발을 하려는 사람에게 도움이 된다면 기쁠 것 같습니다&lt;/p&gt;
 </description>
         <pubDate>Tue, 17 Jan 2017 12:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2017/01/17/vue-js-best-practice.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2017/01/17/vue-js-best-practice.html</guid>
+        <link>http://archived.realignist.me/code/2017/01/17/vue-js-best-practice.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2017/01/17/vue-js-best-practice.html</guid>
         
         <category>development</category>
         
@@ -2012,13 +2012,13 @@ OnSubscribe end
 
 &lt;h3 id=&quot;amp---&quot;&gt;그래서 내 AMP 페이지는 어떻게 보일까?&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20161201_1.png&quot; alt=&quot;스크린샷&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20161201_1.png&quot; alt=&quot;스크린샷&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;대충 이렇게 보인다. 디자인적으로는 아쉽긴 하지만, 모바일에서 검색했을 때 빨리 보인다는 메리트 때문에 AMP를 쓰는거라서 크게 거슬리거나 하지는 않았다. 이제 구글 검색이 AMP 검색 결과를 보여주길 기다리면… 될 것 같다. :D&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 18:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2016/12/01/amp-my-jekyll-web.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2016/12/01/amp-my-jekyll-web.html</guid>
+        <link>http://archived.realignist.me/code/2016/12/01/amp-my-jekyll-web.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2016/12/01/amp-my-jekyll-web.html</guid>
         
         <category>development</category>
         
@@ -2070,8 +2070,8 @@ OnSubscribe end
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 01 Oct 2016 01:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</guid>
+        <link>http://archived.realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2016/10/01/rust-osx-openssl-issue.html</guid>
         
         <category>development</category>
         
@@ -2094,7 +2094,7 @@ OnSubscribe end
 
 &lt;h2 id=&quot;section&quot;&gt;특이한 하이브리드 유닛 구조와 제품 특성&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160706/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20160706/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;일단 구매하기 전에 다이나믹 모션이 특허(등록번호: 1014601700000)로 가지고 있는 드라이버 구조를 보았다. 다이나믹 모션에서 제공하는 위의 그림을 보면 알 수 있겠지만 다이나믹 드라이버가 도넛 모양으로 있고 가운데의 공간을 밸런스드 아마츄어 드라이버가 차지하는 구조를 가지고 있다. 다른 하이브리드 이어폰들은 각 드라이버가 따로 배치하는데, 동축으로 배치하면서 기존의 이어폰들이 가지고 있는 위상 차이를 극복했다고 한다. 저걸 보고 든 생각은 “이론상으로는 이해되지만 역시 실제로 들어봐야 알지”라는 생각이 강했던 것 같다.&lt;/p&gt;
 
@@ -2102,15 +2102,15 @@ OnSubscribe end
 
 &lt;h2 id=&quot;section-1&quot;&gt;언박싱&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160706/2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20160706/2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;택배 상자를 열어보니 DM200H, 여분의 컴플라이 폼팁 한쌍과 이어폰 청소를 위한 알콜 스왑 두개가 있었다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160706/3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20160706/3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;박스를 열어보니 제품에 대한 상세한 설명과 함께 제품이 보인다. 이어팁들도 사이즈별로 보이고, 항공기에서 쓸 수 있는 플러그나 옷에 고정할 수 있는 클립, 그리고 대망의 이어폰.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160706/4.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20160706/4.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;section-2&quot;&gt;실제로 어땠는가?&lt;/h2&gt;
 
@@ -2133,8 +2133,8 @@ OnSubscribe end
 
 </description>
         <pubDate>Wed, 06 Jul 2016 01:00:00 +0900</pubDate>
-        <link>http://realignist.me/life/2016/07/06/dm200h-review.html</link>
-        <guid isPermaLink="true">http://realignist.me/life/2016/07/06/dm200h-review.html</guid>
+        <link>http://archived.realignist.me/life/2016/07/06/dm200h-review.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/life/2016/07/06/dm200h-review.html</guid>
         
         <category>life</category>
         
@@ -2212,8 +2212,8 @@ OnSubscribe end
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 02 Jul 2016 18:00:00 +0900</pubDate>
-        <link>http://realignist.me/life/2016/07/02/half-report.html</link>
-        <guid isPermaLink="true">http://realignist.me/life/2016/07/02/half-report.html</guid>
+        <link>http://archived.realignist.me/life/2016/07/02/half-report.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/life/2016/07/02/half-report.html</guid>
         
         <category>life</category>
         
@@ -2361,7 +2361,7 @@ OnSubscribe end
 
 &lt;h2 id=&quot;profit&quot;&gt;Profit!&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://realignist.me/assets/images/20160624/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://archived.realignist.me/assets/images/20160624/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이렇게 깔끔하게 문서가 나온다! 이렇게 나오는 문서를 보니 기분이 너무 조크든요… 개인적으로 클린한 코드를 짰을 때, 좋은 문서를 봤을 때, 문서화를 잘 했을 때 기분이 너무 좋다. 넘나 좋은 것.&lt;/p&gt;
 
@@ -2373,8 +2373,8 @@ OnSubscribe end
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 24 Jun 2016 19:30:00 +0900</pubDate>
-        <link>http://realignist.me/code/2016/06/24/kotlin-documentation.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2016/06/24/kotlin-documentation.html</guid>
+        <link>http://archived.realignist.me/code/2016/06/24/kotlin-documentation.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2016/06/24/kotlin-documentation.html</guid>
         
         <category>android</category>
         
@@ -2484,8 +2484,8 @@ http://www.slideshare.net/jpaumard/java-8-stream-api-and-rxjava-comparison (p.21
 &lt;p&gt;이번과 같이 Java의 언어 기능의 동작 원리를 알기 위해서는 언어 표준과 바이트코드까지에 대한 지식이 필요한데 개인적으로는 이렇게 깊게까지 공부해본 적이 없었기 때문에 좀 더 공부가 필요하다는 것을 많이 느꼈습니다. 개인적으로 Java 7에서 추가된 기능들이 그렇게 크지 않다고 생각했는데, 람다식과 병렬 스트림을 위해서 필요한 개념들은 Java 7에 추가되었다는 것을 보고 반성하게 되었습니다.&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Jun 2016 10:00:00 +0900</pubDate>
-        <link>http://realignist.me/code/2016/06/09/rxjava-study-1.html</link>
-        <guid isPermaLink="true">http://realignist.me/code/2016/06/09/rxjava-study-1.html</guid>
+        <link>http://archived.realignist.me/code/2016/06/09/rxjava-study-1.html</link>
+        <guid isPermaLink="true">http://archived.realignist.me/code/2016/06/09/rxjava-study-1.html</guid>
         
         <category>android</category>
         

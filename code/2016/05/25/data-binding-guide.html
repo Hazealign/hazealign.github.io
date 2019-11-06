@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@realignist" />
     <meta name="twitter:title" content="[번역] ButterKnife, 지금까지 고마웠어. Data Binding, 앞으로 잘 부탁해." />
-    <meta name="twitter:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
+    <meta name="twitter:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
     
     <meta name="twitter:description"  content="이 글은 @izumin5210님이 Qiita에 올린 글을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다." />
     
@@ -29,22 +29,18 @@
   
   <meta property="og:description" content="이 글은 @izumin5210님이 Qiita에 올린 글을 번역한 글입니다. 일부 오역이나 의역이 있을 수 있으며 이 부분에 대해서 양해를 부탁드리며, 좋은 글을 한국어로도 번역할 수 있게 해주신 izumin5210님께 감사하다는 말씀 드립니다." />
   
-  <meta property="og:image" content="http://realignist.me/assets/images/pikachu_logo.png" />
-  <meta property="og:url" content="http://realignist.me/code/2016/05/25/data-binding-guide.html" >
+  <meta property="og:image" content="http://archived.realignist.me/assets/images/pikachu_logo.png" />
+  <meta property="og:url" content="http://archived.realignist.me/code/2016/05/25/data-binding-guide.html" >
   <meta property="og:type" content="blog" />
   <meta property="article:published_time" content="2016-05-25T15:00:00+09:00">
 
-  <link rel="canonical" href="http://realignist.me/code/2016/05/25/data-binding-guide.html"/>
+  <link rel="canonical" href="http://archived.realignist.me/code/2016/05/25/data-binding-guide.html"/>
   <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/font-awesome.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/prism.css" />
-
-  
-    <link rel="amphtml" href="http://realignist.me/amp/code/2016/05/25/data-binding-guide">
-  
 
   <style type="text/css">
     
@@ -218,7 +214,7 @@ pre[class*="language-"] {
 
 <p>어떤 어플리케이션의 master 브랜치에 <a href="http://jakewharton.github.io/butterknife/">ButterKnife</a>로 되어있던 부분을 없애는 Pull Request를 머지했다.</p>
 
-<p><img src="http://realignist.me/assets/images/20160525/5.png" alt="" /></p>
+<p><img src="http://archived.realignist.me/assets/images/20160525/5.png" alt="" /></p>
 
 <p>지금까지 ButterKnife가 하고 있던 일은 전부 <a href="http://developer.android.com/tools/data-binding/guide.html">Data Binding</a>이 대신 하게 되었다. Data Binding은 공식에서는 아직 beta release 단계에 있는 상태로, <a href="https://bintray.com/android/android-tools">거의 1.0에 가까운 RC(Release Candidate) 수준</a>까지 되었기 때문에 실전에 투입할 수 있게 되었다.</p>
 
@@ -640,14 +636,14 @@ pre[class*="language-"] {
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+ButterKnife%2C+%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80+%EA%B3%A0%EB%A7%88%EC%9B%A0%EC%96%B4.+Data+Binding%2C+%EC%95%9E%EC%9C%BC%EB%A1%9C+%EC%9E%98+%EB%B6%80%ED%83%81%ED%95%B4.&amp;url=http://realignist.me/code/2016/05/25/data-binding-guide"
+                <a class="icon-twitter" href="http://twitter.com/share?text=%5B%EB%B2%88%EC%97%AD%5D+ButterKnife%2C+%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80+%EA%B3%A0%EB%A7%88%EC%9B%A0%EC%96%B4.+Data+Binding%2C+%EC%95%9E%EC%9C%BC%EB%A1%9C+%EC%9E%98+%EB%B6%80%ED%83%81%ED%95%B4.&amp;url=http://archived.realignist.me/code/2016/05/25/data-binding-guide"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
               
             
               
-                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+ButterKnife%2C+%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80+%EA%B3%A0%EB%A7%88%EC%9B%A0%EC%96%B4.+Data+Binding%2C+%EC%95%9E%EC%9C%BC%EB%A1%9C+%EC%9E%98+%EB%B6%80%ED%83%81%ED%95%B4.&amp;u=http://realignist.me/code/2016/05/25/data-binding-guide"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer.php?t=%5B%EB%B2%88%EC%97%AD%5D+ButterKnife%2C+%EC%A7%80%EA%B8%88%EA%B9%8C%EC%A7%80+%EA%B3%A0%EB%A7%88%EC%9B%A0%EC%96%B4.+Data+Binding%2C+%EC%95%9E%EC%9C%BC%EB%A1%9C+%EC%9E%98+%EB%B6%80%ED%83%81%ED%95%B4.&amp;u=http://archived.realignist.me/code/2016/05/25/data-binding-guide"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
@@ -675,7 +671,7 @@ pre[class*="language-"] {
               <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
               <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
               <div class="inner">
-                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2017<br>All rights reserved.</section>
+                <section class="copyright">All content copyright <a href="/">Haze Lee</a> &copy; 2019<br>All rights reserved.</section>
               </div>
             </footer>
           </div>
